@@ -31,6 +31,10 @@ export default function Navbar() {
         </a>
         <div className="hidden md:flex items-center gap-1 text-sm text-[var(--color-ink-soft)]">
           <a className="px-3 py-1.5 rounded-full hover:text-[var(--color-ink)] hover:bg-white/5 transition" href="#prozess">Prozess</a>
+          <a className="px-3 py-1.5 rounded-full hover:text-[var(--color-ink)] hover:bg-white/5 transition inline-flex items-center gap-1.5" href="#demos">
+            Demos
+            <span className="size-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.7)]" />
+          </a>
           <a className="px-3 py-1.5 rounded-full hover:text-[var(--color-ink)] hover:bg-white/5 transition" href="#projekte">Projekte</a>
           <a className="px-3 py-1.5 rounded-full hover:text-[var(--color-ink)] hover:bg-white/5 transition" href="#kontakt">Kontakt</a>
         </div>
