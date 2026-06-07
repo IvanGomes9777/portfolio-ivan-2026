@@ -166,7 +166,6 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
           {panels.map((p, i) => (
             <div
               key={p.id}
-              id={p.id}
               ref={(el) => {
                 innerRefs.current[i] = el;
               }}
