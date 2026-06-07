@@ -8,6 +8,9 @@ import {
   ArrowUpRight,
   ExternalLink,
   SprayCan,
+  Scissors,
+  Dog,
+  Sparkles,
   Tag,
 } from "lucide-react";
 import LaptopMockup from "./LaptopMockup";
@@ -31,6 +34,38 @@ const demoProjects: DemoProject[] = [
     url: "https://geb-udereinigung-beispiel.vercel.app/",
     accent: "from-sky-500/30 via-blue-500/20 to-indigo-500/10",
     Icon: SprayCan,
+  },
+  {
+    name: "Akeed Friseur",
+    branche: "Friseursalon",
+    status: "Noch frei",
+    url: "https://akeed-friseur.vercel.app/",
+    accent: "from-amber-500/30 via-orange-500/20 to-rose-500/10",
+    Icon: Scissors,
+  },
+  {
+    name: "Emika Hundesalon",
+    branche: "Hundesalon",
+    status: "Noch frei",
+    url: "https://emika-hundesalon.vercel.app/",
+    accent: "from-rose-500/30 via-pink-500/20 to-fuchsia-500/10",
+    Icon: Dog,
+  },
+  {
+    name: "Side Haarstudio Münster",
+    branche: "Haarstudio",
+    status: "Noch frei",
+    url: "https://side-haarstudio-m-nster.vercel.app/",
+    accent: "from-emerald-500/30 via-teal-500/20 to-cyan-500/10",
+    Icon: Sparkles,
+  },
+  {
+    name: "Mauro Ricardo",
+    branche: "Friseur",
+    status: "Noch frei",
+    url: "https://friseur-mauro-ricardo-2.vercel.app/",
+    accent: "from-violet-500/30 via-indigo-500/20 to-blue-500/10",
+    Icon: Scissors,
   },
 ];
 
@@ -64,10 +99,10 @@ export default function DemoProjects() {
             </h2>
             <p className="mt-3 max-w-xl text-sm text-[var(--color-ink-soft)] leading-relaxed">
               Diese Websites sind komplett entwickelt — modernes Design,
-              Animationen, mobil optimiert. Du wählst eine aus, ich tausche Logo,
-              Texte und Bilder gegen deine eigenen — und in wenigen Tagen ist
-              deine Seite live. Schneller und günstiger als ein Projekt von
-              Grund auf.
+              Animationen, mobil optimiert. Noch nicht reserviert — wer zuerst
+              zusagt, bekommt sie. Ich tausche Logo, Texte und Bilder gegen
+              deine eigenen, und in wenigen Tagen ist deine Seite live.
+              Schneller und günstiger als ein Projekt von Grund auf.
             </p>
           </div>
 
