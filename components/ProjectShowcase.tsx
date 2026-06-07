@@ -83,7 +83,7 @@ export default function ProjectShowcase() {
       </motion.div>
 
       {/* 4-up grid — equal spacing on every breakpoint */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5">
         {projects.map((p, i) => (
           <motion.div
             key={p.url}
