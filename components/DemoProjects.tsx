@@ -11,6 +11,7 @@ import {
   Scissors,
   Dog,
   Sparkles,
+  PenTool,
   Tag,
 } from "lucide-react";
 import LaptopMockup from "./LaptopMockup";
@@ -66,6 +67,14 @@ const demoProjects: DemoProject[] = [
     url: "https://friseur-mauro-ricardo-2.vercel.app/",
     accent: "from-violet-500/30 via-indigo-500/20 to-blue-500/10",
     Icon: Scissors,
+  },
+  {
+    name: "5050 Ink",
+    branche: "Tattoo-Studio",
+    status: "Noch frei",
+    url: "https://5050ink-web.vercel.app/",
+    accent: "from-zinc-500/30 via-slate-500/20 to-neutral-500/10",
+    Icon: PenTool,
   },
 ];
 
