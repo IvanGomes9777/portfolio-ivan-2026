@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Monitor,
@@ -82,6 +82,17 @@ type View = "laptop" | "phone";
 
 export default function DemoProjects() {
   const [view, setView] = useState<View>("laptop");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  const effectiveView: View = isMobile ? "laptop" : view;
 
   return (
     <>
@@ -115,13 +126,13 @@ export default function DemoProjects() {
             </p>
           </div>
 
-          <ViewToggle view={view} onChange={setView} />
+          {!isMobile && <ViewToggle view={view} onChange={setView} />}
         </motion.div>
 
         {/* grid */}
         <div
           className={`grid ${
-            view === "phone"
+            effectiveView === "phone"
               ? "grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
               : "grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
           } gap-2 sm:gap-4 md:gap-5`}
@@ -140,7 +151,7 @@ export default function DemoProjects() {
               className="group relative flex flex-col"
             >
               <div className="relative">
-                {view === "laptop" ? (
+                {effectiveView === "laptop" ? (
                   <LaptopMockup>
                     <ProjectFrame project={p} view="laptop" />
                   </LaptopMockup>
@@ -182,7 +193,7 @@ export default function DemoProjects() {
 
 function ProjectFrame({ project, view }: { project: DemoProject; view: View }) {
   const { Icon } = project;
-  const isPhone = view === "phone";
+  const isPhone = effectiveView === "phone";
 
   return (
     <a
@@ -262,7 +273,7 @@ function ViewToggle({
         <Monitor className="relative size-3.5" />
         <span className="relative">Laptop</span>
       </ToggleBtn>
-      <ToggleBtn active={view === "phone"} onClick={() => onChange("phone")}>
+      <ToggleBtn active={effectiveView === "phone"} onClick={() => onChange("phone")}>
         <Smartphone className="relative size-3.5" />
         <span className="relative">Mobil</span>
       </ToggleBtn>
