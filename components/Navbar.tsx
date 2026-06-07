@@ -31,11 +31,18 @@ export default function Navbar() {
     }
   }, [open]);
 
+  // Close menu helper that also unlocks body immediately (so a follow-up
+  // scrollIntoView from the global hash handler isn't blocked by overflow:hidden).
+  const closeMenu = () => {
+    document.body.style.overflow = "";
+    setOpen(false);
+  };
+
   // Close on Escape
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") closeMenu();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -94,7 +101,10 @@ export default function Navbar() {
             type="button"
             aria-label={open ? "Menü schließen" : "Menü öffnen"}
             aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => {
+              if (open) closeMenu();
+              else setOpen(true);
+            }}
             className="md:hidden ml-auto inline-flex items-center justify-center size-9 rounded-full hover:bg-white/5 active:bg-white/10 transition-colors text-[var(--color-ink)] relative z-[60]"
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
@@ -116,7 +126,7 @@ export default function Navbar() {
             <button
               type="button"
               aria-label="Menü schließen"
-              onClick={() => setOpen(false)}
+              onClick={closeMenu}
               className="absolute inset-0 bg-black/70 backdrop-blur-xl"
             />
 
@@ -142,7 +152,7 @@ export default function Navbar() {
                   >
                     <a
                       href={l.href}
-                      onClick={() => setOpen(false)}
+                      onClick={closeMenu}
                       className="group flex items-center justify-between py-4 border-b border-[var(--color-line)] text-2xl font-display tracking-tight text-[var(--color-ink)]"
                     >
                       <span className="inline-flex items-center gap-3">
@@ -159,7 +169,7 @@ export default function Navbar() {
 
               <motion.a
                 href="#kontakt"
-                onClick={() => setOpen(false)}
+                onClick={closeMenu}
                 initial={{ y: 16, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{
