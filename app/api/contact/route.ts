@@ -29,6 +29,7 @@ export async function POST(req: Request) {
   let body: {
     name?: string;
     email?: string;
+    phone?: string;
     msg?: string;
     wunsch?: string;
     // Honeypot: bots happily fill any visible-looking field; humans never touch it.
@@ -51,6 +52,7 @@ export async function POST(req: Request) {
 
   const name = (body.name ?? "").trim();
   const email = (body.email ?? "").trim();
+  const phone = (body.phone ?? "").trim();
   const msg = (body.msg ?? "").trim();
   const wunsch = (body.wunsch ?? "").trim();
 
@@ -99,6 +101,14 @@ export async function POST(req: Request) {
             <td style="padding: 8px 0; color: #6b6b6b; vertical-align: top;">E-Mail</td>
             <td style="padding: 8px 0;"><a href="mailto:${escapeHtml(email)}" style="color: #8b5cf6; text-decoration: none;">${escapeHtml(email)}</a></td>
           </tr>
+          ${
+            phone
+              ? `<tr>
+            <td style="padding: 8px 0; color: #6b6b6b; vertical-align: top;">Telefon</td>
+            <td style="padding: 8px 0;"><a href="tel:${escapeHtml(phone)}" style="color: #8b5cf6; text-decoration: none; font-weight: 500;">${escapeHtml(phone)}</a> <span style="color:#6b6b6b; font-size:12px;">· möchte angerufen werden</span></td>
+          </tr>`
+              : ""
+          }
           <tr>
             <td style="padding: 8px 0; color: #6b6b6b; vertical-align: top;">Projekttyp</td>
             <td style="padding: 8px 0; color: #111;">${escapeHtml(projekttyp)}</td>
@@ -117,7 +127,7 @@ export async function POST(req: Request) {
     </div>
   `;
 
-  const text = `Neue Anfrage über das Portfolio\n\nName: ${name}\nE-Mail: ${email}\nProjekttyp: ${projekttyp}\n\n---\n\n${msg}\n`;
+  const text = `Neue Anfrage über das Portfolio\n\nName: ${name}\nE-Mail: ${email}${phone ? `\nTelefon: ${phone} (möchte angerufen werden)` : ""}\nProjekttyp: ${projekttyp}\n\n---\n\n${msg}\n`;
 
   try {
     const resend = new Resend(apiKey);
@@ -125,7 +135,7 @@ export async function POST(req: Request) {
       from: fromAddress,
       to: [RECIPIENT],
       replyTo: email,
-      subject: `Anfrage: Kostenloses Erstgespräch${tag}`,
+      subject: `Anfrage: Kostenloses Erstgespräch${tag}${phone ? " · Rückruf" : ""}`,
       html,
       text,
     });

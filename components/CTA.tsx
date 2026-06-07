@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Mail, Send, Check, AlertCircle } from "lucide-react";
+import { Mail, Send, Check, AlertCircle, Phone, Plus } from "lucide-react";
 import MagneticButton from "./MagneticButton";
 import Aurora from "./backgrounds/Aurora";
 
@@ -12,12 +12,20 @@ type Wunsch = "" | "neu" | "relaunch";
 type Status = "idle" | "sending" | "success" | "error";
 
 export default function CTA() {
-  const [form, setForm] = useState<{ name: string; email: string; msg: string; wunsch: Wunsch }>({
+  const [form, setForm] = useState<{
+    name: string;
+    email: string;
+    phone: string;
+    msg: string;
+    wunsch: Wunsch;
+  }>({
     name: "",
     email: "",
+    phone: "",
     msg: "",
     wunsch: "",
   });
+  const [phoneOpen, setPhoneOpen] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -38,6 +46,7 @@ export default function CTA() {
         body: JSON.stringify({
           name: form.name,
           email: form.email,
+          phone: phoneOpen ? form.phone : "",
           msg: form.msg,
           wunsch: form.wunsch,
         }),
@@ -46,7 +55,8 @@ export default function CTA() {
 
       if (res.ok && data.success) {
         setStatus("success");
-        setForm({ name: "", email: "", msg: "", wunsch: "" });
+        setForm({ name: "", email: "", phone: "", msg: "", wunsch: "" });
+        setPhoneOpen(false);
       } else {
         setStatus("error");
         setErrorMsg(data.message || "Anfrage konnte nicht gesendet werden.");
@@ -154,6 +164,63 @@ export default function CTA() {
                           disabled={status === "sending"}
                         />
                       </div>
+
+                      <AnimatePresence initial={false} mode="wait">
+                        {phoneOpen ? (
+                          <motion.div
+                            key="phone-open"
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                            className="overflow-hidden"
+                          >
+                            <div className="relative">
+                              <Field
+                                label="Telefon"
+                                type="tel"
+                                value={form.phone}
+                                onChange={(v) => setForm({ ...form, phone: v })}
+                                placeholder="+49 …"
+                                required
+                                disabled={status === "sending"}
+                              />
+                              <button
+                                type="button"
+                                data-cursor-hover
+                                onClick={() => {
+                                  setPhoneOpen(false);
+                                  setForm({ ...form, phone: "" });
+                                }}
+                                className="absolute right-0 top-0 text-[11px] text-[var(--color-ink-dim)] hover:text-[var(--color-ink-soft)] transition-colors uppercase tracking-[0.18em]"
+                              >
+                                Entfernen
+                              </button>
+                              <p className="mt-2 text-[11px] text-[var(--color-ink-dim)] inline-flex items-center gap-1.5">
+                                <Phone className="size-3" />
+                                Ich rufe dich innerhalb von 24 Stunden zurück.
+                              </p>
+                            </div>
+                          </motion.div>
+                        ) : (
+                          <motion.button
+                            key="phone-toggle"
+                            type="button"
+                            data-cursor-hover
+                            onClick={() => setPhoneOpen(true)}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                            className="group w-full text-left inline-flex items-center gap-2 px-4 py-3 rounded-2xl border border-dashed border-[var(--color-line)] hover:border-[var(--color-accent)]/40 bg-transparent hover:bg-[var(--color-surface)]/40 text-xs text-[var(--color-ink-soft)] hover:text-[var(--color-ink)] transition-all"
+                          >
+                            <span className="inline-flex items-center justify-center size-6 rounded-full border border-[var(--color-line)] group-hover:border-[var(--color-accent)]/50 transition-colors">
+                              <Plus className="size-3.5" />
+                            </span>
+                            <span>Lieber angerufen werden? Telefonnummer hinzufügen</span>
+                          </motion.button>
+                        )}
+                      </AnimatePresence>
 
                       <WunschSelect
                         value={form.wunsch}
