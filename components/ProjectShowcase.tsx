@@ -230,7 +230,7 @@ function ViewToggle({
         <Monitor className="relative size-3.5" />
         <span className="relative">Laptop</span>
       </ToggleBtn>
-      <ToggleBtn active={effectiveView === "phone"} onClick={() => onChange("phone")}>
+      <ToggleBtn active={view === "phone"} onClick={() => onChange("phone")}>
         <Smartphone className="relative size-3.5" />
         <span className="relative">Mobil</span>
       </ToggleBtn>
