@@ -180,8 +180,9 @@ export default function DemoProjects() {
   );
 }
 
-function ProjectFrame({ project }: { project: DemoProject; view: View }) {
+function ProjectFrame({ project, view }: { project: DemoProject; view: View }) {
   const { Icon } = project;
+  const isPhone = view === "phone";
 
   return (
     <a
@@ -214,15 +215,27 @@ function ProjectFrame({ project }: { project: DemoProject; view: View }) {
       />
 
       {/* Demo badge top-left */}
-      <div className="absolute top-1.5 left-1.5 z-10 px-1.5 py-0.5 rounded-full bg-amber-400/90 backdrop-blur-md text-[8px] font-semibold text-zinc-950 tracking-wide uppercase border border-amber-300/50">
+      <div className={`absolute z-10 rounded-full bg-amber-400/90 backdrop-blur-md font-semibold text-zinc-950 tracking-wide uppercase border border-amber-300/50 ${
+        isPhone
+          ? "top-1 left-1 px-1 py-[1px] text-[7px] sm:text-[8px]"
+          : "top-1.5 left-1.5 px-1.5 py-0.5 text-[8px]"
+      }`}>
         Demo
       </div>
 
-      <div className="relative h-full w-full flex flex-col items-center justify-center px-3 text-center gap-2.5">
-        <div className="size-9 sm:size-10 rounded-xl border border-white/15 bg-white/[0.06] backdrop-blur-md flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
-          <Icon className="size-4 text-white/90" />
+      <div className={`relative h-full w-full flex flex-col items-center justify-center text-center ${isPhone ? "px-1.5 gap-1.5 sm:gap-2 md:gap-2.5" : "px-3 gap-2.5"}`}>
+        <div
+          className={`rounded-lg sm:rounded-xl border border-white/15 bg-white/[0.06] backdrop-blur-md flex items-center justify-center transition-transform duration-500 group-hover:scale-110 ${
+            isPhone ? "size-6 sm:size-8 md:size-10" : "size-9 sm:size-10"
+          }`}
+        >
+          <Icon className={isPhone ? "size-2.5 sm:size-3.5 md:size-4 text-white/90" : "size-4 text-white/90"} />
         </div>
-        <div className="font-display text-[11px] sm:text-xs leading-tight text-white/85 tracking-wide truncate max-w-[88%]">
+        <div
+          className={`font-display leading-tight text-white/85 tracking-wide truncate max-w-[92%] ${
+            isPhone ? "text-[8px] sm:text-[10px] md:text-xs" : "text-[11px] sm:text-xs"
+          }`}
+        >
           {project.name}
         </div>
       </div>
