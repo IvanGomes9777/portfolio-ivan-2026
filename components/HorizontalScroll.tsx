@@ -118,11 +118,23 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
       if (!hash) return;
       const idx = panels.findIndex((p) => p.id === hash);
       if (idx < 0 || !outerRef.current) return;
+
+      // Mobile: horizontal scroll container is display:none — fall back to
+      // native anchor navigation against the per-panel <section id> in the
+      // vertical fallback layout.
+      const outerH = outerRef.current.offsetHeight;
+      if (outerH === 0) {
+        e.preventDefault();
+        const el = document.getElementById(hash);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+
       e.preventDefault();
 
       const rect = outerRef.current.getBoundingClientRect();
       const docTop = window.scrollY + rect.top;
-      const totalDistance = outerRef.current.offsetHeight - window.innerHeight;
+      const totalDistance = outerH - window.innerHeight;
       const segment = n > 1 ? totalDistance / (n - 1) : 0;
       const targetY = docTop + idx * segment;
 

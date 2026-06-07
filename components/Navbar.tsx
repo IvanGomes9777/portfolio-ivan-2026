@@ -95,33 +95,9 @@ export default function Navbar() {
             aria-label={open ? "Menü schließen" : "Menü öffnen"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="md:hidden ml-auto inline-flex items-center justify-center size-8 rounded-full hover:bg-white/5 transition-colors text-[var(--color-ink)]"
+            className="md:hidden ml-auto inline-flex items-center justify-center size-9 rounded-full hover:bg-white/5 active:bg-white/10 transition-colors text-[var(--color-ink)] relative z-[60]"
           >
-            <AnimatePresence mode="wait" initial={false}>
-              {open ? (
-                <motion.span
-                  key="x"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="inline-flex"
-                >
-                  <X className="size-5" />
-                </motion.span>
-              ) : (
-                <motion.span
-                  key="menu"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="inline-flex"
-                >
-                  <Menu className="size-5" />
-                </motion.span>
-              )}
-            </AnimatePresence>
+            {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
         </nav>
       </motion.header>
@@ -144,15 +120,15 @@ export default function Navbar() {
               className="absolute inset-0 bg-black/70 backdrop-blur-xl"
             />
 
-            {/* panel */}
+            {/* panel — wrapper does not capture clicks so backdrop stays tappable */}
             <motion.div
               initial={{ y: -16, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -16, opacity: 0 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="relative h-full w-full flex flex-col items-stretch justify-center px-6 pt-24 pb-10"
+              className="relative h-full w-full flex flex-col items-stretch justify-center px-6 pt-24 pb-10 pointer-events-none"
             >
-              <ul className="flex flex-col gap-1">
+              <ul className="flex flex-col gap-1 pointer-events-auto">
                 {links.map((l, i) => (
                   <motion.li
                     key={l.href}
@@ -191,7 +167,7 @@ export default function Navbar() {
                   delay: 0.08 + links.length * 0.05,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="mt-8 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-[var(--color-accent-strong)] text-white text-base font-medium"
+                className="mt-8 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-[var(--color-accent-strong)] text-white text-base font-medium pointer-events-auto"
               >
                 <span>Kostenloses Erstgespräch</span>
                 <ArrowRight className="size-4" />
