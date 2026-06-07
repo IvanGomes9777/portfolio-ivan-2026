@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Promise from "@/components/Promise";
 import Process from "@/components/Process";
 import ProjectShowcase from "@/components/ProjectShowcase";
+import DemoProjects from "@/components/DemoProjects";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import HorizontalScroll from "@/components/HorizontalScroll";
@@ -19,6 +20,7 @@ export default function Page() {
             { id: "versprechen", label: "Versprechen", content: <Promise /> },
             { id: "prozess",     label: "Prozess",     content: <Process /> },
             { id: "projekte",    label: "Projekte",    content: <ProjectShowcase /> },
+            { id: "demos",       label: "Demos",       content: <DemoProjects /> },
             { id: "kontakt",     label: "Kontakt",     content: <CTA /> },
           ]}
         />
