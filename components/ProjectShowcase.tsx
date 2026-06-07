@@ -8,6 +8,8 @@ import {
   ArrowUpRight,
   ExternalLink,
   Users,
+  Gamepad2,
+  Search,
 } from "lucide-react";
 import LaptopMockup from "./LaptopMockup";
 import PhoneMockup from "./PhoneMockup";
@@ -30,6 +32,22 @@ const projects: Project[] = [
     url: "https://ivan-gomes.developerakademie.net/join%20crm/",
     accent: "from-sky-500/30 via-cyan-500/20 to-blue-500/10",
     Icon: Users,
+  },
+  {
+    name: "El Pollo Loco",
+    branche: "Browser-Spiel",
+    year: "2025",
+    url: "https://ivan-gomes.developerakademie.net/el-pollo-loco-PEPE.spiel/",
+    accent: "from-yellow-500/30 via-amber-500/20 to-orange-500/10",
+    Icon: Gamepad2,
+  },
+  {
+    name: "Pokédex",
+    branche: "Web-App",
+    year: "2025",
+    url: "https://ivan-gomes.developerakademie.net/pokedex-richtig/",
+    accent: "from-red-500/30 via-rose-500/20 to-pink-500/10",
+    Icon: Search,
   },
 ];
 

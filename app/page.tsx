@@ -19,8 +19,8 @@ export default function Page() {
             { id: "top",         label: "Intro",       content: <Hero /> },
             { id: "versprechen", label: "Versprechen", content: <Promise /> },
             { id: "prozess",     label: "Prozess",     content: <Process /> },
-            { id: "projekte",    label: "Projekte",    content: <ProjectShowcase /> },
             { id: "demos",       label: "Demos",       content: <DemoProjects /> },
+            { id: "projekte",    label: "Projekte",    content: <ProjectShowcase /> },
             { id: "kontakt",     label: "Kontakt",     content: <CTA /> },
           ]}
         />
