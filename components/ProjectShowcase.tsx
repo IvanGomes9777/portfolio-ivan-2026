@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Monitor,
@@ -55,6 +55,17 @@ type View = "laptop" | "phone";
 
 export default function ProjectShowcase() {
   const [view, setView] = useState<View>("laptop");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  const effectiveView: View = isMobile ? "laptop" : view;
 
   return (
     <>
@@ -79,13 +90,13 @@ export default function ProjectShowcase() {
           </h2>
         </div>
 
-        <ViewToggle view={view} onChange={setView} />
+        {!isMobile && <ViewToggle view={view} onChange={setView} />}
       </motion.div>
 
       {/* 4-up grid — equal spacing on every breakpoint */}
       <div
         className={`grid ${
-          view === "phone"
+          effectiveView === "phone"
             ? "grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
             : "grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
         } gap-2 sm:gap-4 md:gap-5`}
@@ -100,7 +111,7 @@ export default function ProjectShowcase() {
             className="group relative flex flex-col"
           >
             <div className="relative">
-              {view === "laptop" ? (
+              {effectiveView === "laptop" ? (
                 <LaptopMockup>
                   <ProjectFrame project={p} view="laptop" />
                 </LaptopMockup>
