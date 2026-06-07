@@ -154,7 +154,7 @@ export default function ProjectShowcase() {
 
 function ProjectFrame({ project, view }: { project: Project; view: View }) {
   const { Icon } = project;
-  const isPhone = effectiveView === "phone";
+  const isPhone = view === "phone";
 
   return (
     <a

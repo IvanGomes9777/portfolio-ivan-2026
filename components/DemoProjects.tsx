@@ -193,7 +193,7 @@ export default function DemoProjects() {
 
 function ProjectFrame({ project, view }: { project: DemoProject; view: View }) {
   const { Icon } = project;
-  const isPhone = effectiveView === "phone";
+  const isPhone = view === "phone";
 
   return (
     <a
