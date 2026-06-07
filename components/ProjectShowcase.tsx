@@ -7,10 +7,9 @@ import {
   Smartphone,
   ArrowUpRight,
   ExternalLink,
-  Scissors,
-  Dog,
-  Sparkles,
   Users,
+  Gamepad2,
+  Search,
 } from "lucide-react";
 import LaptopMockup from "./LaptopMockup";
 import PhoneMockup from "./PhoneMockup";
@@ -27,44 +26,28 @@ type Project = {
 
 const projects: Project[] = [
   {
-    name: "Akeed Friseur",
-    branche: "Friseursalon",
-    year: "2026",
-    url: "https://akeed-friseur.vercel.app/",
-    accent: "from-amber-500/30 via-orange-500/20 to-rose-500/10",
-    Icon: Scissors,
-  },
-  {
-    name: "Emika Hundesalon",
-    branche: "Hundesalon",
-    year: "2025",
-    url: "https://emika-hundesalon.vercel.app/",
-    accent: "from-rose-500/30 via-pink-500/20 to-fuchsia-500/10",
-    Icon: Dog,
-  },
-  {
-    name: "Side Haarstudio Münster",
-    branche: "Haarstudio",
-    year: "2025",
-    url: "https://side-haarstudio-m-nster.vercel.app/",
-    accent: "from-emerald-500/30 via-teal-500/20 to-cyan-500/10",
-    Icon: Sparkles,
-  },
-  {
-    name: "Mauro Ricardo",
-    branche: "Friseur",
-    year: "2026",
-    url: "https://friseur-mauro-ricardo-2.vercel.app/",
-    accent: "from-violet-500/30 via-indigo-500/20 to-blue-500/10",
-    Icon: Scissors,
-  },
-  {
     name: "Join CRM",
     branche: "Web-Anwendung",
     year: "2026",
     url: "https://ivan-gomes.developerakademie.net/join%20crm/",
     accent: "from-sky-500/30 via-cyan-500/20 to-blue-500/10",
     Icon: Users,
+  },
+  {
+    name: "El Pollo Loco",
+    branche: "Browser-Spiel",
+    year: "2025",
+    url: "https://ivan-gomes.developerakademie.net/el-pollo-loco-PEPE.spiel/",
+    accent: "from-yellow-500/30 via-amber-500/20 to-orange-500/10",
+    Icon: Gamepad2,
+  },
+  {
+    name: "Pokédex",
+    branche: "Web-App",
+    year: "2025",
+    url: "https://ivan-gomes.developerakademie.net/pokedex-richtig/",
+    accent: "from-red-500/30 via-rose-500/20 to-pink-500/10",
+    Icon: Search,
   },
 ];
 
