@@ -119,7 +119,13 @@ export default function DemoProjects() {
         </motion.div>
 
         {/* grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5">
+        <div
+          className={`grid ${
+            view === "phone"
+              ? "grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+              : "grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+          } gap-2 sm:gap-4 md:gap-5`}
+        >
           {demoProjects.map((p, i) => (
             <motion.div
               key={p.url}
