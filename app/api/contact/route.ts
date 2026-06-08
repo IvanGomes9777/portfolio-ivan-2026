@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { rateLimit, getClientIp } from "@/lib/rate-limit";
+import { isSameOrigin } from "@/lib/csrf";
+import { validateContact } from "@/lib/validation";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -25,60 +28,55 @@ function escapeHtml(s: string) {
     .replace(/'/g, "&#39;");
 }
 
-export async function POST(req: Request) {
-  let body: {
-    name?: string;
-    email?: string;
-    phone?: string;
-    msg?: string;
-    wunsch?: string;
-    // Honeypot: bots happily fill any visible-looking field; humans never touch it.
-    company?: string;
-  };
+// Generic JSON error — never leaks internal details to the client.
+function fail(message: string, status: number) {
+  return NextResponse.json({ success: false, message }, { status });
+}
 
-  try {
-    body = await req.json();
-  } catch {
+export async function POST(req: Request) {
+  // 1. CSRF: only accept submissions that originate from our own site.
+  if (!isSameOrigin(req)) {
+    return fail("Anfrage abgelehnt.", 403);
+  }
+
+  // 2. Rate limit: max 5 requests per IP per minute.
+  const ip = getClientIp(req);
+  const limit = rateLimit(`contact:${ip}`, 5, 60_000);
+  if (!limit.success) {
+    const retryAfter = Math.max(1, Math.ceil((limit.reset - Date.now()) / 1000));
     return NextResponse.json(
-      { success: false, message: "Ungültige Anfrage." },
-      { status: 400 },
+      { success: false, message: "Zu viele Anfragen. Bitte versuche es gleich erneut." },
+      { status: 429, headers: { "Retry-After": String(retryAfter) } },
     );
   }
 
-  // Honeypot
-  if (body.company && body.company.length > 0) {
+  // 3. Parse body.
+  let raw: unknown;
+  try {
+    raw = await req.json();
+  } catch {
+    return fail("Ungültige Anfrage.", 400);
+  }
+  const body = (raw ?? {}) as Record<string, unknown>;
+
+  // 4. Honeypot: hidden field no human fills — silently accept (don't tip off bots).
+  if (typeof body.company === "string" && body.company.trim().length > 0) {
     return NextResponse.json({ success: true });
   }
 
-  const name = (body.name ?? "").trim();
-  const email = (body.email ?? "").trim();
-  const phone = (body.phone ?? "").trim();
-  const msg = (body.msg ?? "").trim();
-  const wunsch = (body.wunsch ?? "").trim();
-
-  if (!name || !email || !msg) {
-    return NextResponse.json(
-      { success: false, message: "Bitte fülle Name, E-Mail und Nachricht aus." },
-      { status: 400 },
-    );
+  // 5. Validate + sanitize.
+  const result = validateContact(body);
+  if (!result.ok) {
+    return fail(result.message, 400);
   }
-  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-    return NextResponse.json(
-      { success: false, message: "Bitte eine gültige E-Mail-Adresse angeben." },
-      { status: 400 },
-    );
-  }
+  const { name, email, phone, msg, wunsch } = result.data;
 
+  // 6. Secrets only from env — never hardcoded.
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
-    return NextResponse.json(
-      {
-        success: false,
-        message:
-          "E-Mail-Versand nicht konfiguriert (RESEND_API_KEY fehlt in .env.local).",
-      },
-      { status: 500 },
-    );
+    // Log the real cause server-side; return a generic message to the client.
+    console.error("[contact] RESEND_API_KEY is not configured");
+    return fail("E-Mail-Versand ist derzeit nicht möglich.", 503);
   }
 
   const fromAddress =
@@ -131,7 +129,7 @@ export async function POST(req: Request) {
 
   try {
     const resend = new Resend(apiKey);
-    const result = await resend.emails.send({
+    const sendResult = await resend.emails.send({
       from: fromAddress,
       to: [RECIPIENT],
       replyTo: email,
@@ -140,17 +138,14 @@ export async function POST(req: Request) {
       text,
     });
 
-    if (result.error) {
-      return NextResponse.json(
-        { success: false, message: result.error.message },
-        { status: 502 },
-      );
+    if (sendResult.error) {
+      // Provider error details stay on the server.
+      console.error("[contact] Resend error:", sendResult.error);
+      return fail("Anfrage konnte nicht gesendet werden. Bitte später erneut versuchen.", 502);
     }
     return NextResponse.json({ success: true });
   } catch (e) {
-    return NextResponse.json(
-      { success: false, message: e instanceof Error ? e.message : "Versand fehlgeschlagen." },
-      { status: 502 },
-    );
+    console.error("[contact] Unexpected send failure:", e);
+    return fail("Anfrage konnte nicht gesendet werden. Bitte später erneut versuchen.", 502);
   }
 }

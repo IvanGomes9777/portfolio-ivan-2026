@@ -18,12 +18,15 @@ export default function CTA() {
     phone: string;
     msg: string;
     wunsch: Wunsch;
+    // Honeypot — must stay empty for real users.
+    company: string;
   }>({
     name: "",
     email: "",
     phone: "",
     msg: "",
     wunsch: "",
+    company: "",
   });
   const [phoneOpen, setPhoneOpen] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
@@ -49,13 +52,14 @@ export default function CTA() {
           phone: phoneOpen ? form.phone : "",
           msg: form.msg,
           wunsch: form.wunsch,
+          company: form.company,
         }),
       });
       const data = (await res.json()) as { success: boolean; message?: string };
 
       if (res.ok && data.success) {
         setStatus("success");
-        setForm({ name: "", email: "", phone: "", msg: "", wunsch: "" });
+        setForm({ name: "", email: "", phone: "", msg: "", wunsch: "", company: "" });
         setPhoneOpen(false);
       } else {
         setStatus("error");
@@ -145,6 +149,21 @@ export default function CTA() {
                       transition={{ duration: 0.3 }}
                       className="space-y-4"
                     >
+                      {/* Honeypot: hidden from users (and screen readers), bots fill it. */}
+                      <div aria-hidden="true" className="absolute -left-[9999px] top-0 h-0 w-0 overflow-hidden" >
+                        <label>
+                          Firma (bitte leer lassen)
+                          <input
+                            type="text"
+                            name="company"
+                            tabIndex={-1}
+                            autoComplete="off"
+                            value={form.company}
+                            onChange={(e) => setForm({ ...form, company: e.target.value })}
+                          />
+                        </label>
+                      </div>
+
                       <div className="grid sm:grid-cols-2 gap-4">
                         <Field
                           label="Name"
@@ -152,6 +171,7 @@ export default function CTA() {
                           onChange={(v) => setForm({ ...form, name: v })}
                           placeholder="Dein Name"
                           required
+                          maxLength={80}
                           disabled={status === "sending"}
                         />
                         <Field
@@ -161,6 +181,7 @@ export default function CTA() {
                           onChange={(v) => setForm({ ...form, email: v })}
                           placeholder="du@unternehmen.de"
                           required
+                          maxLength={254}
                           disabled={status === "sending"}
                         />
                       </div>
@@ -183,6 +204,7 @@ export default function CTA() {
                                 onChange={(v) => setForm({ ...form, phone: v })}
                                 placeholder="+49 …"
                                 required
+                                maxLength={40}
                                 disabled={status === "sending"}
                               />
                               <button
@@ -234,6 +256,7 @@ export default function CTA() {
                         onChange={(v) => setForm({ ...form, msg: v })}
                         placeholder="Erzähl kurz, was du brauchst — Branche, Ziel, vielleicht ein Beispiel."
                         required
+                        maxLength={4000}
                         disabled={status === "sending"}
                       />
 
@@ -307,6 +330,7 @@ function Field({
   multiline = false,
   required = false,
   disabled = false,
+  maxLength,
 }: {
   label: string;
   value: string;
@@ -316,6 +340,7 @@ function Field({
   multiline?: boolean;
   required?: boolean;
   disabled?: boolean;
+  maxLength?: number;
 }) {
   const base =
     "w-full bg-[var(--color-surface)]/70 border border-[var(--color-line)] rounded-2xl px-4 py-3 text-sm text-[var(--color-ink)] placeholder:text-[var(--color-ink-dim)] focus:outline-none focus:border-[var(--color-accent)]/60 focus:bg-[var(--color-surface)] focus:shadow-[0_0_0_4px_rgba(139,92,246,0.1)] disabled:opacity-60 transition-all";
@@ -334,6 +359,7 @@ function Field({
           rows={4}
           required={required}
           disabled={disabled}
+          maxLength={maxLength}
           className={base + " resize-none"}
         />
       ) : (
@@ -344,6 +370,7 @@ function Field({
           placeholder={placeholder}
           required={required}
           disabled={disabled}
+          maxLength={maxLength}
           className={base}
         />
       )}
