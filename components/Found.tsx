@@ -24,7 +24,7 @@ export default function Found() {
               <span>Sichtbarkeit</span>
             </div>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl tracking-[-0.03em] font-medium leading-[1.05]">
-              3 Wege, wie deine Website{" "}
+              2 Wege, wie deine Website{" "}
               <span className="bg-gradient-to-r from-[var(--color-accent-soft)] via-[var(--color-accent)] to-[var(--color-accent-strong)] bg-clip-text text-transparent italic">
                 gefunden wird.
               </span>
