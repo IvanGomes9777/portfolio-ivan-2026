@@ -45,10 +45,10 @@ const demoProjects: DemoProject[] = [
     Icon: Scissors,
   },
   {
-    name: "Emika Hundesalon",
+    name: "Hundesalon Vorlage",
     branche: "Hundesalon",
     status: "Noch frei",
-    url: "https://emika-hundesalon.vercel.app/",
+    url: "https://hundesalon-vorlage.vercel.app/",
     accent: "from-rose-500/30 via-pink-500/20 to-fuchsia-500/10",
     Icon: Dog,
   },
