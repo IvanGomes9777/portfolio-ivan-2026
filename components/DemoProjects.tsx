@@ -23,6 +23,7 @@ type DemoProject = {
   branche: string;
   status: string;
   url: string;
+  price: string;
   accent: string;
   Icon: React.ComponentType<{ className?: string }>;
 };
@@ -33,6 +34,7 @@ const demoProjects: DemoProject[] = [
     branche: "Gebäudereinigung",
     status: "Verfügbar",
     url: "https://geb-udereinigung-beispiel.vercel.app/",
+    price: "€2.500",
     accent: "from-sky-500/30 via-blue-500/20 to-indigo-500/10",
     Icon: SprayCan,
   },
@@ -41,6 +43,7 @@ const demoProjects: DemoProject[] = [
     branche: "Friseursalon",
     status: "Noch frei",
     url: "https://friseur-beispiel-2r.vercel.app/",
+    price: "€2.500",
     accent: "from-amber-500/30 via-orange-500/20 to-rose-500/10",
     Icon: Scissors,
   },
@@ -49,6 +52,7 @@ const demoProjects: DemoProject[] = [
     branche: "Hundesalon",
     status: "Noch frei",
     url: "https://hundesalon-vorlage.vercel.app/",
+    price: "€2.000",
     accent: "from-rose-500/30 via-pink-500/20 to-fuchsia-500/10",
     Icon: Dog,
   },
@@ -57,6 +61,7 @@ const demoProjects: DemoProject[] = [
     branche: "Haarstudio",
     status: "Noch frei",
     url: "https://friseur-beispiel-3.vercel.app/",
+    price: "€2.500",
     accent: "from-emerald-500/30 via-teal-500/20 to-cyan-500/10",
     Icon: Sparkles,
   },
@@ -65,6 +70,7 @@ const demoProjects: DemoProject[] = [
     branche: "Friseur",
     status: "Noch frei",
     url: "https://friseur-beispiel-4.vercel.app/",
+    price: "€2.500",
     accent: "from-violet-500/30 via-indigo-500/20 to-blue-500/10",
     Icon: Scissors,
   },
@@ -73,6 +79,7 @@ const demoProjects: DemoProject[] = [
     branche: "Friseursalon",
     status: "Noch frei",
     url: "https://friseur-beispiel-1.vercel.app/",
+    price: "€1.500",
     accent: "from-fuchsia-500/30 via-purple-500/20 to-violet-500/10",
     Icon: Scissors,
   },
@@ -81,6 +88,7 @@ const demoProjects: DemoProject[] = [
     branche: "Tattoo-Studio",
     status: "Noch frei",
     url: "https://nadelwerk-web.vercel.app/",
+    price: "€2.500",
     accent: "from-zinc-500/30 via-slate-500/20 to-neutral-500/10",
     Icon: PenTool,
   },
@@ -184,7 +192,7 @@ export default function DemoProjects() {
                 <div className="text-[11px] leading-tight text-[var(--color-ink-soft)]">
                   ab{" "}
                   <span className="font-semibold text-[var(--color-accent)]">
-                    €2.000
+                    {p.price}
                   </span>
                 </div>
                 <a
