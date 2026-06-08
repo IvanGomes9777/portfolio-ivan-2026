@@ -77,7 +77,7 @@ export default function Hero() {
           className="mt-4 text-base font-medium text-[var(--color-ink-soft)]"
         >
           Ab{" "}
-          <span className="font-semibold text-[var(--color-accent)]">€3.000</span>{" "}
+          <span className="font-semibold text-[var(--color-accent)]">€2.000</span>{" "}
           für deine Website.
         </motion.p>
 
