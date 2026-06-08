@@ -69,8 +69,9 @@ export default function Fit() {
               <X className="size-3.5 text-[var(--color-ink-dim)]" />
             </span>
             <p className="text-sm md:text-[15px] text-[var(--color-ink-dim)] leading-relaxed">
-              Weniger passend, wenn du nur eine hübsche Online-Visitenkarte suchst oder
-              mit minimalem Budget schnell einen Baukasten zusammenklicken willst.
+              Weniger passend, wenn du mit minimalem Budget schnell eine
+              Baukasten-Lösung zusammenklicken möchtest — durchdachtes Design und
+              echte Wirkung brauchen den entsprechenden Rahmen.
             </p>
           </motion.div>
 
