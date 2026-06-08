@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, BadgePercent } from "lucide-react";
 import { fadeUp, stagger } from "@/lib/motion";
 import MagneticButton from "./MagneticButton";
 import SplitText from "./SplitText";
@@ -67,6 +67,24 @@ export default function Hero() {
           maßgeschneiderte, performante Websites digital sichtbar zu werden — und
           Kunden zu gewinnen.
         </motion.p>
+
+        {/* Launch offer — limited discount for the first customers */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.98, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-7 flex justify-center"
+        >
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-[var(--color-accent)]/40 bg-[var(--color-accent)]/10 backdrop-blur-md text-sm text-[var(--color-ink)] shadow-[0_0_30px_rgba(139,92,246,0.25)]">
+            <BadgePercent className="size-4 shrink-0 text-[var(--color-accent)]" />
+            <span className="leading-snug">
+              <span className="font-medium text-[var(--color-accent-soft)]">
+                Eröffnungsaktion:
+              </span>{" "}
+              Die ersten 10 Kunden sichern sich einen exklusiven Rabatt.
+            </span>
+          </div>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
