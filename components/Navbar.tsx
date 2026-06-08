@@ -8,6 +8,7 @@ const links = [
   { href: "#prozess", label: "Prozess" },
   { href: "#demos", label: "Demos", dot: "bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.7)]" },
   { href: "#projekte", label: "Projekte" },
+  { href: "#preise", label: "Preise" },
   { href: "#kontakt", label: "Kontakt" },
 ];
 
