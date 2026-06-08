@@ -66,7 +66,7 @@ const tiers: Tier[] = [
 
 export default function Pricing() {
   return (
-    <section className="px-4 py-10 md:py-8 max-w-6xl w-full mx-auto">
+    <section className="relative overflow-x-clip px-4 py-10 md:py-8 max-w-6xl w-full mx-auto">
       {/* ambient glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 size-[600px] rounded-full bg-[radial-gradient(circle,var(--color-accent-glow),transparent_60%)] opacity-30 pointer-events-none" />
 
