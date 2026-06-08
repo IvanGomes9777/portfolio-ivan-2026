@@ -53,10 +53,10 @@ const demoProjects: DemoProject[] = [
     Icon: Dog,
   },
   {
-    name: "Side Haarstudio Münster",
+    name: "Friseur Vorlage",
     branche: "Haarstudio",
     status: "Noch frei",
-    url: "https://side-haarstudio-m-nster.vercel.app/",
+    url: "https://friseur-beispiel-3.vercel.app/",
     accent: "from-emerald-500/30 via-teal-500/20 to-cyan-500/10",
     Icon: Sparkles,
   },

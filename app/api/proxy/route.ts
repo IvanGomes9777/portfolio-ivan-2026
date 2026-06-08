@@ -4,7 +4,7 @@ import { rateLimit, getClientIp } from "@/lib/rate-limit";
 const ALLOWED_HOSTS = new Set([
   "friseur-beispiel-2r.vercel.app",
   "friseur-mauro-ricardo-2.vercel.app",
-  "side-haarstudio-m-nster.vercel.app",
+  "friseur-beispiel-3.vercel.app",
   "hundesalon-vorlage.vercel.app",
   "friseur-beispiel-1.vercel.app",
 ]);
