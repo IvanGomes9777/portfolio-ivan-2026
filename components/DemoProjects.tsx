@@ -80,7 +80,7 @@ const demoProjects: DemoProject[] = [
     name: "nadelwerk",
     branche: "Tattoo-Studio",
     status: "Noch frei",
-    url: "https://5050ink-web.vercel.app/",
+    url: "https://nadelwerk-web.vercel.app/",
     accent: "from-zinc-500/30 via-slate-500/20 to-neutral-500/10",
     Icon: PenTool,
   },
