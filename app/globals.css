@@ -42,6 +42,14 @@ html, body {
   font-family: var(--font-body);
 }
 
+/* Safety net against stray horizontal overflow (e.g. oversized ambient
+   glows positioned against the viewport). `clip` does not create a scroll
+   container, so it leaves position: sticky — used by the horizontal-scroll
+   panels — intact, unlike overflow-x: hidden. */
+html {
+  overflow-x: clip;
+}
+
 /* Custom cursor: hide system cursor on fine-pointer devices */
 html.cursor-none-md, html.cursor-none-md body,
 html.cursor-none-md a, html.cursor-none-md button,

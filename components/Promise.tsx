@@ -2,7 +2,7 @@
 
 import { motion, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Clock, Zap, ShieldCheck, Lock } from "lucide-react";
+import { Clock, Zap, ShieldCheck, Lock, Search } from "lucide-react";
 import { fadeUp, stagger } from "@/lib/motion";
 import { usePanelProgress } from "./PanelProgress";
 import Orbs from "./backgrounds/Orbs";
@@ -112,6 +112,30 @@ export default function Promise() {
             </p>
           </motion.div>
         </div>
+
+        {/* SEO & GEO — inklusive bei jeder Website */}
+        <motion.div
+          variants={fadeUp}
+          className="md:col-span-12 relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-6 flex flex-col sm:flex-row sm:items-center gap-4 group hover:border-[var(--color-line-strong)] transition-colors"
+        >
+          <div className="absolute -top-16 -right-16 size-48 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.16),transparent_60%)] group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
+          <div className="relative inline-flex items-center gap-3 shrink-0">
+            <span className="inline-flex items-center justify-center size-11 rounded-2xl border border-[var(--color-line-strong)] bg-[var(--color-bg-soft)]">
+              <Search className="size-5 text-[var(--color-accent)]" />
+            </span>
+            <div>
+              <div className="font-display text-xl tracking-tight">SEO &amp; GEO inklusive</div>
+              <div className="text-xs uppercase tracking-[0.18em] text-[var(--color-ink-dim)]">
+                Gefunden werden
+              </div>
+            </div>
+          </div>
+          <p className="relative text-sm text-[var(--color-ink-soft)] leading-relaxed">
+            Jede Website wird für klassische Suchmaschinen (SEO) und KI-Antwortmaschinen
+            (GEO) optimiert — damit dich Kunden in Münster und ganz Deutschland finden:
+            heute bei Google, morgen in ChatGPT &amp; Co.
+          </p>
+        </motion.div>
       </motion.div>
       </section>
     </>

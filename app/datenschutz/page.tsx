@@ -2,9 +2,13 @@ import type { Metadata } from "next";
 import LegalLayout, { Section, Sub } from "@/components/LegalLayout";
 
 export const metadata: Metadata = {
-  title: "Datenschutzerklärung — Ivan · Webdesign & Entwicklung",
+  title: "Datenschutzerklärung",
   description:
-    "Informationen zur Verarbeitung personenbezogener Daten gemäß Art. 13 DSGVO.",
+    "Informationen zur Verarbeitung personenbezogener Daten gemäß Art. 13 DSGVO — DSGVO-konforme Datenschutzerklärung.",
+  alternates: {
+    canonical: "https://portfolio-ivan-2026.vercel.app/datenschutz",
+  },
+  robots: { index: true, follow: false },
 };
 
 export default function DatenschutzPage() {
