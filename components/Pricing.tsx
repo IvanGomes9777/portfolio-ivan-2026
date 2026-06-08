@@ -33,8 +33,8 @@ const tiers: Tier[] = [
   {
     name: "Standard",
     desc: "Premium Website – mehr Design & Features",
-    priceOld: "€2.900",
-    priceNew: "€2.300",
+    priceOld: "€3.100",
+    priceNew: "€2.500",
     features: [
       "Premium Design & Polishing",
       "Responsive Design",
