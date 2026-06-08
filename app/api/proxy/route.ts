@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { rateLimit, getClientIp } from "@/lib/rate-limit";
 
 const ALLOWED_HOSTS = new Set([
   "akeed-friseur.vercel.app",
@@ -134,6 +135,19 @@ function rewriteCssText(css: string, baseHref: string, allowedHost: string): str
 }
 
 export async function GET(req: NextRequest) {
+  // Rate limit: this endpoint fans out to many sub-resources per preview, so it
+  // uses a higher ceiling than the contact form (which is 5/min). This still
+  // caps abuse / bandwidth amplification per IP.
+  const ip = getClientIp(req);
+  const limit = rateLimit(`proxy:${ip}`, 120, 60_000);
+  if (!limit.success) {
+    const retryAfter = Math.max(1, Math.ceil((limit.reset - Date.now()) / 1000));
+    return new NextResponse("Too many requests", {
+      status: 429,
+      headers: { "Retry-After": String(retryAfter) },
+    });
+  }
+
   const urlParam = req.nextUrl.searchParams.get("url");
   if (!urlParam) return new NextResponse("Missing 'url' parameter", { status: 400 });
 
@@ -164,7 +178,9 @@ export async function GET(req: NextRequest) {
       cache: "no-store",
     });
   } catch (e) {
-    return new NextResponse(`Proxy fetch failed: ${String(e)}`, { status: 502 });
+    // Keep upstream/network error details on the server only.
+    console.error("[proxy] upstream fetch failed:", e);
+    return new NextResponse("Upstream request failed", { status: 502 });
   }
 
   const contentType = upstream.headers.get("content-type") ?? "";
