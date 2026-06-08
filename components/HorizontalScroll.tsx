@@ -1,7 +1,7 @@
 "use client";
 
-import { ReactNode, useEffect, useRef } from "react";
-import { MotionValue, useMotionValue } from "framer-motion";
+import { ReactNode, useEffect, useMemo, useRef } from "react";
+import { MotionValue, motionValue, useMotionValue } from "framer-motion";
 import { PanelProgressContext } from "./PanelProgress";
 import PanelIndicator from "./PanelIndicator";
 
@@ -11,8 +11,18 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
   const outerRef = useRef<HTMLElement>(null);
   const innerRefs = useRef<(HTMLDivElement | null)[]>([]);
   const globalProgress = useMotionValue(0);
-  const panelProgresses = useRef<MotionValue<number>[]>([]);
   const n = panels.length;
+  // Create panel MotionValues during HorizontalScroll's own render so they
+  // are available when PanelProgressContext.Provider's `value` is evaluated.
+  // The previous slot-component pattern populated a ref during the children's
+  // render, which is too late — provider values were captured as undefined
+  // and every panel fell back to useScroll, which in this sticky-horizontal
+  // layout reports a near-constant ~0.5 (target rect == viewport). Result:
+  // bars and step indicators never animated.
+  const panelProgresses = useMemo<MotionValue<number>[]>(
+    () => Array.from({ length: n }, (_, i) => motionValue(i === 0 ? 0.5 : 0)),
+    [n],
+  );
 
   useEffect(() => {
     let raf = 0;
@@ -44,7 +54,7 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
         const clamped = rawPanel < -1 ? -1 : rawPanel > 1 ? 1 : rawPanel;
         const panelP = (clamped + 1) / 2;
 
-        const mv = panelProgresses.current[i];
+        const mv = panelProgresses[i];
         if (mv) mv.set(panelP);
 
         const el = innerRefs.current[i];
@@ -141,7 +151,7 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
   }, [panels, n]);
 
   return (
-    <PanelMotionValuesProvider count={n} into={panelProgresses}>
+    <>
       <section
         ref={outerRef}
         style={{ height: `${n * 100}vh` }}
@@ -165,7 +175,7 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
                 transformOrigin: "50% 0%",
               }}
             >
-              <PanelProgressContext.Provider value={panelProgresses.current[i]!}>
+              <PanelProgressContext.Provider value={panelProgresses[i]!}>
                 <div className="relative w-full h-full flex items-center justify-center">
                   {p.content}
                 </div>
@@ -188,40 +198,6 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
           </section>
         ))}
       </div>
-    </PanelMotionValuesProvider>
-  );
-}
-
-function PanelMotionValuesProvider({
-  count,
-  into,
-  children,
-}: {
-  count: number;
-  into: React.MutableRefObject<MotionValue<number>[]>;
-  children: ReactNode;
-}) {
-  return (
-    <>
-      {Array.from({ length: count }, (_, i) => (
-        <PanelMotionValueSlot key={i} index={i} into={into} total={count} />
-      ))}
-      {children}
     </>
   );
-}
-
-function PanelMotionValueSlot({
-  index,
-  into,
-  total,
-}: {
-  index: number;
-  into: React.MutableRefObject<MotionValue<number>[]>;
-  total: number;
-}) {
-  const initial = index === 0 ? 0.5 : index === total - 1 ? 0 : 0;
-  const mv = useMotionValue(initial);
-  into.current[index] = mv;
-  return null;
 }
