@@ -4,6 +4,7 @@ import Promise from "@/components/Promise";
 import Process from "@/components/Process";
 import ProjectShowcase from "@/components/ProjectShowcase";
 import DemoProjects from "@/components/DemoProjects";
+import Found from "@/components/Found";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import HorizontalScroll from "@/components/HorizontalScroll";
@@ -21,6 +22,7 @@ export default function Page() {
             { id: "prozess",     label: "Prozess",     content: <Process /> },
             { id: "demos",       label: "Demos",       content: <DemoProjects /> },
             { id: "projekte",    label: "Projekte",    content: <ProjectShowcase /> },
+            { id: "gefunden",    label: "Gefunden",    content: <Found /> },
             { id: "kontakt",     label: "Kontakt",     content: <CTA /> },
           ]}
         />
