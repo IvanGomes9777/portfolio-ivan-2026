@@ -173,6 +173,12 @@ export default function DemoProjects() {
                   <span className="size-[3px] shrink-0 rounded-full bg-[var(--color-ink-dim)]" />
                   <span className="shrink-0 text-amber-300/90">{p.status}</span>
                 </div>
+                <div className="text-[11px] leading-tight text-[var(--color-ink-soft)]">
+                  ab{" "}
+                  <span className="font-semibold text-[var(--color-accent)]">
+                    €3.500
+                  </span>
+                </div>
                 <a
                   href={p.url}
                   target="_blank"

@@ -6,6 +6,7 @@ import ProjectShowcase from "@/components/ProjectShowcase";
 import DemoProjects from "@/components/DemoProjects";
 import Found from "@/components/Found";
 import Fit from "@/components/Fit";
+import Pricing from "@/components/Pricing";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import HorizontalScroll from "@/components/HorizontalScroll";
@@ -25,6 +26,7 @@ export default function Page() {
             { id: "projekte",    label: "Projekte",    content: <ProjectShowcase /> },
             { id: "gefunden",    label: "Gefunden",    content: <Found /> },
             { id: "passt",       label: "Passt es?",   content: <Fit /> },
+            { id: "preise",      label: "Preise",      content: <Pricing /> },
             { id: "kontakt",     label: "Kontakt",     content: <CTA /> },
           ]}
         />
