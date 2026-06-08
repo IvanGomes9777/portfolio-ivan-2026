@@ -69,7 +69,7 @@ const demoProjects: DemoProject[] = [
     Icon: Scissors,
   },
   {
-    name: "5050 Ink",
+    name: "nadelwerk",
     branche: "Tattoo-Studio",
     status: "Noch frei",
     url: "https://5050ink-web.vercel.app/",
