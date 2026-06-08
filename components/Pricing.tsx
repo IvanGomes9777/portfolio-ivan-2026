@@ -18,8 +18,8 @@ const tiers: Tier[] = [
   {
     name: "Starter",
     desc: "Simple Website – alle Infos auf einer Seite",
-    priceOld: "€3.500",
-    priceNew: "€2.800",
+    priceOld: "€3.000",
+    priceNew: "€2.400",
     features: [
       "Website auf einer Seite",
       "Responsive Design",
