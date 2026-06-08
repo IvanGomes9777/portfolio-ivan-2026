@@ -96,47 +96,39 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
       }
     };
 
-    // Coalesce scroll / Lenis events to at most one update per frame.
-    let scheduled = false;
-    const onScroll = () => {
-      if (scheduled) return;
-      scheduled = true;
-      requestAnimationFrame(() => {
-        scheduled = false;
-        update();
-      });
-    };
-
     const onResize = () => {
       measure();
       lastP = -1; // force the next update to recompute
-      update();
     };
 
-    window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
 
-    type LenisLike = { on: (e: "scroll", cb: () => void) => void; off: (e: "scroll", cb: () => void) => void };
-    const lenis = (window as unknown as { __lenis?: LenisLike }).__lenis;
-    if (lenis) lenis.on("scroll", onScroll);
-
     // Re-measure when the outer element's size changes (late-loading
-    // content, font swap, viewport changes). Without this, the cached
-    // distance/elTop can stay stale and panels stay invisible.
+    // content, font swap, the Pricing section coming in, etc.).
     const ro = new ResizeObserver(() => {
       measure();
       lastP = -1;
-      update();
     });
     if (outerRef.current) ro.observe(outerRef.current);
 
+    // rAF tick drives updates every frame. Required because Lenis (set up
+    // by the parent SmoothScroll's effect, which runs AFTER this one) hijacks
+    // native scroll events, so a scroll-listener-only approach silently misses
+    // every Lenis tick and panels stay frozen on their initial state. The
+    // per-frame work is cheap now that measure() is hoisted out.
+    let raf = 0;
+    const tick = () => {
+      update();
+      raf = requestAnimationFrame(tick);
+    };
+
     measure();
     update();
+    raf = requestAnimationFrame(tick);
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
       window.removeEventListener("resize", onResize);
-      if (lenis) lenis.off("scroll", onScroll);
       ro.disconnect();
     };
   }, [n, globalProgress]);
