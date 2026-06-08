@@ -2,7 +2,7 @@
 
 import { motion, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Clock, Zap, ShieldCheck } from "lucide-react";
+import { Clock, Zap, ShieldCheck, Lock } from "lucide-react";
 import { fadeUp, stagger } from "@/lib/motion";
 import { usePanelProgress } from "./PanelProgress";
 import Orbs from "./backgrounds/Orbs";
@@ -97,6 +97,18 @@ export default function Promise() {
             <div className="font-display text-xl md:text-2xl tracking-tight">Termintreu</div>
             <p className="mt-2 text-sm text-[var(--color-ink-soft)] leading-relaxed">
               Verbindliche Deadlines. Klare Kommunikation. Keine bösen Überraschungen.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            className="relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-6 group hover:border-[var(--color-line-strong)] transition-colors"
+          >
+            <Lock className="size-5 text-[var(--color-accent)] mb-3" />
+            <div className="font-display text-xl md:text-2xl tracking-tight">Sicher</div>
+            <p className="mt-2 text-sm text-[var(--color-ink-soft)] leading-relaxed">
+              Sauber und sicher entwickelt — geschützt vor Spam, Angriffen und
+              Datenlecks. Sicherheit ist von Anfang an mit dabei.
             </p>
           </motion.div>
         </div>
