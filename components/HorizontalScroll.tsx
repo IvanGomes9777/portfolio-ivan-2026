@@ -31,7 +31,13 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
     };
 
     const update = () => {
-      if (distance <= 0) return;
+      // If layout wasn't ready at mount (fonts/images/async content),
+      // distance can still be 0 here — re-measure lazily so we don't get
+      // stuck with stale metrics and invisible panels.
+      if (distance <= 0) {
+        measure();
+        if (distance <= 0) return;
+      }
 
       const raw = (window.scrollY - elTop) / distance;
       const p = raw < 0 ? 0 : raw > 1 ? 1 : raw;
@@ -114,6 +120,16 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
     const lenis = (window as unknown as { __lenis?: LenisLike }).__lenis;
     if (lenis) lenis.on("scroll", onScroll);
 
+    // Re-measure when the outer element's size changes (late-loading
+    // content, font swap, viewport changes). Without this, the cached
+    // distance/elTop can stay stale and panels stay invisible.
+    const ro = new ResizeObserver(() => {
+      measure();
+      lastP = -1;
+      update();
+    });
+    if (outerRef.current) ro.observe(outerRef.current);
+
     measure();
     update();
 
@@ -121,6 +137,7 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
       if (lenis) lenis.off("scroll", onScroll);
+      ro.disconnect();
     };
   }, [n, globalProgress]);
 
