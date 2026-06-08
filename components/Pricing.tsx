@@ -18,8 +18,8 @@ const tiers: Tier[] = [
   {
     name: "Starter",
     desc: "Simple Website – alle Infos auf einer Seite",
-    priceOld: "€3.000",
-    priceNew: "€2.400",
+    priceOld: "€1.900",
+    priceNew: "€1.500",
     features: [
       "Website auf einer Seite",
       "Responsive Design",
@@ -33,8 +33,8 @@ const tiers: Tier[] = [
   {
     name: "Standard",
     desc: "Premium Website – mehr Design & Features",
-    priceOld: "€4.500",
-    priceNew: "€3.600",
+    priceOld: "€2.900",
+    priceNew: "€2.300",
     features: [
       "Premium Design & Polishing",
       "Responsive Design",
@@ -49,8 +49,8 @@ const tiers: Tier[] = [
   {
     name: "Premium",
     desc: "Website + Booking System – komplettes Business-Tool",
-    priceOld: "€6.500",
-    priceNew: "€5.200",
+    priceOld: "€4.400",
+    priceNew: "€3.500",
     features: [
       "Premium Design & Polishing",
       "Booking System für Termine",
@@ -87,8 +87,9 @@ export default function Pricing() {
             Website-Preise
           </h2>
           <p className="mt-3 max-w-xl mx-auto text-sm text-[var(--color-ink-soft)] leading-relaxed">
-            Klare Pakete, fester Preis, keine Nachkalkulation. Such dir aus, was
-            zu deinem Business passt.
+            Klare Pakete als Richtwert. Such dir aus, was zu deinem Business
+            passt — der finale Preis kann je nach Aufwand, Umfang und
+            individuellen Wünschen variieren.
           </p>
         </motion.div>
 

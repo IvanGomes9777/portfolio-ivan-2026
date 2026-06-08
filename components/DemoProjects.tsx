@@ -184,7 +184,7 @@ export default function DemoProjects() {
                 <div className="text-[11px] leading-tight text-[var(--color-ink-soft)]">
                   ab{" "}
                   <span className="font-semibold text-[var(--color-accent)]">
-                    €3.000
+                    €2.000
                   </span>
                 </div>
                 <a
