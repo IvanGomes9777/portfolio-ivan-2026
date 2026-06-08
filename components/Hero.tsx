@@ -108,6 +108,8 @@ export default function Hero() {
           <span className="size-1 rounded-full bg-[var(--color-ink-dim)]" />
           <span>2 – 4 Wochen Lieferzeit</span>
           <span className="size-1 rounded-full bg-[var(--color-ink-dim)]" />
+          <span>Festpreis – keine Nachkalkulation</span>
+          <span className="size-1 rounded-full bg-[var(--color-ink-dim)]" />
           <span>Responsive</span>
         </motion.div>
       </motion.div>
