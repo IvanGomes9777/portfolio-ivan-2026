@@ -75,15 +75,53 @@ export default function Hero() {
           transition={{ delay: 0.98, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mt-7 flex justify-center"
         >
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-[var(--color-accent)]/40 bg-[var(--color-accent)]/10 backdrop-blur-md text-sm text-[var(--color-ink)] shadow-[0_0_30px_rgba(139,92,246,0.25)]">
-            <BadgePercent className="size-4 shrink-0 text-[var(--color-accent)]" />
-            <span className="leading-snug">
+          <motion.div
+            // Gentle "breathing" glow that pulses to draw the eye.
+            animate={{
+              boxShadow: [
+                "0 0 20px rgba(139,92,246,0.20)",
+                "0 0 38px rgba(139,92,246,0.50)",
+                "0 0 20px rgba(139,92,246,0.20)",
+              ],
+            }}
+            transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 1.6 }}
+            className="relative inline-flex items-center gap-2.5 overflow-hidden px-4 py-2 rounded-full border border-[var(--color-accent)]/40 bg-[var(--color-accent)]/10 backdrop-blur-md text-sm text-[var(--color-ink)]"
+          >
+            {/* Shine sweep that periodically races across the pill. */}
+            <motion.span
+              aria-hidden
+              initial={{ x: "-120%" }}
+              animate={{ x: "220%" }}
+              transition={{
+                duration: 1.1,
+                repeat: Infinity,
+                repeatDelay: 3.2,
+                ease: "easeInOut",
+                delay: 2,
+              }}
+              className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/30 to-transparent"
+            />
+            <motion.span
+              // Icon does a quick celebratory wiggle on every shine pass.
+              animate={{ rotate: [0, -12, 12, -8, 0], scale: [1, 1.15, 1] }}
+              transition={{
+                duration: 0.9,
+                repeat: Infinity,
+                repeatDelay: 3.4,
+                ease: "easeInOut",
+                delay: 2,
+              }}
+              className="shrink-0 text-[var(--color-accent)]"
+            >
+              <BadgePercent className="size-4" />
+            </motion.span>
+            <span className="relative leading-snug">
               <span className="font-medium text-[var(--color-accent-soft)]">
                 Eröffnungsaktion:
               </span>{" "}
               Die ersten 10 Kunden sichern sich einen exklusiven Rabatt.
             </span>
-          </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
