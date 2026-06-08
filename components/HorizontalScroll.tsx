@@ -15,16 +15,22 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
   const n = panels.length;
 
   useEffect(() => {
-    let raf = 0;
     let lastP = -1;
+    let elTop = 0;
+    let distance = 0;
 
-    const update = () => {
+    // Cache layout metrics; recompute only on resize. Reading
+    // getBoundingClientRect()/offsetHeight every frame forced a synchronous
+    // reflow on each scroll tick — the main source of jank against Lenis.
+    const measure = () => {
       const outer = outerRef.current;
       if (!outer) return;
-
       const rect = outer.getBoundingClientRect();
-      const elTop = window.scrollY + rect.top;
-      const distance = outer.offsetHeight - window.innerHeight;
+      elTop = window.scrollY + rect.top;
+      distance = outer.offsetHeight - window.innerHeight;
+    };
+
+    const update = () => {
       if (distance <= 0) return;
 
       const raw = (window.scrollY - elTop) / distance;
@@ -84,26 +90,37 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
       }
     };
 
-    const tick = () => {
-      update();
-      raf = requestAnimationFrame(tick);
+    // Coalesce scroll / Lenis events to at most one update per frame.
+    let scheduled = false;
+    const onScroll = () => {
+      if (scheduled) return;
+      scheduled = true;
+      requestAnimationFrame(() => {
+        scheduled = false;
+        update();
+      });
     };
-    raf = requestAnimationFrame(tick);
 
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
+    const onResize = () => {
+      measure();
+      lastP = -1; // force the next update to recompute
+      update();
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onResize);
 
     type LenisLike = { on: (e: "scroll", cb: () => void) => void; off: (e: "scroll", cb: () => void) => void };
     const lenis = (window as unknown as { __lenis?: LenisLike }).__lenis;
-    if (lenis) lenis.on("scroll", update);
+    if (lenis) lenis.on("scroll", onScroll);
 
+    measure();
     update();
 
     return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-      if (lenis) lenis.off("scroll", update);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
+      if (lenis) lenis.off("scroll", onScroll);
     };
   }, [n, globalProgress]);
 
