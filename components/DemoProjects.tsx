@@ -37,7 +37,7 @@ const demoProjects: DemoProject[] = [
     Icon: SprayCan,
   },
   {
-    name: "Akeed Friseur",
+    name: "Friseur Vorlage",
     branche: "Friseursalon",
     status: "Noch frei",
     url: "https://friseur-beispiel-2r.vercel.app/",
