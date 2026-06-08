@@ -6,6 +6,7 @@ const ALLOWED_HOSTS = new Set([
   "friseur-mauro-ricardo-2.vercel.app",
   "side-haarstudio-m-nster.vercel.app",
   "emika-hundesalon.vercel.app",
+  "friseur-beispiel-1.vercel.app",
 ]);
 
 export const runtime = "nodejs";

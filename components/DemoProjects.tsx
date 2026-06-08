@@ -69,6 +69,14 @@ const demoProjects: DemoProject[] = [
     Icon: Scissors,
   },
   {
+    name: "Friseur Vorlage",
+    branche: "Friseursalon",
+    status: "Noch frei",
+    url: "https://friseur-beispiel-1.vercel.app/",
+    accent: "from-fuchsia-500/30 via-purple-500/20 to-violet-500/10",
+    Icon: Scissors,
+  },
+  {
     name: "nadelwerk",
     branche: "Tattoo-Studio",
     status: "Noch frei",
