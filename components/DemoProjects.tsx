@@ -40,7 +40,7 @@ const demoProjects: DemoProject[] = [
     name: "Akeed Friseur",
     branche: "Friseursalon",
     status: "Noch frei",
-    url: "https://akeed-friseur.vercel.app/",
+    url: "https://friseur-beispiel-2r.vercel.app/",
     accent: "from-amber-500/30 via-orange-500/20 to-rose-500/10",
     Icon: Scissors,
   },
@@ -66,6 +66,14 @@ const demoProjects: DemoProject[] = [
     status: "Noch frei",
     url: "https://friseur-mauro-ricardo-2.vercel.app/",
     accent: "from-violet-500/30 via-indigo-500/20 to-blue-500/10",
+    Icon: Scissors,
+  },
+  {
+    name: "Friseur Vorlage",
+    branche: "Friseursalon",
+    status: "Noch frei",
+    url: "https://friseur-beispiel-1.vercel.app/",
+    accent: "from-fuchsia-500/30 via-purple-500/20 to-violet-500/10",
     Icon: Scissors,
   },
   {
