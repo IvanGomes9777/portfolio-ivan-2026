@@ -15,22 +15,16 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
   const n = panels.length;
 
   useEffect(() => {
+    let raf = 0;
     let lastP = -1;
-    let elTop = 0;
-    let distance = 0;
-
-    // Cache layout metrics; recompute only on resize. Reading
-    // getBoundingClientRect()/offsetHeight every frame forced a synchronous
-    // reflow on each scroll tick — the main source of jank against Lenis.
-    const measure = () => {
-      const outer = outerRef.current;
-      if (!outer) return;
-      const rect = outer.getBoundingClientRect();
-      elTop = window.scrollY + rect.top;
-      distance = outer.offsetHeight - window.innerHeight;
-    };
 
     const update = () => {
+      const outer = outerRef.current;
+      if (!outer) return;
+
+      const rect = outer.getBoundingClientRect();
+      const elTop = window.scrollY + rect.top;
+      const distance = outer.offsetHeight - window.innerHeight;
       if (distance <= 0) return;
 
       const raw = (window.scrollY - elTop) / distance;
@@ -90,37 +84,26 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
       }
     };
 
-    // Coalesce scroll / Lenis events to at most one update per frame.
-    let scheduled = false;
-    const onScroll = () => {
-      if (scheduled) return;
-      scheduled = true;
-      requestAnimationFrame(() => {
-        scheduled = false;
-        update();
-      });
-    };
-
-    const onResize = () => {
-      measure();
-      lastP = -1; // force the next update to recompute
+    const tick = () => {
       update();
+      raf = requestAnimationFrame(tick);
     };
+    raf = requestAnimationFrame(tick);
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onResize);
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
 
     type LenisLike = { on: (e: "scroll", cb: () => void) => void; off: (e: "scroll", cb: () => void) => void };
     const lenis = (window as unknown as { __lenis?: LenisLike }).__lenis;
-    if (lenis) lenis.on("scroll", onScroll);
+    if (lenis) lenis.on("scroll", update);
 
-    measure();
     update();
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onResize);
-      if (lenis) lenis.off("scroll", onScroll);
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+      if (lenis) lenis.off("scroll", update);
     };
   }, [n, globalProgress]);
 
@@ -135,23 +118,11 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
       if (!hash) return;
       const idx = panels.findIndex((p) => p.id === hash);
       if (idx < 0 || !outerRef.current) return;
-
-      // Mobile: horizontal scroll container is display:none — fall back to
-      // native anchor navigation against the per-panel <section id> in the
-      // vertical fallback layout.
-      const outerH = outerRef.current.offsetHeight;
-      if (outerH === 0) {
-        e.preventDefault();
-        const el = document.getElementById(hash);
-        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-        return;
-      }
-
       e.preventDefault();
 
       const rect = outerRef.current.getBoundingClientRect();
       const docTop = window.scrollY + rect.top;
-      const totalDistance = outerH - window.innerHeight;
+      const totalDistance = outerRef.current.offsetHeight - window.innerHeight;
       const segment = n > 1 ? totalDistance / (n - 1) : 0;
       const targetY = docTop + idx * segment;
 
@@ -183,6 +154,7 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
           {panels.map((p, i) => (
             <div
               key={p.id}
+              id={p.id}
               ref={(el) => {
                 innerRefs.current[i] = el;
               }}

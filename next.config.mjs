@@ -20,12 +20,14 @@ const csp = [
   "object-src 'none'",
   "frame-ancestors 'none'",
   "form-action 'self'",
-  "script-src 'self' 'unsafe-inline'",
-  "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob:",
-  "font-src 'self' data:",
-  "connect-src 'self'",
-  "frame-src 'self'",
+  // vercel.live: Vercel's preview comment / live feedback widget (preview
+  // deployments only — script is not injected in production).
+  "script-src 'self' 'unsafe-inline' https://vercel.live",
+  "style-src 'self' 'unsafe-inline' https://vercel.live",
+  "img-src 'self' data: blob: https://vercel.live https://vercel.com",
+  "font-src 'self' data: https://vercel.live",
+  "connect-src 'self' https://vercel.live wss://ws-us3.pusher.com",
+  "frame-src 'self' https://vercel.live",
   "upgrade-insecure-requests",
 ].join("; ");
 
