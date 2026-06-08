@@ -61,10 +61,10 @@ const demoProjects: DemoProject[] = [
     Icon: Sparkles,
   },
   {
-    name: "Mauro Ricardo",
+    name: "Friseur Vorlage 4",
     branche: "Friseur",
     status: "Noch frei",
-    url: "https://friseur-mauro-ricardo-2.vercel.app/",
+    url: "https://friseur-beispiel-4.vercel.app/",
     accent: "from-violet-500/30 via-indigo-500/20 to-blue-500/10",
     Icon: Scissors,
   },
