@@ -40,7 +40,7 @@ const demoProjects: DemoProject[] = [
     name: "Akeed Friseur",
     branche: "Friseursalon",
     status: "Noch frei",
-    url: "https://akeed-friseur.vercel.app/",
+    url: "https://friseur-beispiel-2r.vercel.app/",
     accent: "from-amber-500/30 via-orange-500/20 to-rose-500/10",
     Icon: Scissors,
   },

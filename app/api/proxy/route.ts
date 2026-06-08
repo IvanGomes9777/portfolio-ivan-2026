@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { rateLimit, getClientIp } from "@/lib/rate-limit";
 
 const ALLOWED_HOSTS = new Set([
-  "akeed-friseur.vercel.app",
+  "friseur-beispiel-2r.vercel.app",
   "friseur-mauro-ricardo-2.vercel.app",
   "side-haarstudio-m-nster.vercel.app",
   "emika-hundesalon.vercel.app",
