@@ -2,8 +2,13 @@ import type { Metadata } from "next";
 import LegalLayout, { Section } from "@/components/LegalLayout";
 
 export const metadata: Metadata = {
-  title: "Impressum — Ivan · Webdesign & Entwicklung",
-  description: "Anbieterkennzeichnung gemäß § 5 DDG.",
+  title: "Impressum",
+  description:
+    "Anbieterkennzeichnung gemäß § 5 DDG — Ivan Vilar Gomes, Freelance Web Developer & Designer aus Münster.",
+  alternates: {
+    canonical: "https://portfolio-ivan-2026.vercel.app/impressum",
+  },
+  robots: { index: true, follow: false },
 };
 
 export default function ImpressumPage() {
