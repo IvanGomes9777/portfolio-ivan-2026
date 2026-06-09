@@ -21,7 +21,7 @@ const tiers: Tier[] = [
     priceOld: "€1.900",
     priceNew: "€1.500",
     features: [
-      "Website auf einer Seite",
+      "One-Pager – alles auf einer Seite (Sections)",
       "Responsive Design",
       "Kontaktformular",
       "Google Business Integration",
@@ -36,6 +36,7 @@ const tiers: Tier[] = [
     priceOld: "€3.100",
     priceNew: "€2.500",
     features: [
+      "One-Pager – alles auf einer Seite (Sections)",
       "Premium Design & Polishing",
       "Responsive Design",
       "SEO & GEO optimiert",
@@ -52,6 +53,7 @@ const tiers: Tier[] = [
     priceOld: "€4.400",
     priceNew: "€3.500",
     features: [
+      "Mehrseitige Website mit echten Unterseiten (Multi-Page, kein One-Pager)",
       "Premium Design & Polishing",
       "SEO & GEO optimiert",
       "Booking System für Termine",
