@@ -12,6 +12,7 @@ import {
   Dog,
   Sparkles,
   PenTool,
+  Car,
   Tag,
 } from "lucide-react";
 import LaptopMockup from "./LaptopMockup";
@@ -91,6 +92,15 @@ const demoProjects: DemoProject[] = [
     price: "€2.500",
     accent: "from-zinc-500/30 via-slate-500/20 to-neutral-500/10",
     Icon: PenTool,
+  },
+  {
+    name: "Autoaufbereitung Premium",
+    branche: "Autoaufbereitung",
+    status: "Noch frei",
+    url: "https://autoaufbereitung-1.vercel.app/",
+    price: "€3.500",
+    accent: "from-red-500/30 via-orange-500/20 to-amber-500/10",
+    Icon: Car,
   },
 ];
 
