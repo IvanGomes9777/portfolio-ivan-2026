@@ -40,6 +40,11 @@ html, body {
   background: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-body);
+  /* Prevent horizontal play/jitter from full-viewport (100vw) elements and
+     off-canvas glows. `clip` (unlike `hidden`) does not create a scroll
+     container, so it won't interfere with position: sticky. */
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 /* Custom cursor: hide system cursor on fine-pointer devices */
@@ -59,7 +64,6 @@ body {
     radial-gradient(800px 600px at 50% 100%, rgba(168, 85, 247, 0.05), transparent 60%);
   background-attachment: fixed;
   min-height: 100vh;
-  overflow-x: hidden;
 }
 
 ::selection {
