@@ -3,13 +3,11 @@
 import { ReactNode } from "react";
 
 /**
- * MacBook Air mockup (CSS-only, no external assets).
- * Recreates the look of the MacBook Air from the Apple reference shot:
- * uniform black bezels with a larger bottom chin and the "MacBook Air"
- * wordmark, a small centred camera dot (no notch), and an aluminium
- * unibody deck with a hint of keyboard, trackpad and the rounded
- * opening cutout on the front lip. The screen stays flat (front-on) so
- * iframes / images render crisply at any size.
+ * MacBook Air display mockup (CSS-only, no external assets).
+ * Shows only the laptop display (lid) — aluminium edge, uniform black
+ * bezels with a larger bottom chin and the "MacBook Air" wordmark, and a
+ * small centred camera dot. No keyboard / base deck. The screen stays
+ * flat (front-on) so iframes / images render crisply at any size.
  */
 export default function LaptopMockup({
   children,
@@ -45,42 +43,8 @@ export default function LaptopMockup({
             </span>
           </div>
         </div>
-      </div>
 
-      {/* ===== Base / aluminium unibody deck ===== */}
-      <div className="relative">
-        {/* Hinge shadow line directly under the lid */}
-        <div className="h-[1.5px] mx-[2%] bg-black/70 rounded-b" aria-hidden />
-
-        {/* Deck — slightly wider than the lid, foreshortened (trapezoid) */}
-        <div className="relative h-[8%] min-h-[26px] mx-[-3.5%]" aria-hidden>
-          <div
-            className="absolute inset-0 bg-gradient-to-b from-zinc-400 via-zinc-300 to-zinc-400"
-            style={{ clipPath: "polygon(3% 0, 97% 0, 100% 100%, 0% 100%)" }}
-          />
-          {/* Top highlight edge of the deck (near the hinge) */}
-          <div
-            className="absolute inset-x-0 top-0 h-[18%] bg-gradient-to-b from-white/50 to-transparent"
-            style={{ clipPath: "polygon(3% 0, 97% 0, 96.5% 100%, 3.5% 100%)" }}
-          />
-
-          {/* Keyboard area — faint key rows near the hinge */}
-          <div
-            className="absolute left-1/2 -translate-x-1/2 top-[14%] w-[80%] h-[42%] rounded-[2px] bg-zinc-500/30"
-            style={{
-              backgroundImage:
-                "repeating-linear-gradient(90deg, rgba(0,0,0,0.22) 0 1px, transparent 1px 5%), repeating-linear-gradient(0deg, rgba(0,0,0,0.22) 0 1px, transparent 1px 33%)",
-            }}
-          />
-
-          {/* Trackpad — nearer the viewer */}
-          <div className="absolute left-1/2 -translate-x-1/2 bottom-[14%] w-[34%] h-[26%] rounded-[2px] bg-zinc-300 shadow-[inset_0_0_0_1px_rgba(0,0,0,0.12)]" />
-
-          {/* Opening cutout on the front lip */}
-          <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[14%] h-[22%] bg-gradient-to-b from-zinc-600 to-zinc-700 rounded-t-[5px]" />
-        </div>
-
-        {/* Soft contact shadow under the machine */}
+        {/* Soft contact shadow under the display */}
         <div className="absolute left-1/2 -translate-x-1/2 -bottom-1.5 w-[82%] h-3 -z-10 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.45),transparent_70%)]" />
       </div>
     </div>
