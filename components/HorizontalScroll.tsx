@@ -127,23 +127,44 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
       const hash = a.getAttribute("href")?.slice(1);
       if (!hash) return;
       const idx = panels.findIndex((p) => p.id === hash);
-      if (idx < 0 || !outerRef.current) return;
-      e.preventDefault();
+      if (idx < 0) return;
 
-      const rect = outerRef.current.getBoundingClientRect();
-      const docTop = window.scrollY + rect.top;
-      const totalDistance = outerRef.current.offsetHeight - window.innerHeight;
-      const segment = n > 1 ? totalDistance / (n - 1) : 0;
-      const targetY = docTop + idx * segment;
+      const outer = outerRef.current;
+      const totalDistance = outer ? outer.offsetHeight - window.innerHeight : 0;
+      // Desktop horizontal mode is only active when the sticky section is
+      // actually rendered (md:block) and has scrollable height. On mobile it
+      // is display:none (offsetParent === null) so we fall back to scrolling
+      // the visible vertical section into view.
+      const desktopActive =
+        !!outer && outer.offsetParent !== null && totalDistance > 0;
 
-      const lenis = (window as unknown as { __lenis?: { scrollTo: (v: number, o?: { duration?: number; easing?: (t: number) => number }) => void } }).__lenis;
-      if (lenis) {
-        lenis.scrollTo(targetY, {
-          duration: 1.6,
-          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        });
+      const lenis = (
+        window as unknown as {
+          __lenis?: {
+            scrollTo: (
+              target: number | HTMLElement,
+              o?: { duration?: number; offset?: number; easing?: (t: number) => number },
+            ) => void;
+          };
+        }
+      ).__lenis;
+      const easing = (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t));
+
+      if (desktopActive) {
+        e.preventDefault();
+        const rect = outer!.getBoundingClientRect();
+        const docTop = window.scrollY + rect.top;
+        const segment = n > 1 ? totalDistance / (n - 1) : 0;
+        const targetY = docTop + idx * segment;
+        if (lenis) lenis.scrollTo(targetY, { duration: 1.6, easing });
+        else window.scrollTo({ top: targetY, behavior: "smooth" });
       } else {
-        window.scrollTo({ top: targetY, behavior: "smooth" });
+        // Mobile / vertical: scroll the actual section into view.
+        const el = document.getElementById(hash);
+        if (!el) return;
+        e.preventDefault();
+        if (lenis) lenis.scrollTo(el, { duration: 1.2, offset: -72, easing });
+        else el.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     };
     document.addEventListener("click", onClick);
@@ -164,7 +185,6 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
           {panels.map((p, i) => (
             <div
               key={p.id}
-              id={p.id}
               ref={(el) => {
                 innerRefs.current[i] = el;
               }}
@@ -193,7 +213,7 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
       {/* Mobile: vertical fallback */}
       <div className="md:hidden">
         {panels.map((p) => (
-          <section key={p.id} id={p.id}>
+          <section key={p.id} id={p.id} className="scroll-mt-20">
             {p.content}
           </section>
         ))}
