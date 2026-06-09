@@ -47,16 +47,6 @@ html, body {
   max-width: 100%;
 }
 
-/* Custom cursor: hide system cursor on fine-pointer devices */
-html.cursor-none-md, html.cursor-none-md body,
-html.cursor-none-md a, html.cursor-none-md button,
-html.cursor-none-md input, html.cursor-none-md textarea {
-  cursor: none;
-}
-@media (pointer: coarse) {
-  html.cursor-none-md, html.cursor-none-md body { cursor: auto; }
-}
-
 body {
   background-image:
     radial-gradient(900px 500px at 80% -10%, rgba(139, 92, 246, 0.10), transparent 60%),
