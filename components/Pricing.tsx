@@ -127,6 +127,9 @@ export default function Pricing() {
 
               {/* price */}
               <div className="mt-5 flex items-end gap-2">
+                <span className="mb-1.5 text-sm font-medium text-[var(--color-ink-soft)]">
+                  ab
+                </span>
                 <span className="font-display text-3xl md:text-4xl font-bold text-[var(--color-accent)]">
                   {tier.priceNew}
                 </span>
