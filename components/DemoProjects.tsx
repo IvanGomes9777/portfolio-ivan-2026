@@ -186,7 +186,6 @@ export default function DemoProjects() {
                     <ProjectFrame project={p} view="phone" />
                   </PhoneMockup>
                 )}
-                <div className="absolute inset-x-2 -bottom-2 h-8 -z-10 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(251,191,36,0.25),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
               {/* meta */}
