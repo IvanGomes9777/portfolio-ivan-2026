@@ -151,7 +151,7 @@ export default function DemoProjects() {
             effectiveView === "phone"
               ? "grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
               : "grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
-          } gap-2 sm:gap-4 md:gap-5`}
+          } gap-x-4 gap-y-6 sm:gap-x-6 sm:gap-y-8 md:gap-x-8 md:gap-y-10 lg:gap-x-10`}
         >
           {demoProjects.map((p, i) => (
             <motion.div
@@ -172,7 +172,7 @@ export default function DemoProjects() {
                     <ProjectFrame project={p} view="laptop" />
                   </LaptopMockup>
                 ) : (
-                  <PhoneMockup className="max-w-full">
+                  <PhoneMockup className="max-w-full lg:max-w-[86%]">
                     <ProjectFrame project={p} view="phone" />
                   </PhoneMockup>
                 )}
