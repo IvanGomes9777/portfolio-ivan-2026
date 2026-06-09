@@ -63,9 +63,13 @@ export default function Hero() {
           transition={{ delay: 0.9, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mt-7 max-w-2xl mx-auto text-base sm:text-lg text-[var(--color-ink-soft)] leading-relaxed"
         >
-          Ich bin Webdesigner & Entwickler und helfe lokalen Unternehmen dabei, durch
-          maßgeschneiderte, performante Websites digital sichtbar zu werden — und
-          Kunden zu gewinnen.
+          Ich bin Webdesigner & Entwickler und baue für lokale Unternehmen
+          maßgeschneiderte, performante Websites, die digital sichtbar machen
+          und{" "}
+          <span className="font-semibold text-[var(--color-accent-soft)]">
+            gezielt neue Kunden gewinnen
+          </span>
+          .
         </motion.p>
 
         {/* Price anchor */}
@@ -171,6 +175,8 @@ export default function Hero() {
           transition={{ delay: 1.4, duration: 1 }}
           className="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-[var(--color-ink-dim)] uppercase tracking-[0.18em]"
         >
+          <span>Mehr Kundenanfragen</span>
+          <span className="size-1 rounded-full bg-[var(--color-ink-dim)]" />
           <span>Maßgeschneidert</span>
           <span className="size-1 rounded-full bg-[var(--color-ink-dim)]" />
           <span>Performant</span>
