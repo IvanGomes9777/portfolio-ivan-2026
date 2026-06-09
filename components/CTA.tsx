@@ -9,6 +9,7 @@ import Aurora from "./backgrounds/Aurora";
 const EMAIL = "ivanvilargomes@gmail.com";
 
 type Wunsch = "" | "neu" | "relaunch";
+type Paket = "" | "starter" | "standard" | "premium";
 type Status = "idle" | "sending" | "success" | "error";
 
 export default function CTA() {
@@ -18,6 +19,7 @@ export default function CTA() {
     phone: string;
     msg: string;
     wunsch: Wunsch;
+    paket: Paket;
     // Honeypot — must stay empty for real users.
     company: string;
   }>({
@@ -26,6 +28,7 @@ export default function CTA() {
     phone: "",
     msg: "",
     wunsch: "",
+    paket: "",
     company: "",
   });
   const [phoneOpen, setPhoneOpen] = useState(false);
@@ -52,6 +55,7 @@ export default function CTA() {
           phone: phoneOpen ? form.phone : "",
           msg: form.msg,
           wunsch: form.wunsch,
+          paket: form.paket,
           company: form.company,
         }),
       });
@@ -59,7 +63,7 @@ export default function CTA() {
 
       if (res.ok && data.success) {
         setStatus("success");
-        setForm({ name: "", email: "", phone: "", msg: "", wunsch: "", company: "" });
+        setForm({ name: "", email: "", phone: "", msg: "", wunsch: "", paket: "", company: "" });
         setPhoneOpen(false);
       } else {
         setStatus("error");
@@ -247,6 +251,11 @@ export default function CTA() {
                       <WunschSelect
                         value={form.wunsch}
                         onChange={(v) => setForm({ ...form, wunsch: v })}
+                        disabled={status === "sending"}
+                      />
+                      <PaketSelect
+                        value={form.paket}
+                        onChange={(v) => setForm({ ...form, paket: v })}
                         disabled={status === "sending"}
                       />
                       <Field
@@ -442,6 +451,73 @@ function WunschSelect({
                   }`}
                 >
                   {active && <span className="size-1.5 rounded-full bg-white" />}
+                </div>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function PaketSelect({
+  value,
+  onChange,
+  disabled,
+}: {
+  value: Paket;
+  onChange: (v: Paket) => void;
+  disabled?: boolean;
+}) {
+  const options: { id: Exclude<Paket, "">; title: string; price: string }[] = [
+    { id: "starter", title: "Starter", price: "€1.500" },
+    { id: "standard", title: "Standard", price: "€2.500" },
+    { id: "premium", title: "Premium", price: "€3.500" },
+  ];
+
+  return (
+    <div>
+      <span className="block text-xs uppercase tracking-[0.2em] text-[var(--color-ink-dim)] mb-2">
+        Paket{" "}
+        <span className="text-[var(--color-ink-dim)] normal-case tracking-normal">
+          (optional)
+        </span>
+      </span>
+      <div className="grid grid-cols-3 gap-3">
+        {options.map((o) => {
+          const active = value === o.id;
+          return (
+            <button
+              key={o.id}
+              type="button"
+              onClick={() => onChange(active ? "" : o.id)}
+              data-cursor-hover
+              disabled={disabled}
+              className={`relative text-left rounded-2xl px-3 py-3 border transition-all overflow-hidden disabled:opacity-60 ${
+                active
+                  ? "border-[var(--color-accent)]/60 bg-[var(--color-accent)]/10 shadow-[0_0_0_4px_rgba(139,92,246,0.08)]"
+                  : "border-[var(--color-line)] bg-[var(--color-surface)]/70 hover:border-[var(--color-line-strong)] hover:bg-[var(--color-surface)]"
+              }`}
+              aria-pressed={active}
+            >
+              {active && (
+                <motion.span
+                  layoutId="paket-glow"
+                  className="absolute -inset-x-2 -top-2 h-12 bg-[radial-gradient(ellipse,rgba(139,92,246,0.4),transparent_70%)] pointer-events-none"
+                  transition={{ type: "spring", damping: 22, stiffness: 280 }}
+                />
+              )}
+              <div className="relative">
+                <div
+                  className={`font-display text-sm tracking-tight ${
+                    active ? "text-[var(--color-ink)]" : "text-[var(--color-ink-soft)]"
+                  }`}
+                >
+                  {o.title}
+                </div>
+                <div className="mt-0.5 text-[11px] text-[var(--color-ink-dim)] leading-snug">
+                  ab {o.price}
                 </div>
               </div>
             </button>

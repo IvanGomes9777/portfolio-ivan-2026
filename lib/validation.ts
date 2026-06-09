@@ -11,6 +11,7 @@ export const LIMITS = {
   phone: 40,
   msg: 4000,
   wunsch: 20,
+  paket: 20,
 } as const;
 
 // Strip ASCII control chars except tab (\x09), newline (\x0A) and carriage
@@ -38,6 +39,7 @@ export type ContactInput = {
   phone?: unknown;
   msg?: unknown;
   wunsch?: unknown;
+  paket?: unknown;
   company?: unknown; // honeypot
 };
 
@@ -47,6 +49,7 @@ export type ContactClean = {
   phone: string;
   msg: string;
   wunsch: string;
+  paket: string;
 };
 
 export type ValidationResult =
@@ -54,6 +57,7 @@ export type ValidationResult =
   | { ok: false; message: string };
 
 const ALLOWED_WUNSCH = new Set(["", "neu", "relaunch"]);
+const ALLOWED_PAKET = new Set(["", "starter", "standard", "premium"]);
 
 export function validateContact(input: ContactInput): ValidationResult {
   const name = clean(input.name, LIMITS.name);
@@ -61,6 +65,7 @@ export function validateContact(input: ContactInput): ValidationResult {
   const phone = clean(input.phone, LIMITS.phone);
   const msg = clean(input.msg, LIMITS.msg);
   let wunsch = clean(input.wunsch, LIMITS.wunsch);
+  let paket = clean(input.paket, LIMITS.paket);
 
   if (!name || !email || !msg) {
     return { ok: false, message: "Bitte fülle Name, E-Mail und Nachricht aus." };
@@ -80,6 +85,9 @@ export function validateContact(input: ContactInput): ValidationResult {
   if (!ALLOWED_WUNSCH.has(wunsch)) {
     wunsch = ""; // ignore unexpected values rather than reflecting them
   }
+  if (!ALLOWED_PAKET.has(paket)) {
+    paket = ""; // ignore unexpected values rather than reflecting them
+  }
 
-  return { ok: true, data: { name, email, phone, msg, wunsch } };
+  return { ok: true, data: { name, email, phone, msg, wunsch, paket } };
 }

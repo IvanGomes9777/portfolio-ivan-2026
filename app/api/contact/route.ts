@@ -19,6 +19,12 @@ const SUBJECT_TAG: Record<string, string> = {
   relaunch: "Relaunch",
 };
 
+const PAKET_LABEL: Record<string, string> = {
+  starter: "Starter (ab €1.500)",
+  standard: "Standard (ab €2.500)",
+  premium: "Premium (ab €3.500)",
+};
+
 function escapeHtml(s: string) {
   return String(s)
     .replace(/&/g, "&amp;")
@@ -69,7 +75,7 @@ export async function POST(req: Request) {
   if (!result.ok) {
     return fail(result.message, 400);
   }
-  const { name, email, phone, msg, wunsch } = result.data;
+  const { name, email, phone, msg, wunsch, paket } = result.data;
 
   // 6. Secrets only from env — never hardcoded.
   const apiKey = process.env.RESEND_API_KEY;
@@ -82,6 +88,7 @@ export async function POST(req: Request) {
   const fromAddress =
     process.env.RESEND_FROM ?? "Portfolio-Kontakt <onboarding@resend.dev>";
   const projekttyp = WUNSCH_LABEL[wunsch] ?? "Nicht angegeben";
+  const paketLabel = PAKET_LABEL[paket] ?? "";
   const tag = SUBJECT_TAG[wunsch] ? ` — ${SUBJECT_TAG[wunsch]}` : "";
 
   const html = `
@@ -111,6 +118,14 @@ export async function POST(req: Request) {
             <td style="padding: 8px 0; color: #6b6b6b; vertical-align: top;">Projekttyp</td>
             <td style="padding: 8px 0; color: #111;">${escapeHtml(projekttyp)}</td>
           </tr>
+          ${
+            paketLabel
+              ? `<tr>
+            <td style="padding: 8px 0; color: #6b6b6b; vertical-align: top;">Paket</td>
+            <td style="padding: 8px 0; color: #111; font-weight: 500;">${escapeHtml(paketLabel)}</td>
+          </tr>`
+              : ""
+          }
         </table>
 
         <div style="border-top: 1px solid #e5e5e5; margin: 24px 0;"></div>
@@ -125,7 +140,7 @@ export async function POST(req: Request) {
     </div>
   `;
 
-  const text = `Neue Anfrage über das Portfolio\n\nName: ${name}\nE-Mail: ${email}${phone ? `\nTelefon: ${phone} (möchte angerufen werden)` : ""}\nProjekttyp: ${projekttyp}\n\n---\n\n${msg}\n`;
+  const text = `Neue Anfrage über das Portfolio\n\nName: ${name}\nE-Mail: ${email}${phone ? `\nTelefon: ${phone} (möchte angerufen werden)` : ""}\nProjekttyp: ${projekttyp}${paketLabel ? `\nPaket: ${paketLabel}` : ""}\n\n---\n\n${msg}\n`;
 
   try {
     const resend = new Resend(apiKey);
