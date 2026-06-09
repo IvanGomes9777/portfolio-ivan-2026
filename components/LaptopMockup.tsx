@@ -12,7 +12,7 @@ export default function LaptopMockup({
   return (
     <div className={`relative w-full aspect-square ${className}`}>
       <img
-        src="/laptop_realistic.jpg"
+        src="/laptop_realistic.png"
         alt=""
         aria-hidden="true"
         className="absolute inset-0 w-full h-full object-contain select-none pointer-events-none"
