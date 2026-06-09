@@ -38,7 +38,7 @@ const tiers: Tier[] = [
     features: [
       "Premium Design & Polishing",
       "Responsive Design",
-      "SEO-optimiert",
+      "SEO & GEO optimiert",
       "Google Maps Integration",
       "Kontaktformular",
       "4 Wochen Support",
@@ -53,6 +53,7 @@ const tiers: Tier[] = [
     priceNew: "€3.500",
     features: [
       "Premium Design & Polishing",
+      "SEO & GEO optimiert",
       "Booking System für Termine",
       "Admin Dashboard",
       "E-Mail Automation",
