@@ -66,7 +66,7 @@ const demoProjects: DemoProject[] = [
     Icon: Sparkles,
   },
   {
-    name: "Friseur Vorlage 4",
+    name: "Friseur Vorlage",
     branche: "Friseur",
     status: "Noch frei",
     url: "https://friseur-beispiel-4.vercel.app/",
