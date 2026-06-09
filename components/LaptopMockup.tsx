@@ -10,7 +10,10 @@ export default function LaptopMockup({
   className?: string;
 }) {
   return (
-    <div className={`relative w-full aspect-square ${className}`}>
+    <div
+      className={`relative w-full ${className}`}
+      style={{ aspectRatio: "6934 / 4014" }}
+    >
       <img
         src="/laptop_realistic.png"
         alt=""
@@ -20,7 +23,7 @@ export default function LaptopMockup({
       />
       <div
         className="absolute overflow-hidden bg-black"
-        style={{ top: "29.5%", bottom: "33.5%", left: "17%", right: "17%" }}
+        style={{ top: "9.1%", bottom: "17.1%", left: "11.9%", right: "11.9%" }}
       >
         {children}
       </div>
