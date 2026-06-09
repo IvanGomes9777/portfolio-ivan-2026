@@ -84,7 +84,7 @@ const demoProjects: DemoProject[] = [
     Icon: Scissors,
   },
   {
-    name: "nadelwerk",
+    name: "50/50ink",
     branche: "Tattoo-Studio",
     status: "Noch frei",
     url: "https://nadelwerk-web.vercel.app/",
