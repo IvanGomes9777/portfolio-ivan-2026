@@ -179,7 +179,7 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
         className="relative hidden md:block"
       >
         <div
-          className="sticky top-0 h-screen w-screen overflow-hidden"
+          className="sticky top-0 h-screen w-full overflow-hidden"
           style={{ perspective: "1400px", perspectiveOrigin: "50% 40%" }}
         >
           {panels.map((p, i) => (
