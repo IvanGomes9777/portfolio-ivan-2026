@@ -1,8 +1,43 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, ArrowRight, BadgePercent } from "lucide-react";
+import {
+  Check,
+  ArrowRight,
+  BadgePercent,
+  Wallet,
+  CreditCard,
+  CalendarClock,
+} from "lucide-react";
 import { fadeUp, stagger } from "@/lib/motion";
+
+type PaymentOption = {
+  icon: typeof Wallet;
+  title: string;
+  highlight: string;
+  desc: string;
+};
+
+const paymentOptions: PaymentOption[] = [
+  {
+    icon: Wallet,
+    title: "Anzahlung + Ratenzahlung",
+    highlight: "30% Anzahlung, dann 6× monatliche Raten",
+    desc: "Starte mit einer kleinen Anzahlung und verteile den Rest bequem über sechs Monate.",
+  },
+  {
+    icon: CreditCard,
+    title: "Volle Zahlung sofort",
+    highlight: "100% im Voraus, keine Gebühren",
+    desc: "Bezahle den kompletten Betrag direkt — unkompliziert und ohne zusätzliche Kosten.",
+  },
+  {
+    icon: CalendarClock,
+    title: "In 2 Monaten zahlen",
+    highlight: "Jetzt starten, in 2 Monaten zahlen",
+    desc: "Wir legen los und du zahlst den vollen Betrag erst in zwei Monaten — dann ist alles erledigt.",
+  },
+];
 
 type Tier = {
   name: string;
@@ -168,6 +203,47 @@ export default function Pricing() {
               </a>
             </motion.div>
           ))}
+        </div>
+
+        {/* payment options */}
+        <motion.div variants={fadeUp} className="mt-12 text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)]/60 backdrop-blur text-xs text-[var(--color-ink-soft)] mb-4">
+            <Wallet className="size-3 text-[var(--color-accent)]" />
+            <span>Flexible Zahlungsoptionen</span>
+          </div>
+          <h3 className="font-display text-xl md:text-2xl lg:text-3xl tracking-[-0.03em] font-medium leading-[1.05]">
+            Zahlung, die zu dir passt
+          </h3>
+          <p className="mt-3 max-w-xl mx-auto text-sm text-[var(--color-ink-soft)] leading-relaxed">
+            Wähle die Zahlungsweise, die am besten zu deinem Budget passt — fair,
+            transparent und ohne versteckte Kosten.
+          </p>
+        </motion.div>
+
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-5">
+          {paymentOptions.map((option) => {
+            const Icon = option.icon;
+            return (
+              <motion.div
+                key={option.title}
+                variants={fadeUp}
+                className="group relative flex flex-col rounded-[var(--radius-md)] bg-[var(--color-surface)] glow-soft p-6 md:p-7 transition-shadow duration-300 hover:shadow-[0_0_0_1px_var(--color-accent-glow),0_0_50px_-12px_var(--color-accent-glow)]"
+              >
+                <span className="inline-flex items-center justify-center size-11 rounded-2xl border border-[var(--color-line)] bg-[var(--color-surface-2)] text-[var(--color-accent)]">
+                  <Icon className="size-5" />
+                </span>
+                <h4 className="mt-4 font-display text-lg font-bold tracking-tight text-[var(--color-ink)]">
+                  {option.title}
+                </h4>
+                <p className="mt-2 text-sm font-medium text-[var(--color-accent)]">
+                  {option.highlight}
+                </p>
+                <p className="mt-2 text-[13px] md:text-sm text-[var(--color-ink-soft)] leading-snug">
+                  {option.desc}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* info box */}
