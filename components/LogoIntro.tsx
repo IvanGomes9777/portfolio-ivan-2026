@@ -23,7 +23,7 @@ export default function LogoIntro() {
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
-    const hold = reduce ? 400 : 1700;
+    const hold = reduce ? 400 : 1900;
     const t = setTimeout(() => setShow(false), hold);
 
     return () => {
@@ -45,7 +45,7 @@ export default function LogoIntro() {
           className="fixed inset-0 z-[100] flex items-center justify-center bg-[var(--color-bg)] overflow-hidden"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1] }}
         >
           {/* soft radial glow behind the logo */}
           <motion.div
@@ -59,11 +59,11 @@ export default function LogoIntro() {
           <motion.img
             src="/webdesignbyivan.png"
             alt="Webdesign by Ivan"
-            initial={{ scale: 0.82, opacity: 0, filter: "blur(8px)" }}
+            initial={{ scale: 0.88, opacity: 0, filter: "blur(14px)" }}
             animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
-            exit={{ scale: 0.42, opacity: 0, y: -50 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-[min(86vw,640px)] h-auto object-contain mix-blend-screen drop-shadow-[0_0_40px_rgba(139,92,246,0.35)]"
+            exit={{ scale: 0.46, opacity: 0, y: -50, filter: "blur(6px)" }}
+            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+            className="relative w-[min(94vw,860px)] h-auto object-contain mix-blend-screen drop-shadow-[0_0_50px_rgba(139,92,246,0.4)]"
           />
         </motion.div>
       )}
