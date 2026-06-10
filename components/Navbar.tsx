@@ -67,10 +67,14 @@ export default function Navbar() {
           <a
             href="#top"
             data-cursor-hover
-            className="flex items-center gap-2 text-sm font-medium tracking-tight"
+            aria-label="Webdesign by Ivan — Startseite"
+            className="flex items-center shrink-0"
           >
-            <span className="size-1.5 rounded-full bg-[var(--color-accent)] shadow-[0_0_12px_rgba(167,139,250,0.8)]" />
-            <span>ivan.dev</span>
+            <img
+              src="/webdesign-by-ivan.png"
+              alt="Webdesign by Ivan"
+              className="h-6 md:h-7 w-auto object-contain"
+            />
           </a>
 
           {/* Desktop links */}
