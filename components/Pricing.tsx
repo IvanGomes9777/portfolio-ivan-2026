@@ -116,7 +116,7 @@ export default function Pricing() {
         className="relative"
       >
         {/* heading */}
-        <motion.div variants={fadeUp} className="text-center mb-8">
+        <motion.div variants={fadeUp} className="text-center mb-6">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)]/60 backdrop-blur text-xs text-[var(--color-ink-soft)] mb-4">
             <BadgePercent className="size-3 text-[var(--color-accent)]" />
             <span>Transparente Festpreise</span>
@@ -137,7 +137,7 @@ export default function Pricing() {
             <motion.div
               key={tier.name}
               variants={fadeUp}
-              className={`group relative flex flex-col rounded-[var(--radius-md)] bg-[var(--color-surface)] p-6 md:p-7 transition-shadow duration-300 ${
+              className={`group relative flex flex-col rounded-[var(--radius-md)] bg-[var(--color-surface)] p-5 md:p-6 transition-shadow duration-300 ${
                 tier.highlight
                   ? "glow-accent"
                   : "glow-soft hover:shadow-[0_0_0_1px_var(--color-accent-glow),0_0_50px_-12px_var(--color-accent-glow)]"
@@ -164,7 +164,7 @@ export default function Pricing() {
               </p>
 
               {/* price */}
-              <div className="mt-5 flex items-end gap-2">
+              <div className="mt-4 flex items-end gap-2">
                 <span className="mb-1.5 text-sm font-medium text-[var(--color-ink-soft)]">
                   ab
                 </span>
@@ -177,7 +177,7 @@ export default function Pricing() {
               </div>
 
               {/* features */}
-              <ul className="mt-5 space-y-2 flex-1">
+              <ul className="mt-4 space-y-1.5 flex-1">
                 {tier.features.map((f) => (
                   <li
                     key={f}
@@ -193,7 +193,7 @@ export default function Pricing() {
               <a
                 href="#kontakt"
                 data-cursor-hover
-                className={`mt-6 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-all ${
+                className={`mt-5 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all ${
                   tier.highlight
                     ? "bg-[var(--color-accent)] text-[var(--color-bg)] pulse-glow hover:bg-[var(--color-accent-soft)]"
                     : "border border-[var(--color-accent)] text-[var(--color-accent)] hover:shadow-[0_0_0_1px_var(--color-accent-glow),0_0_30px_-8px_var(--color-accent-glow)]"
@@ -205,64 +205,55 @@ export default function Pricing() {
           ))}
         </div>
 
-        {/* payment options */}
-        <motion.div variants={fadeUp} className="mt-12 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)]/60 backdrop-blur text-xs text-[var(--color-ink-soft)] mb-4">
-            <Wallet className="size-3 text-[var(--color-accent)]" />
+        {/* payment options — compact strip */}
+        <motion.div variants={fadeUp} className="mt-6">
+          <div className="flex items-center justify-center gap-2 text-xs uppercase tracking-[0.18em] text-[var(--color-ink-dim)] mb-3">
+            <Wallet className="size-3.5 text-[var(--color-accent)]" />
             <span>Flexible Zahlungsoptionen</span>
           </div>
-          <h3 className="font-display text-xl md:text-2xl lg:text-3xl tracking-[-0.03em] font-medium leading-[1.05]">
-            Zahlung, die zu dir passt
-          </h3>
-          <p className="mt-3 max-w-xl mx-auto text-sm text-[var(--color-ink-soft)] leading-relaxed">
-            Wähle die Zahlungsweise, die am besten zu deinem Budget passt — fair,
-            transparent und ohne versteckte Kosten.
-          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {paymentOptions.map((option) => {
+              const Icon = option.icon;
+              return (
+                <div
+                  key={option.title}
+                  className="flex items-start gap-3 rounded-2xl border border-[var(--color-line)] bg-[var(--color-surface)]/70 p-4 hover:border-[var(--color-line-strong)] transition-colors"
+                >
+                  <span className="inline-flex items-center justify-center size-9 shrink-0 rounded-xl border border-[var(--color-line)] bg-[var(--color-surface-2)] text-[var(--color-accent)]">
+                    <Icon className="size-4" />
+                  </span>
+                  <div>
+                    <div className="text-sm font-medium text-[var(--color-ink)] leading-tight">
+                      {option.title}
+                    </div>
+                    <div className="mt-1 text-xs text-[var(--color-ink-soft)] leading-snug">
+                      {option.highlight}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </motion.div>
-
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-5">
-          {paymentOptions.map((option) => {
-            const Icon = option.icon;
-            return (
-              <motion.div
-                key={option.title}
-                variants={fadeUp}
-                className="group relative flex flex-col rounded-[var(--radius-md)] bg-[var(--color-surface)] glow-soft p-6 md:p-7 transition-shadow duration-300 hover:shadow-[0_0_0_1px_var(--color-accent-glow),0_0_50px_-12px_var(--color-accent-glow)]"
-              >
-                <span className="inline-flex items-center justify-center size-11 rounded-2xl border border-[var(--color-line)] bg-[var(--color-surface-2)] text-[var(--color-accent)]">
-                  <Icon className="size-5" />
-                </span>
-                <h4 className="mt-4 font-display text-lg font-bold tracking-tight text-[var(--color-ink)]">
-                  {option.title}
-                </h4>
-                <p className="mt-2 text-sm font-medium text-[var(--color-accent)]">
-                  {option.highlight}
-                </p>
-                <p className="mt-2 text-[13px] md:text-sm text-[var(--color-ink-soft)] leading-snug">
-                  {option.desc}
-                </p>
-              </motion.div>
-            );
-          })}
-        </div>
 
         {/* info box */}
         <motion.div
           variants={fadeUp}
-          className="mt-6 rounded-[var(--radius-md)] bg-[var(--color-surface-2)] border-l-4 border-[var(--color-accent)] p-5 md:p-6"
+          className="mt-5 rounded-[var(--radius-md)] bg-[var(--color-surface-2)] border-l-4 border-[var(--color-accent)] px-5 py-4"
         >
-          <p className="font-medium text-[var(--color-accent)]">
-            🎉 Eröffnungsaktion: 20% Rabatt auf alle Pakete!
-          </p>
-          <p className="mt-2 text-sm text-[var(--color-ink-soft)] leading-relaxed">
-            Nur für die ersten 10 Kunden. Danach gelten die Normalpreise. Lass
-            mich in einem kostenlosen Gespräch deine Anforderungen verstehen,
-            dann gebe ich dir ein exaktes Angebot.
+          <p className="text-sm leading-relaxed">
+            <span className="font-medium text-[var(--color-accent)]">
+              🎉 Eröffnungsaktion: 20% Rabatt
+            </span>{" "}
+            <span className="text-[var(--color-ink-soft)]">
+              — nur für die ersten 10 Kunden. Im kostenlosen Erstgespräch gibt’s
+              dein exaktes Angebot.
+            </span>
           </p>
         </motion.div>
 
         {/* CTA */}
-        <motion.div variants={fadeUp} className="mt-6 flex justify-center">
+        <motion.div variants={fadeUp} className="mt-5 flex justify-center">
           <a
             href="#kontakt"
             data-cursor-hover
