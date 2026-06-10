@@ -106,7 +106,7 @@ export default function Pricing() {
   return (
     <section className="relative overflow-x-clip px-4 py-10 md:py-8 max-w-6xl w-full mx-auto">
       {/* ambient glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 size-[600px] rounded-full bg-[radial-gradient(circle,var(--color-accent-glow),transparent_60%)] opacity-30 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 size-[600px] rounded-full bg-[radial-gradient(circle,var(--color-accent-glow),transparent_60%)] opacity-25 pointer-events-none" />
 
       <motion.div
         variants={stagger(0.1)}
@@ -121,8 +121,10 @@ export default function Pricing() {
             <BadgePercent className="size-3 text-[var(--color-accent)]" />
             <span>Transparente Festpreise</span>
           </div>
-          <h2 className="font-display text-2xl md:text-3xl lg:text-4xl tracking-[-0.03em] font-medium leading-[1.05]">
-            Website-Preise
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl tracking-[-0.03em] font-medium leading-[1.05]">
+            <span className="bg-gradient-to-r from-[var(--color-accent-soft)] via-[var(--color-accent)] to-[var(--color-accent-strong)] bg-clip-text text-transparent">
+              Website-Preise
+            </span>
           </h2>
           <p className="mt-3 max-w-xl mx-auto text-sm text-[var(--color-ink-soft)] leading-relaxed">
             Klare Pakete als Richtwert. Such dir aus, was zu deinem Business
