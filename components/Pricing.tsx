@@ -33,9 +33,9 @@ const paymentOptions: PaymentOption[] = [
   },
   {
     icon: CalendarClock,
-    title: "In 2 Monaten zahlen",
-    highlight: "Jetzt starten, in 2 Monaten zahlen",
-    desc: "Wir legen los und du zahlst den vollen Betrag erst in zwei Monaten — dann ist alles erledigt.",
+    title: "In 2 Monatsraten zahlen",
+    highlight: "Jetzt starten, in 2 Monatsraten zahlen",
+    desc: "Wir legen los und du zahlst den Betrag bequem in zwei monatlichen Raten — ohne lange Bindung.",
   },
 ];
 

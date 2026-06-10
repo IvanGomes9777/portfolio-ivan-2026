@@ -21,7 +21,7 @@ export const faq: FaqItem[] = [
   {
     question: "Welche Zahlungsmöglichkeiten gibt es?",
     answer:
-      "Du kannst flexibel zahlen: 30 % Anzahlung plus 6 monatliche Raten, den vollen Betrag sofort ohne Gebühren oder den vollen Betrag erst in 2 Monaten.",
+      "Du kannst flexibel zahlen: 30 % Anzahlung plus 6 monatliche Raten, den vollen Betrag sofort ohne Gebühren oder den Betrag in 2 monatlichen Raten.",
   },
   {
     question: "Für welche Regionen arbeitest du?",
