@@ -5,3 +5,6 @@ out
 .DS_Store
 *.tsbuildinfo
 next-env.d.ts
+
+# Locally-installed SEO/GEO skill plugin (not part of the site)
+.claude/skills/
