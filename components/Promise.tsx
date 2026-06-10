@@ -12,12 +12,12 @@ import Orbs from "./backgrounds/Orbs";
 
 // Key things every website ships with — fills the space under the timeline.
 const included = [
-  { icon: Smartphone, label: "Responsive auf jedem Gerät" },
-  { icon: Search, label: "SEO & GEO optimiert" },
-  { icon: MapPin, label: "Google Business & Maps" },
-  { icon: Gauge, label: "95+ Lighthouse Performance" },
-  { icon: Mail, label: "Kontaktformular mit Spam-Schutz" },
-  { icon: LifeBuoy, label: "Support nach dem Launch" },
+  { icon: Smartphone, label: "Responsive Design", desc: "Perfekt auf Handy, Tablet & Desktop" },
+  { icon: Search, label: "SEO & GEO optimiert", desc: "Gefunden bei Google & in KI-Suchen" },
+  { icon: MapPin, label: "Google Business & Maps", desc: "Lokal sichtbar in deiner Region" },
+  { icon: Gauge, label: "Top Performance", desc: "95+ Lighthouse, blitzschnell geladen" },
+  { icon: Mail, label: "Kontaktformular", desc: "Mit Spam-Schutz & DSGVO-konform" },
+  { icon: LifeBuoy, label: "Support nach Launch", desc: "Persönliche Betreuung inklusive" },
 ];
 
 export default function Promise() {
@@ -47,7 +47,7 @@ export default function Promise() {
             <div className="absolute -bottom-24 -left-24 size-72 rounded-full bg-[radial-gradient(circle,rgba(99,102,241,0.18),transparent_60%)]" />
           </div>
 
-          <div className="relative">
+          <div className="relative flex h-full flex-col">
             <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[var(--color-accent)] mb-5">
               <Clock className="size-3.5" />
               <span>Das Versprechen</span>
@@ -87,20 +87,25 @@ export default function Promise() {
               </div>
             </div>
 
-            {/* Included features — fills the space under the timeline */}
-            <div className="mt-8 pt-6 border-t border-[var(--color-line)]">
+            {/* Included features — stretches to fill the remaining card height */}
+            <div className="mt-8 pt-6 border-t border-[var(--color-line)] flex flex-1 flex-col">
               <div className="text-xs uppercase tracking-[0.2em] text-[var(--color-ink-dim)] mb-4">
                 Bei jeder Website inklusive
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3.5">
-                {included.map(({ icon: Icon, label }) => (
-                  <div key={label} className="flex items-center gap-2.5">
-                    <span className="inline-flex items-center justify-center size-8 shrink-0 rounded-xl border border-[var(--color-line)] bg-[var(--color-bg-soft)]">
+              <div className="grid flex-1 auto-rows-fr grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+                {included.map(({ icon: Icon, label, desc }) => (
+                  <div key={label} className="flex items-center gap-3">
+                    <span className="inline-flex items-center justify-center size-9 shrink-0 rounded-xl border border-[var(--color-line)] bg-[var(--color-bg-soft)]">
                       <Icon className="size-4 text-[var(--color-accent)]" />
                     </span>
-                    <span className="text-sm text-[var(--color-ink-soft)] leading-snug">
-                      {label}
-                    </span>
+                    <div className="min-w-0">
+                      <div className="text-sm font-medium text-[var(--color-ink)] leading-snug">
+                        {label}
+                      </div>
+                      <div className="text-xs text-[var(--color-ink-soft)] leading-snug mt-0.5">
+                        {desc}
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
