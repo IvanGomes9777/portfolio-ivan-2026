@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import { faq } from "@/lib/faq";
 
 const body = Inter({
   subsets: ["latin"],
@@ -170,9 +171,93 @@ const websiteSchema = {
   author: { "@id": `${BASE_URL}/#person` },
 };
 
+// Maps the three visible pricing packages so search & answer engines (GEO)
+// can read the concrete offerings. Prices reflect the visible "ab"-Preise.
+const serviceSchema = {
+  "@type": "Service",
+  "@id": `${BASE_URL}/#service`,
+  name: "Webdesign & Webentwicklung",
+  serviceType: "Webdesign & Webentwicklung",
+  provider: { "@id": `${BASE_URL}/#business` },
+  inLanguage: "de-DE",
+  areaServed: [
+    { "@type": "Country", name: "Deutschland" },
+    { "@type": "State", name: "Nordrhein-Westfalen" },
+    { "@type": "City", name: "Münster" },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Website-Pakete",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        name: "Starter",
+        description:
+          "Simple Website – alle Infos auf einer Seite (One-Pager): Responsive Design, Kontaktformular, Google Business Integration, 4 Wochen Support.",
+        priceCurrency: "EUR",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          minPrice: "1500",
+          priceCurrency: "EUR",
+        },
+        category: "Webdesign",
+      },
+      {
+        "@type": "Offer",
+        name: "Standard",
+        description:
+          "Premium Website – mehr Design & Features: Premium Design & Polishing, SEO & GEO optimiert, Google Maps Integration, Kontaktformular, 4 Wochen Support.",
+        priceCurrency: "EUR",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          minPrice: "2500",
+          priceCurrency: "EUR",
+        },
+        category: "Webdesign",
+      },
+      {
+        "@type": "Offer",
+        name: "Premium",
+        description:
+          "Mehrseitige Website + Booking System: echte Unterseiten (Multi-Page), Admin Dashboard, E-Mail Automation, SEO & GEO optimiert, 8 Wochen Support.",
+        priceCurrency: "EUR",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          minPrice: "3500",
+          priceCurrency: "EUR",
+        },
+        category: "Webentwicklung",
+      },
+    ],
+  },
+};
+
+// FAQPage built from the same data as the visible FAQ section so structured
+// data always matches on-page content. Strong GEO/AEO signal — AI answer
+// engines (ChatGPT, Perplexity, AI Overviews) cite FAQ answers directly.
+const faqSchema = {
+  "@type": "FAQPage",
+  "@id": `${BASE_URL}/#faq`,
+  inLanguage: "de-DE",
+  mainEntity: faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
 const jsonLd = {
   "@context": "https://schema.org",
-  "@graph": [personSchema, localBusinessSchema, websiteSchema],
+  "@graph": [
+    personSchema,
+    localBusinessSchema,
+    websiteSchema,
+    serviceSchema,
+    faqSchema,
+  ],
 };
 
 export default function RootLayout({
