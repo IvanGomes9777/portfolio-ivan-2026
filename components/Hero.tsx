@@ -19,6 +19,19 @@ export default function Hero() {
       {/* Lightning strikes */}
       <LightningEffect />
 
+      {/* Brand logo watermark — screen blend drops the image's dark background
+          so only the neon emblem glows behind the content. Fades in as the
+          intro overlay finishes, so the logo appears to settle into the hero. */}
+      <motion.img
+        src="/webdesignbyivan.png"
+        alt=""
+        aria-hidden
+        initial={{ opacity: 0, scale: 1.08 }}
+        animate={{ opacity: 0.4, scale: 1 }}
+        transition={{ delay: 1.9, duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute left-1/2 top-1/2 w-[min(140vw,1300px)] max-w-none h-auto -translate-x-1/2 -translate-y-1/2 object-contain mix-blend-screen pointer-events-none select-none [mask-image:radial-gradient(circle,black_38%,transparent_72%)]"
+      />
+
       {/* background grid (above shader, subtle) */}
       <div className="absolute inset-0 bg-grid bg-grid-fade pointer-events-none opacity-40" />
 
