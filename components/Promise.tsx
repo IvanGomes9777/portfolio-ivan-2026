@@ -2,10 +2,17 @@
 
 import { motion, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Clock, Zap, ShieldCheck, Lock, Search, FileCheck } from "lucide-react";
+import { Clock, Zap, ShieldCheck, Lock, Search, FileCheck, BadgeEuro, Check, CreditCard, ArrowRight } from "lucide-react";
 import { fadeUp, stagger } from "@/lib/motion";
 import { usePanelProgress } from "./PanelProgress";
 import Orbs from "./backgrounds/Orbs";
+
+// Short commitments shown under the Festpreis promise.
+const commitments = [
+  "Kostenloses Erstgespräch",
+  "Ein fester Ansprechpartner",
+  "Du behältst die volle Kontrolle",
+];
 
 export default function Promise() {
   const ref = useRef<HTMLDivElement>(null);
@@ -34,7 +41,7 @@ export default function Promise() {
             <div className="absolute -bottom-24 -left-24 size-72 rounded-full bg-[radial-gradient(circle,rgba(99,102,241,0.18),transparent_60%)]" />
           </div>
 
-          <div className="relative">
+          <div className="relative flex h-full flex-col">
             <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[var(--color-accent)] mb-5">
               <Clock className="size-3.5" />
               <span>Das Versprechen</span>
@@ -72,6 +79,47 @@ export default function Promise() {
                   className="absolute -top-1 size-3.5 -translate-x-1/2 rounded-full bg-white shadow-[0_0_16px_rgba(255,255,255,0.8)]"
                 />
               </div>
+            </div>
+
+            {/* Festpreis promise — fills the remaining card height */}
+            <div className="mt-8 pt-6 border-t border-[var(--color-line)] flex flex-1 flex-col justify-center gap-5">
+              <div className="flex items-start gap-4">
+                <span className="inline-flex items-center justify-center size-12 shrink-0 rounded-2xl border border-[var(--color-line-strong)] bg-[var(--color-bg-soft)]">
+                  <BadgeEuro className="size-6 text-[var(--color-accent)]" />
+                </span>
+                <div>
+                  <div className="font-display text-2xl md:text-3xl tracking-[-0.02em] font-medium">
+                    Festpreis — garantiert.
+                  </div>
+                  <p className="mt-1.5 text-sm md:text-base text-[var(--color-ink-soft)] leading-relaxed">
+                    Der Preis, den wir vereinbaren, ist der Preis, den du zahlst.
+                    Keine versteckten Kosten, kein Stundenlohn, keine Nachkalkulation.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-2.5">
+                {commitments.map((c) => (
+                  <span
+                    key={c}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)]/60 text-xs text-[var(--color-ink-soft)]"
+                  >
+                    <Check className="size-3.5 text-[var(--color-accent)]" />
+                    {c}
+                  </span>
+                ))}
+              </div>
+
+              {/* Ratenzahlung hint — full options live in the pricing section */}
+              <a
+                href="#preise"
+                data-cursor-hover
+                className="group inline-flex items-center gap-2 text-sm text-[var(--color-accent-soft)] hover:text-[var(--color-accent)] transition-colors"
+              >
+                <CreditCard className="size-4 shrink-0" />
+                <span>Lieber in Raten zahlen? Geht auch — Optionen bei den Preisen</span>
+                <ArrowRight className="size-3.5 shrink-0 transition-transform group-hover:translate-x-0.5" />
+              </a>
             </div>
           </div>
         </motion.div>
@@ -125,7 +173,7 @@ export default function Promise() {
           </motion.div>
         </div>
 
-        {/* SEO & GEO — inklusive bei jeder Website */}
+        {/* SEO & GEO — ab dem Standard-Paket */}
         <motion.div
           variants={fadeUp}
           className="md:col-span-12 relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-6 flex flex-col sm:flex-row sm:items-center gap-4 group hover:border-[var(--color-line-strong)] transition-colors"
@@ -136,16 +184,16 @@ export default function Promise() {
               <Search className="size-5 text-[var(--color-accent)]" />
             </span>
             <div>
-              <div className="font-display text-xl tracking-tight">SEO &amp; GEO inklusive</div>
+              <div className="font-display text-xl tracking-tight">SEO &amp; GEO</div>
               <div className="text-xs uppercase tracking-[0.18em] text-[var(--color-ink-dim)]">
-                Gefunden werden
+                Ab dem Standard-Paket
               </div>
             </div>
           </div>
           <p className="relative text-sm text-[var(--color-ink-soft)] leading-relaxed">
-            Jede Website wird für klassische Suchmaschinen (SEO) und KI-Antwortmaschinen
-            (GEO) optimiert — damit dich Kunden in Münster und ganz Deutschland finden:
-            heute bei Google, morgen in ChatGPT &amp; Co.
+            Ab dem Standard-Paket wird deine Website für klassische Suchmaschinen (SEO)
+            und KI-Antwortmaschinen (GEO) optimiert — damit dich Kunden in Münster und
+            ganz Deutschland finden: heute bei Google, morgen in ChatGPT &amp; Co.
           </p>
         </motion.div>
       </motion.div>

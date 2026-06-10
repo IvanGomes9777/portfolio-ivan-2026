@@ -57,8 +57,9 @@ export default function LogoIntro() {
           />
 
           <motion.img
-            src="/webdesignbyivan.png"
+            src="/logo-web.webp"
             alt="Webdesign by Ivan"
+            decoding="async"
             initial={{ scale: 0.88, opacity: 0, filter: "blur(14px)" }}
             animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
             exit={{ scale: 0.46, opacity: 0, y: -50, filter: "blur(6px)" }}
