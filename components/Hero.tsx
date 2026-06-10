@@ -29,7 +29,7 @@ export default function Hero() {
         initial={{ opacity: 0, scale: 1.08 }}
         animate={{ opacity: 0.4, scale: 1 }}
         transition={{ delay: 1.9, duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute left-1/2 top-1/2 w-[min(118vw,1000px)] max-w-none h-auto -translate-x-1/2 -translate-y-1/2 object-contain mix-blend-screen pointer-events-none select-none [mask-image:radial-gradient(circle,black_38%,transparent_72%)]"
+        className="absolute left-1/2 top-1/2 w-[min(140vw,1300px)] max-w-none h-auto -translate-x-1/2 -translate-y-1/2 object-contain mix-blend-screen pointer-events-none select-none [mask-image:radial-gradient(circle,black_38%,transparent_72%)]"
       />
 
       {/* background grid (above shader, subtle) */}
