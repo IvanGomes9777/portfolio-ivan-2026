@@ -15,7 +15,8 @@ const display = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
-  preload: false,
+  // Preloaded: this font renders the LCP headline, so preloading improves FCP/LCP.
+  preload: true,
 });
 
 const BASE_URL = "https://portfolio-ivan-2026.vercel.app";
