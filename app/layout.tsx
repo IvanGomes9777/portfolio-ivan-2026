@@ -170,9 +170,70 @@ const websiteSchema = {
   author: { "@id": `${BASE_URL}/#person` },
 };
 
+// Maps the three visible pricing packages so search & answer engines (GEO)
+// can read the concrete offerings. Prices reflect the visible "ab"-Preise.
+const serviceSchema = {
+  "@type": "Service",
+  "@id": `${BASE_URL}/#service`,
+  name: "Webdesign & Webentwicklung",
+  serviceType: "Webdesign & Webentwicklung",
+  provider: { "@id": `${BASE_URL}/#business` },
+  inLanguage: "de-DE",
+  areaServed: [
+    { "@type": "Country", name: "Deutschland" },
+    { "@type": "State", name: "Nordrhein-Westfalen" },
+    { "@type": "City", name: "Münster" },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Website-Pakete",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        name: "Starter",
+        description:
+          "Simple Website – alle Infos auf einer Seite (One-Pager): Responsive Design, Kontaktformular, Google Business Integration, 4 Wochen Support.",
+        priceCurrency: "EUR",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          minPrice: "1500",
+          priceCurrency: "EUR",
+        },
+        category: "Webdesign",
+      },
+      {
+        "@type": "Offer",
+        name: "Standard",
+        description:
+          "Premium Website – mehr Design & Features: Premium Design & Polishing, SEO & GEO optimiert, Google Maps Integration, Kontaktformular, 4 Wochen Support.",
+        priceCurrency: "EUR",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          minPrice: "2500",
+          priceCurrency: "EUR",
+        },
+        category: "Webdesign",
+      },
+      {
+        "@type": "Offer",
+        name: "Premium",
+        description:
+          "Mehrseitige Website + Booking System: echte Unterseiten (Multi-Page), Admin Dashboard, E-Mail Automation, SEO & GEO optimiert, 8 Wochen Support.",
+        priceCurrency: "EUR",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          minPrice: "3500",
+          priceCurrency: "EUR",
+        },
+        category: "Webentwicklung",
+      },
+    ],
+  },
+};
+
 const jsonLd = {
   "@context": "https://schema.org",
-  "@graph": [personSchema, localBusinessSchema, websiteSchema],
+  "@graph": [personSchema, localBusinessSchema, websiteSchema, serviceSchema],
 };
 
 export default function RootLayout({
