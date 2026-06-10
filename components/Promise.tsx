@@ -4,7 +4,7 @@ import { motion, useTransform } from "framer-motion";
 import { useRef } from "react";
 import {
   Clock, Zap, ShieldCheck, Lock, Search, FileCheck,
-  Smartphone, MapPin, Mail, Gauge, LifeBuoy,
+  Smartphone, MapPin, Mail, Gauge, LifeBuoy, KeyRound,
 } from "lucide-react";
 import { fadeUp, stagger } from "@/lib/motion";
 import { usePanelProgress } from "./PanelProgress";
@@ -13,11 +13,11 @@ import Orbs from "./backgrounds/Orbs";
 // Key things every website ships with — fills the space under the timeline.
 const included = [
   { icon: Smartphone, label: "Responsive Design", desc: "Perfekt auf Handy, Tablet & Desktop" },
-  { icon: Search, label: "SEO & GEO optimiert", desc: "Gefunden bei Google & in KI-Suchen" },
-  { icon: MapPin, label: "Google Business & Maps", desc: "Lokal sichtbar in deiner Region" },
-  { icon: Gauge, label: "Top Performance", desc: "95+ Lighthouse, blitzschnell geladen" },
+  { icon: MapPin, label: "Google Business", desc: "Lokal sichtbar in deiner Region" },
   { icon: Mail, label: "Kontaktformular", desc: "Mit Spam-Schutz & DSGVO-konform" },
+  { icon: Gauge, label: "Top Performance", desc: "95+ Lighthouse, blitzschnell geladen" },
   { icon: LifeBuoy, label: "Support nach Launch", desc: "Persönliche Betreuung inklusive" },
+  { icon: KeyRound, label: "Übergabe & Kontrolle", desc: "Deine Website gehört dir — voll" },
 ];
 
 export default function Promise() {
@@ -162,7 +162,7 @@ export default function Promise() {
           </motion.div>
         </div>
 
-        {/* SEO & GEO — inklusive bei jeder Website */}
+        {/* SEO & GEO — ab dem Standard-Paket */}
         <motion.div
           variants={fadeUp}
           className="md:col-span-12 relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-6 flex flex-col sm:flex-row sm:items-center gap-4 group hover:border-[var(--color-line-strong)] transition-colors"
@@ -173,16 +173,16 @@ export default function Promise() {
               <Search className="size-5 text-[var(--color-accent)]" />
             </span>
             <div>
-              <div className="font-display text-xl tracking-tight">SEO &amp; GEO inklusive</div>
+              <div className="font-display text-xl tracking-tight">SEO &amp; GEO</div>
               <div className="text-xs uppercase tracking-[0.18em] text-[var(--color-ink-dim)]">
-                Gefunden werden
+                Ab dem Standard-Paket
               </div>
             </div>
           </div>
           <p className="relative text-sm text-[var(--color-ink-soft)] leading-relaxed">
-            Jede Website wird für klassische Suchmaschinen (SEO) und KI-Antwortmaschinen
-            (GEO) optimiert — damit dich Kunden in Münster und ganz Deutschland finden:
-            heute bei Google, morgen in ChatGPT &amp; Co.
+            Ab dem Standard-Paket wird deine Website für klassische Suchmaschinen (SEO)
+            und KI-Antwortmaschinen (GEO) optimiert — damit dich Kunden in Münster und
+            ganz Deutschland finden: heute bei Google, morgen in ChatGPT &amp; Co.
           </p>
         </motion.div>
       </motion.div>
