@@ -69,7 +69,7 @@ const demoProjects: DemoProject[] = [
   {
     name: "Friseur Vorlage",
     branche: "Friseur",
-    status: "Noch frei",
+    status: "In Auftrag",
     url: "https://friseur-beispiel-4.vercel.app/",
     price: "€2.500",
     accent: "from-violet-500/30 via-indigo-500/20 to-blue-500/10",
