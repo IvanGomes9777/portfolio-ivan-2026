@@ -68,13 +68,18 @@ export default function Navbar() {
             href="#top"
             data-cursor-hover
             aria-label="Webdesign by Ivan — Startseite"
-            className="flex items-center shrink-0"
+            className="flex items-center gap-2.5 text-sm font-medium tracking-tight"
           >
-            <img
-              src="/webdesignbyivan.png"
-              alt="Webdesign by Ivan"
-              className="h-9 md:h-11 w-auto object-contain"
-            />
+            {/* Glowing W emblem cropped from the brand graphic — screen blend
+                drops the dark image background so only the neon mark shows. */}
+            <span className="relative block size-7 shrink-0 overflow-hidden rounded-md">
+              <img
+                src="/webdesignbyivan.png"
+                alt="Webdesign by Ivan Logo"
+                className="absolute left-1/2 top-[42%] h-[230%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover mix-blend-screen"
+              />
+            </span>
+            <span>ivan.dev</span>
           </a>
 
           {/* Desktop links */}

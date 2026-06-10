@@ -12,10 +12,12 @@ import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import HorizontalScroll from "@/components/HorizontalScroll";
 import LegalLinks from "@/components/LegalLinks";
+import LogoIntro from "@/components/LogoIntro";
 
 export default function Page() {
   return (
     <>
+      <LogoIntro />
       <Navbar />
       <main>
         <HorizontalScroll
