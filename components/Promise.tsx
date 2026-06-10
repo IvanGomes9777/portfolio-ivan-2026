@@ -2,10 +2,23 @@
 
 import { motion, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Clock, Zap, ShieldCheck, Lock, Search, FileCheck } from "lucide-react";
+import {
+  Clock, Zap, ShieldCheck, Lock, Search, FileCheck,
+  Smartphone, MapPin, Mail, Gauge, LifeBuoy,
+} from "lucide-react";
 import { fadeUp, stagger } from "@/lib/motion";
 import { usePanelProgress } from "./PanelProgress";
 import Orbs from "./backgrounds/Orbs";
+
+// Key things every website ships with — fills the space under the timeline.
+const included = [
+  { icon: Smartphone, label: "Responsive auf jedem Gerät" },
+  { icon: Search, label: "SEO & GEO optimiert" },
+  { icon: MapPin, label: "Google Business & Maps" },
+  { icon: Gauge, label: "95+ Lighthouse Performance" },
+  { icon: Mail, label: "Kontaktformular mit Spam-Schutz" },
+  { icon: LifeBuoy, label: "Support nach dem Launch" },
+];
 
 export default function Promise() {
   const ref = useRef<HTMLDivElement>(null);
@@ -71,6 +84,25 @@ export default function Promise() {
                   style={{ left: barWidth }}
                   className="absolute -top-1 size-3.5 -translate-x-1/2 rounded-full bg-white shadow-[0_0_16px_rgba(255,255,255,0.8)]"
                 />
+              </div>
+            </div>
+
+            {/* Included features — fills the space under the timeline */}
+            <div className="mt-8 pt-6 border-t border-[var(--color-line)]">
+              <div className="text-xs uppercase tracking-[0.2em] text-[var(--color-ink-dim)] mb-4">
+                Bei jeder Website inklusive
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3.5">
+                {included.map(({ icon: Icon, label }) => (
+                  <div key={label} className="flex items-center gap-2.5">
+                    <span className="inline-flex items-center justify-center size-8 shrink-0 rounded-xl border border-[var(--color-line)] bg-[var(--color-bg-soft)]">
+                      <Icon className="size-4 text-[var(--color-accent)]" />
+                    </span>
+                    <span className="text-sm text-[var(--color-ink-soft)] leading-snug">
+                      {label}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
