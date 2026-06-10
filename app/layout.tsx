@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import { faq } from "@/lib/faq";
 
 const body = Inter({
   subsets: ["latin"],
@@ -231,9 +232,32 @@ const serviceSchema = {
   },
 };
 
+// FAQPage built from the same data as the visible FAQ section so structured
+// data always matches on-page content. Strong GEO/AEO signal — AI answer
+// engines (ChatGPT, Perplexity, AI Overviews) cite FAQ answers directly.
+const faqSchema = {
+  "@type": "FAQPage",
+  "@id": `${BASE_URL}/#faq`,
+  inLanguage: "de-DE",
+  mainEntity: faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
 const jsonLd = {
   "@context": "https://schema.org",
-  "@graph": [personSchema, localBusinessSchema, websiteSchema, serviceSchema],
+  "@graph": [
+    personSchema,
+    localBusinessSchema,
+    websiteSchema,
+    serviceSchema,
+    faqSchema,
+  ],
 };
 
 export default function RootLayout({
