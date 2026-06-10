@@ -12,7 +12,7 @@ const LightningEffect = dynamic(() => import("./LightningEffect"), { ssr: false 
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-full min-h-[100svh] flex items-center justify-center px-4 pt-32 pb-24 overflow-hidden">
+    <section className="relative w-full h-full min-h-[100svh] flex items-center justify-center px-4 pt-24 pb-16 overflow-hidden">
       {/* WebGL shader background */}
       <HeroShader />
 
@@ -28,13 +28,13 @@ export default function Hero() {
         animate="show"
         className="relative max-w-4xl mx-auto text-center"
       >
-        <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)]/60 backdrop-blur-md text-xs text-[var(--color-ink-soft)] mb-8">
+        <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)]/60 backdrop-blur-md text-xs text-[var(--color-ink-soft)] mb-6">
           <Sparkles className="size-3 text-[var(--color-accent)]" />
           <span>Verfügbar für neue Projekte</span>
           <span className="size-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
         </motion.div>
 
-        <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-medium tracking-[-0.04em] leading-[1.02]">
+        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-[-0.04em] leading-[1.04]">
           <SplitText text="Websites, die" />{" "}
           <span className="relative inline-block overflow-hidden align-baseline pb-[0.12em]">
             <motion.span
@@ -61,7 +61,7 @@ export default function Hero() {
           initial="hidden"
           animate="show"
           transition={{ delay: 0.9, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-7 max-w-2xl mx-auto text-base sm:text-lg text-[var(--color-ink-soft)] leading-relaxed"
+          className="mt-5 max-w-2xl mx-auto text-base sm:text-lg text-[var(--color-ink-soft)] leading-relaxed"
         >
           Ich bin Webdesigner & Entwickler und baue für lokale Unternehmen
           maßgeschneiderte, performante Websites, die digital sichtbar machen
@@ -90,7 +90,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.98, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-7 flex justify-center"
+          className="mt-6 flex justify-center"
         >
           <motion.div
             // Gentle "breathing" glow that pulses to draw the eye.
@@ -145,7 +145,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.05, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3"
+          className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3"
         >
           <MagneticButton strength={0.35}>
             <a
@@ -173,7 +173,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.4, duration: 1 }}
-          className="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-[var(--color-ink-dim)] uppercase tracking-[0.18em]"
+          className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-2.5 text-xs text-[var(--color-ink-dim)] uppercase tracking-[0.18em]"
         >
           <span>Mehr Kundenanfragen</span>
           <span className="size-1 rounded-full bg-[var(--color-ink-dim)]" />

@@ -33,7 +33,7 @@ const demoProjects: DemoProject[] = [
   {
     name: "Gebäudereinigung Beispiel",
     branche: "Gebäudereinigung",
-    status: "Verfügbar",
+    status: "In Auftrag",
     url: "https://geb-udereinigung-beispiel.vercel.app/",
     price: "€2.500",
     accent: "from-sky-500/30 via-blue-500/20 to-indigo-500/10",
@@ -42,7 +42,7 @@ const demoProjects: DemoProject[] = [
   {
     name: "Friseur Vorlage",
     branche: "Friseursalon",
-    status: "Noch frei",
+    status: "In Auftrag",
     url: "https://friseur-beispiel-2r.vercel.app/",
     price: "€2.500",
     accent: "from-amber-500/30 via-orange-500/20 to-rose-500/10",
@@ -196,7 +196,15 @@ export default function DemoProjects() {
                 <div className="text-[10px] leading-tight text-[var(--color-ink-dim)] flex items-center gap-1.5">
                   <span className="truncate">{p.branche}</span>
                   <span className="size-[3px] shrink-0 rounded-full bg-[var(--color-ink-dim)]" />
-                  <span className="shrink-0 text-amber-300/90">{p.status}</span>
+                  <span
+                    className={`shrink-0 ${
+                      p.status === "In Auftrag"
+                        ? "text-[var(--color-ink-dim)]"
+                        : "text-amber-300/90"
+                    }`}
+                  >
+                    {p.status}
+                  </span>
                 </div>
                 <div className="text-[11px] leading-tight text-[var(--color-ink-soft)]">
                   ab{" "}
