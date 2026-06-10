@@ -73,7 +73,7 @@ export default function Navbar() {
             <img
               src="/webdesignbyivan.png"
               alt="Webdesign by Ivan"
-              className="h-6 md:h-7 w-auto object-contain"
+              className="h-9 md:h-11 w-auto object-contain"
             />
           </a>
 
