@@ -38,12 +38,12 @@ export default function SplitText({
       initial="hidden"
       animate="show"
       className={className}
-      aria-label={text}
     >
+      <span className="sr-only">{text}</span>
+      <span aria-hidden="true">
       {words.map((w, i) => (
         <span
           key={i}
-          aria-hidden
           className="inline-block overflow-hidden align-baseline pb-[0.12em]"
         >
           <motion.span
@@ -55,6 +55,7 @@ export default function SplitText({
           </motion.span>
         </span>
       ))}
+      </span>
     </motion.span>
   );
 }
