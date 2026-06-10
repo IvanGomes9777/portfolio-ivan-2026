@@ -23,9 +23,10 @@ export default function Hero() {
           so only the neon emblem glows behind the content. Fades in as the
           intro overlay finishes, so the logo appears to settle into the hero. */}
       <motion.img
-        src="/webdesignbyivan.png"
+        src="/logo-web.webp"
         alt=""
         aria-hidden
+        decoding="async"
         initial={{ opacity: 0, scale: 1.08 }}
         animate={{ opacity: 0.4, scale: 1 }}
         transition={{ delay: 1.9, duration: 1.4, ease: [0.16, 1, 0.3, 1] }}

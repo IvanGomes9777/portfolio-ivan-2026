@@ -74,8 +74,9 @@ export default function Navbar() {
                 drops the dark image background so only the neon mark shows. */}
             <span className="relative block size-7 shrink-0 overflow-hidden rounded-md">
               <img
-                src="/webdesignbyivan.png"
+                src="/logo-web.webp"
                 alt="Webdesign by Ivan Logo"
+                decoding="async"
                 className="absolute left-1/2 top-[42%] h-[230%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover mix-blend-screen"
               />
             </span>
