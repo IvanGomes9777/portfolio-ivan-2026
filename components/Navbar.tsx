@@ -71,7 +71,7 @@ export default function Navbar() {
             className="flex items-center shrink-0"
           >
             <img
-              src="/webdesign-by-ivan.png"
+              src="/webdesignbyivan.png"
               alt="Webdesign by Ivan"
               className="h-6 md:h-7 w-auto object-contain"
             />
