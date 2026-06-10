@@ -2,22 +2,16 @@
 
 import { motion, useTransform } from "framer-motion";
 import { useRef } from "react";
-import {
-  Clock, Zap, ShieldCheck, Lock, Search, FileCheck,
-  Smartphone, MapPin, Mail, Gauge, LifeBuoy, KeyRound,
-} from "lucide-react";
+import { Clock, Zap, ShieldCheck, Lock, Search, FileCheck, BadgeEuro, Check } from "lucide-react";
 import { fadeUp, stagger } from "@/lib/motion";
 import { usePanelProgress } from "./PanelProgress";
 import Orbs from "./backgrounds/Orbs";
 
-// Key things every website ships with — fills the space under the timeline.
-const included = [
-  { icon: Smartphone, label: "Responsive Design", desc: "Perfekt auf Handy, Tablet & Desktop" },
-  { icon: MapPin, label: "Google Business", desc: "Lokal sichtbar in deiner Region" },
-  { icon: Mail, label: "Kontaktformular", desc: "Mit Spam-Schutz & DSGVO-konform" },
-  { icon: Gauge, label: "Top Performance", desc: "95+ Lighthouse, blitzschnell geladen" },
-  { icon: LifeBuoy, label: "Support nach Launch", desc: "Persönliche Betreuung inklusive" },
-  { icon: KeyRound, label: "Übergabe & Kontrolle", desc: "Deine Website gehört dir — voll" },
+// Short commitments shown under the Festpreis promise.
+const commitments = [
+  "Kostenloses Erstgespräch",
+  "Ein fester Ansprechpartner",
+  "Du behältst die volle Kontrolle",
 ];
 
 export default function Promise() {
@@ -87,26 +81,32 @@ export default function Promise() {
               </div>
             </div>
 
-            {/* Included features — stretches to fill the remaining card height */}
-            <div className="mt-8 pt-6 border-t border-[var(--color-line)] flex flex-1 flex-col">
-              <div className="text-xs uppercase tracking-[0.2em] text-[var(--color-ink-dim)] mb-4">
-                Bei jeder Website inklusive
-              </div>
-              <div className="grid flex-1 auto-rows-fr grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-                {included.map(({ icon: Icon, label, desc }) => (
-                  <div key={label} className="flex items-center gap-3">
-                    <span className="inline-flex items-center justify-center size-9 shrink-0 rounded-xl border border-[var(--color-line)] bg-[var(--color-bg-soft)]">
-                      <Icon className="size-4 text-[var(--color-accent)]" />
-                    </span>
-                    <div className="min-w-0">
-                      <div className="text-sm font-medium text-[var(--color-ink)] leading-snug">
-                        {label}
-                      </div>
-                      <div className="text-xs text-[var(--color-ink-soft)] leading-snug mt-0.5">
-                        {desc}
-                      </div>
-                    </div>
+            {/* Festpreis promise — fills the remaining card height */}
+            <div className="mt-8 pt-6 border-t border-[var(--color-line)] flex flex-1 flex-col justify-center gap-5">
+              <div className="flex items-start gap-4">
+                <span className="inline-flex items-center justify-center size-12 shrink-0 rounded-2xl border border-[var(--color-line-strong)] bg-[var(--color-bg-soft)]">
+                  <BadgeEuro className="size-6 text-[var(--color-accent)]" />
+                </span>
+                <div>
+                  <div className="font-display text-2xl md:text-3xl tracking-[-0.02em] font-medium">
+                    Festpreis — garantiert.
                   </div>
+                  <p className="mt-1.5 text-sm md:text-base text-[var(--color-ink-soft)] leading-relaxed">
+                    Der Preis, den wir vereinbaren, ist der Preis, den du zahlst.
+                    Keine versteckten Kosten, kein Stundenlohn, keine Nachkalkulation.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-2.5">
+                {commitments.map((c) => (
+                  <span
+                    key={c}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)]/60 text-xs text-[var(--color-ink-soft)]"
+                  >
+                    <Check className="size-3.5 text-[var(--color-accent)]" />
+                    {c}
+                  </span>
                 ))}
               </div>
             </div>
