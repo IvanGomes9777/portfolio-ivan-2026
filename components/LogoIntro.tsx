@@ -63,7 +63,7 @@ export default function LogoIntro() {
             animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
             exit={{ scale: 0.46, opacity: 0, y: -50, filter: "blur(6px)" }}
             transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-            className="relative w-[min(94vw,860px)] h-auto object-contain mix-blend-screen drop-shadow-[0_0_50px_rgba(139,92,246,0.4)] [mask-image:radial-gradient(ellipse_72%_78%_at_50%_48%,black_55%,transparent_88%)]"
+            className="relative w-[min(160vw,1720px)] max-w-none h-auto object-contain mix-blend-screen drop-shadow-[0_0_50px_rgba(139,92,246,0.4)] [mask-image:radial-gradient(ellipse_72%_78%_at_50%_48%,black_55%,transparent_88%)]"
           />
         </motion.div>
       )}
