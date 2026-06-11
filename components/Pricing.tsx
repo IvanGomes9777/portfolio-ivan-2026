@@ -236,6 +236,10 @@ export default function Pricing() {
               );
             })}
           </div>
+          <p className="mt-3 text-center text-xs text-[var(--color-ink-soft)] leading-snug">
+            Unabhängig von der gewählten Zahlungsoption wird das Projekt erst
+            nach Eingang einer Anzahlung gestartet.
+          </p>
         </motion.div>
 
         {/* info box */}
