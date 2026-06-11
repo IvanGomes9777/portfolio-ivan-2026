@@ -15,7 +15,7 @@ export default function DatenschutzPage() {
   return (
     <LegalLayout
       title="Datenschutzerklärung"
-      subtitle="Stand: 6. Juni 2026"
+      subtitle="Stand: 11. Juni 2026"
     >
       <Section title="1. Verantwortlicher im Sinne der DSGVO">
         <p>
@@ -106,27 +106,48 @@ export default function DatenschutzPage() {
         </p>
       </Section>
 
-      <Section title="5. Kontaktaufnahme">
+      <Section title="5. Kontaktformular">
         <p>
-          Das Kontaktformular auf dieser Website öffnet beim Absenden lediglich
-          dein E-Mail-Programm mit einer vorausgefüllten Nachricht (mailto:).
-          Es findet{" "}
-          <strong className="text-[var(--color-ink)]">
-            keine serverseitige Speicherung
-          </strong>{" "}
-          der eingegebenen Daten auf dieser Website statt.
+          Wenn du das Kontaktformular nutzt, werden die von dir eingegebenen
+          Daten (Name, E-Mail-Adresse, optional Telefonnummer, Angaben zu
+          Projekttyp/Paket und deine Nachricht) an meinen Server übermittelt
+          und dort verarbeitet, um dir eine Anfrage-E-Mail zukommen zu lassen.
+          Eine dauerhafte Speicherung der Formulardaten in einer Datenbank auf
+          dieser Website findet nicht statt; die Daten werden ausschließlich zur
+          Zustellung und Beantwortung deiner Anfrage verarbeitet.
         </p>
         <p>
-          Wenn du mir per E-Mail schreibst (direkt oder über das Formular),
-          werden die von dir freiwillig übermittelten Daten (Name, E-Mail,
-          Nachricht) ausschließlich zur Bearbeitung deiner Anfrage verwendet
-          und so lange gespeichert, wie es zur Beantwortung erforderlich ist
-          bzw. gesetzliche Aufbewahrungsfristen bestehen.
+          Zum Schutz vor Missbrauch (Spam) wird beim Absenden kurzfristig deine
+          IP-Adresse verarbeitet (Begrenzung der Anfragezahl pro Zeitraum) und
+          eine technische Prüfung der Anfrage-Herkunft durchgeführt.
+        </p>
+        <p>
+          Für den E-Mail-Versand setze ich den Dienst{" "}
+          <strong className="text-[var(--color-ink)]">Resend</strong> (Resend,
+          Inc., 2261 Market Street #5039, San Francisco, CA 94114, USA) als
+          Auftragsverarbeiter im Sinne des Art. 28 DSGVO ein. Mit Resend besteht
+          ein Auftragsverarbeitungsvertrag. Eine etwaige Übermittlung in die USA
+          wird durch die Standardvertragsklauseln der EU-Kommission (Art. 46
+          Abs. 2 lit. c DSGVO) abgesichert. Datenschutzhinweise von Resend:{" "}
+          <a
+            href="https://resend.com/legal/privacy-policy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[var(--color-accent-soft)] hover:underline"
+          >
+            resend.com/legal/privacy-policy
+          </a>
+          .
+        </p>
+        <p>
+          Die übermittelten Daten werden so lange gespeichert, wie es zur
+          Beantwortung deiner Anfrage erforderlich ist bzw. gesetzliche
+          Aufbewahrungsfristen bestehen.
         </p>
         <p className="text-sm text-[var(--color-ink-dim)]">
           Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche
           Maßnahmen) und Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an
-          der Beantwortung von Anfragen).
+          der Beantwortung von Anfragen sowie am Schutz vor Missbrauch).
         </p>
       </Section>
 
@@ -273,7 +294,7 @@ export default function DatenschutzPage() {
       <Section title="11. Aktualität und Änderung dieser Datenschutzerklärung">
         <p>
           Diese Datenschutzerklärung ist aktuell gültig und hat den Stand{" "}
-          <strong className="text-[var(--color-ink)]">6. Juni 2026</strong>.
+          <strong className="text-[var(--color-ink)]">11. Juni 2026</strong>.
           Durch Weiterentwicklung der Website oder geänderte gesetzliche bzw.
           behördliche Vorgaben kann es notwendig werden, diese Erklärung
           anzupassen. Die jeweils aktuelle Fassung ist stets unter dieser URL

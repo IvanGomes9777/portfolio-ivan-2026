@@ -10,6 +10,7 @@ const EMAIL = "ivanvilargomes@gmail.com";
 
 type Wunsch = "" | "neu" | "relaunch";
 type Paket = "" | "starter" | "standard" | "premium";
+type Auftraggeber = "" | "unternehmen" | "privat";
 type Status = "idle" | "sending" | "success" | "error";
 
 export default function CTA() {
@@ -20,6 +21,7 @@ export default function CTA() {
     msg: string;
     wunsch: Wunsch;
     paket: Paket;
+    auftraggeber: Auftraggeber;
     // Honeypot — must stay empty for real users.
     company: string;
   }>({
@@ -29,6 +31,7 @@ export default function CTA() {
     msg: "",
     wunsch: "",
     paket: "",
+    auftraggeber: "",
     company: "",
   });
   const [phoneOpen, setPhoneOpen] = useState(false);
@@ -38,6 +41,14 @@ export default function CTA() {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (status === "sending") return;
+
+    if (!form.auftraggeber) {
+      setStatus("error");
+      setErrorMsg(
+        "Bitte gib an, ob du als Unternehmen/Gewerbe oder als Privatperson anfragst.",
+      );
+      return;
+    }
 
     setStatus("sending");
     setErrorMsg("");
@@ -56,6 +67,7 @@ export default function CTA() {
           msg: form.msg,
           wunsch: form.wunsch,
           paket: form.paket,
+          auftraggeber: form.auftraggeber,
           company: form.company,
         }),
       });
@@ -63,7 +75,7 @@ export default function CTA() {
 
       if (res.ok && data.success) {
         setStatus("success");
-        setForm({ name: "", email: "", phone: "", msg: "", wunsch: "", paket: "", company: "" });
+        setForm({ name: "", email: "", phone: "", msg: "", wunsch: "", paket: "", auftraggeber: "", company: "" });
         setPhoneOpen(false);
       } else {
         setStatus("error");
@@ -258,6 +270,11 @@ export default function CTA() {
                         onChange={(v) => setForm({ ...form, paket: v })}
                         disabled={status === "sending"}
                       />
+                      <AuftraggeberSelect
+                        value={form.auftraggeber}
+                        onChange={(v) => setForm({ ...form, auftraggeber: v })}
+                        disabled={status === "sending"}
+                      />
                       <Field
                         label="Nachricht"
                         multiline
@@ -430,6 +447,74 @@ function WunschSelect({
                   transition={{ type: "spring", damping: 22, stiffness: 280 }}
                 />
               )}
+              <div className="relative flex items-center justify-between gap-2">
+                <div className="min-w-0">
+                  <div
+                    className={`font-display text-sm tracking-tight ${
+                      active ? "text-[var(--color-ink)]" : "text-[var(--color-ink-soft)]"
+                    }`}
+                  >
+                    {o.title}
+                  </div>
+                  <div className="mt-0.5 text-[11px] text-[var(--color-ink-dim)] leading-snug">
+                    {o.sub}
+                  </div>
+                </div>
+                <div
+                  className={`shrink-0 size-4 rounded-full border-2 transition-all flex items-center justify-center ${
+                    active
+                      ? "border-[var(--color-accent)] bg-[var(--color-accent)]"
+                      : "border-[var(--color-line-strong)]"
+                  }`}
+                >
+                  {active && <span className="size-1.5 rounded-full bg-white" />}
+                </div>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function AuftraggeberSelect({
+  value,
+  onChange,
+  disabled,
+}: {
+  value: Auftraggeber;
+  onChange: (v: Auftraggeber) => void;
+  disabled?: boolean;
+}) {
+  const options: { id: Exclude<Auftraggeber, "">; title: string; sub: string }[] = [
+    { id: "unternehmen", title: "Unternehmen / Gewerbe", sub: "Anfrage als Unternehmer (§ 14 BGB)" },
+    { id: "privat", title: "Privatperson", sub: "Anfrage als Verbraucher (§ 13 BGB)" },
+  ];
+
+  return (
+    <div>
+      <span className="block text-xs uppercase tracking-[0.2em] text-[var(--color-ink-dim)] mb-2">
+        Ich frage an als
+        <span className="text-[var(--color-accent)] ml-1">*</span>
+      </span>
+      <div className="grid grid-cols-2 gap-3">
+        {options.map((o) => {
+          const active = value === o.id;
+          return (
+            <button
+              key={o.id}
+              type="button"
+              onClick={() => onChange(active ? "" : o.id)}
+              data-cursor-hover
+              disabled={disabled}
+              className={`relative text-left rounded-2xl px-4 py-3 border transition-all overflow-hidden disabled:opacity-60 ${
+                active
+                  ? "border-[var(--color-accent)]/60 bg-[var(--color-accent)]/10 shadow-[0_0_0_4px_rgba(139,92,246,0.08)]"
+                  : "border-[var(--color-line)] bg-[var(--color-surface)]/70 hover:border-[var(--color-line-strong)] hover:bg-[var(--color-surface)]"
+              }`}
+              aria-pressed={active}
+            >
               <div className="relative flex items-center justify-between gap-2">
                 <div className="min-w-0">
                   <div
