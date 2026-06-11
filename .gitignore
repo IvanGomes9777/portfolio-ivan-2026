@@ -6,5 +6,7 @@ out
 *.tsbuildinfo
 next-env.d.ts
 
-# Locally-installed SEO/GEO skill plugin (not part of the site)
-.claude/skills/
+# Locally-installed SEO/GEO skill plugins (not part of the site)
+.claude/skills/*
+# …but keep the reusable legal-compliance skill versioned
+!.claude/skills/webdesign-recht-de/
