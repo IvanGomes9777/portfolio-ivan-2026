@@ -40,7 +40,7 @@ const demoProjects: DemoProject[] = [
     Icon: SprayCan,
   },
   {
-    name: "Friseur Vorlage",
+    name: "Friseur Vorlage 2",
     branche: "Friseursalon",
     status: "In Auftrag",
     url: "https://friseur-beispiel-2r.vercel.app/",
@@ -58,7 +58,7 @@ const demoProjects: DemoProject[] = [
     Icon: Dog,
   },
   {
-    name: "Friseur Vorlage",
+    name: "Friseur Vorlage 3",
     branche: "Haarstudio",
     status: "Noch frei",
     url: "https://friseur-beispiel-3.vercel.app/",
@@ -67,7 +67,7 @@ const demoProjects: DemoProject[] = [
     Icon: Sparkles,
   },
   {
-    name: "Friseur Vorlage",
+    name: "Friseur Vorlage 4",
     branche: "Friseur",
     status: "In Auftrag",
     url: "https://friseur-beispiel-4.vercel.app/",
@@ -76,7 +76,7 @@ const demoProjects: DemoProject[] = [
     Icon: Scissors,
   },
   {
-    name: "Friseur Vorlage",
+    name: "Friseur Vorlage 1",
     branche: "Friseursalon",
     status: "Noch frei",
     url: "https://friseur-beispiel-1.vercel.app/",
