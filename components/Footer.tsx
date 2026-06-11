@@ -25,6 +25,9 @@ export default function Footer() {
             <Link href="/datenschutz" className="hover:text-[var(--color-ink-soft)] transition">
               Datenschutz
             </Link>
+            <Link href="/agb" className="hover:text-[var(--color-ink-soft)] transition">
+              AGB
+            </Link>
           </nav>
         </div>
       </div>

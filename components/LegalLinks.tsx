@@ -20,6 +20,14 @@ export default function LegalLinks() {
       >
         Datenschutz
       </Link>
+      <span className="opacity-40">·</span>
+      <Link
+        href="/agb"
+        data-cursor-hover
+        className="hover:text-[var(--color-ink-soft)] transition-colors"
+      >
+        AGB
+      </Link>
     </div>
   );
 }
