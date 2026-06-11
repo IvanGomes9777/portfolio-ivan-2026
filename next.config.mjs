@@ -22,12 +22,15 @@ const csp = [
   "form-action 'self'",
   // vercel.live: Vercel's preview comment / live feedback widget (preview
   // deployments only — script is not injected in production).
-  "script-src 'self' 'unsafe-inline' https://vercel.live",
+  // googletagmanager.com / google-analytics.com: Google Tag Manager loader +
+  // any GA4/Ads tags fired through the container (script, tracking pixels,
+  // measurement beacons, and the <noscript> fallback iframe).
+  "script-src 'self' 'unsafe-inline' https://vercel.live https://www.googletagmanager.com",
   "style-src 'self' 'unsafe-inline' https://vercel.live",
-  "img-src 'self' data: blob: https://vercel.live https://vercel.com",
+  "img-src 'self' data: blob: https://vercel.live https://vercel.com https://www.googletagmanager.com https://www.google-analytics.com",
   "font-src 'self' data: https://vercel.live",
-  "connect-src 'self' https://vercel.live wss://ws-us3.pusher.com",
-  "frame-src 'self' https://vercel.live",
+  "connect-src 'self' https://vercel.live wss://ws-us3.pusher.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com",
+  "frame-src 'self' https://vercel.live https://www.googletagmanager.com",
   "upgrade-insecure-requests",
 ].join("; ");
 
