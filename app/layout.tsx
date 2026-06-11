@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import { faq } from "@/lib/faq";
+
+// Set NEXT_PUBLIC_GTM_ID (Format GTM-XXXXXXX) to load Google Tag Manager.
+// When unset (local dev / previews without the var) GTM is skipped entirely.
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
 const body = Inter({
   subsets: ["latin"],
@@ -268,6 +273,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de" className={`${body.variable} ${display.variable}`}>
+      {GTM_ID && <GoogleTagManager gtmId={GTM_ID} />}
       <body className="antialiased">
         <script
           type="application/ld+json"
