@@ -197,7 +197,7 @@ export default function Promise() {
           </p>
         </motion.div>
 
-        {/* Domain & DNS-Setup — wir kümmern uns um die technische Einrichtung */}
+        {/* Domain & DNS-Setup — ich kümmere mich um die technische Einrichtung */}
         <motion.div
           variants={fadeUp}
           className="md:col-span-12 relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-6 flex flex-col sm:flex-row sm:items-center gap-4 group hover:border-[var(--color-line-strong)] transition-colors"
@@ -210,13 +210,13 @@ export default function Promise() {
             <div>
               <div className="font-display text-xl tracking-tight">Domain &amp; DNS-Setup</div>
               <div className="text-xs uppercase tracking-[0.18em] text-[var(--color-ink-dim)]">
-                Wir kümmern uns drum
+                Ich kümmere mich drum
               </div>
             </div>
           </div>
           <p className="relative text-sm text-[var(--color-ink-soft)] leading-relaxed">
             Du suchst dir eine Domain aus (z.&nbsp;B. mein-salon.de) und kaufst sie bei
-            einem Anbieter deiner Wahl. Die technische Einrichtung übernehmen wir — du
+            einem Anbieter deiner Wahl. Die technische Einrichtung übernehme ich — du
             musst dich um nichts kümmern. Nach wenigen Stunden ist deine Website online
             und erreichbar. DNS ist einfach das System, das deine Domain-Adresse mit
             deiner Website verbindet — wie eine Telefonnummer, die jemanden zu dir
