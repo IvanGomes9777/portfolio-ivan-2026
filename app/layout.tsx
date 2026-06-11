@@ -5,9 +5,11 @@ import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import { faq } from "@/lib/faq";
 
-// Set NEXT_PUBLIC_GTM_ID (Format GTM-XXXXXXX) to load Google Tag Manager.
-// When unset (local dev / previews without the var) GTM is skipped entirely.
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
+// Google Tag Manager container. Defaults to the production container ID; set
+// NEXT_PUBLIC_GTM_ID to override per environment (the env var takes precedence,
+// e.g. to point a staging deploy at a different container or to disable GTM
+// locally by setting it to an empty string).
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-KZTXVPCR";
 
 const body = Inter({
   subsets: ["latin"],
