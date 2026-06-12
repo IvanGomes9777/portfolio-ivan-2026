@@ -3,6 +3,7 @@ import { Resend } from "resend";
 import { rateLimit, getClientIp } from "@/lib/rate-limit";
 import { isSameOrigin } from "@/lib/csrf";
 import { validateContact } from "@/lib/validation";
+import { renderContactEmail } from "@/lib/contact-email";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -29,15 +30,6 @@ const AUFTRAGGEBER_LABEL: Record<string, string> = {
   unternehmen: "Unternehmen / Gewerbe (Unternehmer, § 14 BGB)",
   privat: "Privatperson (Verbraucher, § 13 BGB)",
 };
-
-function escapeHtml(s: string) {
-  return String(s)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
 
 // Generic JSON error — never leaks internal details to the client.
 function fail(message: string, status: number) {
@@ -97,62 +89,16 @@ export async function POST(req: Request) {
   const auftraggeberLabel = AUFTRAGGEBER_LABEL[auftraggeber] ?? "";
   const tag = SUBJECT_TAG[wunsch] ? ` — ${SUBJECT_TAG[wunsch]}` : "";
 
-  const html = `
-    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.55; color: #1a1a1a; max-width: 580px; margin: 0 auto; padding: 32px 24px; background: #fafafa;">
-      <div style="background: #ffffff; border: 1px solid #e5e5e5; border-radius: 16px; padding: 32px;">
-        <p style="font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: #8b5cf6; margin: 0 0 4px;">Neue Anfrage</p>
-        <h1 style="font-size: 22px; margin: 0 0 24px; color: #111;">Portfolio-Kontakt</h1>
-
-        <table style="width: 100%; font-size: 14px; border-spacing: 0;">
-          <tr>
-            <td style="padding: 8px 0; color: #6b6b6b; width: 110px; vertical-align: top;">Name</td>
-            <td style="padding: 8px 0; color: #111; font-weight: 500;">${escapeHtml(name)}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px 0; color: #6b6b6b; vertical-align: top;">E-Mail</td>
-            <td style="padding: 8px 0;"><a href="mailto:${escapeHtml(email)}" style="color: #8b5cf6; text-decoration: none;">${escapeHtml(email)}</a></td>
-          </tr>
-          ${
-            phone
-              ? `<tr>
-            <td style="padding: 8px 0; color: #6b6b6b; vertical-align: top;">Telefon</td>
-            <td style="padding: 8px 0;"><a href="tel:${escapeHtml(phone)}" style="color: #8b5cf6; text-decoration: none; font-weight: 500;">${escapeHtml(phone)}</a> <span style="color:#6b6b6b; font-size:12px;">· möchte angerufen werden</span></td>
-          </tr>`
-              : ""
-          }
-          ${
-            auftraggeberLabel
-              ? `<tr>
-            <td style="padding: 8px 0; color: #6b6b6b; vertical-align: top;">Auftraggeber</td>
-            <td style="padding: 8px 0; color: #111; font-weight: 500;">${escapeHtml(auftraggeberLabel)}</td>
-          </tr>`
-              : ""
-          }
-          <tr>
-            <td style="padding: 8px 0; color: #6b6b6b; vertical-align: top;">Projekttyp</td>
-            <td style="padding: 8px 0; color: #111;">${escapeHtml(projekttyp)}</td>
-          </tr>
-          ${
-            paketLabel
-              ? `<tr>
-            <td style="padding: 8px 0; color: #6b6b6b; vertical-align: top;">Paket</td>
-            <td style="padding: 8px 0; color: #111; font-weight: 500;">${escapeHtml(paketLabel)}</td>
-          </tr>`
-              : ""
-          }
-        </table>
-
-        <div style="border-top: 1px solid #e5e5e5; margin: 24px 0;"></div>
-
-        <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #6b6b6b; margin: 0 0 10px;">Nachricht</p>
-        <div style="white-space: pre-wrap; font-size: 14px; color: #1a1a1a;">${escapeHtml(msg)}</div>
-      </div>
-
-      <p style="font-size: 11px; color: #999; text-align: center; margin: 16px 0 0;">
-        Gesendet via Portfolio-Kontaktformular · Antwort geht direkt an ${escapeHtml(email)}
-      </p>
-    </div>
-  `;
+  const html = renderContactEmail({
+    name,
+    email,
+    phone,
+    msg,
+    projekttyp,
+    paketLabel,
+    auftraggeberLabel,
+    baseUrl: process.env.NEXT_PUBLIC_BASE_URL,
+  });
 
   const text = `Neue Anfrage über das Portfolio\n\nName: ${name}\nE-Mail: ${email}${phone ? `\nTelefon: ${phone} (möchte angerufen werden)` : ""}${auftraggeberLabel ? `\nAuftraggeber: ${auftraggeberLabel}` : ""}\nProjekttyp: ${projekttyp}${paketLabel ? `\nPaket: ${paketLabel}` : ""}\n\n---\n\n${msg}\n`;
 
