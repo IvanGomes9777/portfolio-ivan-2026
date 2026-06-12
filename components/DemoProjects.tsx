@@ -157,7 +157,10 @@ export default function DemoProjects() {
               Animationen, mobil optimiert. Noch nicht reserviert — wer zuerst
               zusagt, bekommt sie. Ich tausche Logo, Texte und Bilder gegen
               deine eigenen, und in wenigen Tagen ist deine Seite live.
-              Schneller und günstiger als ein Projekt von Grund auf.
+              Schneller und günstiger als ein Projekt von Grund auf. Und falls
+              du keine Vorlage willst, sondern ein komplett eigenes Projekt:
+              Auch das geht — ich entwickle deine Website individuell von Grund
+              auf, ganz nach deinen Vorstellungen.
             </p>
           </div>
 
