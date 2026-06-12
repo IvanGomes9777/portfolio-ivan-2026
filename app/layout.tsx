@@ -1,15 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
-import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import { faq } from "@/lib/faq";
-
-// Google Tag Manager container. Defaults to the production container ID; set
-// NEXT_PUBLIC_GTM_ID to override per environment (the env var takes precedence,
-// e.g. to point a staging deploy at a different container or to disable GTM
-// locally by setting it to an empty string).
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-KZTXVPCR";
 
 const body = Inter({
   subsets: ["latin"],
@@ -275,7 +268,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de" className={`${body.variable} ${display.variable}`}>
-      {GTM_ID && <GoogleTagManager gtmId={GTM_ID} />}
       <body className="antialiased">
         <script
           type="application/ld+json"
