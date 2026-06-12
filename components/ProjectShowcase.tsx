@@ -21,6 +21,7 @@ type Project = {
   year: string;
   url: string;
   accent: string; // tailwind gradient classes
+  image: string; // hero screenshot used as laptop background
   Icon: React.ComponentType<{ className?: string }>;
 };
 
@@ -31,6 +32,7 @@ const projects: Project[] = [
     year: "2026",
     url: "https://ivan-gomes.developerakademie.net/join%20crm/",
     accent: "from-sky-500/30 via-cyan-500/20 to-blue-500/10",
+    image: "/screenshots/join-crm.webp",
     Icon: Users,
   },
   {
@@ -39,6 +41,7 @@ const projects: Project[] = [
     year: "2025",
     url: "https://ivan-gomes.developerakademie.net/el-pollo-loco-PEPE.spiel/",
     accent: "from-yellow-500/30 via-amber-500/20 to-orange-500/10",
+    image: "/screenshots/el-pollo-loco.webp",
     Icon: Gamepad2,
   },
   {
@@ -47,6 +50,7 @@ const projects: Project[] = [
     year: "2025",
     url: "https://ivan-gomes.developerakademie.net/pokedex-richtig/",
     accent: "from-red-500/30 via-rose-500/20 to-pink-500/10",
+    image: "/screenshots/pokedex.webp",
     Icon: Search,
   },
 ];
@@ -165,47 +169,54 @@ function ProjectFrame({ project, view }: { project: Project; view: View }) {
       aria-label={`${project.name} live öffnen`}
       className="group relative block w-full h-full overflow-hidden bg-zinc-950 cursor-pointer"
     >
-      {/* Project accent gradient backdrop */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${project.accent}`} />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_35%,rgba(139,92,246,0.18),transparent_70%)]" />
+      {/* Laptop view: real hero screenshot as the screen content */}
+      {!isPhone ? (
+        <>
+          <img
+            src={project.image}
+            alt={`${project.name} — Vorschau der Website`}
+            loading="lazy"
+            draggable={false}
+            className="absolute inset-0 w-full h-full object-cover object-top select-none transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+          />
+        </>
+      ) : (
+        <>
+          {/* Phone view: stylised placeholder (screenshots are desktop-format) */}
+          <div className={`absolute inset-0 bg-gradient-to-br ${project.accent}`} />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_35%,rgba(139,92,246,0.18),transparent_70%)]" />
 
-      {/* Subtle dotted texture */}
-      <div
-        className="absolute inset-0 opacity-[0.07]"
-        style={{
-          backgroundImage:
-            "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
-          backgroundSize: "14px 14px",
-        }}
-      />
+          {/* Subtle dotted texture */}
+          <div
+            className="absolute inset-0 opacity-[0.07]"
+            style={{
+              backgroundImage:
+                "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
+              backgroundSize: "14px 14px",
+            }}
+          />
 
-      {/* Faint scanlines */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to bottom, rgba(255,255,255,0.5) 1px, transparent 1px)",
-          backgroundSize: "100% 3px",
-        }}
-      />
+          {/* Faint scanlines */}
+          <div
+            className="absolute inset-0 pointer-events-none opacity-[0.04]"
+            style={{
+              backgroundImage:
+                "linear-gradient(to bottom, rgba(255,255,255,0.5) 1px, transparent 1px)",
+              backgroundSize: "100% 3px",
+            }}
+          />
 
-      {/* Centered content — icon + project name */}
-      <div className={`relative h-full w-full flex flex-col items-center justify-center text-center ${isPhone ? "px-1.5 gap-1.5 sm:gap-2 md:gap-2.5" : "px-3 gap-2.5"}`}>
-        <div
-          className={`rounded-lg sm:rounded-xl border border-white/15 bg-white/[0.06] backdrop-blur-md flex items-center justify-center transition-transform duration-500 group-hover:scale-110 ${
-            isPhone ? "size-6 sm:size-8 md:size-10" : "size-9 sm:size-10"
-          }`}
-        >
-          <Icon className={isPhone ? "size-2.5 sm:size-3.5 md:size-4 text-white/90" : "size-4 text-white/90"} />
-        </div>
-        <div
-          className={`font-display leading-tight text-white/85 tracking-wide truncate max-w-[92%] ${
-            isPhone ? "text-[8px] sm:text-[10px] md:text-xs" : "text-[11px] sm:text-xs"
-          }`}
-        >
-          {project.name}
-        </div>
-      </div>
+          {/* Centered content — icon + project name */}
+          <div className="relative h-full w-full flex flex-col items-center justify-center text-center px-1.5 gap-1.5 sm:gap-2 md:gap-2.5">
+            <div className="rounded-lg sm:rounded-xl border border-white/15 bg-white/[0.06] backdrop-blur-md flex items-center justify-center transition-transform duration-500 group-hover:scale-110 size-6 sm:size-8 md:size-10">
+              <Icon className="size-2.5 sm:size-3.5 md:size-4 text-white/90" />
+            </div>
+            <div className="font-display leading-tight text-white/85 tracking-wide truncate max-w-[92%] text-[8px] sm:text-[10px] md:text-xs">
+              {project.name}
+            </div>
+          </div>
+        </>
+      )}
 
       {/* Hover veil + Live-öffnen badge */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
