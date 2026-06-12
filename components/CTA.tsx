@@ -3,7 +3,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Mail, Send, Check, AlertCircle, Phone, Plus } from "lucide-react";
-import { sendGTMEvent } from "@next/third-parties/google";
 import MagneticButton from "./MagneticButton";
 import Aurora from "./backgrounds/Aurora";
 
@@ -76,16 +75,6 @@ export default function CTA() {
 
       if (res.ok && data.success) {
         setStatus("success");
-        // Conversion-Signal für GTM: nur nach erfolgreichem Versand. Es werden
-        // bewusst keine personenbezogenen Daten (Name/E-Mail) gepusht — nur die
-        // Auswahl-Metadaten, auf die sich später ein Conversion-Trigger stützen kann.
-        sendGTMEvent({
-          event: "contact_submitted",
-          form_id: "kontakt",
-          paket: form.paket || "none",
-          wunsch: form.wunsch || "none",
-          auftraggeber: form.auftraggeber,
-        });
         setForm({ name: "", email: "", phone: "", msg: "", wunsch: "", paket: "", auftraggeber: "", company: "" });
         setPhoneOpen(false);
       } else {
