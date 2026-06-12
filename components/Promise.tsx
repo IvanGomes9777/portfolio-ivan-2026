@@ -23,18 +23,18 @@ export default function Promise() {
   return (
     <>
       <Orbs />
-      <section className="px-4 py-16 md:py-12 max-w-6xl w-full mx-auto" ref={ref}>
+      <section className="px-4 py-6 md:py-5 max-w-6xl w-full mx-auto" ref={ref}>
       <motion.div
-        variants={stagger(0.1)}
+        variants={stagger(0.08)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-50px" }}
-        className="grid grid-cols-1 md:grid-cols-12 gap-4"
+        className="grid grid-cols-1 md:grid-cols-12 gap-3"
       >
         {/* main promise card */}
         <motion.div
           variants={fadeUp}
-          className="md:col-span-8 relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-gradient-to-br from-[var(--color-surface)] to-[var(--color-bg-soft)] p-8 md:p-10 group"
+          className="md:col-span-8 relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-gradient-to-br from-[var(--color-surface)] to-[var(--color-bg-soft)] p-5 md:p-7 group"
         >
           <div className="absolute inset-0 opacity-50 pointer-events-none">
             <div className="absolute -top-24 -right-24 size-72 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.25),transparent_60%)] group-hover:scale-110 transition-transform duration-700" />
@@ -42,12 +42,12 @@ export default function Promise() {
           </div>
 
           <div className="relative flex h-full flex-col">
-            <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[var(--color-accent)] mb-5">
+            <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[var(--color-accent)] mb-3">
               <Clock className="size-3.5" />
               <span>Das Versprechen</span>
             </div>
 
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.05] font-medium">
+            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl tracking-[-0.03em] leading-[1.05] font-medium">
               Deine neue Website —
               <br />
               <span className="bg-gradient-to-r from-[var(--color-ink)] via-[var(--color-accent-soft)] to-[var(--color-ink)] bg-clip-text text-transparent">
@@ -55,14 +55,14 @@ export default function Promise() {
               </span>
             </h2>
 
-            <p className="mt-5 max-w-xl text-sm md:text-base text-[var(--color-ink-soft)] leading-relaxed">
+            <p className="mt-3 max-w-xl text-sm text-[var(--color-ink-soft)] leading-relaxed">
               Je nach Absprache und Projektumfang kann es mal schneller gehen oder etwas
               länger dauern — aber Flexibilität und absolute Termintreue stehen an
               erster Stelle.
             </p>
 
             {/* animated timeline */}
-            <div className="mt-8 space-y-3">
+            <div className="mt-5 space-y-2">
               <div className="flex items-center justify-between text-xs text-[var(--color-ink-dim)] uppercase tracking-[0.2em]">
                 <span>Woche 1</span>
                 <span>Woche 2</span>
@@ -82,27 +82,27 @@ export default function Promise() {
             </div>
 
             {/* Festpreis promise — fills the remaining card height */}
-            <div className="mt-8 pt-6 border-t border-[var(--color-line)] flex flex-1 flex-col justify-center gap-5">
-              <div className="flex items-start gap-4">
-                <span className="inline-flex items-center justify-center size-12 shrink-0 rounded-2xl border border-[var(--color-line-strong)] bg-[var(--color-bg-soft)]">
-                  <BadgeEuro className="size-6 text-[var(--color-accent)]" />
+            <div className="mt-5 pt-5 border-t border-[var(--color-line)] flex flex-1 flex-col justify-center gap-4">
+              <div className="flex items-start gap-3.5">
+                <span className="inline-flex items-center justify-center size-11 shrink-0 rounded-2xl border border-[var(--color-line-strong)] bg-[var(--color-bg-soft)]">
+                  <BadgeEuro className="size-5 text-[var(--color-accent)]" />
                 </span>
                 <div>
-                  <div className="font-display text-2xl md:text-3xl tracking-[-0.02em] font-medium">
+                  <div className="font-display text-xl md:text-2xl tracking-[-0.02em] font-medium">
                     Festpreis — garantiert.
                   </div>
-                  <p className="mt-1.5 text-sm md:text-base text-[var(--color-ink-soft)] leading-relaxed">
+                  <p className="mt-1 text-sm text-[var(--color-ink-soft)] leading-relaxed">
                     Der Preis, den wir vereinbaren, ist der Preis, den du zahlst.
                     Keine versteckten Kosten, kein Stundenlohn, keine Nachkalkulation.
                   </p>
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-2.5">
+              <div className="flex flex-wrap gap-2">
                 {commitments.map((c) => (
                   <span
                     key={c}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)]/60 text-xs text-[var(--color-ink-soft)]"
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)]/60 text-xs text-[var(--color-ink-soft)]"
                   >
                     <Check className="size-3.5 text-[var(--color-accent)]" />
                     {c}
@@ -112,7 +112,7 @@ export default function Promise() {
 
               {/* Ratenzahlung hint — full options live in the pricing section */}
               <a
-                href="#preise"
+                href="/preise"
                 data-cursor-hover
                 className="group inline-flex items-center gap-2 text-sm text-[var(--color-accent-soft)] hover:text-[var(--color-accent)] transition-colors"
               >
@@ -125,102 +125,96 @@ export default function Promise() {
         </motion.div>
 
         {/* side cards */}
-        <div className="md:col-span-4 grid gap-4">
+        <div className="md:col-span-4 grid grid-cols-2 md:grid-cols-1 gap-3">
           <motion.div
             variants={fadeUp}
-            className="relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-6 group hover:border-[var(--color-line-strong)] transition-colors"
+            className="relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-4 group hover:border-[var(--color-line-strong)] transition-colors"
           >
-            <Zap className="size-5 text-[var(--color-accent)] mb-3" />
-            <div className="font-display text-xl md:text-2xl tracking-tight">Performant</div>
-            <p className="mt-2 text-sm text-[var(--color-ink-soft)] leading-relaxed">
+            <Zap className="size-5 text-[var(--color-accent)] mb-2" />
+            <div className="font-display text-lg md:text-xl tracking-tight">Performant</div>
+            <p className="mt-1 text-[13px] text-[var(--color-ink-soft)] leading-snug">
               Geladen, bevor der Daumen zuckt. 95+ Lighthouse-Score als Standard.
             </p>
           </motion.div>
 
           <motion.div
             variants={fadeUp}
-            className="relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-6 group hover:border-[var(--color-line-strong)] transition-colors"
+            className="relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-4 group hover:border-[var(--color-line-strong)] transition-colors"
           >
-            <ShieldCheck className="size-5 text-[var(--color-accent)] mb-3" />
-            <div className="font-display text-xl md:text-2xl tracking-tight">Termintreu</div>
-            <p className="mt-2 text-sm text-[var(--color-ink-soft)] leading-relaxed">
+            <ShieldCheck className="size-5 text-[var(--color-accent)] mb-2" />
+            <div className="font-display text-lg md:text-xl tracking-tight">Termintreu</div>
+            <p className="mt-1 text-[13px] text-[var(--color-ink-soft)] leading-snug">
               Verbindliche Deadlines. Klare Kommunikation. Keine bösen Überraschungen.
             </p>
           </motion.div>
 
           <motion.div
             variants={fadeUp}
-            className="relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-6 group hover:border-[var(--color-line-strong)] transition-colors"
+            className="relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-4 group hover:border-[var(--color-line-strong)] transition-colors"
           >
-            <Lock className="size-5 text-[var(--color-accent)] mb-3" />
-            <div className="font-display text-xl md:text-2xl tracking-tight">Sicher</div>
-            <p className="mt-2 text-sm text-[var(--color-ink-soft)] leading-relaxed">
-              Sauber und sicher entwickelt — geschützt vor Spam, Angriffen und
-              Datenlecks. Sicherheit ist von Anfang an mit dabei.
+            <Lock className="size-5 text-[var(--color-accent)] mb-2" />
+            <div className="font-display text-lg md:text-xl tracking-tight">Sicher</div>
+            <p className="mt-1 text-[13px] text-[var(--color-ink-soft)] leading-snug">
+              Sauber entwickelt — geschützt vor Spam, Angriffen und Datenlecks. Von Anfang an mit dabei.
             </p>
           </motion.div>
 
           <motion.div
             variants={fadeUp}
-            className="relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-6 group hover:border-[var(--color-line-strong)] transition-colors"
+            className="relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-4 group hover:border-[var(--color-line-strong)] transition-colors"
           >
-            <FileCheck className="size-5 text-[var(--color-accent)] mb-3" />
-            <div className="font-display text-xl md:text-2xl tracking-tight">DSGVO-konform</div>
-            <p className="mt-2 text-sm text-[var(--color-ink-soft)] leading-relaxed">
-              Datenschutz nach deutschem Recht — von Cookie-Banner bis Impressum.
-              Deine Website ist rechtssicher und DSGVO-konform.
+            <FileCheck className="size-5 text-[var(--color-accent)] mb-2" />
+            <div className="font-display text-lg md:text-xl tracking-tight">DSGVO-konform</div>
+            <p className="mt-1 text-[13px] text-[var(--color-ink-soft)] leading-snug">
+              Datenschutz nach deutschem Recht — von Cookie-Banner bis Impressum. Rechtssicher.
             </p>
           </motion.div>
         </div>
 
-        {/* SEO & GEO — ab dem Standard-Paket */}
+        {/* SEO & GEO + Domain — two compact cards side by side */}
         <motion.div
           variants={fadeUp}
-          className="md:col-span-12 relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-6 flex flex-col sm:flex-row sm:items-center gap-4 group hover:border-[var(--color-line-strong)] transition-colors"
+          className="md:col-span-6 relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-5 group hover:border-[var(--color-line-strong)] transition-colors"
         >
           <div className="absolute -top-16 -right-16 size-48 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.16),transparent_60%)] group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
-          <div className="relative inline-flex items-center gap-3 shrink-0">
-            <span className="inline-flex items-center justify-center size-11 rounded-2xl border border-[var(--color-line-strong)] bg-[var(--color-bg-soft)]">
+          <div className="relative flex items-center gap-3 mb-2.5">
+            <span className="inline-flex items-center justify-center size-10 shrink-0 rounded-2xl border border-[var(--color-line-strong)] bg-[var(--color-bg-soft)]">
               <Search className="size-5 text-[var(--color-accent)]" />
             </span>
             <div>
-              <div className="font-display text-xl tracking-tight">SEO &amp; GEO</div>
+              <div className="font-display text-lg tracking-tight">SEO &amp; GEO</div>
               <div className="text-xs uppercase tracking-[0.18em] text-[var(--color-ink-dim)]">
                 Ab dem Standard-Paket
               </div>
             </div>
           </div>
-          <p className="relative text-sm text-[var(--color-ink-soft)] leading-relaxed">
-            Ab dem Standard-Paket wird deine Website für klassische Suchmaschinen (SEO)
-            und KI-Antwortmaschinen (GEO) optimiert — damit dich Kunden in Münster und
-            ganz Deutschland finden: heute bei Google, morgen in ChatGPT &amp; Co.
+          <p className="relative text-[13px] text-[var(--color-ink-soft)] leading-snug">
+            Optimiert für klassische Suchmaschinen (SEO) und KI-Antwortmaschinen (GEO) —
+            damit dich Kunden in Münster und ganz Deutschland finden: heute bei Google,
+            morgen in ChatGPT &amp; Co.
           </p>
         </motion.div>
 
-        {/* Domain & DNS-Setup — ich kümmere mich um die technische Einrichtung */}
         <motion.div
           variants={fadeUp}
-          className="md:col-span-12 relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-6 flex flex-col sm:flex-row sm:items-center gap-4 group hover:border-[var(--color-line-strong)] transition-colors"
+          className="md:col-span-6 relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-5 group hover:border-[var(--color-line-strong)] transition-colors"
         >
           <div className="absolute -top-16 -left-16 size-48 rounded-full bg-[radial-gradient(circle,rgba(99,102,241,0.16),transparent_60%)] group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
-          <div className="relative inline-flex items-center gap-3 shrink-0">
-            <span className="inline-flex items-center justify-center size-11 rounded-2xl border border-[var(--color-line-strong)] bg-[var(--color-bg-soft)]">
+          <div className="relative flex items-center gap-3 mb-2.5">
+            <span className="inline-flex items-center justify-center size-10 shrink-0 rounded-2xl border border-[var(--color-line-strong)] bg-[var(--color-bg-soft)]">
               <Globe className="size-5 text-[var(--color-accent)]" />
             </span>
             <div>
-              <div className="font-display text-xl tracking-tight">Domain &amp; DNS-Setup</div>
+              <div className="font-display text-lg tracking-tight">Domain &amp; DNS-Setup</div>
               <div className="text-xs uppercase tracking-[0.18em] text-[var(--color-ink-dim)]">
                 Ich kümmere mich drum
               </div>
             </div>
           </div>
-          <p className="relative text-sm text-[var(--color-ink-soft)] leading-relaxed">
+          <p className="relative text-[13px] text-[var(--color-ink-soft)] leading-snug">
             Du suchst dir eine Domain aus (z.&nbsp;B. mein-salon.de) und kaufst sie bei
-            einem Anbieter deiner Wahl. Die technische Einrichtung übernehme ich — du
-            musst dich um nichts kümmern. Nach wenigen Stunden ist deine Website online
-            und erreichbar. DNS ist einfach das System, das deine Domain-Adresse mit
-            deiner Website verbindet — wie eine Telefonnummer, die jemanden zu dir
-            durchstellt.
+            einem Anbieter deiner Wahl — die technische Einrichtung (DNS) übernehme ich.
+            Nach wenigen Stunden ist deine Website online und erreichbar.
           </p>
         </motion.div>
       </motion.div>
