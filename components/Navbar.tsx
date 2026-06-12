@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X, ArrowRight } from "lucide-react";
 
 const links = [
@@ -17,6 +18,14 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { scrollY } = useScroll();
+
+  // On the home page the section anchors drive the horizontal page-turn
+  // (smooth-scroll handler in HorizontalScroll matches `a[href^="#"]`). On any
+  // sub-page those same sections live on "/", so links become "/#id" and do a
+  // normal navigation back home (where the on-load hash handler scrolls in).
+  const pathname = usePathname();
+  const onHome = pathname === "/";
+  const to = (hash: string) => (onHome ? hash : `/${hash}`);
 
   useMotionValueEvent(scrollY, "change", (v) => {
     setScrolled(v > 24);
@@ -66,7 +75,7 @@ export default function Navbar() {
           }`}
         >
           <a
-            href="#top"
+            href={onHome ? "#top" : "/"}
             data-cursor-hover
             aria-label="Webdesign by Ivan — Startseite"
             className="flex items-center gap-2.5 text-sm font-medium tracking-tight"
@@ -89,7 +98,7 @@ export default function Navbar() {
             {links.map((l) => (
               <a
                 key={l.href}
-                href={l.href}
+                href={to(l.href)}
                 data-cursor-hover
                 className="px-3 py-1.5 rounded-full hover:text-[var(--color-ink)] hover:bg-white/5 transition inline-flex items-center gap-1.5"
               >
@@ -101,7 +110,7 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <a
-            href="#kontakt"
+            href={to("#kontakt")}
             data-cursor-hover
             className="hidden md:inline-flex text-sm px-3.5 py-1.5 rounded-full bg-white text-black font-medium hover:bg-[var(--color-accent-soft)] transition-colors"
           >
@@ -163,7 +172,7 @@ export default function Navbar() {
                     }}
                   >
                     <a
-                      href={l.href}
+                      href={to(l.href)}
                       onClick={closeMenu}
                       className="group flex items-center justify-between py-4 border-b border-[var(--color-line)] text-2xl font-display tracking-tight text-[var(--color-ink)]"
                     >
@@ -180,7 +189,7 @@ export default function Navbar() {
               </ul>
 
               <motion.a
-                href="#kontakt"
+                href={to("#kontakt")}
                 onClick={closeMenu}
                 initial={{ y: 16, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}

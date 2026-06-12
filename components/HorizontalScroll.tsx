@@ -171,6 +171,58 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
     return () => document.removeEventListener("click", onClick);
   }, [panels, n]);
 
+  // On load (or hashchange) jump to the panel named in the URL hash. This makes
+  // deep links like /#preise — and the "/#id" links the Navbar/Footer use from
+  // sub-pages — land on the right panel. Normal in-page clicks call
+  // preventDefault() above (so the hash never changes), hence don't reach here.
+  useEffect(() => {
+    const scrollToHash = () => {
+      const hash = window.location.hash.slice(1);
+      if (!hash) return;
+      const idx = panels.findIndex((p) => p.id === hash);
+      if (idx < 0) return;
+
+      const outer = outerRef.current;
+      const totalDistance = outer ? outer.offsetHeight - window.innerHeight : 0;
+      const desktopActive =
+        !!outer && outer.offsetParent !== null && totalDistance > 0;
+      const lenis = (
+        window as unknown as {
+          __lenis?: {
+            scrollTo: (
+              target: number | HTMLElement,
+              o?: { duration?: number; offset?: number; easing?: (t: number) => number },
+            ) => void;
+          };
+        }
+      ).__lenis;
+      const easing = (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t));
+
+      if (desktopActive) {
+        const rect = outer!.getBoundingClientRect();
+        const docTop = window.scrollY + rect.top;
+        const segment = n > 1 ? totalDistance / (n - 1) : 0;
+        const targetY = docTop + idx * segment;
+        if (lenis) lenis.scrollTo(targetY, { duration: 1.2, easing });
+        else window.scrollTo({ top: targetY });
+      } else {
+        const el = document.getElementById(hash);
+        if (!el) return;
+        if (lenis) lenis.scrollTo(el, { duration: 1.0, offset: -72, easing });
+        else el.scrollIntoView();
+      }
+    };
+
+    // Defer one tick so the sticky section has a measured height and Lenis is
+    // initialised before we compute the target.
+    const t = setTimeout(scrollToHash, 350);
+    window.addEventListener("hashchange", scrollToHash);
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener("hashchange", scrollToHash);
+    };
+  }, [panels, n]);
+
   return (
     <>
       <section
