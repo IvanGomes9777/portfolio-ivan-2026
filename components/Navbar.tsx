@@ -2,16 +2,44 @@
 
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Menu, X, ArrowRight } from "lucide-react";
 
-const links = [
-  { href: "#prozess", label: "Prozess" },
-  { href: "#demos", label: "Demos", dot: "bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.7)]" },
-  { href: "#projekte", label: "Projekte" },
-  { href: "#preise", label: "Preise" },
-  { href: "#wartung", label: "Wartung" },
+// Route links use Next <Link>; the in-page "#kontakt" anchor is handled by
+// HorizontalScroll's hash logic on whichever page is active (every page ends
+// with a Kontakt panel).
+const links: { href: string; label: string; dot?: string }[] = [
+  { href: "/projekte", label: "Projekte" },
+  { href: "/preise", label: "Preise" },
   { href: "#kontakt", label: "Kontakt" },
 ];
+
+function NavLink({
+  href,
+  className,
+  onClick,
+  children,
+}: {
+  href: string;
+  className?: string;
+  onClick?: () => void;
+  children: React.ReactNode;
+}) {
+  // Internal routes get client-side navigation; hash links stay plain anchors
+  // so HorizontalScroll can intercept and smooth-scroll to the section.
+  if (href.startsWith("/")) {
+    return (
+      <Link href={href} data-cursor-hover className={className} onClick={onClick}>
+        {children}
+      </Link>
+    );
+  }
+  return (
+    <a href={href} data-cursor-hover className={className} onClick={onClick}>
+      {children}
+    </a>
+  );
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -65,8 +93,8 @@ export default function Navbar() {
               : "bg-transparent border border-transparent"
           }`}
         >
-          <a
-            href="#top"
+          <Link
+            href="/"
             data-cursor-hover
             aria-label="Webdesign by Ivan — Startseite"
             className="flex items-center gap-2.5 text-sm font-medium tracking-tight"
@@ -82,20 +110,19 @@ export default function Navbar() {
               />
             </span>
             <span>ivan.dev</span>
-          </a>
+          </Link>
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-1 text-sm text-[var(--color-ink-soft)]">
             {links.map((l) => (
-              <a
+              <NavLink
                 key={l.href}
                 href={l.href}
-                data-cursor-hover
                 className="px-3 py-1.5 rounded-full hover:text-[var(--color-ink)] hover:bg-white/5 transition inline-flex items-center gap-1.5"
               >
                 {l.label}
                 {l.dot && <span className={`size-1.5 rounded-full ${l.dot}`} />}
-              </a>
+              </NavLink>
             ))}
           </div>
 
@@ -162,7 +189,7 @@ export default function Navbar() {
                       ease: [0.16, 1, 0.3, 1],
                     }}
                   >
-                    <a
+                    <NavLink
                       href={l.href}
                       onClick={closeMenu}
                       className="group flex items-center justify-between py-4 border-b border-[var(--color-line)] text-2xl font-display tracking-tight text-[var(--color-ink)]"
@@ -174,7 +201,7 @@ export default function Navbar() {
                         )}
                       </span>
                       <ArrowRight className="size-5 text-[var(--color-ink-dim)] group-hover:text-[var(--color-accent)] transition-colors" />
-                    </a>
+                    </NavLink>
                   </motion.li>
                 ))}
               </ul>
