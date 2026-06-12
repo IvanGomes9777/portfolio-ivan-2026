@@ -7,6 +7,7 @@ import DemoProjects from "@/components/DemoProjects";
 import Found from "@/components/Found";
 import Fit from "@/components/Fit";
 import Pricing from "@/components/Pricing";
+import Maintenance from "@/components/Maintenance";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
@@ -30,6 +31,7 @@ export default function Page() {
             { id: "gefunden",    label: "Gefunden",    content: <Found /> },
             { id: "passt",       label: "Passt es?",   content: <Fit /> },
             { id: "preise",      label: "Preise",      content: <Pricing /> },
+            { id: "wartung",     label: "Wartung",     content: <Maintenance /> },
             { id: "faq",         label: "FAQ",         content: <FAQ /> },
             { id: "kontakt",     label: "Kontakt",     content: <CTA /> },
           ]}
