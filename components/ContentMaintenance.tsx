@@ -64,7 +64,7 @@ const plans: ContentPlan[] = [
     total: "1.080 € für 24 Monate",
     desc: "Beste Preis-Leistung für langfristige Planungssicherheit.",
     changes: "5 Änderungen pro Woche (20 im Monat)",
-    saving: "Sparst 240 €/Jahr gegenüber dem 1-Jahres-Paket",
+    saving: "Sparst 120 €/Jahr (240 € über 2 Jahre) gegenüber dem 1-Jahres-Paket",
     features: [
       "Bilder hochladen & austauschen",
       "Texte & Inhalte bearbeiten",
