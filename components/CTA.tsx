@@ -20,6 +20,7 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent
 
 type Wunsch = "" | "neu" | "relaunch";
 type Paket = "" | "starter" | "standard" | "premium";
+type ContentPaket = "" | "monatlich" | "jahr1" | "jahr2";
 type Auftraggeber = "" | "unternehmen" | "privat";
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -31,6 +32,7 @@ export default function CTA() {
     msg: string;
     wunsch: Wunsch;
     paket: Paket;
+    contentPaket: ContentPaket;
     auftraggeber: Auftraggeber;
     // Honeypot — must stay empty for real users.
     company: string;
@@ -41,6 +43,7 @@ export default function CTA() {
     msg: "",
     wunsch: "",
     paket: "",
+    contentPaket: "",
     auftraggeber: "",
     company: "",
   });
@@ -77,6 +80,7 @@ export default function CTA() {
           msg: form.msg,
           wunsch: form.wunsch,
           paket: form.paket,
+          contentPaket: form.contentPaket,
           auftraggeber: form.auftraggeber,
           company: form.company,
         }),
@@ -85,7 +89,7 @@ export default function CTA() {
 
       if (res.ok && data.success) {
         setStatus("success");
-        setForm({ name: "", email: "", phone: "", msg: "", wunsch: "", paket: "", auftraggeber: "", company: "" });
+        setForm({ name: "", email: "", phone: "", msg: "", wunsch: "", paket: "", contentPaket: "", auftraggeber: "", company: "" });
         setPhoneOpen(false);
       } else {
         setStatus("error");
@@ -302,6 +306,11 @@ export default function CTA() {
                       <PaketSelect
                         value={form.paket}
                         onChange={(v) => setForm({ ...form, paket: v })}
+                        disabled={status === "sending"}
+                      />
+                      <ContentPaketSelect
+                        value={form.contentPaket}
+                        onChange={(v) => setForm({ ...form, contentPaket: v })}
                         disabled={status === "sending"}
                       />
                       <AuftraggeberSelect
@@ -650,6 +659,73 @@ function PaketSelect({
                 </div>
                 <div className="mt-0.5 text-[11px] text-[var(--color-ink-dim)] leading-snug">
                   ab {o.price}
+                </div>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function ContentPaketSelect({
+  value,
+  onChange,
+  disabled,
+}: {
+  value: ContentPaket;
+  onChange: (v: ContentPaket) => void;
+  disabled?: boolean;
+}) {
+  const options: { id: Exclude<ContentPaket, "">; title: string; price: string }[] = [
+    { id: "monatlich", title: "Monatlich kündbar", price: "75 €/Monat" },
+    { id: "jahr1", title: "1 Jahr", price: "55 €/Monat" },
+    { id: "jahr2", title: "2 Jahre", price: "45 €/Monat" },
+  ];
+
+  return (
+    <div>
+      <span className="block text-xs uppercase tracking-[0.2em] text-[var(--color-ink-dim)] mb-2">
+        Content-Pflege{" "}
+        <span className="text-[var(--color-ink-dim)] normal-case tracking-normal">
+          (optional)
+        </span>
+      </span>
+      <div className="grid grid-cols-3 gap-3">
+        {options.map((o) => {
+          const active = value === o.id;
+          return (
+            <button
+              key={o.id}
+              type="button"
+              onClick={() => onChange(active ? "" : o.id)}
+              data-cursor-hover
+              disabled={disabled}
+              className={`relative text-left rounded-2xl px-3 py-3 border transition-all overflow-hidden disabled:opacity-60 ${
+                active
+                  ? "border-[var(--color-accent)]/60 bg-[var(--color-accent)]/10 shadow-[0_0_0_4px_rgba(139,92,246,0.08)]"
+                  : "border-[var(--color-line)] bg-[var(--color-surface)]/70 hover:border-[var(--color-line-strong)] hover:bg-[var(--color-surface)]"
+              }`}
+              aria-pressed={active}
+            >
+              {active && (
+                <motion.span
+                  layoutId="content-paket-glow"
+                  className="absolute -inset-x-2 -top-2 h-12 bg-[radial-gradient(ellipse,rgba(139,92,246,0.4),transparent_70%)] pointer-events-none"
+                  transition={{ type: "spring", damping: 22, stiffness: 280 }}
+                />
+              )}
+              <div className="relative">
+                <div
+                  className={`font-display text-sm tracking-tight ${
+                    active ? "text-[var(--color-ink)]" : "text-[var(--color-ink-soft)]"
+                  }`}
+                >
+                  {o.title}
+                </div>
+                <div className="mt-0.5 text-[11px] text-[var(--color-ink-dim)] leading-snug">
+                  {o.price}
                 </div>
               </div>
             </button>

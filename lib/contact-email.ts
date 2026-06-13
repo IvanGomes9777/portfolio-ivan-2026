@@ -9,6 +9,7 @@ export type ContactEmailData = {
   msg: string;
   projekttyp: string;
   paketLabel?: string;
+  contentPaketLabel?: string;
   auftraggeberLabel?: string;
   /** Public site URL — used for the logo image and footer link. */
   baseUrl?: string;
@@ -31,6 +32,7 @@ export function renderContactEmail(data: ContactEmailData): string {
     msg,
     projekttyp,
     paketLabel,
+    contentPaketLabel,
     auftraggeberLabel,
     baseUrl = "https://portfolio-ivan-2026.vercel.app",
   } = data;
@@ -114,6 +116,7 @@ export function renderContactEmail(data: ContactEmailData): string {
                       ${auftraggeberLabel ? row("Auftraggeber", escapeHtml(auftraggeberLabel)) : ""}
                       ${row("Projekttyp", escapeHtml(projekttyp))}
                       ${paketLabel ? row("Paket", `<span style="font-weight: 600; color: #f4f4f6;">${escapeHtml(paketLabel)}</span>`) : ""}
+                      ${contentPaketLabel ? row("Content-Pflege", `<span style="font-weight: 600; color: #f4f4f6;">${escapeHtml(contentPaketLabel)}</span>`) : ""}
                     </table>
 
                     <!-- message -->
