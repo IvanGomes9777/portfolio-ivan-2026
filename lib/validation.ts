@@ -12,6 +12,8 @@ export const LIMITS = {
   msg: 4000,
   wunsch: 20,
   paket: 20,
+  wartung: 20,
+  contentPaket: 20,
   auftraggeber: 20,
 } as const;
 
@@ -41,6 +43,8 @@ export type ContactInput = {
   msg?: unknown;
   wunsch?: unknown;
   paket?: unknown;
+  wartung?: unknown;
+  contentPaket?: unknown;
   auftraggeber?: unknown;
   company?: unknown; // honeypot
 };
@@ -52,6 +56,8 @@ export type ContactClean = {
   msg: string;
   wunsch: string;
   paket: string;
+  wartung: string;
+  contentPaket: string;
   auftraggeber: string;
 };
 
@@ -61,6 +67,8 @@ export type ValidationResult =
 
 const ALLOWED_WUNSCH = new Set(["", "neu", "relaunch"]);
 const ALLOWED_PAKET = new Set(["", "starter", "standard", "premium"]);
+const ALLOWED_WARTUNG = new Set(["", "standard", "premium"]);
+const ALLOWED_CONTENT_PAKET = new Set(["", "monatlich", "jahr1", "jahr2"]);
 const ALLOWED_AUFTRAGGEBER = new Set(["", "unternehmen", "privat"]);
 
 export function validateContact(input: ContactInput): ValidationResult {
@@ -70,6 +78,8 @@ export function validateContact(input: ContactInput): ValidationResult {
   const msg = clean(input.msg, LIMITS.msg);
   let wunsch = clean(input.wunsch, LIMITS.wunsch);
   let paket = clean(input.paket, LIMITS.paket);
+  let wartung = clean(input.wartung, LIMITS.wartung);
+  let contentPaket = clean(input.contentPaket, LIMITS.contentPaket);
   let auftraggeber = clean(input.auftraggeber, LIMITS.auftraggeber);
 
   if (!name || !email || !msg) {
@@ -93,9 +103,15 @@ export function validateContact(input: ContactInput): ValidationResult {
   if (!ALLOWED_PAKET.has(paket)) {
     paket = ""; // ignore unexpected values rather than reflecting them
   }
+  if (!ALLOWED_WARTUNG.has(wartung)) {
+    wartung = ""; // ignore unexpected values rather than reflecting them
+  }
+  if (!ALLOWED_CONTENT_PAKET.has(contentPaket)) {
+    contentPaket = ""; // ignore unexpected values rather than reflecting them
+  }
   if (!ALLOWED_AUFTRAGGEBER.has(auftraggeber)) {
     auftraggeber = ""; // ignore unexpected values rather than reflecting them
   }
 
-  return { ok: true, data: { name, email, phone, msg, wunsch, paket, auftraggeber } };
+  return { ok: true, data: { name, email, phone, msg, wunsch, paket, wartung, contentPaket, auftraggeber } };
 }
