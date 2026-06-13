@@ -6,7 +6,6 @@ import {
   ArrowRight,
   ImageIcon,
   Star,
-  Infinity as InfinityIcon,
   Clock,
   Info,
 } from "lucide-react";
@@ -19,7 +18,6 @@ type ContentPlan = {
   total: string;
   desc: string;
   changes: string;
-  unlimited?: boolean;
   features: string[];
   saving?: string;
   highlight: boolean;
@@ -33,8 +31,7 @@ const plans: ContentPlan[] = [
     term: "Keine Mindestlaufzeit — monatlich kündbar mit 1 Monat Frist",
     total: "Je nachdem, wie lange du bleibst",
     desc: "Maximale Flexibilität für alle, die häufig Änderungen brauchen.",
-    changes: "Unbegrenzte Änderungen pro Monat",
-    unlimited: true,
+    changes: "10 Änderungen pro Woche (40 im Monat)",
     features: [
       "Bilder hochladen & austauschen",
       "Texte & Inhalte bearbeiten",
@@ -50,7 +47,7 @@ const plans: ContentPlan[] = [
     term: "1 Jahr Mindestvertrag, danach monatlich kündbar (1 Monat Frist)",
     total: "660 € für 12 Monate",
     desc: "Standard für regelmäßige, aber nicht ständige Updates.",
-    changes: "Bis zu 5 Änderungen / Monat (danach +20 € pro Änderung)",
+    changes: "5 Änderungen pro Woche (20 im Monat)",
     features: [
       "Bilder hochladen & austauschen",
       "Texte & Inhalte bearbeiten",
@@ -66,7 +63,7 @@ const plans: ContentPlan[] = [
     term: "2 Jahre Mindestvertrag, danach monatlich kündbar (1 Monat Frist)",
     total: "1.080 € für 24 Monate",
     desc: "Beste Preis-Leistung für langfristige Planungssicherheit.",
-    changes: "Bis zu 5 Änderungen / Monat (danach +20 € pro Änderung)",
+    changes: "5 Änderungen pro Woche (20 im Monat)",
     saving: "Sparst 240 €/Jahr gegenüber dem 1-Jahres-Paket",
     features: [
       "Bilder hochladen & austauschen",
@@ -165,11 +162,7 @@ export default function ContentMaintenance() {
 
               {/* changes highlight */}
               <div className="mt-4 flex items-start gap-2 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-line)] px-3.5 py-2.5 text-xs text-[var(--color-ink-soft)] leading-snug">
-                {plan.unlimited ? (
-                  <InfinityIcon className="size-4 shrink-0 mt-0.5 text-[var(--color-accent)]" />
-                ) : (
-                  <Check className="size-4 shrink-0 mt-0.5 text-[var(--color-accent)]" />
-                )}
+                <Check className="size-4 shrink-0 mt-0.5 text-[var(--color-accent)]" />
                 <span>{plan.changes}</span>
               </div>
 
