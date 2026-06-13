@@ -174,8 +174,9 @@ export default function Maintenance() {
         >
           <Clock className="size-3.5 text-[var(--color-accent)]" />
           <span>
-            Wartung ist optional — du entscheidest, ob du sie nach dem Launch
-            dazubuchst.
+            Content-Pflege (Bilder & Texte) ist hier bereits inklusive — ein
+            separates Content-Paket brauchst du dann nicht. Wartung ist optional,
+            du entscheidest nach dem Launch.
           </span>
         </motion.div>
       </motion.div>

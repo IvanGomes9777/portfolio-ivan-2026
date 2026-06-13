@@ -217,6 +217,13 @@ export default function ContentMaintenance() {
             neuer Text“ = 3 Änderungen. Nicht enthalten sind Design-Umbauten,
             neue Seiten, SEO-Arbeiten oder Grafik- und Videobearbeitung.
           </p>
+          <p className="mt-2 text-sm text-[var(--color-ink-soft)] leading-relaxed">
+            Reine Content-Pflege — <strong>ohne</strong> technische Wartung
+            (Updates, Backups, Sicherheit). Wenn du die komplette Technik
+            mitbetreut haben möchtest, ist Content schon in den{" "}
+            <strong>Wartung &amp; Pflege</strong>-Paketen enthalten — dann
+            brauchst du kein separates Content-Paket.
+          </p>
         </motion.div>
 
         {/* footnote */}
