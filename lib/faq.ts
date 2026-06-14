@@ -36,6 +36,6 @@ export const faq: FaqItem[] = [
   {
     question: "Werden meine Seiten für Google und KI-Suchmaschinen optimiert?",
     answer:
-      "Ja. SEO & GEO sind bei jeder Website inklusive — deine Seite wird für klassische Suchmaschinen (Google) und KI-Antwortmaschinen wie ChatGPT und Perplexity optimiert.",
+      "Ja. Basis-SEO ist bei jeder Website inklusive — saubere Meta-Tags, Sitemap und schnelle Ladezeiten, damit Google deine Seite versteht. Ab dem Standard-Paket kommt die volle SEO- & GEO-Optimierung dazu: gezielte Keywords, Content-Struktur und Optimierung für KI-Antwortmaschinen wie ChatGPT und Perplexity.",
   },
 ];

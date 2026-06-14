@@ -31,8 +31,9 @@ export default function Found() {
             </h2>
             <p className="mt-5 text-sm md:text-base text-[var(--color-ink-soft)] leading-relaxed">
               Eine schöne Website bringt nichts, wenn sie niemand findet. Deshalb ist
-              SEO bei jeder Website inklusive — und mit GEO bist du auch in der
-              KI-Suche von morgen sichtbar.
+              Basis-SEO bei jeder Website inklusive — und ab dem Standard-Paket kommt
+              die volle SEO- & GEO-Optimierung dazu, damit du auch in der KI-Suche von
+              morgen sichtbar bist.
             </p>
           </motion.div>
 

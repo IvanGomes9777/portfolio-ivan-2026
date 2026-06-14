@@ -167,6 +167,18 @@ export default function Maintenance() {
           ))}
         </div>
 
+        {/* recommendation note */}
+        <motion.div
+          variants={fadeUp}
+          className="mt-5 max-w-3xl mx-auto rounded-[var(--radius-md)] bg-[var(--color-surface-2)] border-l-4 border-[var(--color-accent)] px-5 py-4"
+        >
+          <p className="text-sm leading-relaxed text-[var(--color-ink-soft)]">
+            💡 Empfehlung: Für Websites mit Booking-System ist die Wartung Premium
+            ideal — sie hält Datenbank, E-Mail-Automation und Sicherheit dauerhaft
+            stabil.
+          </p>
+        </motion.div>
+
         {/* footnote */}
         <motion.div
           variants={fadeUp}
