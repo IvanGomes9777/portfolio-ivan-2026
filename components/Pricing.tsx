@@ -86,8 +86,8 @@ const tiers: Tier[] = [
   {
     name: "Premium",
     desc: "Website + Booking System – komplettes Business-Tool",
-    priceOld: "€4.400",
-    priceNew: "€3.500",
+    priceOld: "€5.600",
+    priceNew: "€4.500",
     features: [
       "Alles aus dem Standard-Paket",
       "Mehrseitige Website mit echten Unterseiten (statt One-Pager)",

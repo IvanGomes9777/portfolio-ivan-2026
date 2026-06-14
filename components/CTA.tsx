@@ -623,7 +623,7 @@ function PaketSelect({
   const options: { id: Exclude<Paket, "">; title: string; price: string }[] = [
     { id: "starter", title: "Starter", price: "€1.500" },
     { id: "standard", title: "Standard", price: "€2.500" },
-    { id: "premium", title: "Premium", price: "€3.500" },
+    { id: "premium", title: "Premium", price: "€4.500" },
   ];
 
   return (
