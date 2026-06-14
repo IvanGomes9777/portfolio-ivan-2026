@@ -14,6 +14,8 @@ import {
   PenTool,
   Car,
   Megaphone,
+  UtensilsCrossed,
+  Scale,
   Tag,
 } from "lucide-react";
 import LaptopMockup from "./LaptopMockup";
@@ -121,6 +123,36 @@ const demoProjects: DemoProject[] = [
     accent: "from-lime-500/30 via-amber-500/20 to-yellow-500/10",
     image: "/screenshots/werbetechnik-1.webp",
     Icon: Megaphone,
+  },
+  {
+    name: "Tattoo Vorlage 2",
+    branche: "Tattoo-Studio",
+    status: "Noch frei",
+    url: "https://tattoo-vorlage-2.vercel.app/",
+    price: "€2.500",
+    accent: "from-rose-500/30 via-red-500/20 to-zinc-500/10",
+    image: "/screenshots/tattoo-vorlage-2.webp",
+    Icon: PenTool,
+  },
+  {
+    name: "Restaurant Vorlage 1",
+    branche: "Restaurant",
+    status: "Noch frei",
+    url: "https://restaurant-vorlage-1-o4oy.vercel.app/",
+    price: "€2.500",
+    accent: "from-amber-500/30 via-yellow-500/20 to-orange-500/10",
+    image: "/screenshots/restaurant-vorlage-1.webp",
+    Icon: UtensilsCrossed,
+  },
+  {
+    name: "Anwaltskanzlei",
+    branche: "Rechtsanwälte",
+    status: "Noch frei",
+    url: "https://anwaltskanzlei-vorlage-1.vercel.app/de",
+    price: "€2.500",
+    accent: "from-amber-500/30 via-yellow-600/20 to-stone-500/10",
+    image: "/screenshots/anwaltskanzlei-vorlage-1.webp",
+    Icon: Scale,
   },
 ];
 
