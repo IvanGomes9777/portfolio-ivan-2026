@@ -15,6 +15,7 @@ import {
   Car,
   Megaphone,
   UtensilsCrossed,
+  Scale,
   Tag,
 } from "lucide-react";
 import LaptopMockup from "./LaptopMockup";
@@ -142,6 +143,16 @@ const demoProjects: DemoProject[] = [
     accent: "from-amber-500/30 via-yellow-500/20 to-orange-500/10",
     image: "/screenshots/restaurant-vorlage-1.webp",
     Icon: UtensilsCrossed,
+  },
+  {
+    name: "Anwaltskanzlei",
+    branche: "Rechtsanwälte",
+    status: "Noch frei",
+    url: "https://anwaltskanzlei-vorlage-1.vercel.app/de",
+    price: "€2.500",
+    accent: "from-amber-500/30 via-yellow-600/20 to-stone-500/10",
+    image: "/screenshots/anwaltskanzlei-vorlage-1.webp",
+    Icon: Scale,
   },
 ];
 
