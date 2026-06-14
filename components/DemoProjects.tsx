@@ -122,6 +122,16 @@ const demoProjects: DemoProject[] = [
     image: "/screenshots/werbetechnik-1.webp",
     Icon: Megaphone,
   },
+  {
+    name: "Tattoo Vorlage 2",
+    branche: "Tattoo-Studio",
+    status: "Noch frei",
+    url: "https://tattoo-vorlage-2.vercel.app/",
+    price: "€2.500",
+    accent: "from-rose-500/30 via-red-500/20 to-zinc-500/10",
+    image: "/screenshots/tattoo-vorlage-2.webp",
+    Icon: PenTool,
+  },
 ];
 
 type View = "laptop" | "phone";
