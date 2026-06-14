@@ -14,6 +14,7 @@ import {
   PenTool,
   Car,
   Megaphone,
+  UtensilsCrossed,
   Tag,
 } from "lucide-react";
 import LaptopMockup from "./LaptopMockup";
@@ -131,6 +132,16 @@ const demoProjects: DemoProject[] = [
     accent: "from-rose-500/30 via-red-500/20 to-zinc-500/10",
     image: "/screenshots/tattoo-vorlage-2.webp",
     Icon: PenTool,
+  },
+  {
+    name: "Restaurant Vorlage 1",
+    branche: "Restaurant",
+    status: "Noch frei",
+    url: "https://restaurant-vorlage-1-o4oy.vercel.app/",
+    price: "€2.500",
+    accent: "from-amber-500/30 via-yellow-500/20 to-orange-500/10",
+    image: "/screenshots/restaurant-vorlage-1.webp",
+    Icon: UtensilsCrossed,
   },
 ];
 

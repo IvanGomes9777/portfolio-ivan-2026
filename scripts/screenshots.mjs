@@ -22,6 +22,7 @@ const projects = [
   { slug: "autoaufbereitung", url: "https://autoaufbereitung-1.vercel.app/" },
   { slug: "werbetechnik-1", url: "https://werbetechnik-1.vercel.app/" },
   { slug: "tattoo-vorlage-2", url: "https://tattoo-vorlage-2.vercel.app/" },
+  { slug: "restaurant-vorlage-1", url: "https://restaurant-vorlage-1-o4oy.vercel.app/" },
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
