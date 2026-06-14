@@ -23,7 +23,7 @@ const SUBJECT_TAG: Record<string, string> = {
 const PAKET_LABEL: Record<string, string> = {
   starter: "Starter (ab €1.500)",
   standard: "Standard (ab €2.500)",
-  premium: "Premium (ab €3.500)",
+  premium: "Premium (ab €4.500)",
 };
 
 const WARTUNG_LABEL: Record<string, string> = {

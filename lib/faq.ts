@@ -16,7 +16,7 @@ export const faq: FaqItem[] = [
   {
     question: "Was kostet eine professionelle Website?",
     answer:
-      "Die Pakete starten bei 1.500 € (Starter), 2.500 € (Standard) und 3.500 € (Premium). Der finale Preis hängt von Umfang, Aufwand und individuellen Wünschen ab — im kostenlosen Erstgespräch gibt es ein exaktes Angebot.",
+      "Die Pakete starten bei 1.500 € (Starter), 2.500 € (Standard) und 4.500 € (Premium). Der finale Preis hängt von Umfang, Aufwand und individuellen Wünschen ab — im kostenlosen Erstgespräch gibt es ein exaktes Angebot.",
   },
   {
     question: "Welche Zahlungsmöglichkeiten gibt es?",
