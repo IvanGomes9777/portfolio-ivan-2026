@@ -13,6 +13,7 @@ import {
   Sparkles,
   PenTool,
   Car,
+  Megaphone,
   Tag,
 } from "lucide-react";
 import LaptopMockup from "./LaptopMockup";
@@ -110,6 +111,16 @@ const demoProjects: DemoProject[] = [
     accent: "from-red-500/30 via-orange-500/20 to-amber-500/10",
     image: "/screenshots/autoaufbereitung.webp",
     Icon: Car,
+  },
+  {
+    name: "Werbetechnik 1",
+    branche: "Werbetechnik",
+    status: "Noch frei",
+    url: "https://werbetechnik-1.vercel.app/",
+    price: "€2.500",
+    accent: "from-lime-500/30 via-amber-500/20 to-yellow-500/10",
+    image: "/screenshots/werbetechnik-1.webp",
+    Icon: Megaphone,
   },
 ];
 
