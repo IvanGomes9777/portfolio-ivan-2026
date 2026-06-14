@@ -38,4 +38,9 @@ export const faq: FaqItem[] = [
     answer:
       "Ja. Basis-SEO ist bei jeder Website inklusive — saubere Meta-Tags, Sitemap und schnelle Ladezeiten, damit Google deine Seite versteht. Ab dem Standard-Paket kommt die volle SEO- & GEO-Optimierung dazu: gezielte Keywords, Content-Struktur und Optimierung für KI-Antwortmaschinen wie ChatGPT und Perplexity.",
   },
+  {
+    question: "Bin ich danach auf Platz 1 bei Google?",
+    answer:
+      "Ehrliche Antwort: Eine seriöse Garantie auf Platz 1 gibt es nicht — und wer sie verspricht, flunkert. Was ich liefere, ist das technische Fundament: eine schnelle, sauber strukturierte und für Google wie für KI-Suchmaschinen optimierte Website, damit du überhaupt gefunden werden kannst. Wo genau du landest, hängt zusätzlich von Wettbewerb, deinen Google-Bewertungen und laufender Pflege ab. Genau dabei unterstütze ich dich auf Wunsch fortlaufend — damit deine Sichtbarkeit über die Zeit wächst.",
+  },
 ];
