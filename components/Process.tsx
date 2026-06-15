@@ -48,7 +48,7 @@ export default function Process() {
   return (
     <>
       <PerspectiveGrid />
-      <section className="px-4 py-16 md:py-12 max-w-7xl w-full mx-auto" ref={ref}>
+      <section className="px-4 py-[clamp(1.25rem,4.2vh,3.5rem)] max-w-7xl w-full mx-auto" ref={ref}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -60,7 +60,7 @@ export default function Process() {
           <span className="size-1.5 rounded-full bg-[var(--color-accent)]" />
           <span>So arbeite ich</span>
         </div>
-        <h2 className="font-display text-3xl md:text-4xl lg:text-5xl tracking-[-0.03em] font-medium leading-[1.05]">
+        <h2 className="font-display text-fluid-h2lg tracking-[-0.03em] font-medium leading-[1.05]">
           Vier Schritte vom{" "}
           <span className="italic text-[var(--color-ink-soft)]">ersten Hallo</span> zum Launch.
         </h2>

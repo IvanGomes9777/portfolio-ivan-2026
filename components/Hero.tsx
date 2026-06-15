@@ -48,7 +48,7 @@ export default function Hero() {
           <span className="size-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
         </motion.div>
 
-        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-[-0.04em] leading-[1.04]">
+        <h1 className="font-display text-fluid-hero font-medium tracking-[-0.04em] leading-[1.04]">
           <SplitText text="Websites, die" />{" "}
           <span className="relative inline-block overflow-hidden align-baseline pb-[0.12em]">
             <motion.span

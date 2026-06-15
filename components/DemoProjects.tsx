@@ -189,7 +189,7 @@ export default function DemoProjects() {
               <Tag className="size-3" />
               <span>Demo Projekte · sofort kaufbar</span>
             </div>
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl tracking-[-0.03em] font-medium leading-[1.05]">
+            <h2 className="font-display text-fluid-h2 tracking-[-0.03em] font-medium leading-[1.05]">
               Fertig gebaut.{" "}
               <span className="italic text-[var(--color-ink-soft)]">
                 Bereit für deine Marke.
@@ -242,10 +242,10 @@ export default function DemoProjects() {
 
               {/* meta */}
               <div className="mt-3 px-0.5 flex flex-col gap-1">
-                <div className="font-display text-[13px] leading-tight tracking-tight font-medium text-[var(--color-ink)] truncate">
+                <div className="font-display text-[0.8125rem] leading-tight tracking-tight font-medium text-[var(--color-ink)] truncate">
                   {p.name}
                 </div>
-                <div className="text-[10px] leading-tight text-[var(--color-ink-dim)] flex items-center gap-1.5">
+                <div className="text-[0.625rem] leading-tight text-[var(--color-ink-dim)] flex items-center gap-1.5">
                   <span className="truncate">{p.branche}</span>
                   <span className="size-[3px] shrink-0 rounded-full bg-[var(--color-ink-dim)]" />
                   <span
@@ -258,7 +258,7 @@ export default function DemoProjects() {
                     {p.status}
                   </span>
                 </div>
-                <div className="text-[11px] leading-tight text-[var(--color-ink-soft)]">
+                <div className="text-[0.6875rem] leading-tight text-[var(--color-ink-soft)]">
                   ab{" "}
                   <span className="font-semibold text-[var(--color-accent)]">
                     {p.price}
@@ -269,7 +269,7 @@ export default function DemoProjects() {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor-hover
-                  className="mt-0.5 inline-flex items-center gap-1 text-[10px] leading-tight text-[var(--color-ink-soft)] hover:text-amber-300 transition-colors w-fit"
+                  className="mt-0.5 inline-flex items-center gap-1 text-[0.625rem] leading-tight text-[var(--color-ink-soft)] hover:text-amber-300 transition-colors w-fit"
                 >
                   Demo öffnen <ArrowUpRight className="size-2.5" />
                 </a>
@@ -332,7 +332,7 @@ function ProjectFrame({ project, view }: { project: DemoProject; view: View }) {
             <div className="rounded-lg sm:rounded-xl border border-white/15 bg-white/[0.06] backdrop-blur-md flex items-center justify-center transition-transform duration-500 group-hover:scale-110 size-6 sm:size-8 md:size-10">
               <Icon className="size-2.5 sm:size-3.5 md:size-4 text-white/90" />
             </div>
-            <div className="font-display leading-tight text-white/85 tracking-wide truncate max-w-[92%] text-[8px] sm:text-[10px] md:text-xs">
+            <div className="font-display leading-tight text-white/85 tracking-wide truncate max-w-[92%] text-[0.5rem] sm:text-[0.625rem] md:text-xs">
               {project.name}
             </div>
           </div>
@@ -342,14 +342,14 @@ function ProjectFrame({ project, view }: { project: DemoProject; view: View }) {
       {/* Demo badge top-left */}
       <div className={`absolute z-10 rounded-full bg-amber-400/90 backdrop-blur-md font-semibold text-zinc-950 tracking-wide uppercase border border-amber-300/50 ${
         isPhone
-          ? "top-1 left-1 px-1 py-[1px] text-[7px] sm:text-[8px]"
-          : "top-1.5 left-1.5 px-1.5 py-0.5 text-[8px]"
+          ? "top-1 left-1 px-1 py-[1px] text-[0.4375rem] sm:text-[0.5rem]"
+          : "top-1.5 left-1.5 px-1.5 py-0.5 text-[0.5rem]"
       }`}>
         Demo
       </div>
 
       <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-      <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-black/70 backdrop-blur-md text-[9px] text-white/90 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-white/10 pointer-events-none">
+      <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-black/70 backdrop-blur-md text-[0.5625rem] text-white/90 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-white/10 pointer-events-none">
         <ExternalLink className="size-2.5" />
         <span>Demo öffnen</span>
       </div>

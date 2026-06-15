@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function LegalLinks() {
   return (
-    <div className="hidden md:flex fixed bottom-3 right-4 z-30 items-center gap-3 text-[10px] text-[var(--color-ink-dim)] uppercase tracking-[0.18em]">
+    <div className="hidden md:flex fixed bottom-3 right-4 z-30 items-center gap-3 text-[0.625rem] text-[var(--color-ink-dim)] uppercase tracking-[0.18em]">
       <Link
         href="/impressum"
         data-cursor-hover

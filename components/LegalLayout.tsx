@@ -28,7 +28,7 @@ export default function LegalLayout({
           Zurück zur Startseite
         </Link>
 
-        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl tracking-[-0.03em] font-medium leading-[1.05]">
+        <h1 className="font-display text-fluid-h1 tracking-[-0.03em] font-medium leading-[1.05]">
           {title}
         </h1>
         {subtitle && (
@@ -37,7 +37,7 @@ export default function LegalLayout({
           </p>
         )}
 
-        <div className="mt-12 space-y-10 text-[var(--color-ink-soft)] leading-relaxed text-[15px]">
+        <div className="mt-12 space-y-10 text-[var(--color-ink-soft)] leading-relaxed text-[0.9375rem]">
           {children}
         </div>
       </motion.div>
@@ -54,7 +54,7 @@ export function Section({
 }) {
   return (
     <section className="space-y-3">
-      <h2 className="font-display text-xl md:text-2xl text-[var(--color-ink)] tracking-[-0.02em] font-medium">
+      <h2 className="font-display text-fluid-h4 text-[var(--color-ink)] tracking-[-0.02em] font-medium">
         {title}
       </h2>
       <div className="space-y-3">{children}</div>

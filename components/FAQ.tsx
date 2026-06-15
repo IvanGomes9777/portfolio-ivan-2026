@@ -7,7 +7,7 @@ import { faq } from "@/lib/faq";
 
 export default function FAQ() {
   return (
-    <section className="relative px-4 py-16 md:py-12 max-w-5xl w-full mx-auto">
+    <section className="relative px-4 py-[clamp(1.25rem,4.2vh,3.5rem)] max-w-5xl w-full mx-auto">
       <motion.div
         variants={stagger(0.08)}
         initial="hidden"
@@ -20,30 +20,30 @@ export default function FAQ() {
             <HelpCircle className="size-3 text-[var(--color-accent)]" />
             <span>Häufige Fragen</span>
           </div>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl tracking-[-0.03em] font-medium leading-[1.05]">
+          <h2 className="font-display text-fluid-h2lg tracking-[-0.03em] font-medium leading-[1.05]">
             Fragen &amp;{" "}
             <span className="bg-gradient-to-r from-[var(--color-accent-soft)] via-[var(--color-accent)] to-[var(--color-accent-strong)] bg-clip-text text-transparent italic">
               Antworten.
             </span>
           </h2>
-          <p className="mt-5 text-sm md:text-base text-[var(--color-ink-soft)] leading-relaxed">
+          <p className="mt-3 text-sm md:text-base text-[var(--color-ink-soft)] leading-relaxed">
             Die wichtigsten Antworten auf einen Blick — von Ablauf und Preisen bis
             Datenschutz.
           </p>
         </motion.div>
 
         {/* FAQ grid */}
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="mt-[clamp(1rem,2.6vh,2rem)] grid grid-cols-1 md:grid-cols-2 gap-2.5">
           {faq.map((item) => (
             <motion.div
               key={item.question}
               variants={fadeUp}
-              className="rounded-2xl border border-[var(--color-line)] bg-[var(--color-surface)]/70 p-5 hover:border-[var(--color-line-strong)] transition-colors"
+              className="rounded-2xl border border-[var(--color-line)] bg-[var(--color-surface)]/70 p-4 hover:border-[var(--color-line-strong)] transition-colors"
             >
               <h3 className="font-display text-base md:text-lg font-medium tracking-tight text-[var(--color-ink)]">
                 {item.question}
               </h3>
-              <p className="mt-2 text-[13px] md:text-sm text-[var(--color-ink-soft)] leading-relaxed">
+              <p className="mt-1.5 text-[0.8125rem] md:text-sm text-[var(--color-ink-soft)] leading-relaxed">
                 {item.answer}
               </p>
             </motion.div>

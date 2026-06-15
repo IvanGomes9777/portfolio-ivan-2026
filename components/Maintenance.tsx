@@ -58,7 +58,7 @@ const plans: Plan[] = [
 
 export default function Maintenance() {
   return (
-    <section className="relative overflow-x-clip px-4 py-10 md:py-8 max-w-5xl w-full mx-auto">
+    <section className="relative overflow-x-clip px-4 py-[clamp(1rem,3vh,2rem)] max-w-5xl w-full mx-auto">
       {/* ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 size-[600px] rounded-full bg-[radial-gradient(circle,var(--color-accent-glow),transparent_60%)] opacity-20 pointer-events-none" />
 
@@ -70,12 +70,12 @@ export default function Maintenance() {
         className="relative"
       >
         {/* heading */}
-        <motion.div variants={fadeUp} className="text-center mb-6">
+        <motion.div variants={fadeUp} className="text-center mb-4">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)]/60 backdrop-blur text-xs text-[var(--color-ink-soft)] mb-4">
             <Wrench className="size-3 text-[var(--color-accent)]" />
             <span>Wartung & Pflege</span>
           </div>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl tracking-[-0.03em] font-medium leading-[1.05]">
+          <h2 className="font-display text-fluid-h2lg tracking-[-0.03em] font-medium leading-[1.05]">
             Nach dem Launch{" "}
             <span className="bg-gradient-to-r from-[var(--color-accent-soft)] via-[var(--color-accent)] to-[var(--color-accent-strong)] bg-clip-text text-transparent italic">
               lasse ich dich nicht allein.
@@ -89,19 +89,19 @@ export default function Maintenance() {
         </motion.div>
 
         {/* plans grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
           {plans.map((plan) => (
             <motion.div
               key={plan.name}
               variants={fadeUp}
-              className={`group relative flex flex-col rounded-[var(--radius-md)] bg-[var(--color-surface)] p-5 md:p-6 transition-shadow duration-300 ${
+              className={`group relative flex flex-col rounded-[var(--radius-md)] bg-[var(--color-surface)] p-4 md:p-5 transition-shadow duration-300 ${
                 plan.highlight
                   ? "glow-accent"
                   : "glow-soft hover:shadow-[0_0_0_1px_var(--color-accent-glow),0_0_50px_-12px_var(--color-accent-glow)]"
               }`}
             >
               {plan.badge && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[var(--color-accent)] text-[var(--color-bg)] text-[11px] font-medium tracking-wide uppercase whitespace-nowrap">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[var(--color-accent)] text-[var(--color-bg)] text-[0.6875rem] font-medium tracking-wide uppercase whitespace-nowrap">
                   <ShieldCheck className="size-3" />
                   {plan.badge}
                 </div>
@@ -138,11 +138,11 @@ export default function Maintenance() {
               )}
 
               {/* features */}
-              <ul className="mt-4 space-y-1.5 flex-1">
+              <ul className="mt-4 space-y-1 flex-1">
                 {plan.features.map((f) => (
                   <li
                     key={f}
-                    className="flex items-start gap-2 text-[13px] md:text-sm text-[var(--color-ink-soft)] leading-snug"
+                    className="flex items-start gap-2 text-[0.8125rem] md:text-sm text-[var(--color-ink-soft)] leading-snug"
                   >
                     <Check className="size-4 shrink-0 mt-0.5 text-[var(--color-accent)]" />
                     <span>{f}</span>
@@ -170,7 +170,7 @@ export default function Maintenance() {
         {/* recommendation note */}
         <motion.div
           variants={fadeUp}
-          className="mt-5 max-w-3xl mx-auto rounded-[var(--radius-md)] bg-[var(--color-surface-2)] border-l-4 border-[var(--color-accent)] px-5 py-4"
+          className="mt-3 max-w-3xl mx-auto rounded-[var(--radius-md)] bg-[var(--color-surface-2)] border-l-4 border-[var(--color-accent)] px-4 py-2.5"
         >
           <p className="text-sm leading-relaxed text-[var(--color-ink-soft)]">
             💡 Empfehlung: Für Websites mit Booking-System ist die Wartung Premium
@@ -182,7 +182,7 @@ export default function Maintenance() {
         {/* footnote */}
         <motion.div
           variants={fadeUp}
-          className="mt-5 flex items-center justify-center gap-2 text-xs text-[var(--color-ink-dim)]"
+          className="mt-3 flex items-center justify-center gap-2 text-xs text-[var(--color-ink-dim)]"
         >
           <Clock className="size-3.5 text-[var(--color-accent)]" />
           <span>
