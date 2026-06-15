@@ -21,6 +21,7 @@ const SUBJECT_TAG: Record<string, string> = {
 };
 
 const PAKET_LABEL: Record<string, string> = {
+  visitenkarte: "Visitenkarte (ab €500)",
   starter: "Starter (ab €1.500)",
   standard: "Standard (ab €2.500)",
   premium: "Premium (ab €4.500)",

@@ -19,7 +19,7 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent
 )}`;
 
 type Wunsch = "" | "neu" | "relaunch";
-type Paket = "" | "starter" | "standard" | "premium";
+type Paket = "" | "visitenkarte" | "starter" | "standard" | "premium";
 type WartungPaket = "" | "standard" | "premium";
 type ContentPaket = "" | "monatlich" | "jahr1" | "jahr2";
 type Auftraggeber = "" | "unternehmen" | "privat";
@@ -621,6 +621,7 @@ function PaketSelect({
   disabled?: boolean;
 }) {
   const options: { id: Exclude<Paket, "">; title: string; price: string }[] = [
+    { id: "visitenkarte", title: "Visitenkarte", price: "€500" },
     { id: "starter", title: "Starter", price: "€1.500" },
     { id: "standard", title: "Standard", price: "€2.500" },
     { id: "premium", title: "Premium", price: "€4.500" },

@@ -66,7 +66,7 @@ export type ValidationResult =
   | { ok: false; message: string };
 
 const ALLOWED_WUNSCH = new Set(["", "neu", "relaunch"]);
-const ALLOWED_PAKET = new Set(["", "starter", "standard", "premium"]);
+const ALLOWED_PAKET = new Set(["", "visitenkarte", "starter", "standard", "premium"]);
 const ALLOWED_WARTUNG = new Set(["", "standard", "premium"]);
 const ALLOWED_CONTENT_PAKET = new Set(["", "monatlich", "jahr1", "jahr2"]);
 const ALLOWED_AUFTRAGGEBER = new Set(["", "unternehmen", "privat"]);

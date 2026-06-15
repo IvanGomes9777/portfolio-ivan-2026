@@ -192,6 +192,19 @@ const serviceSchema = {
     itemListElement: [
       {
         "@type": "Offer",
+        name: "Visitenkarte",
+        description:
+          "Digitale Visitenkarte – einfach online präsent (One-Pager, bis zu 5 Sektionen): Responsive Design, Kontaktdaten mit Anruf- & Routen-Button, Verlinkung zu Google Maps, Impressum & Datenschutz inklusive, 2 Wochen Support.",
+        priceCurrency: "EUR",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          minPrice: "500",
+          priceCurrency: "EUR",
+        },
+        category: "Webdesign",
+      },
+      {
+        "@type": "Offer",
         name: "Starter",
         description:
           "Simple Website – alle Infos auf einer Seite (One-Pager): Responsive Design, Kontaktformular, Google Business Profil + Maps, Basis-SEO (Meta-Tags, Sitemap, schnelle Ladezeiten), 4 Wochen Support.",
