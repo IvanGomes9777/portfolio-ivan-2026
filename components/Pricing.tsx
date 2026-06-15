@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import {
   Check,
-  ArrowRight,
   BadgePercent,
   Wallet,
   CreditCard,
@@ -114,7 +113,7 @@ const tiers: Tier[] = [
 
 export default function Pricing() {
   return (
-    <section className="relative overflow-x-clip px-4 py-10 md:py-8 max-w-6xl w-full mx-auto">
+    <section className="relative overflow-x-clip px-4 py-6 md:py-6 max-w-6xl w-full mx-auto">
       {/* ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 size-[600px] rounded-full bg-[radial-gradient(circle,var(--color-accent-glow),transparent_60%)] opacity-25 pointer-events-none" />
 
@@ -126,17 +125,17 @@ export default function Pricing() {
         className="relative"
       >
         {/* heading */}
-        <motion.div variants={fadeUp} className="text-center mb-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)]/60 backdrop-blur text-xs text-[var(--color-ink-soft)] mb-4">
+        <motion.div variants={fadeUp} className="text-center mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)]/60 backdrop-blur text-xs text-[var(--color-ink-soft)] mb-3">
             <BadgePercent className="size-3 text-[var(--color-accent)]" />
             <span>Transparente Festpreise</span>
           </div>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl tracking-[-0.03em] font-medium leading-[1.05]">
+          <h2 className="font-display text-2xl md:text-3xl lg:text-4xl tracking-[-0.03em] font-medium leading-[1.05]">
             <span className="bg-gradient-to-r from-[var(--color-accent-soft)] via-[var(--color-accent)] to-[var(--color-accent-strong)] bg-clip-text text-transparent">
               Website-Preise
             </span>
           </h2>
-          <p className="mt-3 max-w-xl mx-auto text-sm text-[var(--color-ink-soft)] leading-relaxed">
+          <p className="mt-2 max-w-lg mx-auto text-xs md:text-sm text-[var(--color-ink-soft)] leading-snug">
             Klare Pakete als Richtwert. Such dir aus, was zu deinem Business
             passt — der finale Preis kann je nach Aufwand, Umfang und
             individuellen Wünschen variieren.
@@ -144,12 +143,12 @@ export default function Pricing() {
         </motion.div>
 
         {/* pricing grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {tiers.map((tier) => (
             <motion.div
               key={tier.name}
               variants={fadeUp}
-              className={`group relative flex flex-col rounded-[var(--radius-md)] bg-[var(--color-surface)] p-5 md:p-6 transition-shadow duration-300 ${
+              className={`group relative flex flex-col rounded-[var(--radius-md)] bg-[var(--color-surface)] p-4 md:p-5 transition-shadow duration-300 ${
                 tier.highlight
                   ? "glow-accent"
                   : "glow-soft hover:shadow-[0_0_0_1px_var(--color-accent-glow),0_0_50px_-12px_var(--color-accent-glow)]"
@@ -171,12 +170,12 @@ export default function Pricing() {
               >
                 {tier.name}
               </h3>
-              <p className="mt-1.5 text-sm text-[var(--color-ink-soft)] leading-snug">
+              <p className="mt-1 text-[13px] text-[var(--color-ink-soft)] leading-snug">
                 {tier.desc}
               </p>
 
               {/* price */}
-              <div className="mt-4 flex items-end gap-2">
+              <div className="mt-3 flex items-end gap-2">
                 <span className="mb-1.5 text-sm font-medium text-[var(--color-ink-soft)]">
                   ab
                 </span>
@@ -189,11 +188,11 @@ export default function Pricing() {
               </div>
 
               {/* features */}
-              <ul className="mt-4 space-y-1.5 flex-1">
+              <ul className="mt-3 space-y-1 flex-1">
                 {tier.features.map((f) => (
                   <li
                     key={f}
-                    className="flex items-start gap-2 text-[13px] md:text-sm text-[var(--color-ink-soft)] leading-snug"
+                    className="flex items-start gap-2 text-xs md:text-[13px] text-[var(--color-ink-soft)] leading-snug"
                   >
                     <Check className="size-4 shrink-0 mt-0.5 text-[var(--color-accent)]" />
                     <span>
@@ -213,7 +212,7 @@ export default function Pricing() {
               <a
                 href="#kontakt"
                 data-cursor-hover
-                className={`mt-5 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all ${
+                className={`mt-4 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-all ${
                   tier.highlight
                     ? "bg-[var(--color-accent)] text-[var(--color-bg)] pulse-glow hover:bg-[var(--color-accent-soft)]"
                     : "border border-[var(--color-accent)] text-[var(--color-accent)] hover:shadow-[0_0_0_1px_var(--color-accent-glow),0_0_30px_-8px_var(--color-accent-glow)]"
@@ -226,27 +225,27 @@ export default function Pricing() {
         </div>
 
         {/* payment options — compact strip */}
-        <motion.div variants={fadeUp} className="mt-6">
-          <div className="flex items-center justify-center gap-2 text-xs uppercase tracking-[0.18em] text-[var(--color-ink-dim)] mb-3">
+        <motion.div variants={fadeUp} className="mt-4">
+          <div className="flex items-center justify-center gap-2 text-xs uppercase tracking-[0.18em] text-[var(--color-ink-dim)] mb-2">
             <Wallet className="size-3.5 text-[var(--color-accent)]" />
             <span>Flexible Zahlungsoptionen</span>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
             {paymentOptions.map((option) => {
               const Icon = option.icon;
               return (
                 <div
                   key={option.title}
-                  className="flex items-start gap-3 rounded-2xl border border-[var(--color-line)] bg-[var(--color-surface)]/70 p-4 hover:border-[var(--color-line-strong)] transition-colors"
+                  className="flex items-start gap-3 rounded-2xl border border-[var(--color-line)] bg-[var(--color-surface)]/70 p-3 hover:border-[var(--color-line-strong)] transition-colors"
                 >
-                  <span className="inline-flex items-center justify-center size-9 shrink-0 rounded-xl border border-[var(--color-line)] bg-[var(--color-surface-2)] text-[var(--color-accent)]">
+                  <span className="inline-flex items-center justify-center size-8 shrink-0 rounded-xl border border-[var(--color-line)] bg-[var(--color-surface-2)] text-[var(--color-accent)]">
                     <Icon className="size-4" />
                   </span>
                   <div>
-                    <div className="text-sm font-medium text-[var(--color-ink)] leading-tight">
+                    <div className="text-[13px] font-medium text-[var(--color-ink)] leading-tight">
                       {option.title}
                     </div>
-                    <div className="mt-1 text-xs text-[var(--color-ink-soft)] leading-snug">
+                    <div className="mt-0.5 text-xs text-[var(--color-ink-soft)] leading-snug">
                       {option.highlight}
                     </div>
                   </div>
@@ -254,7 +253,7 @@ export default function Pricing() {
               );
             })}
           </div>
-          <p className="mt-3 text-center text-xs text-[var(--color-ink-soft)] leading-snug">
+          <p className="mt-2 text-center text-xs text-[var(--color-ink-soft)] leading-snug">
             Unabhängig von der gewählten Zahlungsoption wird das Projekt erst
             nach Eingang einer Anzahlung gestartet.
           </p>
@@ -263,9 +262,9 @@ export default function Pricing() {
         {/* info box */}
         <motion.div
           variants={fadeUp}
-          className="mt-5 rounded-[var(--radius-md)] bg-[var(--color-surface-2)] border-l-4 border-[var(--color-accent)] px-5 py-4"
+          className="mt-3 rounded-[var(--radius-md)] bg-[var(--color-surface-2)] border-l-4 border-[var(--color-accent)] px-4 py-2.5"
         >
-          <p className="text-sm leading-relaxed">
+          <p className="text-[13px] leading-relaxed">
             <span className="font-medium text-[var(--color-accent)]">
               🎉 Eröffnungsaktion: 20% Rabatt
             </span>{" "}
@@ -274,18 +273,6 @@ export default function Pricing() {
               dein exaktes Angebot.
             </span>
           </p>
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div variants={fadeUp} className="mt-5 flex justify-center">
-          <a
-            href="#kontakt"
-            data-cursor-hover
-            className="group inline-flex items-center gap-2 rounded-full bg-[var(--color-accent)] text-[var(--color-bg)] px-8 py-3 text-sm font-medium pulse-glow hover:bg-[var(--color-accent-soft)] transition-colors"
-          >
-            <span>Kostenloses Erstgespräch buchen</span>
-            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-          </a>
         </motion.div>
       </motion.div>
     </section>
