@@ -10,6 +10,15 @@ import {
   CalendarClock,
 } from "lucide-react";
 import { fadeUp, stagger } from "@/lib/motion";
+import InfoTooltip from "./InfoTooltip";
+
+// Optional explainer tooltips for specific feature lines.
+const featureInfo: Record<string, string> = {
+  "Basis-SEO (Meta-Tags, Sitemap, schnelle Ladezeiten)":
+    "Basis-SEO heißt: Deine Website ist technisch sauber gebaut, schnell und so strukturiert, dass Google und KI-Suchmaschinen sie problemlos lesen — inklusive Meta-Daten, Sitemap und mobiler Optimierung. So wirst du für deinen Namen und naheliegende Suchen gefunden. Die gezielte Optimierung auf umkämpfte Suchbegriffe und die KI-Sichtbarkeit (GEO) sind ab dem Standard-Paket enthalten.",
+  "Volle SEO & GEO Optimierung":
+    "Volle SEO & GEO heißt: Ich recherchiere, wonach deine Kunden tatsächlich suchen, und richte Inhalte, Struktur und Daten gezielt darauf aus — inklusive lokaler Optimierung und erweiterter strukturierter Daten. Dazu kommt GEO: deine Inhalte werden so aufbereitet, dass auch KI-Suchmaschinen wie ChatGPT dein Unternehmen verstehen und empfehlen können.",
+};
 
 type PaymentOption = {
   icon: typeof Wallet;
@@ -187,7 +196,15 @@ export default function Pricing() {
                     className="flex items-start gap-2 text-[13px] md:text-sm text-[var(--color-ink-soft)] leading-snug"
                   >
                     <Check className="size-4 shrink-0 mt-0.5 text-[var(--color-accent)]" />
-                    <span>{f}</span>
+                    <span>
+                      {f}
+                      {featureInfo[f] && (
+                        <>
+                          {" "}
+                          <InfoTooltip text={featureInfo[f]} label={f} />
+                        </>
+                      )}
+                    </span>
                   </li>
                 ))}
               </ul>

@@ -194,7 +194,7 @@ const serviceSchema = {
         "@type": "Offer",
         name: "Starter",
         description:
-          "Simple Website – alle Infos auf einer Seite (One-Pager): Responsive Design, Kontaktformular, Google Business Integration, 4 Wochen Support.",
+          "Simple Website – alle Infos auf einer Seite (One-Pager): Responsive Design, Kontaktformular, Google Business Profil + Maps, Basis-SEO (Meta-Tags, Sitemap, schnelle Ladezeiten), 4 Wochen Support.",
         priceCurrency: "EUR",
         priceSpecification: {
           "@type": "PriceSpecification",

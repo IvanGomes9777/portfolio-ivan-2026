@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Search, Sparkles, ArrowRight } from "lucide-react";
+import { Search, Sparkles, MapPin, ArrowRight } from "lucide-react";
 import { fadeUp, stagger } from "@/lib/motion";
 import MagneticButton from "./MagneticButton";
 import Orbs from "./backgrounds/Orbs";
@@ -24,21 +24,24 @@ export default function Found() {
               <span>Sichtbarkeit</span>
             </div>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl tracking-[-0.03em] font-medium leading-[1.05]">
-              2 Wege, wie deine Website{" "}
+              3 Wege, wie deine Website{" "}
               <span className="bg-gradient-to-r from-[var(--color-accent-soft)] via-[var(--color-accent)] to-[var(--color-accent-strong)] bg-clip-text text-transparent italic">
                 gefunden wird.
               </span>
             </h2>
             <p className="mt-5 text-sm md:text-base text-[var(--color-ink-soft)] leading-relaxed">
-              Eine schöne Website bringt nichts, wenn sie niemand findet. Deshalb ist
-              Basis-SEO bei jeder Website inklusive — und ab dem Standard-Paket kommt
-              die volle SEO- & GEO-Optimierung dazu, damit du auch in der KI-Suche von
-              morgen sichtbar bist.
+              Eine schöne Website bringt nichts, wenn sie niemand findet. Deshalb
+              sorge ich dafür, dass dich Kunden genau dort finden, wo sie suchen:
+              lokal in der Google-Karte, in den klassischen Suchergebnissen — und
+              zunehmend auch in KI-Antworten. Basis-SEO ist bei jeder Website
+              inklusive, die volle SEO- & GEO-Optimierung ab dem Standard-Paket.
+              Gut zu wissen: Sichtbarkeit wächst über Zeit — erste Effekte zeigen
+              sich meist nach 2–3 Monaten.
             </p>
           </motion.div>
 
-          {/* two pillars */}
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* three pillars */}
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* SEO */}
             <motion.div
               variants={fadeUp}
@@ -64,6 +67,36 @@ export default function Found() {
                   versehen — damit Google genau versteht, worum es geht. Das Ergebnis:
                   Du erscheinst weiter oben in den Suchergebnissen und wirst gefunden,
                   genau dann, wenn ein potenzieller Kunde nach deiner Leistung sucht.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Local SEO */}
+            <motion.div
+              variants={fadeUp}
+              className="relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-gradient-to-br from-[var(--color-surface)] to-[var(--color-bg-soft)] p-7 md:p-8 group hover:border-[var(--color-line-strong)] transition-colors"
+            >
+              <div className="absolute -top-20 -right-20 size-56 rounded-full bg-[radial-gradient(circle,rgba(45,212,191,0.18),transparent_60%)] group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
+              <div className="relative">
+                <div className="inline-flex items-center justify-center size-11 rounded-2xl border border-[var(--color-line-strong)] bg-[var(--color-bg-soft)] mb-5">
+                  <MapPin className="size-5 text-[var(--color-accent)]" />
+                </div>
+                <div className="flex items-baseline gap-2">
+                  <h3 className="font-display text-2xl md:text-3xl tracking-tight font-medium">
+                    Local SEO
+                  </h3>
+                  <span className="text-xs uppercase tracking-[0.18em] text-[var(--color-ink-dim)]">
+                    Lokal gefunden werden
+                  </span>
+                </div>
+                <p className="mt-4 text-sm md:text-base text-[var(--color-ink-soft)] leading-relaxed">
+                  Für lokale Unternehmen der entscheidende Hebel: Wer in deiner
+                  Stadt nach deiner Leistung sucht, soll dich in der Google-Karte
+                  und im „Local Pack" ganz oben sehen. Dafür optimiere ich dein
+                  Google-Business-Profil, sorge für einheitliche Unternehmensdaten
+                  und eine durchdachte Bewertungs-Strategie — denn gute Bewertungen
+                  entscheiden oft darüber, ob ein Kunde bei dir oder beim Nachbarn
+                  anruft.
                 </p>
               </div>
             </motion.div>
