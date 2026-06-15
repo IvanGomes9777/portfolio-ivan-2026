@@ -10,7 +10,7 @@ const BASE_URL = "https://portfolio-ivan-2026.vercel.app";
 export const metadata: Metadata = {
   title: "Preise & Wartung",
   description:
-    "Transparente Festpreise für deine Website (ab €1.500) plus monatliche Wartungs- und Content-Pflege-Pakete — Updates, Backups, Sicherheit, Support sowie Bild- und Text-Änderungen. Flexible Zahlungsoptionen.",
+    "Transparente Festpreise für deine Website (ab €500 für die digitale Visitenkarte) plus monatliche Wartungs- und Content-Pflege-Pakete — Updates, Backups, Sicherheit, Support sowie Bild- und Text-Änderungen. Flexible Zahlungsoptionen.",
   alternates: { canonical: `${BASE_URL}/preise` },
   openGraph: {
     title: "Preise & Wartung | Ivan Gomes",

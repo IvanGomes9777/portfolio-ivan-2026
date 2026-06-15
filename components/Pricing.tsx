@@ -59,6 +59,23 @@ type Tier = {
 
 const tiers: Tier[] = [
   {
+    name: "Visitenkarte",
+    desc: "Digitale Visitenkarte – einfach online präsent",
+    priceOld: "€650",
+    priceNew: "€500",
+    features: [
+      "One-Pager – bis zu 5 Sektionen",
+      "Responsive Design",
+      "Kontaktdaten + Anruf- & Routen-Button",
+      "Verlinkung zu Google Maps",
+      "Impressum & Datenschutz inklusive",
+      "2 Wochen Support",
+      "Details im Erstgespräch",
+    ],
+    cta: "Details im Erstgespräch",
+    highlight: false,
+  },
+  {
     name: "Starter",
     desc: "Simple Website – alle Infos auf einer Seite",
     priceOld: "€1.900",
@@ -143,7 +160,7 @@ export default function Pricing() {
         </motion.div>
 
         {/* pricing grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {tiers.map((tier) => (
             <motion.div
               key={tier.name}
