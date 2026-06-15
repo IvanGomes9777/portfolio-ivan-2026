@@ -36,7 +36,7 @@ const projects = [
 
 export default function Portfolio() {
   return (
-    <section className="px-4 py-16 md:py-12 max-w-6xl w-full mx-auto">
+    <section className="px-4 py-[clamp(1.25rem,4.2vh,3.5rem)] max-w-6xl w-full mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -49,7 +49,7 @@ export default function Portfolio() {
             <span className="size-1.5 rounded-full bg-[var(--color-accent)]" />
             <span>Ausgewählte Arbeiten</span>
           </div>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-[-0.03em] font-medium leading-[1.05]">
+          <h2 className="font-display text-fluid-h1 tracking-[-0.03em] font-medium leading-[1.05]">
             Projekte, auf die ich
             <br />
             <span className="italic text-[var(--color-ink-soft)]">stolz bin.</span>

@@ -88,7 +88,7 @@ export default function ProjectShowcase() {
             <span className="size-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
             <span>Live-Vorschau · direkt im Browser</span>
           </div>
-          <h2 className="font-display text-2xl md:text-3xl lg:text-4xl tracking-[-0.03em] font-medium leading-[1.05]">
+          <h2 className="font-display text-fluid-h2 tracking-[-0.03em] font-medium leading-[1.05]">
             Echte Projekte.{" "}
             <span className="italic text-[var(--color-ink-soft)]">Live im Netz.</span>
           </h2>
@@ -130,10 +130,10 @@ export default function ProjectShowcase() {
 
             {/* meta — uniform sizes + spacing on every card */}
             <div className="mt-3 px-0.5 flex flex-col gap-1">
-              <div className="font-display text-[13px] leading-tight tracking-tight font-medium text-[var(--color-ink)] truncate">
+              <div className="font-display text-[0.8125rem] leading-tight tracking-tight font-medium text-[var(--color-ink)] truncate">
                 {p.name}
               </div>
-              <div className="text-[10px] leading-tight text-[var(--color-ink-dim)] flex items-center gap-1.5">
+              <div className="text-[0.625rem] leading-tight text-[var(--color-ink-dim)] flex items-center gap-1.5">
                 <span className="truncate">{p.branche}</span>
                 <span className="size-[3px] shrink-0 rounded-full bg-[var(--color-ink-dim)]" />
                 <span className="shrink-0">{p.year}</span>
@@ -143,7 +143,7 @@ export default function ProjectShowcase() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor-hover
-                className="mt-0.5 inline-flex items-center gap-1 text-[10px] leading-tight text-[var(--color-ink-soft)] hover:text-[var(--color-accent-soft)] transition-colors w-fit"
+                className="mt-0.5 inline-flex items-center gap-1 text-[0.625rem] leading-tight text-[var(--color-ink-soft)] hover:text-[var(--color-accent-soft)] transition-colors w-fit"
               >
                 Live öffnen <ArrowUpRight className="size-2.5" />
               </a>
@@ -211,7 +211,7 @@ function ProjectFrame({ project, view }: { project: Project; view: View }) {
             <div className="rounded-lg sm:rounded-xl border border-white/15 bg-white/[0.06] backdrop-blur-md flex items-center justify-center transition-transform duration-500 group-hover:scale-110 size-6 sm:size-8 md:size-10">
               <Icon className="size-2.5 sm:size-3.5 md:size-4 text-white/90" />
             </div>
-            <div className="font-display leading-tight text-white/85 tracking-wide truncate max-w-[92%] text-[8px] sm:text-[10px] md:text-xs">
+            <div className="font-display leading-tight text-white/85 tracking-wide truncate max-w-[92%] text-[0.5rem] sm:text-[0.625rem] md:text-xs">
               {project.name}
             </div>
           </div>
@@ -220,7 +220,7 @@ function ProjectFrame({ project, view }: { project: Project; view: View }) {
 
       {/* Hover veil + Live-öffnen badge */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-      <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-black/70 backdrop-blur-md text-[9px] text-white/90 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-white/10 pointer-events-none">
+      <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-black/70 backdrop-blur-md text-[0.5625rem] text-white/90 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-white/10 pointer-events-none">
         <ExternalLink className="size-2.5" />
         <span>Live öffnen</span>
       </div>

@@ -47,7 +47,7 @@ export default function Promise() {
               <span>Das Versprechen</span>
             </div>
 
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl tracking-[-0.03em] leading-[1.05] font-medium">
+            <h2 className="font-display text-fluid-h2 tracking-[-0.03em] leading-[1.05] font-medium">
               Deine neue Website —
               <br />
               <span className="bg-gradient-to-r from-[var(--color-ink)] via-[var(--color-accent-soft)] to-[var(--color-ink)] bg-clip-text text-transparent">
@@ -88,7 +88,7 @@ export default function Promise() {
                   <BadgeEuro className="size-5 text-[var(--color-accent)]" />
                 </span>
                 <div>
-                  <div className="font-display text-xl md:text-2xl tracking-[-0.02em] font-medium">
+                  <div className="font-display text-fluid-h4 tracking-[-0.02em] font-medium">
                     Festpreis — garantiert.
                   </div>
                   <p className="mt-1 text-sm text-[var(--color-ink-soft)] leading-relaxed">
@@ -132,7 +132,7 @@ export default function Promise() {
           >
             <Zap className="size-5 text-[var(--color-accent)] mb-2" />
             <div className="font-display text-lg md:text-xl tracking-tight">Performant</div>
-            <p className="mt-1 text-[13px] text-[var(--color-ink-soft)] leading-snug">
+            <p className="mt-1 text-[0.8125rem] text-[var(--color-ink-soft)] leading-snug">
               Geladen, bevor der Daumen zuckt. 95+ Lighthouse-Score als Standard.
             </p>
           </motion.div>
@@ -143,7 +143,7 @@ export default function Promise() {
           >
             <ShieldCheck className="size-5 text-[var(--color-accent)] mb-2" />
             <div className="font-display text-lg md:text-xl tracking-tight">Termintreu</div>
-            <p className="mt-1 text-[13px] text-[var(--color-ink-soft)] leading-snug">
+            <p className="mt-1 text-[0.8125rem] text-[var(--color-ink-soft)] leading-snug">
               Verbindliche Deadlines. Klare Kommunikation. Keine bösen Überraschungen.
             </p>
           </motion.div>
@@ -154,7 +154,7 @@ export default function Promise() {
           >
             <Lock className="size-5 text-[var(--color-accent)] mb-2" />
             <div className="font-display text-lg md:text-xl tracking-tight">Sicher</div>
-            <p className="mt-1 text-[13px] text-[var(--color-ink-soft)] leading-snug">
+            <p className="mt-1 text-[0.8125rem] text-[var(--color-ink-soft)] leading-snug">
               Sauber entwickelt — geschützt vor Spam, Angriffen und Datenlecks. Von Anfang an mit dabei.
             </p>
           </motion.div>
@@ -165,7 +165,7 @@ export default function Promise() {
           >
             <FileCheck className="size-5 text-[var(--color-accent)] mb-2" />
             <div className="font-display text-lg md:text-xl tracking-tight">DSGVO-konform</div>
-            <p className="mt-1 text-[13px] text-[var(--color-ink-soft)] leading-snug">
+            <p className="mt-1 text-[0.8125rem] text-[var(--color-ink-soft)] leading-snug">
               Datenschutz nach deutschem Recht — von Cookie-Banner bis Impressum. Rechtssicher.
             </p>
           </motion.div>
@@ -188,7 +188,7 @@ export default function Promise() {
               </div>
             </div>
           </div>
-          <p className="relative text-[13px] text-[var(--color-ink-soft)] leading-snug">
+          <p className="relative text-[0.8125rem] text-[var(--color-ink-soft)] leading-snug">
             Optimiert für klassische Suchmaschinen (SEO) und KI-Antwortmaschinen (GEO) —
             damit dich Kunden in Münster und ganz Deutschland finden: heute bei Google,
             morgen in ChatGPT &amp; Co.
@@ -211,7 +211,7 @@ export default function Promise() {
               </div>
             </div>
           </div>
-          <p className="relative text-[13px] text-[var(--color-ink-soft)] leading-snug">
+          <p className="relative text-[0.8125rem] text-[var(--color-ink-soft)] leading-snug">
             Du suchst dir eine Domain aus (z.&nbsp;B. mein-salon.de) und kaufst sie bei
             einem Anbieter deiner Wahl — die technische Einrichtung (DNS) übernehme ich.
             Nach wenigen Stunden ist deine Website online und erreichbar.

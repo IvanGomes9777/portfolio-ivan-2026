@@ -108,25 +108,25 @@ export default function CTA() {
   return (
     <>
       <Aurora />
-      <section className="px-4 py-12 md:py-8 w-full">
+      <section className="px-4 py-[clamp(1rem,3.2vh,2.25rem)] w-full">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="relative rotating-border rounded-[2rem] bg-[var(--color-bg-soft)] p-8 md:p-14 overflow-hidden"
+            className="relative rotating-border rounded-[2rem] bg-[var(--color-bg-soft)] p-6 md:p-9 overflow-hidden"
           >
             {/* ambient glow */}
             <div className="absolute -top-32 left-1/2 -translate-x-1/2 size-[500px] rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.2),transparent_60%)] pointer-events-none" />
 
-            <div className="relative grid md:grid-cols-5 gap-10 md:gap-14 items-start">
+            <div className="relative grid md:grid-cols-5 gap-6 md:gap-9 items-start">
               <div className="md:col-span-2">
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)]/60 backdrop-blur text-xs text-[var(--color-ink-soft)] mb-6">
                   <span className="size-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
                   <span>Antwort innerhalb von 24 Stunden</span>
                 </div>
-                <h2 className="font-display text-4xl md:text-5xl tracking-[-0.03em] font-medium leading-[1.05]">
+                <h2 className="font-display text-fluid-h2lg tracking-[-0.03em] font-medium leading-[1.05]">
                   Lass uns dein Projekt
                   <br />
                   <span className="bg-gradient-to-r from-[var(--color-accent-soft)] via-[var(--color-accent)] to-[var(--color-accent-strong)] bg-clip-text text-transparent italic">
@@ -182,7 +182,7 @@ export default function CTA() {
                       <div className="inline-flex items-center justify-center size-14 rounded-full border border-emerald-400/40 bg-emerald-400/10 mb-5">
                         <Check className="size-6 text-emerald-400" />
                       </div>
-                      <h3 className="font-display text-2xl md:text-3xl tracking-tight font-medium mb-2">
+                      <h3 className="font-display text-fluid-h3 tracking-tight font-medium mb-2">
                         Anfrage gesendet.
                       </h3>
                       <p className="text-sm text-[var(--color-ink-soft)] leading-relaxed">
@@ -272,11 +272,11 @@ export default function CTA() {
                                   setPhoneOpen(false);
                                   setForm({ ...form, phone: "" });
                                 }}
-                                className="absolute right-0 top-0 text-[11px] text-[var(--color-ink-dim)] hover:text-[var(--color-ink-soft)] transition-colors uppercase tracking-[0.18em]"
+                                className="absolute right-0 top-0 text-[0.6875rem] text-[var(--color-ink-dim)] hover:text-[var(--color-ink-soft)] transition-colors uppercase tracking-[0.18em]"
                               >
                                 Entfernen
                               </button>
-                              <p className="mt-2 text-[11px] text-[var(--color-ink-dim)] inline-flex items-center gap-1.5">
+                              <p className="mt-2 text-[0.6875rem] text-[var(--color-ink-dim)] inline-flex items-center gap-1.5">
                                 <Phone className="size-3" />
                                 Ich rufe dich innerhalb von 24 Stunden zurück.
                               </p>
@@ -521,7 +521,7 @@ function WunschSelect({
                   >
                     {o.title}
                   </div>
-                  <div className="mt-0.5 text-[11px] text-[var(--color-ink-dim)] leading-snug">
+                  <div className="mt-0.5 text-[0.6875rem] text-[var(--color-ink-dim)] leading-snug">
                     {o.sub}
                   </div>
                 </div>
@@ -589,7 +589,7 @@ function AuftraggeberSelect({
                   >
                     {o.title}
                   </div>
-                  <div className="mt-0.5 text-[11px] text-[var(--color-ink-dim)] leading-snug">
+                  <div className="mt-0.5 text-[0.6875rem] text-[var(--color-ink-dim)] leading-snug">
                     {o.sub}
                   </div>
                 </div>
@@ -666,7 +666,7 @@ function PaketSelect({
                 >
                   {o.title}
                 </div>
-                <div className="mt-0.5 text-[11px] text-[var(--color-ink-dim)] leading-snug">
+                <div className="mt-0.5 text-[0.6875rem] text-[var(--color-ink-dim)] leading-snug">
                   ab {o.price}
                 </div>
               </div>
@@ -732,7 +732,7 @@ function WartungSelect({
                 >
                   {o.title}
                 </div>
-                <div className="mt-0.5 text-[11px] text-[var(--color-ink-dim)] leading-snug">
+                <div className="mt-0.5 text-[0.6875rem] text-[var(--color-ink-dim)] leading-snug">
                   {o.price}
                 </div>
               </div>
@@ -799,7 +799,7 @@ function ContentPaketSelect({
                 >
                   {o.title}
                 </div>
-                <div className="mt-0.5 text-[11px] text-[var(--color-ink-dim)] leading-snug">
+                <div className="mt-0.5 text-[0.6875rem] text-[var(--color-ink-dim)] leading-snug">
                   {o.price}
                 </div>
               </div>

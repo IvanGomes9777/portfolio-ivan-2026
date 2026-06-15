@@ -35,11 +35,11 @@ export default function PanelIndicator({
         />
       </div>
 
-      <span className="text-[10px] uppercase tracking-[0.25em] text-[var(--color-ink-dim)] hidden md:inline">
+      <span className="text-[0.625rem] uppercase tracking-[0.25em] text-[var(--color-ink-dim)] hidden md:inline">
         {labels[current]}
       </span>
 
-      <span className="text-[10px] uppercase tracking-[0.25em] text-[var(--color-ink-dim)] flex items-center gap-1.5">
+      <span className="text-[0.625rem] uppercase tracking-[0.25em] text-[var(--color-ink-dim)] flex items-center gap-1.5">
         Scroll
         <motion.span
           animate={{ x: [0, 4, 0] }}

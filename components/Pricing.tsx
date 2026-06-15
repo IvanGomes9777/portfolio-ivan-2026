@@ -130,7 +130,7 @@ export default function Pricing() {
             <BadgePercent className="size-3 text-[var(--color-accent)]" />
             <span>Transparente Festpreise</span>
           </div>
-          <h2 className="font-display text-2xl md:text-3xl lg:text-4xl tracking-[-0.03em] font-medium leading-[1.05]">
+          <h2 className="font-display text-fluid-h2 tracking-[-0.03em] font-medium leading-[1.05]">
             <span className="bg-gradient-to-r from-[var(--color-accent-soft)] via-[var(--color-accent)] to-[var(--color-accent-strong)] bg-clip-text text-transparent">
               Website-Preise
             </span>
@@ -155,7 +155,7 @@ export default function Pricing() {
               }`}
             >
               {tier.highlight && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[var(--color-accent)] text-[var(--color-bg)] text-[11px] font-medium tracking-wide uppercase">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[var(--color-accent)] text-[var(--color-bg)] text-[0.6875rem] font-medium tracking-wide uppercase">
                   Beliebteste Wahl
                 </div>
               )}
@@ -170,7 +170,7 @@ export default function Pricing() {
               >
                 {tier.name}
               </h3>
-              <p className="mt-1 text-[13px] text-[var(--color-ink-soft)] leading-snug">
+              <p className="mt-1 text-[0.8125rem] text-[var(--color-ink-soft)] leading-snug">
                 {tier.desc}
               </p>
 
@@ -192,7 +192,7 @@ export default function Pricing() {
                 {tier.features.map((f) => (
                   <li
                     key={f}
-                    className="flex items-start gap-2 text-xs md:text-[13px] text-[var(--color-ink-soft)] leading-snug"
+                    className="flex items-start gap-2 text-xs md:text-[0.8125rem] text-[var(--color-ink-soft)] leading-snug"
                   >
                     <Check className="size-4 shrink-0 mt-0.5 text-[var(--color-accent)]" />
                     <span>
@@ -242,7 +242,7 @@ export default function Pricing() {
                     <Icon className="size-4" />
                   </span>
                   <div>
-                    <div className="text-[13px] font-medium text-[var(--color-ink)] leading-tight">
+                    <div className="text-[0.8125rem] font-medium text-[var(--color-ink)] leading-tight">
                       {option.title}
                     </div>
                     <div className="mt-0.5 text-xs text-[var(--color-ink-soft)] leading-snug">
@@ -264,7 +264,7 @@ export default function Pricing() {
           variants={fadeUp}
           className="mt-3 rounded-[var(--radius-md)] bg-[var(--color-surface-2)] border-l-4 border-[var(--color-accent)] px-4 py-2.5"
         >
-          <p className="text-[13px] leading-relaxed">
+          <p className="text-[0.8125rem] leading-relaxed">
             <span className="font-medium text-[var(--color-accent)]">
               🎉 Eröffnungsaktion: 20% Rabatt
             </span>{" "}

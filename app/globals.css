@@ -30,6 +30,24 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Fluid typography — sizes scale stepless with the viewport via clamp(),
+   so headings no longer jump at fixed breakpoints. Values map roughly to the
+   previous Tailwind min→max steps, in rem for accessibility/zoom. */
+@utility text-fluid-hero { font-size: clamp(2.25rem, 1.3rem + 4.8vw, 4.5rem); }
+@utility text-fluid-h1   { font-size: clamp(2.25rem, 1.6rem + 3vw, 3.75rem); }
+@utility text-fluid-h2lg { font-size: clamp(1.875rem, 1.25rem + 2.6vw, 3rem); }
+@utility text-fluid-h2   { font-size: clamp(1.5rem, 1.15rem + 1.6vw, 2.25rem); }
+@utility text-fluid-h3   { font-size: clamp(1.25rem, 1.05rem + 0.9vw, 1.875rem); }
+@utility text-fluid-h4   { font-size: clamp(1.125rem, 1rem + 0.5vw, 1.5rem); }
+@utility text-fluid-lead { font-size: clamp(0.95rem, 0.9rem + 0.4vw, 1.125rem); }
+
+/* Hide scrollbars on the per-panel scroll containers (scroll stays available). */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
 /* Smooth scroll handled by Lenis — native smooth disabled to avoid conflicts */
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }

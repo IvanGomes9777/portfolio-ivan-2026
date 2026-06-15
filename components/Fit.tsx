@@ -17,7 +17,7 @@ export default function Fit() {
   return (
     <>
       <PerspectiveGrid />
-      <section className="px-4 py-16 md:py-12 max-w-5xl w-full mx-auto">
+      <section className="px-4 py-[clamp(1.25rem,4.2vh,3.5rem)] max-w-5xl w-full mx-auto">
         <motion.div
           variants={stagger(0.1)}
           initial="hidden"
@@ -30,20 +30,20 @@ export default function Fit() {
               <span className="size-1.5 rounded-full bg-[var(--color-accent)]" />
               <span>Passt es?</span>
             </div>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl tracking-[-0.03em] font-medium leading-[1.05]">
+            <h2 className="font-display text-fluid-h2lg tracking-[-0.03em] font-medium leading-[1.05]">
               Professionelle Website{" "}
               <span className="bg-gradient-to-r from-[var(--color-accent-soft)] via-[var(--color-accent)] to-[var(--color-accent-strong)] bg-clip-text text-transparent italic">
                 erstellen lassen.
               </span>
             </h2>
-            <p className="mt-5 text-sm md:text-base text-[var(--color-ink-soft)] leading-relaxed">
+            <p className="mt-3 text-sm md:text-base text-[var(--color-ink-soft)] leading-relaxed">
               Eine ehrliche Einschätzung, bevor wir reden — damit du genau weißt, ob
               wir zueinander passen.
             </p>
           </motion.div>
 
           {/* fit checklist */}
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="mt-[clamp(1.25rem,3.2vh,2.5rem)] grid grid-cols-1 sm:grid-cols-2 gap-3">
             {fits.map((text) => (
               <motion.div
                 key={text}
@@ -53,7 +53,7 @@ export default function Fit() {
                 <span className="mt-0.5 inline-flex items-center justify-center size-6 shrink-0 rounded-full border border-emerald-400/40 bg-emerald-400/10">
                   <Check className="size-3.5 text-emerald-400" />
                 </span>
-                <p className="text-sm md:text-[15px] text-[var(--color-ink-soft)] leading-relaxed">
+                <p className="text-sm md:text-[0.9375rem] text-[var(--color-ink-soft)] leading-relaxed">
                   {text}
                 </p>
               </motion.div>
@@ -68,7 +68,7 @@ export default function Fit() {
             <span className="mt-0.5 inline-flex items-center justify-center size-6 shrink-0 rounded-full border border-[var(--color-line-strong)] bg-[var(--color-surface)]/40">
               <X className="size-3.5 text-[var(--color-ink-dim)]" />
             </span>
-            <p className="text-sm md:text-[15px] text-[var(--color-ink-dim)] leading-relaxed">
+            <p className="text-sm md:text-[0.9375rem] text-[var(--color-ink-dim)] leading-relaxed">
               Weniger passend, wenn du mit minimalem Budget schnell eine
               Baukasten-Lösung zusammenklicken möchtest — durchdachtes Design und
               echte Wirkung brauchen den entsprechenden Rahmen.
@@ -76,7 +76,7 @@ export default function Fit() {
           </motion.div>
 
           {/* CTA button */}
-          <motion.div variants={fadeUp} className="mt-10 flex justify-center">
+          <motion.div variants={fadeUp} className="mt-[clamp(1rem,2.6vh,2.5rem)] flex justify-center">
             <MagneticButton strength={0.3}>
               <a
                 href="#kontakt"

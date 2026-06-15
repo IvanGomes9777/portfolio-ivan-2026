@@ -79,7 +79,7 @@ const plans: ContentPlan[] = [
 
 export default function ContentMaintenance() {
   return (
-    <section className="relative overflow-x-clip px-4 py-10 md:py-8 max-w-6xl w-full mx-auto">
+    <section className="relative overflow-x-clip px-4 py-[clamp(1rem,3vh,2rem)] max-w-6xl w-full mx-auto">
       {/* ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 size-[600px] rounded-full bg-[radial-gradient(circle,var(--color-accent-glow),transparent_60%)] opacity-20 pointer-events-none" />
 
@@ -91,12 +91,12 @@ export default function ContentMaintenance() {
         className="relative"
       >
         {/* heading */}
-        <motion.div variants={fadeUp} className="text-center mb-6">
+        <motion.div variants={fadeUp} className="text-center mb-4">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)]/60 backdrop-blur text-xs text-[var(--color-ink-soft)] mb-4">
             <ImageIcon className="size-3 text-[var(--color-accent)]" />
             <span>Content-Pflege</span>
           </div>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl tracking-[-0.03em] font-medium leading-[1.05]">
+          <h2 className="font-display text-fluid-h2lg tracking-[-0.03em] font-medium leading-[1.05]">
             Bilder & Texte{" "}
             <span className="bg-gradient-to-r from-[var(--color-accent-soft)] via-[var(--color-accent)] to-[var(--color-accent-strong)] bg-clip-text text-transparent italic">
               jederzeit ändern.
@@ -115,14 +115,14 @@ export default function ContentMaintenance() {
             <motion.div
               key={plan.name}
               variants={fadeUp}
-              className={`group relative flex flex-col rounded-[var(--radius-md)] bg-[var(--color-surface)] p-5 md:p-6 transition-shadow duration-300 ${
+              className={`group relative flex flex-col rounded-[var(--radius-md)] bg-[var(--color-surface)] p-4 md:p-5 transition-shadow duration-300 ${
                 plan.highlight
                   ? "glow-accent"
                   : "glow-soft hover:shadow-[0_0_0_1px_var(--color-accent-glow),0_0_50px_-12px_var(--color-accent-glow)]"
               }`}
             >
               {plan.badge && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[var(--color-accent)] text-[var(--color-bg)] text-[11px] font-medium tracking-wide uppercase whitespace-nowrap">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[var(--color-accent)] text-[var(--color-bg)] text-[0.6875rem] font-medium tracking-wide uppercase whitespace-nowrap">
                   <Star className="size-3" />
                   {plan.badge}
                 </div>
@@ -167,11 +167,11 @@ export default function ContentMaintenance() {
               </div>
 
               {/* features */}
-              <ul className="mt-4 space-y-1.5 flex-1">
+              <ul className="mt-4 space-y-1 flex-1">
                 {plan.features.map((f) => (
                   <li
                     key={f}
-                    className="flex items-start gap-2 text-[13px] md:text-sm text-[var(--color-ink-soft)] leading-snug"
+                    className="flex items-start gap-2 text-[0.8125rem] md:text-sm text-[var(--color-ink-soft)] leading-snug"
                   >
                     <Check className="size-4 shrink-0 mt-0.5 text-[var(--color-accent)]" />
                     <span>{f}</span>
@@ -180,7 +180,7 @@ export default function ContentMaintenance() {
               </ul>
 
               {plan.saving && (
-                <div className="mt-3 inline-flex items-center gap-1.5 self-start rounded-full border border-[var(--color-accent)]/40 px-3 py-1 text-[11px] font-medium text-[var(--color-accent)]">
+                <div className="mt-3 inline-flex items-center gap-1.5 self-start rounded-full border border-[var(--color-accent)]/40 px-3 py-1 text-[0.6875rem] font-medium text-[var(--color-accent)]">
                   🎁 {plan.saving}
                 </div>
               )}
@@ -205,7 +205,7 @@ export default function ContentMaintenance() {
         {/* what counts as a change */}
         <motion.div
           variants={fadeUp}
-          className="mt-5 rounded-[var(--radius-md)] bg-[var(--color-surface-2)] border-l-4 border-[var(--color-accent)] px-5 py-4"
+          className="mt-3 rounded-[var(--radius-md)] bg-[var(--color-surface-2)] border-l-4 border-[var(--color-accent)] px-4 py-2.5"
         >
           <div className="flex items-center gap-2 text-sm font-medium text-[var(--color-accent)]">
             <Info className="size-4" />
@@ -229,7 +229,7 @@ export default function ContentMaintenance() {
         {/* footnote */}
         <motion.div
           variants={fadeUp}
-          className="mt-5 flex items-center justify-center gap-2 text-xs text-[var(--color-ink-dim)]"
+          className="mt-3 flex items-center justify-center gap-2 text-xs text-[var(--color-ink-dim)]"
         >
           <Clock className="size-3.5 text-[var(--color-accent)]" />
           <span>

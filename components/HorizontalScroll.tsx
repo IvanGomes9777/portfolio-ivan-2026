@@ -10,7 +10,7 @@ type Panel = { id: string; label: string; content: ReactNode };
 export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
   const outerRef = useRef<HTMLElement>(null);
   const innerRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const fitRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const scrollRefs = useRef<(HTMLDivElement | null)[]>([]);
   const globalProgress = useMotionValue(0);
   const n = panels.length;
   // Create panel MotionValues during HorizontalScroll's own render so they
@@ -118,46 +118,75 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
     };
   }, [n, globalProgress]);
 
-  // Fit-to-screen: each panel is locked to 100vh (overflow-hidden), so any
-  // section taller than the viewport would be clipped — a real problem on
-  // laptops where the usable height is only ~600–870px. We measure each
-  // panel's natural (unscaled) height and apply a center-origin scale so the
-  // whole section always fits the screen, regardless of device. offsetHeight
-  // is transform-independent, so reading it while a scale is applied is safe.
+  // Tall panels that exceed the viewport get their own vertical scroll, so
+  // content is never clipped and never has to be shrunk/letterboxed. Lenis is
+  // told to ignore those panels (data-lenis-prevent) so native scrolling works
+  // inside them; when the inner scroll reaches its top/bottom edge, a wheel
+  // handler hands the gesture back to the deck so the page-turn continues.
   useEffect(() => {
-    const PAD = 56; // breathing room top+bottom (also clears the indicator)
-    const MIN = 0.5;
+    const lock = { v: false };
 
-    const apply = () => {
-      const avail = window.innerHeight - PAD;
-      for (const el of fitRefs.current) {
-        if (!el) continue;
-        const h = el.offsetHeight;
-        let s = h > 0 ? avail / h : 1;
-        if (s >= 1) {
-          el.style.transform = "";
-        } else {
-          if (s < MIN) s = MIN;
-          el.style.transform = `scale(${s})`;
-        }
-      }
+    const scrollDeck = (dir: number) => {
+      const outer = outerRef.current;
+      if (!outer || lock.v) return;
+      const totalDistance = outer.offsetHeight - window.innerHeight;
+      if (totalDistance <= 0) return;
+      const segment = n > 1 ? totalDistance / (n - 1) : 0;
+      const rect = outer.getBoundingClientRect();
+      const docTop = window.scrollY + rect.top;
+      const cur = Math.round((window.scrollY - docTop) / segment);
+      const next = Math.min(n - 1, Math.max(0, cur + dir));
+      if (next === cur) return;
+      lock.v = true;
+      const targetY = docTop + next * segment;
+      const lenis = (window as unknown as {
+        __lenis?: { scrollTo: (t: number, o?: { duration?: number; easing?: (t: number) => number }) => void };
+      }).__lenis;
+      const easing = (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t));
+      if (lenis) lenis.scrollTo(targetY, { duration: 1.2, easing });
+      else window.scrollTo({ top: targetY, behavior: "smooth" });
+      window.setTimeout(() => { lock.v = false; }, 950);
     };
 
-    apply();
-    window.addEventListener("resize", apply);
+    const measure = () => {
+      scrollRefs.current.forEach((el) => {
+        if (!el) return;
+        const over = el.scrollHeight > el.clientHeight + 2;
+        if (over) el.setAttribute("data-lenis-prevent", "");
+        else el.removeAttribute("data-lenis-prevent");
+      });
+    };
 
+    const cleanups: Array<() => void> = [];
+    scrollRefs.current.forEach((el) => {
+      if (!el) return;
+      const onWheel = (e: WheelEvent) => {
+        if (el.scrollHeight <= el.clientHeight + 2) return; // fits — let deck scroll
+        const atTop = el.scrollTop <= 0;
+        const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 1;
+        if ((e.deltaY > 0 && atBottom) || (e.deltaY < 0 && atTop)) {
+          e.preventDefault();
+          scrollDeck(e.deltaY > 0 ? 1 : -1);
+        }
+      };
+      el.addEventListener("wheel", onWheel, { passive: false });
+      cleanups.push(() => el.removeEventListener("wheel", onWheel));
+    });
+
+    measure();
+    window.addEventListener("resize", measure);
     let ro: ResizeObserver | null = null;
     if (typeof ResizeObserver !== "undefined") {
-      ro = new ResizeObserver(() => apply());
-      fitRefs.current.forEach((el) => el && ro!.observe(el));
+      ro = new ResizeObserver(() => measure());
+      scrollRefs.current.forEach((el) => el && ro!.observe(el));
     }
-    // Re-measure once webfonts have loaded (text reflow changes height).
     const fonts = (document as Document & { fonts?: FontFaceSet }).fonts;
-    if (fonts?.ready) fonts.ready.then(apply).catch(() => {});
+    if (fonts?.ready) fonts.ready.then(measure).catch(() => {});
 
     return () => {
-      window.removeEventListener("resize", apply);
+      window.removeEventListener("resize", measure);
       if (ro) ro.disconnect();
+      cleanups.forEach((c) => c());
     };
   }, [n]);
 
@@ -240,13 +269,13 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
               }}
             >
               <PanelProgressContext.Provider value={panelProgresses[i]!}>
-                <div className="relative w-full h-full flex items-center justify-center">
-                  <div
-                    ref={(el) => {
-                      fitRefs.current[i] = el;
-                    }}
-                    className="w-full origin-center will-change-transform"
-                  >
+                <div
+                  ref={(el) => {
+                    scrollRefs.current[i] = el;
+                  }}
+                  className="relative w-full h-full overflow-y-auto overscroll-contain no-scrollbar"
+                >
+                  <div className="min-h-full flex items-center justify-center">
                     {p.content}
                   </div>
                 </div>
