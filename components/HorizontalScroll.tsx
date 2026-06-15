@@ -10,6 +10,7 @@ type Panel = { id: string; label: string; content: ReactNode };
 export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
   const outerRef = useRef<HTMLElement>(null);
   const innerRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const fitRefs = useRef<(HTMLDivElement | null)[]>([]);
   const globalProgress = useMotionValue(0);
   const n = panels.length;
   // Create panel MotionValues during HorizontalScroll's own render so they
@@ -117,6 +118,49 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
     };
   }, [n, globalProgress]);
 
+  // Fit-to-screen: each panel is locked to 100vh (overflow-hidden), so any
+  // section taller than the viewport would be clipped — a real problem on
+  // laptops where the usable height is only ~600–870px. We measure each
+  // panel's natural (unscaled) height and apply a center-origin scale so the
+  // whole section always fits the screen, regardless of device. offsetHeight
+  // is transform-independent, so reading it while a scale is applied is safe.
+  useEffect(() => {
+    const PAD = 56; // breathing room top+bottom (also clears the indicator)
+    const MIN = 0.5;
+
+    const apply = () => {
+      const avail = window.innerHeight - PAD;
+      for (const el of fitRefs.current) {
+        if (!el) continue;
+        const h = el.offsetHeight;
+        let s = h > 0 ? avail / h : 1;
+        if (s >= 1) {
+          el.style.transform = "";
+        } else {
+          if (s < MIN) s = MIN;
+          el.style.transform = `scale(${s})`;
+        }
+      }
+    };
+
+    apply();
+    window.addEventListener("resize", apply);
+
+    let ro: ResizeObserver | null = null;
+    if (typeof ResizeObserver !== "undefined") {
+      ro = new ResizeObserver(() => apply());
+      fitRefs.current.forEach((el) => el && ro!.observe(el));
+    }
+    // Re-measure once webfonts have loaded (text reflow changes height).
+    const fonts = (document as Document & { fonts?: FontFaceSet }).fonts;
+    if (fonts?.ready) fonts.ready.then(apply).catch(() => {});
+
+    return () => {
+      window.removeEventListener("resize", apply);
+      if (ro) ro.disconnect();
+    };
+  }, [n]);
+
   // Hash-based anchor handling
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
@@ -197,7 +241,14 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
             >
               <PanelProgressContext.Provider value={panelProgresses[i]!}>
                 <div className="relative w-full h-full flex items-center justify-center">
-                  {p.content}
+                  <div
+                    ref={(el) => {
+                      fitRefs.current[i] = el;
+                    }}
+                    className="w-full origin-center will-change-transform"
+                  >
+                    {p.content}
+                  </div>
                 </div>
               </PanelProgressContext.Provider>
             </div>
