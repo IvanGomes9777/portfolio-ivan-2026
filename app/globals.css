@@ -53,7 +53,7 @@ body {
     radial-gradient(700px 500px at 0% 30%, rgba(99, 102, 241, 0.06), transparent 60%),
     radial-gradient(800px 600px at 50% 100%, rgba(168, 85, 247, 0.05), transparent 60%);
   background-attachment: fixed;
-  min-height: 100vh;
+  min-height: 100svh;
 }
 
 ::selection {

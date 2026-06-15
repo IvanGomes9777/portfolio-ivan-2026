@@ -14,7 +14,7 @@ export default function LegalLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="min-h-screen px-4 py-24 sm:py-32 max-w-3xl mx-auto">
+    <main className="min-h-[100svh] px-4 py-24 sm:py-32 max-w-3xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
