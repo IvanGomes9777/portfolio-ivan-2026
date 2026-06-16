@@ -138,7 +138,7 @@ const demoProjects: DemoProject[] = [
     name: "Restaurant Vorlage 1",
     branche: "Restaurant",
     status: "Noch frei",
-    url: "https://restaurant-vorlage-1-o4oy.vercel.app/",
+    url: "https://restaurant-vorlage-1.vercel.app/",
     price: "€2.500",
     accent: "from-amber-500/30 via-yellow-500/20 to-orange-500/10",
     image: "/screenshots/restaurant-vorlage-1.webp",
