@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import { faq } from "@/lib/faq";
+
+// Google tag (gtag.js) — Google Ads conversion tracking.
+const GOOGLE_ADS_ID = "AW-18190212856";
 
 const body = Inter({
   subsets: ["latin"],
@@ -282,6 +286,19 @@ export default function RootLayout({
   return (
     <html lang="de" className={`${body.variable} ${display.variable}`}>
       <body className="antialiased">
+        {/* Google tag (gtag.js) */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-gtag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GOOGLE_ADS_ID}');
+          `}
+        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
