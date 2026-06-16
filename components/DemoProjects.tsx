@@ -17,6 +17,7 @@ import {
   UtensilsCrossed,
   Scale,
   Tag,
+  Camera,
 } from "lucide-react";
 import LaptopMockup from "./LaptopMockup";
 import PhoneMockup from "./PhoneMockup";
@@ -164,6 +165,16 @@ const demoProjects: DemoProject[] = [
     image: "/screenshots/traditional-tattoo-1.webp",
     Icon: PenTool,
   },
+  {
+    name: "Fotograf-1",
+    branche: "Fotograf",
+    status: "In Arbeit",
+    url: "https://fotograf-vorlage-1.vercel.app/",
+    price: "€2.500",
+    accent: "from-zinc-400/30 via-slate-500/20 to-neutral-500/10",
+    image: "/screenshots/fotograf-1.webp",
+    Icon: Camera,
+  },
 ];
 
 type View = "laptop" | "phone";
@@ -260,9 +271,9 @@ export default function DemoProjects() {
                   <span className="size-[3px] shrink-0 rounded-full bg-[var(--color-ink-dim)]" />
                   <span
                     className={`shrink-0 ${
-                      p.status === "In Auftrag"
-                        ? "text-[var(--color-ink-dim)]"
-                        : "text-amber-300/90"
+                      p.status === "Noch frei"
+                        ? "text-amber-300/90"
+                        : "text-[var(--color-ink-dim)]"
                     }`}
                   >
                     {p.status}
