@@ -10,12 +10,14 @@ import {
 } from "lucide-react";
 import { fadeUp, stagger } from "@/lib/motion";
 
+type Feature = string | { label: string; note: string };
+
 type Plan = {
   name: string;
   price: string;
   desc: string;
   idealFor?: string;
-  features: string[];
+  features: Feature[];
   highlight: boolean;
   badge?: string;
 };
@@ -27,7 +29,10 @@ const plans: Plan[] = [
     desc: "Rundum-Schutz für deine Website — sicher, aktuell und schnell.",
     features: [
       "Wöchentliche Updates von System, Plugins & Komponenten",
-      "Tägliche automatisierte Backups (bis zu 90 Tage Speicherung)",
+      {
+        label: "Versionierte Sicherung & Sofort-Wiederherstellung",
+        note: "Jede Änderung an Ihrer Website wird automatisch versioniert gesichert. Sollte einmal etwas schiefgehen, lässt sich die Seite in Minuten auf jeden früheren, funktionierenden Stand zurücksetzen.",
+      },
       "Tägliche Sicherheitsscans & Malware-Überwachung",
       "Performance-Monitoring & Überwachung der Ladezeiten",
       "Priorisierter Support — Bearbeitung in 48 Stunden",
@@ -43,7 +48,10 @@ const plans: Plan[] = [
       "Ideal für komplexere Websites mit Buchungssystemen, Online-Shops, größere Unternehmen oder Seiten mit hohem Traffic — wenn Ausfallzeiten teuer werden.",
     features: [
       "Wöchentliche Updates von System, Plugins & Komponenten",
-      "Tägliche automatisierte Backups (bis zu 90 Tage Speicherung)",
+      {
+        label: "Tägliche automatisierte Backups (90 Tage Aufbewahrung)",
+        note: "Datenbank und Inhalte werden täglich automatisch gesichert und bis zu 90 Tage aufbewahrt — inklusive Buchungen, Kundendaten und Formulareinträgen. Wiederherstellung auf jeden Tag innerhalb dieses Zeitraums möglich.",
+      },
       "Tägliche Sicherheitsscans & Malware-Überwachung",
       "Performance-Monitoring & Überwachung der Ladezeiten",
       "Priorisierter Support — Bearbeitung in 24 Stunden",
@@ -139,15 +147,26 @@ export default function Maintenance() {
 
               {/* features */}
               <ul className="mt-4 space-y-1 flex-1">
-                {plan.features.map((f) => (
-                  <li
-                    key={f}
-                    className="flex items-start gap-2 text-[0.8125rem] md:text-sm text-[var(--color-ink-soft)] leading-snug"
-                  >
-                    <Check className="size-4 shrink-0 mt-0.5 text-[var(--color-accent)]" />
-                    <span>{f}</span>
-                  </li>
-                ))}
+                {plan.features.map((f) => {
+                  const label = typeof f === "string" ? f : f.label;
+                  const note = typeof f === "string" ? undefined : f.note;
+                  return (
+                    <li
+                      key={label}
+                      className="flex items-start gap-2 text-[0.8125rem] md:text-sm text-[var(--color-ink-soft)] leading-snug"
+                    >
+                      <Check className="size-4 shrink-0 mt-0.5 text-[var(--color-accent)]" />
+                      <span>
+                        {label}
+                        {note && (
+                          <span className="mt-0.5 block text-xs text-[var(--color-ink-dim)] leading-snug">
+                            {note}
+                          </span>
+                        )}
+                      </span>
+                    </li>
+                  );
+                })}
               </ul>
 
               {/* button */}
