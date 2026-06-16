@@ -50,7 +50,7 @@ const demoProjects: DemoProject[] = [
     branche: "Friseursalon",
     status: "In Auftrag",
     url: "https://friseur-beispiel-2r.vercel.app/",
-    price: "€2.500",
+    price: "€2.200",
     accent: "from-amber-500/30 via-orange-500/20 to-rose-500/10",
     image: "/screenshots/friseur-2.webp",
     Icon: Scissors,
