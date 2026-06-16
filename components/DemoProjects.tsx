@@ -48,7 +48,7 @@ const demoProjects: DemoProject[] = [
   {
     name: "Friseur Vorlage 2",
     branche: "Friseursalon",
-    status: "In Auftrag",
+    status: "Noch frei",
     url: "https://friseur-beispiel-2r.vercel.app/",
     price: "€2.200",
     accent: "from-amber-500/30 via-orange-500/20 to-rose-500/10",
@@ -70,7 +70,7 @@ const demoProjects: DemoProject[] = [
     branche: "Haarstudio",
     status: "Noch frei",
     url: "https://friseur-beispiel-3.vercel.app/",
-    price: "€2.500",
+    price: "€2.200",
     accent: "from-emerald-500/30 via-teal-500/20 to-cyan-500/10",
     image: "/screenshots/friseur-3.webp",
     Icon: Sparkles,
