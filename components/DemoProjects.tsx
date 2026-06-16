@@ -37,7 +37,7 @@ const demoProjects: DemoProject[] = [
   {
     name: "Gebäudereinigung Beispiel",
     branche: "Gebäudereinigung",
-    status: "In Auftrag",
+    status: "Noch frei",
     url: "https://geb-udereinigung-beispiel.vercel.app/",
     price: "€2.500",
     accent: "from-sky-500/30 via-blue-500/20 to-indigo-500/10",
@@ -153,6 +153,16 @@ const demoProjects: DemoProject[] = [
     accent: "from-amber-500/30 via-yellow-600/20 to-stone-500/10",
     image: "/screenshots/anwaltskanzlei-vorlage-1.webp",
     Icon: Scale,
+  },
+  {
+    name: "Traditional-Tattoo-1",
+    branche: "Tattoo-Studio",
+    status: "Noch frei",
+    url: "https://traditionall-tatoo-1.vercel.app/",
+    price: "€2.500",
+    accent: "from-red-500/30 via-rose-600/20 to-zinc-500/10",
+    image: "/screenshots/traditional-tattoo-1.webp",
+    Icon: PenTool,
   },
 ];
 
