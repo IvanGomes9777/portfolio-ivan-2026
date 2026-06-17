@@ -270,7 +270,13 @@ export default function Pricing() {
               );
             })}
           </div>
-          <p className="mt-2 text-center text-xs text-[var(--color-ink-soft)] leading-snug">
+          <p className="mt-2 flex items-center justify-center gap-1.5 text-center text-[0.8125rem] leading-snug">
+            <CreditCard className="size-3.5 shrink-0 text-[var(--color-accent)]" />
+            <span className="font-medium text-[var(--color-accent)]">
+              Zahlung auch bequem per PayPal möglich
+            </span>
+          </p>
+          <p className="mt-1.5 text-center text-xs text-[var(--color-ink-soft)] leading-snug">
             Unabhängig von der gewählten Zahlungsoption wird das Projekt erst
             nach Eingang einer Anzahlung gestartet.
           </p>
