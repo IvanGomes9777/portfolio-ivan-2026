@@ -22,7 +22,7 @@ export default function PanelIndicator({
   });
 
   return (
-    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-4 px-4 py-2.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)]/70 backdrop-blur-xl">
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-30 hidden md:flex items-center gap-4 px-4 py-2.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)]/70 backdrop-blur-xl opacity-50">
       <span className="font-display text-xs tracking-[0.2em] text-[var(--color-ink-soft)] tabular-nums">
         <span className="text-[var(--color-ink)]">{String(current + 1).padStart(2, "0")}</span>
         <span className="text-[var(--color-ink-dim)]"> / {String(total).padStart(2, "0")}</span>
