@@ -28,7 +28,6 @@ type DemoProject = {
   branche: string;
   status: string;
   url: string;
-  price: string;
   accent: string;
   image: string; // hero screenshot used as laptop background
   Icon: React.ComponentType<{ className?: string }>;
@@ -40,7 +39,6 @@ const demoProjects: DemoProject[] = [
     branche: "Gebäudereinigung",
     status: "Noch frei",
     url: "https://geb-udereinigung-beispiel.vercel.app/",
-    price: "€2.500",
     accent: "from-sky-500/30 via-blue-500/20 to-indigo-500/10",
     image: "/screenshots/gebaeudereinigung.webp",
     Icon: SprayCan,
@@ -50,7 +48,6 @@ const demoProjects: DemoProject[] = [
     branche: "Friseursalon",
     status: "Noch frei",
     url: "https://friseur-beispiel-2r.vercel.app/",
-    price: "€2.200",
     accent: "from-amber-500/30 via-orange-500/20 to-rose-500/10",
     image: "/screenshots/friseur-2.webp",
     Icon: Scissors,
@@ -60,7 +57,6 @@ const demoProjects: DemoProject[] = [
     branche: "Hundesalon",
     status: "Noch frei",
     url: "https://hundesalon-vorlage.vercel.app/",
-    price: "€2.000",
     accent: "from-rose-500/30 via-pink-500/20 to-fuchsia-500/10",
     image: "/screenshots/hundesalon.webp",
     Icon: Dog,
@@ -70,7 +66,6 @@ const demoProjects: DemoProject[] = [
     branche: "Haarstudio",
     status: "Noch frei",
     url: "https://friseur-beispiel-3.vercel.app/",
-    price: "€2.200",
     accent: "from-emerald-500/30 via-teal-500/20 to-cyan-500/10",
     image: "/screenshots/friseur-3.webp",
     Icon: Sparkles,
@@ -80,7 +75,6 @@ const demoProjects: DemoProject[] = [
     branche: "Friseur",
     status: "In Auftrag",
     url: "https://friseur-beispiel-4.vercel.app/",
-    price: "€2.500",
     accent: "from-violet-500/30 via-indigo-500/20 to-blue-500/10",
     image: "/screenshots/friseur-4.webp",
     Icon: Scissors,
@@ -90,7 +84,6 @@ const demoProjects: DemoProject[] = [
     branche: "Friseursalon",
     status: "Noch frei",
     url: "https://friseur-beispiel-1.vercel.app/",
-    price: "€1.500",
     accent: "from-fuchsia-500/30 via-purple-500/20 to-violet-500/10",
     image: "/screenshots/friseur-1.webp",
     Icon: Scissors,
@@ -100,7 +93,6 @@ const demoProjects: DemoProject[] = [
     branche: "Tattoo-Studio",
     status: "In Auftrag",
     url: "https://5050ink-web.vercel.app/",
-    price: "€2.500",
     accent: "from-zinc-500/30 via-slate-500/20 to-neutral-500/10",
     image: "/screenshots/5050ink.webp",
     Icon: PenTool,
@@ -110,7 +102,6 @@ const demoProjects: DemoProject[] = [
     branche: "Autoaufbereitung",
     status: "Noch frei",
     url: "https://autoaufbereitung-1.vercel.app/",
-    price: "€3.500",
     accent: "from-red-500/30 via-orange-500/20 to-amber-500/10",
     image: "/screenshots/autoaufbereitung.webp",
     Icon: Car,
@@ -120,7 +111,6 @@ const demoProjects: DemoProject[] = [
     branche: "Werbetechnik",
     status: "Noch frei",
     url: "https://werbetechnik-1.vercel.app/",
-    price: "€2.500",
     accent: "from-lime-500/30 via-amber-500/20 to-yellow-500/10",
     image: "/screenshots/werbetechnik-1.webp",
     Icon: Megaphone,
@@ -130,7 +120,6 @@ const demoProjects: DemoProject[] = [
     branche: "Tattoo-Studio",
     status: "Noch frei",
     url: "https://tattoo-vorlage-2.vercel.app/",
-    price: "€2.500",
     accent: "from-rose-500/30 via-red-500/20 to-zinc-500/10",
     image: "/screenshots/tattoo-vorlage-2.webp",
     Icon: PenTool,
@@ -140,7 +129,6 @@ const demoProjects: DemoProject[] = [
     branche: "Restaurant",
     status: "Noch frei",
     url: "https://restaurant-vorlage-1.vercel.app/",
-    price: "€2.500",
     accent: "from-amber-500/30 via-yellow-500/20 to-orange-500/10",
     image: "/screenshots/restaurant-vorlage-1.webp",
     Icon: UtensilsCrossed,
@@ -150,7 +138,6 @@ const demoProjects: DemoProject[] = [
     branche: "Rechtsanwälte",
     status: "Noch frei",
     url: "https://anwaltskanzlei-vorlage-1.vercel.app/de",
-    price: "€2.500",
     accent: "from-amber-500/30 via-yellow-600/20 to-stone-500/10",
     image: "/screenshots/anwaltskanzlei-vorlage-1.webp",
     Icon: Scale,
@@ -160,7 +147,6 @@ const demoProjects: DemoProject[] = [
     branche: "Tattoo-Studio",
     status: "Noch frei",
     url: "https://traditionall-tatoo-1.vercel.app/",
-    price: "€2.500",
     accent: "from-red-500/30 via-rose-600/20 to-zinc-500/10",
     image: "/screenshots/traditional-tattoo-1.webp",
     Icon: PenTool,
@@ -170,7 +156,6 @@ const demoProjects: DemoProject[] = [
     branche: "Fotograf",
     status: "In Arbeit",
     url: "https://fotograf-vorlage-1.vercel.app/",
-    price: "€2.500",
     accent: "from-zinc-400/30 via-slate-500/20 to-neutral-500/10",
     image: "/screenshots/fotograf-1.webp",
     Icon: Camera,
@@ -277,12 +262,6 @@ export default function DemoProjects() {
                     }`}
                   >
                     {p.status}
-                  </span>
-                </div>
-                <div className="text-[0.6875rem] leading-tight text-[var(--color-ink-soft)]">
-                  ab{" "}
-                  <span className="font-semibold text-[var(--color-accent)]">
-                    {p.price}
                   </span>
                 </div>
                 <a
