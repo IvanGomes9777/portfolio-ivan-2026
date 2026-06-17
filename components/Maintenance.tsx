@@ -9,6 +9,7 @@ import {
   Clock,
 } from "lucide-react";
 import { fadeUp, stagger } from "@/lib/motion";
+import InfoTooltip from "./InfoTooltip";
 
 type Feature = string | { label: string; note: string };
 
@@ -66,7 +67,7 @@ const plans: Plan[] = [
 
 export default function Maintenance() {
   return (
-    <section className="relative overflow-x-clip px-4 py-[clamp(1rem,3vh,2rem)] max-w-5xl w-full mx-auto">
+    <section className="relative overflow-x-clip px-4 py-[clamp(0.75rem,2vh,1.5rem)] max-w-5xl w-full mx-auto">
       {/* ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 size-[600px] rounded-full bg-[radial-gradient(circle,var(--color-accent-glow),transparent_60%)] opacity-20 pointer-events-none" />
 
@@ -78,31 +79,30 @@ export default function Maintenance() {
         className="relative"
       >
         {/* heading */}
-        <motion.div variants={fadeUp} className="text-center mb-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)]/60 backdrop-blur text-xs text-[var(--color-ink-soft)] mb-4">
+        <motion.div variants={fadeUp} className="text-center mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)]/60 backdrop-blur text-xs text-[var(--color-ink-soft)] mb-2">
             <Wrench className="size-3 text-[var(--color-accent)]" />
             <span>Wartung & Pflege</span>
           </div>
-          <h2 className="font-display text-fluid-h2lg tracking-[-0.03em] font-medium leading-[1.05]">
+          <h2 className="font-display text-fluid-h2 tracking-[-0.03em] font-medium leading-[1.05]">
             Nach dem Launch{" "}
             <span className="bg-gradient-to-r from-[var(--color-accent-soft)] via-[var(--color-accent)] to-[var(--color-accent-strong)] bg-clip-text text-transparent italic">
               lasse ich dich nicht allein.
             </span>
           </h2>
-          <p className="mt-3 max-w-xl mx-auto text-sm text-[var(--color-ink-soft)] leading-relaxed">
-            Deine Website ist online — und ich sorge dafür, dass sie sicher,
-            schnell und aktuell bleibt. Optionale monatliche Pakete, jederzeit
-            kündbar.
+          <p className="mt-2 max-w-xl mx-auto text-xs md:text-sm text-[var(--color-ink-soft)] leading-snug">
+            Deine Website bleibt sicher, schnell und aktuell. Optionale
+            monatliche Pakete, jederzeit kündbar.
           </p>
         </motion.div>
 
         {/* plans grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-3xl mx-auto">
           {plans.map((plan) => (
             <motion.div
               key={plan.name}
               variants={fadeUp}
-              className={`group relative flex flex-col rounded-[var(--radius-md)] bg-[var(--color-surface)] p-4 md:p-5 transition-shadow duration-300 ${
+              className={`group relative flex flex-col rounded-[var(--radius-md)] bg-[var(--color-surface)] p-4 transition-shadow duration-300 ${
                 plan.highlight
                   ? "glow-accent"
                   : "glow-soft hover:shadow-[0_0_0_1px_var(--color-accent-glow),0_0_50px_-12px_var(--color-accent-glow)]"
@@ -125,12 +125,12 @@ export default function Maintenance() {
               >
                 {plan.name}
               </h3>
-              <p className="mt-1.5 text-sm text-[var(--color-ink-soft)] leading-snug">
+              <p className="mt-1 text-[0.8125rem] text-[var(--color-ink-soft)] leading-snug">
                 {plan.desc}
               </p>
 
               {/* price */}
-              <div className="mt-4 flex items-end gap-1.5">
+              <div className="mt-3 flex items-end gap-1.5">
                 <span className="font-display text-3xl md:text-4xl font-bold text-[var(--color-accent)]">
                   {plan.price}
                 </span>
@@ -140,13 +140,13 @@ export default function Maintenance() {
               </div>
 
               {plan.idealFor && (
-                <div className="mt-4 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-line)] px-3.5 py-2.5 text-xs text-[var(--color-ink-soft)] leading-snug">
+                <div className="mt-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-line)] px-3 py-2 text-xs text-[var(--color-ink-soft)] leading-snug">
                   {plan.idealFor}
                 </div>
               )}
 
               {/* features */}
-              <ul className="mt-4 space-y-1 flex-1">
+              <ul className="mt-3 space-y-1 flex-1">
                 {plan.features.map((f) => {
                   const label = typeof f === "string" ? f : f.label;
                   const note = typeof f === "string" ? undefined : f.note;
@@ -159,9 +159,10 @@ export default function Maintenance() {
                       <span>
                         {label}
                         {note && (
-                          <span className="mt-0.5 block text-xs text-[var(--color-ink-dim)] leading-snug">
-                            {note}
-                          </span>
+                          <>
+                            {" "}
+                            <InfoTooltip text={note} label={label} />
+                          </>
                         )}
                       </span>
                     </li>
@@ -173,7 +174,7 @@ export default function Maintenance() {
               <a
                 href="#kontakt"
                 data-cursor-hover
-                className={`mt-5 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all ${
+                className={`mt-4 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-all ${
                   plan.highlight
                     ? "bg-[var(--color-accent)] text-[var(--color-bg)] pulse-glow hover:bg-[var(--color-accent-soft)]"
                     : "border border-[var(--color-accent)] text-[var(--color-accent)] hover:shadow-[0_0_0_1px_var(--color-accent-glow),0_0_30px_-8px_var(--color-accent-glow)]"
@@ -189,9 +190,9 @@ export default function Maintenance() {
         {/* recommendation note */}
         <motion.div
           variants={fadeUp}
-          className="mt-3 max-w-3xl mx-auto rounded-[var(--radius-md)] bg-[var(--color-surface-2)] border-l-4 border-[var(--color-accent)] px-4 py-2.5"
+          className="mt-2.5 max-w-3xl mx-auto rounded-[var(--radius-md)] bg-[var(--color-surface-2)] border-l-4 border-[var(--color-accent)] px-4 py-2"
         >
-          <p className="text-sm leading-relaxed text-[var(--color-ink-soft)]">
+          <p className="text-xs md:text-sm leading-snug text-[var(--color-ink-soft)]">
             💡 Empfehlung: Für Websites mit Booking-System ist die Wartung Premium
             ideal — sie hält Datenbank, E-Mail-Automation und Sicherheit dauerhaft
             stabil.
@@ -201,7 +202,7 @@ export default function Maintenance() {
         {/* footnote */}
         <motion.div
           variants={fadeUp}
-          className="mt-3 flex items-center justify-center gap-2 text-xs text-[var(--color-ink-dim)]"
+          className="mt-2 flex items-center justify-center gap-2 text-xs text-[var(--color-ink-dim)]"
         >
           <Clock className="size-3.5 text-[var(--color-accent)]" />
           <span>
