@@ -7,6 +7,7 @@ import {
   Wallet,
   CreditCard,
   CalendarClock,
+  LifeBuoy,
 } from "lucide-react";
 import { fadeUp, stagger } from "@/lib/motion";
 import InfoTooltip from "./InfoTooltip";
@@ -18,6 +19,13 @@ const featureInfo: Record<string, string> = {
   "Volle SEO & GEO Optimierung":
     "Volle SEO & GEO heißt: Ich recherchiere, wonach deine Kunden tatsächlich suchen, und richte Inhalte, Struktur und Daten gezielt darauf aus — inklusive lokaler Optimierung und erweiterter strukturierter Daten. Dazu kommt GEO: deine Inhalte werden so aufbereitet, dass auch KI-Suchmaschinen wie ChatGPT dein Unternehmen verstehen und empfehlen können.",
 };
+
+// Support periods explained per package, so visitors understand exactly what
+// the "X Wochen Support" line in each tier includes.
+const supportExplainers: { weeks: string; gilt: string }[] = [
+  { weeks: "2 Wochen", gilt: "Visitenkarte-Paket" },
+  { weeks: "4 Wochen", gilt: "Starter- & Standard-Paket" },
+];
 
 type PaymentOption = {
   icon: typeof Wallet;
@@ -240,6 +248,68 @@ export default function Pricing() {
             </motion.div>
           ))}
         </div>
+
+        {/* support explainer — clarifies what the included support covers */}
+        <motion.div
+          variants={fadeUp}
+          className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4"
+        >
+          {supportExplainers.map((s) => (
+            <div
+              key={s.weeks}
+              className="rounded-[var(--radius-md)] bg-[var(--color-surface)] border border-[var(--color-line)] p-4 md:p-5"
+            >
+              <div className="flex items-center gap-2.5">
+                <span className="inline-flex items-center justify-center size-8 shrink-0 rounded-xl border border-[var(--color-line)] bg-[var(--color-surface-2)] text-[var(--color-accent)]">
+                  <LifeBuoy className="size-4" />
+                </span>
+                <div>
+                  <h3 className="font-display text-base md:text-lg font-semibold tracking-tight text-[var(--color-ink)]">
+                    Support nach Fertigstellung{" "}
+                    <span className="text-[var(--color-accent)]">
+                      ({s.weeks} inklusive)
+                    </span>
+                  </h3>
+                  <p className="text-xs text-[var(--color-ink-dim)] leading-tight">
+                    Gilt für: {s.gilt}
+                  </p>
+                </div>
+              </div>
+
+              <p className="mt-3 text-[0.8125rem] text-[var(--color-ink-soft)] leading-relaxed">
+                Nach dem Livegang deiner Website unterstütze ich dich {s.weeks}{" "}
+                lang kostenfrei beim Start. Enthalten sind:
+              </p>
+
+              <ul className="mt-2.5 space-y-1.5">
+                {[
+                  "Beantwortung deiner Fragen zur Bedienung und Pflege der Website",
+                  "Behebung von Fehlern oder Funktionsstörungen am gelieferten Stand",
+                  `Kleinere inhaltliche Korrekturen (z.B. Tippfehler, Öffnungszeiten, Kontaktdaten) – bis zu 10 Anpassungen innerhalb der ${s.weeks}`,
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-2 text-xs md:text-[0.8125rem] text-[var(--color-ink-soft)] leading-snug"
+                  >
+                    <Check className="size-4 shrink-0 mt-0.5 text-[var(--color-accent)]" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <p className="mt-3 text-[0.8125rem] text-[var(--color-ink-dim)] leading-relaxed">
+                <span className="font-medium text-[var(--color-ink-soft)]">
+                  Nicht enthalten
+                </span>{" "}
+                sind neue Inhalte oder Bilder zur laufenden Pflege, zusätzliche
+                Seiten oder Funktionen, sowie Design- und Layoutänderungen. Solche
+                Wünsche sowie die laufende Betreuung nach Ablauf der {s.weeks}
+                {" "}übernehme ich gerne über eines meiner Wartungs- und
+                Content-Pakete.
+              </p>
+            </div>
+          ))}
+        </motion.div>
 
         {/* payment options — compact strip */}
         <motion.div variants={fadeUp} className="mt-4">
