@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { ArrowRight, Sparkles, BadgePercent } from "lucide-react";
 import { fadeUp, stagger } from "@/lib/motion";
 import MagneticButton from "./MagneticButton";
@@ -172,13 +173,13 @@ export default function Hero() {
             </a>
           </MagneticButton>
           <MagneticButton strength={0.25}>
-            <a
-              href="#projekte"
+            <Link
+              href="/projekte"
               data-cursor-hover
               className="inline-flex items-center gap-2 px-5 py-3.5 rounded-full border border-[var(--color-line)] hover:border-[var(--color-line-strong)] bg-white/[0.02] hover:bg-white/[0.05] text-sm text-[var(--color-ink-soft)] hover:text-[var(--color-ink)] transition-all"
             >
               Projekte ansehen
-            </a>
+            </Link>
           </MagneticButton>
         </motion.div>
 
