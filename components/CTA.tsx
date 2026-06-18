@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Mail, Send, Check, AlertCircle, Phone, Plus } from "lucide-react";
 import MagneticButton from "./MagneticButton";
 import Aurora from "./backgrounds/Aurora";
+import { trackContactConversion } from "@/lib/gtag";
 
 const EMAIL = "ivanvilargomes@gmail.com";
 
@@ -92,6 +93,8 @@ export default function CTA() {
       const data = (await res.json()) as { success: boolean; message?: string };
 
       if (res.ok && data.success) {
+        // Real lead submitted — report the Google Ads conversion.
+        trackContactConversion();
         setStatus("success");
         setForm({ name: "", email: "", phone: "", msg: "", wunsch: "", paket: "", wartung: "", contentPaket: "", auftraggeber: "", company: "" });
         setPhoneOpen(false);
