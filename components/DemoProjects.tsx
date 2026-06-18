@@ -39,7 +39,7 @@ const demoProjects: DemoProject[] = [
     branche: "Gebäudereinigung",
     status: "Noch frei",
     url: "https://geb-udereinigung-beispiel.vercel.app/",
-    accent: "from-sky-500/30 via-blue-500/20 to-indigo-500/10",
+    accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/gebaeudereinigung.webp",
     Icon: SprayCan,
   },
@@ -48,7 +48,7 @@ const demoProjects: DemoProject[] = [
     branche: "Friseursalon",
     status: "Noch frei",
     url: "https://friseur-beispiel-2r.vercel.app/",
-    accent: "from-amber-500/30 via-orange-500/20 to-rose-500/10",
+    accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/friseur-2.webp",
     Icon: Scissors,
   },
@@ -57,7 +57,7 @@ const demoProjects: DemoProject[] = [
     branche: "Hundesalon",
     status: "Noch frei",
     url: "https://hundesalon-vorlage.vercel.app/",
-    accent: "from-rose-500/30 via-pink-500/20 to-fuchsia-500/10",
+    accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/hundesalon.webp",
     Icon: Dog,
   },
@@ -66,7 +66,7 @@ const demoProjects: DemoProject[] = [
     branche: "Haarstudio",
     status: "Noch frei",
     url: "https://friseur-beispiel-3.vercel.app/",
-    accent: "from-emerald-500/30 via-teal-500/20 to-cyan-500/10",
+    accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/friseur-3.webp",
     Icon: Sparkles,
   },
@@ -75,7 +75,7 @@ const demoProjects: DemoProject[] = [
     branche: "Friseur",
     status: "In Auftrag",
     url: "https://friseur-beispiel-4.vercel.app/",
-    accent: "from-violet-500/30 via-indigo-500/20 to-blue-500/10",
+    accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/friseur-4.webp",
     Icon: Scissors,
   },
@@ -84,7 +84,7 @@ const demoProjects: DemoProject[] = [
     branche: "Friseursalon",
     status: "Noch frei",
     url: "https://friseur-beispiel-1.vercel.app/",
-    accent: "from-fuchsia-500/30 via-purple-500/20 to-violet-500/10",
+    accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/friseur-1.webp",
     Icon: Scissors,
   },
@@ -93,7 +93,7 @@ const demoProjects: DemoProject[] = [
     branche: "Tattoo-Studio",
     status: "In Auftrag",
     url: "https://5050ink-web.vercel.app/",
-    accent: "from-zinc-500/30 via-slate-500/20 to-neutral-500/10",
+    accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/5050ink.webp",
     Icon: PenTool,
   },
@@ -102,7 +102,7 @@ const demoProjects: DemoProject[] = [
     branche: "Autoaufbereitung",
     status: "Noch frei",
     url: "https://autoaufbereitung-1.vercel.app/",
-    accent: "from-red-500/30 via-orange-500/20 to-amber-500/10",
+    accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/autoaufbereitung.webp",
     Icon: Car,
   },
@@ -111,7 +111,7 @@ const demoProjects: DemoProject[] = [
     branche: "Werbetechnik",
     status: "Noch frei",
     url: "https://werbetechnik-1.vercel.app/",
-    accent: "from-lime-500/30 via-amber-500/20 to-yellow-500/10",
+    accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/werbetechnik-1.webp",
     Icon: Megaphone,
   },
@@ -120,7 +120,7 @@ const demoProjects: DemoProject[] = [
     branche: "Tattoo-Studio",
     status: "Noch frei",
     url: "https://tattoo-vorlage-2.vercel.app/",
-    accent: "from-rose-500/30 via-red-500/20 to-zinc-500/10",
+    accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/tattoo-vorlage-2.webp",
     Icon: PenTool,
   },
@@ -129,7 +129,7 @@ const demoProjects: DemoProject[] = [
     branche: "Restaurant",
     status: "Noch frei",
     url: "https://restaurant-vorlage-1.vercel.app/",
-    accent: "from-amber-500/30 via-yellow-500/20 to-orange-500/10",
+    accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/restaurant-vorlage-1.webp",
     Icon: UtensilsCrossed,
   },
@@ -138,7 +138,7 @@ const demoProjects: DemoProject[] = [
     branche: "Rechtsanwälte",
     status: "Noch frei",
     url: "https://anwaltskanzlei-vorlage-1.vercel.app/de",
-    accent: "from-amber-500/30 via-yellow-600/20 to-stone-500/10",
+    accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/anwaltskanzlei-vorlage-1.webp",
     Icon: Scale,
   },
@@ -147,7 +147,7 @@ const demoProjects: DemoProject[] = [
     branche: "Tattoo-Studio",
     status: "Noch frei",
     url: "https://traditionall-tatoo-1.vercel.app/",
-    accent: "from-red-500/30 via-rose-600/20 to-zinc-500/10",
+    accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/traditional-tattoo-1.webp",
     Icon: PenTool,
   },
@@ -156,7 +156,7 @@ const demoProjects: DemoProject[] = [
     branche: "Fotograf",
     status: "In Arbeit",
     url: "https://fotograf-vorlage-1.vercel.app/",
-    accent: "from-zinc-400/30 via-slate-500/20 to-neutral-500/10",
+    accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/fotograf-1.webp",
     Icon: Camera,
   },
@@ -191,7 +191,7 @@ export default function DemoProjects() {
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-5"
         >
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-amber-400/30 bg-amber-400/[0.06] backdrop-blur text-xs text-amber-200/90 mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/30 bg-white/[0.06] backdrop-blur text-xs text-white/90 mb-2">
               <Tag className="size-3" />
               <span>Demo Projekte · sofort kaufbar</span>
             </div>
@@ -257,7 +257,7 @@ export default function DemoProjects() {
                   <span
                     className={`shrink-0 ${
                       p.status === "Noch frei"
-                        ? "text-amber-300/90"
+                        ? "text-white/90"
                         : "text-[var(--color-ink-dim)]"
                     }`}
                   >
@@ -269,7 +269,7 @@ export default function DemoProjects() {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor-hover
-                  className="mt-0.5 inline-flex items-center gap-1 text-[0.625rem] leading-tight text-[var(--color-ink-soft)] hover:text-amber-300 transition-colors w-fit"
+                  className="mt-0.5 inline-flex items-center gap-1 text-[0.625rem] leading-tight text-[var(--color-ink-soft)] hover:text-white transition-colors w-fit"
                 >
                   Demo öffnen <ArrowUpRight className="size-2.5" />
                 </a>
@@ -308,7 +308,7 @@ function ProjectFrame({ project, view }: { project: DemoProject; view: View }) {
         <>
           {/* Phone view: stylised placeholder (screenshots are desktop-format) */}
           <div className={`absolute inset-0 bg-gradient-to-br ${project.accent}`} />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_35%,rgba(251,191,36,0.18),transparent_70%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_35%,rgba(255,255,255,0.18),transparent_70%)]" />
 
           <div
             className="absolute inset-0 opacity-[0.07]"
@@ -340,7 +340,7 @@ function ProjectFrame({ project, view }: { project: DemoProject; view: View }) {
       )}
 
       {/* Demo badge top-left */}
-      <div className={`absolute z-10 rounded-full bg-amber-400/90 backdrop-blur-md font-semibold text-zinc-950 tracking-wide uppercase border border-amber-300/50 ${
+      <div className={`absolute z-10 rounded-full bg-white/90 backdrop-blur-md font-semibold text-zinc-950 tracking-wide uppercase border border-white/50 ${
         isPhone
           ? "top-1 left-1 px-1 py-[1px] text-[0.4375rem] sm:text-[0.5rem]"
           : "top-1.5 left-1.5 px-1.5 py-0.5 text-[0.5rem]"
@@ -400,7 +400,7 @@ function ToggleBtn({
       {active && (
         <motion.div
           layoutId="demo-view-pill"
-          className="absolute inset-0 rounded-full bg-amber-400/90 shadow-[0_0_20px_rgba(251,191,36,0.45)]"
+          className="absolute inset-0 rounded-full bg-white/90 shadow-[0_0_20px_rgba(255,255,255,0.45)]"
           transition={{ type: "spring", damping: 25, stiffness: 320 }}
         />
       )}

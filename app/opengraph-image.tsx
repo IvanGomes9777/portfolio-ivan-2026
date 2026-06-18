@@ -34,7 +34,7 @@ export default function Image() {
             height: "700px",
             borderRadius: "50%",
             background:
-              "radial-gradient(circle, rgba(139,92,246,0.35) 0%, rgba(99,102,241,0.15) 40%, transparent 70%)",
+              "radial-gradient(circle, rgba(255, 255, 255,0.35) 0%, rgba(255, 255, 255,0.15) 40%, transparent 70%)",
             display: "flex",
           }}
         />
@@ -48,7 +48,7 @@ export default function Image() {
             height: "500px",
             borderRadius: "50%",
             background:
-              "radial-gradient(circle, rgba(168,85,247,0.2) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(255, 255, 255,0.2) 0%, transparent 70%)",
             display: "flex",
           }}
         />
@@ -59,11 +59,11 @@ export default function Image() {
             display: "flex",
             alignItems: "center",
             gap: "8px",
-            background: "rgba(139,92,246,0.15)",
-            border: "1px solid rgba(139,92,246,0.4)",
+            background: "rgba(255, 255, 255,0.15)",
+            border: "1px solid rgba(255, 255, 255,0.4)",
             borderRadius: "100px",
             padding: "10px 24px",
-            color: "#c4b5fd",
+            color: "#e5e5e5",
             fontSize: "20px",
             marginBottom: "36px",
           }}
@@ -103,7 +103,7 @@ export default function Image() {
           style={{
             width: "72px",
             height: "4px",
-            background: "linear-gradient(90deg, #8b5cf6, #a78bfa)",
+            background: "linear-gradient(90deg, #ffffff, #ffffff)",
             borderRadius: "4px",
             marginBottom: "52px",
             display: "flex",

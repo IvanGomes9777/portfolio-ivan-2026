@@ -8,28 +8,28 @@ const projects = [
     name: "Akeed Friseur",
     branche: "Friseursalon",
     year: "2026",
-    accent: "from-amber-500/30 via-orange-500/20 to-rose-500/10",
+    accent: "from-white/15 via-white/8 to-white/5",
     pattern: "barber",
   },
   {
     name: "Mauro Ricardo",
     branche: "Personal Brand",
     year: "2026",
-    accent: "from-violet-500/30 via-indigo-500/20 to-blue-500/10",
+    accent: "from-white/15 via-white/8 to-white/5",
     pattern: "minimal",
   },
   {
     name: "Reinigung München",
     branche: "Gebäudereinigung",
     year: "2025",
-    accent: "from-emerald-500/30 via-teal-500/20 to-cyan-500/10",
+    accent: "from-white/15 via-white/8 to-white/5",
     pattern: "grid",
   },
   {
     name: "Studio Linde",
     branche: "Café & Bäckerei",
     year: "2025",
-    accent: "from-rose-500/30 via-pink-500/20 to-fuchsia-500/10",
+    accent: "from-white/15 via-white/8 to-white/5",
     pattern: "dots",
   },
 ];
@@ -97,7 +97,7 @@ export default function Portfolio() {
 
               {/* glow on hover */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.25),transparent_60%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255, 255, 255,0.25),transparent_60%)]" />
               </div>
             </div>
 
@@ -119,7 +119,7 @@ export default function Portfolio() {
             </div>
 
             {/* hover border glow */}
-            <div className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-[inset_0_0_0_1px_rgba(139,92,246,0.5),0_0_40px_-10px_rgba(139,92,246,0.45)]" />
+            <div className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-[inset_0_0_0_1px_rgba(255, 255, 255,0.5),0_0_40px_-10px_rgba(255, 255, 255,0.45)]" />
           </motion.a>
         ))}
       </div>

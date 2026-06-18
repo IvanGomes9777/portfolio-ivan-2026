@@ -73,7 +73,7 @@ export default function Process() {
         {/* progress line */}
         <motion.div
           style={{ width: lineWidth }}
-          className="absolute left-0 top-[28px] h-px bg-gradient-to-r from-[var(--color-accent-strong)] via-[var(--color-accent)] to-[var(--color-accent-soft)] shadow-[0_0_20px_rgba(139,92,246,0.7)]"
+          className="absolute left-0 top-[28px] h-px bg-gradient-to-r from-[var(--color-accent-strong)] via-[var(--color-accent)] to-[var(--color-accent-soft)] shadow-[0_0_20px_rgba(255, 255, 255,0.7)]"
         />
 
         <div className="relative grid grid-cols-4 gap-6">
@@ -99,7 +99,7 @@ export default function Process() {
         <div className="absolute left-3 top-0 bottom-0 w-px bg-[var(--color-line)]" />
         <motion.div
           style={{ height: lineWidth }}
-          className="absolute left-3 top-0 w-px bg-gradient-to-b from-[var(--color-accent-strong)] via-[var(--color-accent)] to-transparent shadow-[0_0_20px_rgba(139,92,246,0.6)]"
+          className="absolute left-3 top-0 w-px bg-gradient-to-b from-[var(--color-accent-strong)] via-[var(--color-accent)] to-transparent shadow-[0_0_20px_rgba(255, 255, 255,0.6)]"
         />
         <div className="space-y-10">
           {steps.map((step, i) => {
@@ -113,7 +113,7 @@ export default function Process() {
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.05 }}
                 className="relative"
               >
-                <div className="absolute -left-[34px] top-1.5 size-3 rounded-full bg-[var(--color-accent)] shadow-[0_0_16px_rgba(139,92,246,0.9)]" />
+                <div className="absolute -left-[34px] top-1.5 size-3 rounded-full bg-[var(--color-accent)] shadow-[0_0_16px_rgba(255, 255, 255,0.9)]" />
                 <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[var(--color-accent)]">
                   <span>{step.n}</span>
                   <Icon className="size-3.5" />
@@ -161,7 +161,7 @@ function StepNode({
       >
         <motion.div
           style={{ opacity }}
-          className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.4),transparent_70%)]"
+          className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(255, 255, 255,0.4),transparent_70%)]"
         />
         <Icon className="relative size-5 text-[var(--color-accent)]" />
       </motion.div>

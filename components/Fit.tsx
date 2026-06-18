@@ -50,8 +50,8 @@ export default function Fit() {
                 variants={fadeUp}
                 className="flex items-start gap-3 rounded-2xl border border-[var(--color-line)] bg-[var(--color-surface)]/70 p-5 hover:border-[var(--color-line-strong)] transition-colors"
               >
-                <span className="mt-0.5 inline-flex items-center justify-center size-6 shrink-0 rounded-full border border-emerald-400/40 bg-emerald-400/10">
-                  <Check className="size-3.5 text-emerald-400" />
+                <span className="mt-0.5 inline-flex items-center justify-center size-6 shrink-0 rounded-full border border-white/40 bg-white/10">
+                  <Check className="size-3.5 text-white" />
                 </span>
                 <p className="text-sm md:text-[0.9375rem] text-[var(--color-ink-soft)] leading-relaxed">
                   {text}
@@ -81,7 +81,7 @@ export default function Fit() {
               <a
                 href="#kontakt"
                 data-cursor-hover
-                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[var(--color-accent-strong)] hover:bg-[var(--color-accent)] text-white text-sm font-medium pulse-glow transition-colors"
+                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[var(--color-accent-strong)] hover:bg-[var(--color-accent)] text-black text-sm font-medium pulse-glow transition-colors"
               >
                 <span>Kostenlos Erstgespräch buchen</span>
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />

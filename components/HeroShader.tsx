@@ -54,11 +54,11 @@ const fragmentShader = /* glsl */ `
                   fbm(p * 1.6 + vec2(-t * 0.4, t * 0.5)));
     float n = fbm(p * 2.2 + q * 1.4 + t);
 
-    // Palette (matches your tokens, untouched)
-    vec3 bg          = vec3(0.027, 0.027, 0.039);   // #07070a
-    vec3 violet      = vec3(0.545, 0.361, 0.965);   // #8b5cf6
-    vec3 indigo      = vec3(0.4,   0.4,   0.97 );
-    vec3 violetSoft  = vec3(0.655, 0.529, 0.98 );   // #a78bfa
+    // Palette — monochrome black & white
+    vec3 bg          = vec3(0.02,  0.02,  0.02);    // near black
+    vec3 violet      = vec3(0.82,  0.82,  0.82);    // soft white
+    vec3 indigo      = vec3(0.55,  0.55,  0.55);    // mid grey
+    vec3 violetSoft  = vec3(1.0,   1.0,   1.0);     // white
 
     vec3 col = bg;
     col = mix(col, violet,     smoothstep(0.42, 0.78, n) * 0.42);
