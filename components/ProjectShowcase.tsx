@@ -31,7 +31,7 @@ const projects: Project[] = [
     branche: "Web-Anwendung",
     year: "2026",
     url: "https://ivan-gomes.developerakademie.net/join%20crm/",
-    accent: "from-sky-500/30 via-cyan-500/20 to-blue-500/10",
+    accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/join-crm.webp",
     Icon: Users,
   },
@@ -40,7 +40,7 @@ const projects: Project[] = [
     branche: "Browser-Spiel",
     year: "2025",
     url: "https://ivan-gomes.developerakademie.net/el-pollo-loco-PEPE.spiel/",
-    accent: "from-yellow-500/30 via-amber-500/20 to-orange-500/10",
+    accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/el-pollo-loco.webp",
     Icon: Gamepad2,
   },
@@ -49,7 +49,7 @@ const projects: Project[] = [
     branche: "Web-App",
     year: "2025",
     url: "https://ivan-gomes.developerakademie.net/pokedex-richtig/",
-    accent: "from-red-500/30 via-rose-500/20 to-pink-500/10",
+    accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/pokedex.webp",
     Icon: Search,
   },
@@ -85,7 +85,7 @@ export default function ProjectShowcase() {
       >
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)]/60 backdrop-blur text-xs text-[var(--color-ink-soft)] mb-2">
-            <span className="size-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
+            <span className="size-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.7)]" />
             <span>Live-Vorschau · direkt im Browser</span>
           </div>
           <h2 className="font-display text-fluid-h2 tracking-[-0.03em] font-medium leading-[1.05]">
@@ -125,7 +125,7 @@ export default function ProjectShowcase() {
                 </PhoneMockup>
               )}
               {/* subtle hover glow under each card */}
-              <div className="absolute inset-x-2 -bottom-2 h-8 -z-10 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(139,92,246,0.25),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-x-2 -bottom-2 h-8 -z-10 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(255, 255, 255,0.25),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
 
             {/* meta — uniform sizes + spacing on every card */}
@@ -184,7 +184,7 @@ function ProjectFrame({ project, view }: { project: Project; view: View }) {
         <>
           {/* Phone view: stylised placeholder (screenshots are desktop-format) */}
           <div className={`absolute inset-0 bg-gradient-to-br ${project.accent}`} />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_35%,rgba(139,92,246,0.18),transparent_70%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_35%,rgba(255, 255, 255,0.18),transparent_70%)]" />
 
           {/* Subtle dotted texture */}
           <div
@@ -263,13 +263,13 @@ function ToggleBtn({
       onClick={onClick}
       data-cursor-hover
       className={`relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
-        active ? "text-white" : "text-[var(--color-ink-soft)] hover:text-[var(--color-ink)]"
+        active ? "text-black" : "text-[var(--color-ink-soft)] hover:text-[var(--color-ink)]"
       }`}
     >
       {active && (
         <motion.div
           layoutId="view-pill"
-          className="absolute inset-0 rounded-full bg-[var(--color-accent-strong)] shadow-[0_0_20px_rgba(139,92,246,0.45)]"
+          className="absolute inset-0 rounded-full bg-[var(--color-accent-strong)] shadow-[0_0_20px_rgba(255, 255, 255,0.45)]"
           transition={{ type: "spring", damping: 25, stiffness: 320 }}
         />
       )}

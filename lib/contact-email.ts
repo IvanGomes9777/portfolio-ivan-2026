@@ -64,7 +64,7 @@ export function renderContactEmail(data: ContactEmailData): string {
     Neue Anfrage von ${escapeHtml(name)} · ${escapeHtml(projekttyp)}
   </div>
 
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #07070a; background-image: radial-gradient(600px 320px at 85% -8%, rgba(139,92,246,0.18), transparent 62%), radial-gradient(520px 360px at 0% 18%, rgba(99,102,241,0.10), transparent 60%); border-collapse: collapse;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #07070a; background-image: radial-gradient(600px 320px at 85% -8%, rgba(255, 255, 255,0.18), transparent 62%), radial-gradient(520px 360px at 0% 18%, rgba(255, 255, 255,0.10), transparent 60%); border-collapse: collapse;">
     <tr>
       <td align="center" style="padding: 40px 16px;">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 600px; border-collapse: collapse;">
@@ -80,7 +80,7 @@ export function renderContactEmail(data: ContactEmailData): string {
           <tr>
             <td style="background-color: #11111a; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden;">
               <!-- accent top bar -->
-              <div style="height: 3px; background-color: #8257e6; background-image: linear-gradient(90deg, #8257e6 0%, #a78bfa 50%, #6366f1 100%);">&nbsp;</div>
+              <div style="height: 3px; background-color: #ffffff; background-image: linear-gradient(90deg, #ffffff 0%, #ffffff 50%, #cccccc 100%);">&nbsp;</div>
 
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
                 <tr>
@@ -89,10 +89,10 @@ export function renderContactEmail(data: ContactEmailData): string {
                     <table role="presentation" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin-bottom: 14px;">
                       <tr>
                         <td style="vertical-align: middle;">
-                          <span style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background-color: #a78bfa;">&nbsp;</span>
+                          <span style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background-color: #ffffff;">&nbsp;</span>
                         </td>
                         <td style="vertical-align: middle; padding-left: 8px;">
-                          <span style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #c4b5fd; font-weight: 600;">Neue Anfrage</span>
+                          <span style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #e5e5e5; font-weight: 600;">Neue Anfrage</span>
                         </td>
                       </tr>
                     </table>
@@ -106,12 +106,12 @@ export function renderContactEmail(data: ContactEmailData): string {
 
                     <!-- details -->
                     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">
-                      ${row("E-Mail", `<a href="mailto:${escapeHtml(email)}" style="color: #a78bfa; text-decoration: none; font-weight: 500;">${escapeHtml(email)}</a>`)}
+                      ${row("E-Mail", `<a href="mailto:${escapeHtml(email)}" style="color: #ffffff; text-decoration: none; font-weight: 500;">${escapeHtml(email)}</a>`)}
                       ${
                         phone
                           ? row(
                               "Telefon",
-                              `<a href="tel:${escapeHtml(phone)}" style="color: #a78bfa; text-decoration: none; font-weight: 500;">${escapeHtml(phone)}</a><br/><span style="color: #8a8a95; font-size: 12px;">möchte angerufen werden</span>`,
+                              `<a href="tel:${escapeHtml(phone)}" style="color: #ffffff; text-decoration: none; font-weight: 500;">${escapeHtml(phone)}</a><br/><span style="color: #8a8a95; font-size: 12px;">möchte angerufen werden</span>`,
                             )
                           : ""
                       }
@@ -129,7 +129,7 @@ export function renderContactEmail(data: ContactEmailData): string {
                     <!-- reply CTA -->
                     <table role="presentation" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin-top: 26px;">
                       <tr>
-                        <td style="background-color: #8257e6; background-image: linear-gradient(90deg, #8257e6 0%, #6366f1 100%); border-radius: 12px;">
+                        <td style="background-color: #ffffff; background-image: linear-gradient(90deg, #ffffff 0%, #cccccc 100%); border-radius: 12px;">
                           <a href="mailto:${escapeHtml(email)}?subject=${encodeURIComponent("Antwort auf deine Anfrage")}" style="display: inline-block; padding: 13px 26px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px; font-weight: 600; color: #ffffff; text-decoration: none; border-radius: 12px;">
                             ${escapeHtml(firstName)} antworten →
                           </a>

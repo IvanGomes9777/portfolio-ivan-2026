@@ -37,8 +37,8 @@ export default function Promise() {
           className="md:col-span-8 relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-gradient-to-br from-[var(--color-surface)] to-[var(--color-bg-soft)] p-5 md:p-7 group"
         >
           <div className="absolute inset-0 opacity-50 pointer-events-none">
-            <div className="absolute -top-24 -right-24 size-72 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.25),transparent_60%)] group-hover:scale-110 transition-transform duration-700" />
-            <div className="absolute -bottom-24 -left-24 size-72 rounded-full bg-[radial-gradient(circle,rgba(99,102,241,0.18),transparent_60%)]" />
+            <div className="absolute -top-24 -right-24 size-72 rounded-full bg-[radial-gradient(circle,rgba(255, 255, 255,0.25),transparent_60%)] group-hover:scale-110 transition-transform duration-700" />
+            <div className="absolute -bottom-24 -left-24 size-72 rounded-full bg-[radial-gradient(circle,rgba(255, 255, 255,0.18),transparent_60%)]" />
           </div>
 
           <div className="relative flex h-full flex-col">
@@ -72,7 +72,7 @@ export default function Promise() {
               <div className="relative h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
                 <motion.div
                   style={{ width: barWidth }}
-                  className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[var(--color-accent-strong)] via-[var(--color-accent)] to-[var(--color-accent-soft)] shadow-[0_0_20px_rgba(139,92,246,0.6)]"
+                  className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[var(--color-accent-strong)] via-[var(--color-accent)] to-[var(--color-accent-soft)] shadow-[0_0_20px_rgba(255, 255, 255,0.6)]"
                 />
                 <motion.div
                   style={{ left: barWidth }}
@@ -176,7 +176,7 @@ export default function Promise() {
           variants={fadeUp}
           className="md:col-span-6 relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-5 group hover:border-[var(--color-line-strong)] transition-colors"
         >
-          <div className="absolute -top-16 -right-16 size-48 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.16),transparent_60%)] group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
+          <div className="absolute -top-16 -right-16 size-48 rounded-full bg-[radial-gradient(circle,rgba(255, 255, 255,0.16),transparent_60%)] group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
           <div className="relative flex items-center gap-3 mb-2.5">
             <span className="inline-flex items-center justify-center size-10 shrink-0 rounded-2xl border border-[var(--color-line-strong)] bg-[var(--color-bg-soft)]">
               <Search className="size-5 text-[var(--color-accent)]" />
@@ -199,7 +199,7 @@ export default function Promise() {
           variants={fadeUp}
           className="md:col-span-6 relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-5 group hover:border-[var(--color-line-strong)] transition-colors"
         >
-          <div className="absolute -top-16 -left-16 size-48 rounded-full bg-[radial-gradient(circle,rgba(99,102,241,0.16),transparent_60%)] group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
+          <div className="absolute -top-16 -left-16 size-48 rounded-full bg-[radial-gradient(circle,rgba(255, 255, 255,0.16),transparent_60%)] group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
           <div className="relative flex items-center gap-3 mb-2.5">
             <span className="inline-flex items-center justify-center size-10 shrink-0 rounded-2xl border border-[var(--color-line-strong)] bg-[var(--color-bg-soft)]">
               <Globe className="size-5 text-[var(--color-accent)]" />

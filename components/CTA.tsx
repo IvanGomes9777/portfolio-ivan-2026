@@ -118,12 +118,12 @@ export default function CTA() {
             className="relative rotating-border rounded-[2rem] bg-[var(--color-bg-soft)] p-6 md:p-9 overflow-hidden"
           >
             {/* ambient glow */}
-            <div className="absolute -top-32 left-1/2 -translate-x-1/2 size-[500px] rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.2),transparent_60%)] pointer-events-none" />
+            <div className="absolute -top-32 left-1/2 -translate-x-1/2 size-[500px] rounded-full bg-[radial-gradient(circle,rgba(255, 255, 255,0.2),transparent_60%)] pointer-events-none" />
 
             <div className="relative grid md:grid-cols-5 gap-6 md:gap-9 items-start">
               <div className="md:col-span-2">
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)]/60 backdrop-blur text-xs text-[var(--color-ink-soft)] mb-6">
-                  <span className="size-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
+                  <span className="size-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.7)]" />
                   <span>Antwort innerhalb von 24 Stunden</span>
                 </div>
                 <h2 className="font-display text-fluid-h2lg tracking-[-0.03em] font-medium leading-[1.05]">
@@ -177,10 +177,10 @@ export default function CTA() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -10, scale: 0.98 }}
                       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                      className="relative rounded-3xl border border-emerald-400/30 bg-emerald-400/5 p-8 md:p-10 text-center"
+                      className="relative rounded-3xl border border-white/30 bg-white/5 p-8 md:p-10 text-center"
                     >
-                      <div className="inline-flex items-center justify-center size-14 rounded-full border border-emerald-400/40 bg-emerald-400/10 mb-5">
-                        <Check className="size-6 text-emerald-400" />
+                      <div className="inline-flex items-center justify-center size-14 rounded-full border border-white/40 bg-white/10 mb-5">
+                        <Check className="size-6 text-white" />
                       </div>
                       <h3 className="font-display text-fluid-h3 tracking-tight font-medium mb-2">
                         Anfrage gesendet.
@@ -344,7 +344,7 @@ export default function CTA() {
                             type="submit"
                             data-cursor-hover
                             disabled={status === "sending"}
-                            className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[var(--color-accent-strong)] hover:bg-[var(--color-accent)] disabled:opacity-60 disabled:cursor-not-allowed text-white text-sm font-medium pulse-glow transition-colors"
+                            className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[var(--color-accent-strong)] hover:bg-[var(--color-accent)] disabled:opacity-60 disabled:cursor-not-allowed text-black text-sm font-medium pulse-glow transition-colors"
                           >
                             {status === "sending" ? (
                               <>
@@ -368,7 +368,7 @@ export default function CTA() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -6 }}
                             transition={{ duration: 0.25 }}
-                            className="flex items-start gap-2 px-3 py-2 rounded-xl border border-rose-400/30 bg-rose-400/5 text-xs text-rose-300"
+                            className="flex items-start gap-2 px-3 py-2 rounded-xl border border-white/30 bg-white/5 text-xs text-white"
                           >
                             <AlertCircle className="size-3.5 shrink-0 mt-0.5" />
                             <span>{errorMsg}</span>
@@ -434,7 +434,7 @@ function Field({
   maxLength?: number;
 }) {
   const base =
-    "w-full bg-[var(--color-surface)]/70 border border-[var(--color-line)] rounded-2xl px-4 py-3 text-sm text-[var(--color-ink)] placeholder:text-[var(--color-ink-dim)] focus:outline-none focus:border-[var(--color-accent)]/60 focus:bg-[var(--color-surface)] focus:shadow-[0_0_0_4px_rgba(139,92,246,0.1)] disabled:opacity-60 transition-all";
+    "w-full bg-[var(--color-surface)]/70 border border-[var(--color-line)] rounded-2xl px-4 py-3 text-sm text-[var(--color-ink)] placeholder:text-[var(--color-ink-dim)] focus:outline-none focus:border-[var(--color-accent)]/60 focus:bg-[var(--color-surface)] focus:shadow-[0_0_0_4px_rgba(255, 255, 255,0.1)] disabled:opacity-60 transition-all";
 
   return (
     <label className="block">
@@ -500,7 +500,7 @@ function WunschSelect({
               disabled={disabled}
               className={`relative text-left rounded-2xl px-4 py-3 border transition-all overflow-hidden disabled:opacity-60 ${
                 active
-                  ? "border-[var(--color-accent)]/60 bg-[var(--color-accent)]/10 shadow-[0_0_0_4px_rgba(139,92,246,0.08)]"
+                  ? "border-[var(--color-accent)]/60 bg-[var(--color-accent)]/10 shadow-[0_0_0_4px_rgba(255, 255, 255,0.08)]"
                   : "border-[var(--color-line)] bg-[var(--color-surface)]/70 hover:border-[var(--color-line-strong)] hover:bg-[var(--color-surface)]"
               }`}
               aria-pressed={active}
@@ -508,7 +508,7 @@ function WunschSelect({
               {active && (
                 <motion.span
                   layoutId="wunsch-glow"
-                  className="absolute -inset-x-2 -top-2 h-12 bg-[radial-gradient(ellipse,rgba(139,92,246,0.4),transparent_70%)] pointer-events-none"
+                  className="absolute -inset-x-2 -top-2 h-12 bg-[radial-gradient(ellipse,rgba(255, 255, 255,0.4),transparent_70%)] pointer-events-none"
                   transition={{ type: "spring", damping: 22, stiffness: 280 }}
                 />
               )}
@@ -575,7 +575,7 @@ function AuftraggeberSelect({
               disabled={disabled}
               className={`relative text-left rounded-2xl px-4 py-3 border transition-all overflow-hidden disabled:opacity-60 ${
                 active
-                  ? "border-[var(--color-accent)]/60 bg-[var(--color-accent)]/10 shadow-[0_0_0_4px_rgba(139,92,246,0.08)]"
+                  ? "border-[var(--color-accent)]/60 bg-[var(--color-accent)]/10 shadow-[0_0_0_4px_rgba(255, 255, 255,0.08)]"
                   : "border-[var(--color-line)] bg-[var(--color-surface)]/70 hover:border-[var(--color-line-strong)] hover:bg-[var(--color-surface)]"
               }`}
               aria-pressed={active}
@@ -647,7 +647,7 @@ function PaketSelect({
               disabled={disabled}
               className={`relative text-left rounded-2xl px-3 py-3 border transition-all overflow-hidden disabled:opacity-60 ${
                 active
-                  ? "border-[var(--color-accent)]/60 bg-[var(--color-accent)]/10 shadow-[0_0_0_4px_rgba(139,92,246,0.08)]"
+                  ? "border-[var(--color-accent)]/60 bg-[var(--color-accent)]/10 shadow-[0_0_0_4px_rgba(255, 255, 255,0.08)]"
                   : "border-[var(--color-line)] bg-[var(--color-surface)]/70 hover:border-[var(--color-line-strong)] hover:bg-[var(--color-surface)]"
               }`}
               aria-pressed={active}
@@ -655,7 +655,7 @@ function PaketSelect({
               {active && (
                 <motion.span
                   layoutId="paket-glow"
-                  className="absolute -inset-x-2 -top-2 h-12 bg-[radial-gradient(ellipse,rgba(139,92,246,0.4),transparent_70%)] pointer-events-none"
+                  className="absolute -inset-x-2 -top-2 h-12 bg-[radial-gradient(ellipse,rgba(255, 255, 255,0.4),transparent_70%)] pointer-events-none"
                   transition={{ type: "spring", damping: 22, stiffness: 280 }}
                 />
               )}
@@ -713,7 +713,7 @@ function WartungSelect({
               disabled={disabled}
               className={`relative text-left rounded-2xl px-4 py-3 border transition-all overflow-hidden disabled:opacity-60 ${
                 active
-                  ? "border-[var(--color-accent)]/60 bg-[var(--color-accent)]/10 shadow-[0_0_0_4px_rgba(139,92,246,0.08)]"
+                  ? "border-[var(--color-accent)]/60 bg-[var(--color-accent)]/10 shadow-[0_0_0_4px_rgba(255, 255, 255,0.08)]"
                   : "border-[var(--color-line)] bg-[var(--color-surface)]/70 hover:border-[var(--color-line-strong)] hover:bg-[var(--color-surface)]"
               }`}
               aria-pressed={active}
@@ -721,7 +721,7 @@ function WartungSelect({
               {active && (
                 <motion.span
                   layoutId="wartung-glow"
-                  className="absolute -inset-x-2 -top-2 h-12 bg-[radial-gradient(ellipse,rgba(139,92,246,0.4),transparent_70%)] pointer-events-none"
+                  className="absolute -inset-x-2 -top-2 h-12 bg-[radial-gradient(ellipse,rgba(255, 255, 255,0.4),transparent_70%)] pointer-events-none"
                   transition={{ type: "spring", damping: 22, stiffness: 280 }}
                 />
               )}
@@ -780,7 +780,7 @@ function ContentPaketSelect({
               disabled={disabled}
               className={`relative text-left rounded-2xl px-3 py-3 border transition-all overflow-hidden disabled:opacity-60 ${
                 active
-                  ? "border-[var(--color-accent)]/60 bg-[var(--color-accent)]/10 shadow-[0_0_0_4px_rgba(139,92,246,0.08)]"
+                  ? "border-[var(--color-accent)]/60 bg-[var(--color-accent)]/10 shadow-[0_0_0_4px_rgba(255, 255, 255,0.08)]"
                   : "border-[var(--color-line)] bg-[var(--color-surface)]/70 hover:border-[var(--color-line-strong)] hover:bg-[var(--color-surface)]"
               }`}
               aria-pressed={active}
@@ -788,7 +788,7 @@ function ContentPaketSelect({
               {active && (
                 <motion.span
                   layoutId="content-paket-glow"
-                  className="absolute -inset-x-2 -top-2 h-12 bg-[radial-gradient(ellipse,rgba(139,92,246,0.4),transparent_70%)] pointer-events-none"
+                  className="absolute -inset-x-2 -top-2 h-12 bg-[radial-gradient(ellipse,rgba(255, 255, 255,0.4),transparent_70%)] pointer-events-none"
                   transition={{ type: "spring", damping: 22, stiffness: 280 }}
                 />
               )}

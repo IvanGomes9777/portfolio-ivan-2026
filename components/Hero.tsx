@@ -9,16 +9,12 @@ import MagneticButton from "./MagneticButton";
 import SplitText from "./SplitText";
 
 const HeroShader = dynamic(() => import("./HeroShader"), { ssr: false });
-const LightningEffect = dynamic(() => import("./LightningEffect"), { ssr: false });
 
 export default function Hero() {
   return (
     <section className="relative w-full h-full min-h-[100svh] flex items-center justify-center px-4 pt-24 pb-16 overflow-hidden">
       {/* WebGL shader background */}
       <HeroShader />
-
-      {/* Lightning strikes */}
-      <LightningEffect />
 
       {/* Brand logo watermark — screen blend drops the image's dark background
           so only the neon emblem glows behind the content. Fades in as the
@@ -46,7 +42,7 @@ export default function Hero() {
         <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)]/60 backdrop-blur-md text-xs text-[var(--color-ink-soft)] mb-6">
           <Sparkles className="size-3 text-[var(--color-accent)]" />
           <span>Verfügbar für neue Projekte</span>
-          <span className="size-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
+          <span className="size-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.7)]" />
         </motion.div>
 
         <h1 className="font-display text-fluid-hero font-medium tracking-[-0.04em] leading-[1.04]">
@@ -111,9 +107,9 @@ export default function Hero() {
             // Gentle "breathing" glow that pulses to draw the eye.
             animate={{
               boxShadow: [
-                "0 0 20px rgba(139,92,246,0.20)",
-                "0 0 38px rgba(139,92,246,0.50)",
-                "0 0 20px rgba(139,92,246,0.20)",
+                "0 0 20px rgba(255, 255, 255,0.20)",
+                "0 0 38px rgba(255, 255, 255,0.50)",
+                "0 0 20px rgba(255, 255, 255,0.20)",
               ],
             }}
             transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 1.6 }}
@@ -166,7 +162,7 @@ export default function Hero() {
             <a
               href="#kontakt"
               data-cursor-hover
-              className="group relative inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[var(--color-accent-strong)] text-white text-sm font-medium pulse-glow hover:bg-[var(--color-accent)] transition-colors"
+              className="group relative inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[var(--color-accent-strong)] text-black text-sm font-medium pulse-glow hover:bg-[var(--color-accent)] transition-colors"
             >
               <span>Kostenloses Erstgespräch sichern</span>
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />

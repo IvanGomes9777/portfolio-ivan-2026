@@ -216,7 +216,7 @@ export default function Navbar() {
                   delay: 0.08 + links.length * 0.05,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="mt-8 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-[var(--color-accent-strong)] text-white text-base font-medium pointer-events-auto"
+                className="mt-8 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-[var(--color-accent-strong)] text-black text-base font-medium pointer-events-auto"
               >
                 <span>Kostenloses Erstgespräch</span>
                 <ArrowRight className="size-4" />

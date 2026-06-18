@@ -28,14 +28,14 @@ export default function Aurora() {
       aria-hidden
     >
       {/* base radial wash */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_70%,rgba(99,102,241,0.18),transparent_60%),radial-gradient(ellipse_at_20%_20%,rgba(168,85,247,0.12),transparent_55%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_70%,rgba(255, 255, 255,0.18),transparent_60%),radial-gradient(ellipse_at_20%_20%,rgba(255, 255, 255,0.12),transparent_55%)]" />
 
       {/* Aurora waves — multiple offset gradient bands */}
       <div
         className="absolute inset-x-[-20%] top-[18%] h-[42%] will-change-transform"
         style={{
           background:
-            "linear-gradient(110deg, transparent 0%, rgba(167,139,250,0.45) 35%, rgba(139,92,246,0.55) 55%, transparent 85%)",
+            "linear-gradient(110deg, transparent 0%, rgba(255, 255, 255,0.45) 35%, rgba(255, 255, 255,0.55) 55%, transparent 85%)",
           filter: "blur(70px)",
           transform: "rotateX(35deg) rotateZ(-2deg)",
           animation: "aurora-drift-a 22s ease-in-out infinite",
@@ -45,7 +45,7 @@ export default function Aurora() {
         className="absolute inset-x-[-20%] top-[32%] h-[38%] will-change-transform"
         style={{
           background:
-            "linear-gradient(80deg, rgba(99,102,241,0.40) 5%, transparent 40%, rgba(168,85,247,0.45) 75%, transparent 100%)",
+            "linear-gradient(80deg, rgba(255, 255, 255,0.40) 5%, transparent 40%, rgba(255, 255, 255,0.45) 75%, transparent 100%)",
           filter: "blur(80px)",
           transform: "rotateX(-20deg) rotateZ(4deg)",
           animation: "aurora-drift-b 28s ease-in-out infinite",
@@ -81,7 +81,7 @@ export default function Aurora() {
       </div>
 
       {/* horizon glow */}
-      <div className="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-[var(--color-bg)] via-[rgba(139,92,246,0.10)] to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-[var(--color-bg)] via-[rgba(255, 255, 255,0.10)] to-transparent" />
     </div>
   );
 }

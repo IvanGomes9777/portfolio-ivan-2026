@@ -47,7 +47,7 @@ export default function Found() {
               variants={fadeUp}
               className="relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-gradient-to-br from-[var(--color-surface)] to-[var(--color-bg-soft)] p-5 group hover:border-[var(--color-line-strong)] transition-colors"
             >
-              <div className="absolute -top-20 -right-20 size-56 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.18),transparent_60%)] group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
+              <div className="absolute -top-20 -right-20 size-56 rounded-full bg-[radial-gradient(circle,rgba(255, 255, 255,0.18),transparent_60%)] group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
               <div className="relative">
                 <div className="inline-flex items-center justify-center size-11 rounded-2xl border border-[var(--color-line-strong)] bg-[var(--color-bg-soft)] mb-3">
                   <Search className="size-5 text-[var(--color-accent)]" />
@@ -106,7 +106,7 @@ export default function Found() {
               variants={fadeUp}
               className="relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-gradient-to-br from-[var(--color-surface)] to-[var(--color-bg-soft)] p-5 group hover:border-[var(--color-line-strong)] transition-colors"
             >
-              <div className="absolute -top-20 -right-20 size-56 rounded-full bg-[radial-gradient(circle,rgba(99,102,241,0.18),transparent_60%)] group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
+              <div className="absolute -top-20 -right-20 size-56 rounded-full bg-[radial-gradient(circle,rgba(255, 255, 255,0.18),transparent_60%)] group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
               <div className="relative">
                 <div className="inline-flex items-center justify-center size-11 rounded-2xl border border-[var(--color-line-strong)] bg-[var(--color-bg-soft)] mb-3">
                   <Sparkles className="size-5 text-[var(--color-accent)]" />
@@ -137,7 +137,7 @@ export default function Found() {
               <a
                 href="#kontakt"
                 data-cursor-hover
-                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[var(--color-accent-strong)] hover:bg-[var(--color-accent)] text-white text-sm font-medium pulse-glow transition-colors"
+                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[var(--color-accent-strong)] hover:bg-[var(--color-accent)] text-black text-sm font-medium pulse-glow transition-colors"
               >
                 <span>Kostenloses Erstgespräch</span>
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
