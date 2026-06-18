@@ -20,15 +20,21 @@ const csp = [
   "object-src 'none'",
   "frame-ancestors 'none'",
   "form-action 'self'",
-  // vercel.live: Vercel's preview comment / live feedback widget (preview
-  // deployments only — script is not injected in production). No analytics or
-  // other third-party scripts are loaded, so the policy stays tight.
-  "script-src 'self' 'unsafe-inline' https://vercel.live",
+  // Third-party origins:
+  //  - vercel.live: Vercel's preview comment / live feedback widget (preview
+  //    deployments only — not injected in production).
+  //  - Google Ads conversion tracking (gtag.js): the base tag is loaded from
+  //    googletagmanager.com; the conversion event pings googleadservices.com /
+  //    googleads.g.doubleclick.net / google.com (pixels + fetch). All are
+  //    Google-owned. Note: Google may also fire remarketing "ga-audiences"
+  //    pixels to country-specific domains (google.de etc.) which are NOT in
+  //    this list — those are non-essential and do not affect conversion counts.
+  "script-src 'self' 'unsafe-inline' https://vercel.live https://www.googletagmanager.com https://www.googleadservices.com",
   "style-src 'self' 'unsafe-inline' https://vercel.live",
-  "img-src 'self' data: blob: https://vercel.live https://vercel.com",
+  "img-src 'self' data: blob: https://vercel.live https://vercel.com https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com https://googleads.g.doubleclick.net",
   "font-src 'self' data: https://vercel.live",
-  "connect-src 'self' https://vercel.live wss://ws-us3.pusher.com",
-  "frame-src 'self' https://vercel.live",
+  "connect-src 'self' https://vercel.live wss://ws-us3.pusher.com https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com https://www.google.com https://googleads.g.doubleclick.net",
+  "frame-src 'self' https://vercel.live https://td.doubleclick.net",
   "upgrade-insecure-requests",
 ].join("; ");
 
