@@ -31,7 +31,7 @@ const csp = [
   //    this list — those are non-essential and do not affect conversion counts.
   "script-src 'self' 'unsafe-inline' https://vercel.live https://www.googletagmanager.com https://www.googleadservices.com",
   "style-src 'self' 'unsafe-inline' https://vercel.live",
-  "img-src 'self' data: blob: https://vercel.live https://vercel.com https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com https://googleads.g.doubleclick.net",
+  "img-src 'self' data: blob: https://vercel.live https://vercel.com https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com https://googleads.g.doubleclick.net https://www.googleadservices.com",
   "font-src 'self' data: https://vercel.live",
   "connect-src 'self' https://vercel.live wss://ws-us3.pusher.com https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com https://www.google.com https://googleads.g.doubleclick.net",
   "frame-src 'self' https://vercel.live https://td.doubleclick.net",
