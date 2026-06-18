@@ -7,6 +7,7 @@ import {
   Wallet,
   CreditCard,
   CalendarClock,
+  LifeBuoy,
 } from "lucide-react";
 import { fadeUp, stagger } from "@/lib/motion";
 import InfoTooltip from "./InfoTooltip";
@@ -240,6 +241,55 @@ export default function Pricing() {
             </motion.div>
           ))}
         </div>
+
+        {/* support explainer — clarifies what the included support covers,
+            applies to every package that includes a support period */}
+        <motion.div
+          variants={fadeUp}
+          className="mt-4 rounded-[var(--radius-md)] bg-[var(--color-surface)] border border-[var(--color-line)] p-4 md:p-5"
+        >
+          <div className="flex items-center gap-2.5">
+            <span className="inline-flex items-center justify-center size-8 shrink-0 rounded-xl border border-[var(--color-line)] bg-[var(--color-surface-2)] text-[var(--color-accent)]">
+              <LifeBuoy className="size-4" />
+            </span>
+            <h3 className="font-display text-base md:text-lg font-semibold tracking-tight text-[var(--color-ink)]">
+              Support nach Fertigstellung{" "}
+              <span className="text-[var(--color-accent)]">(im Paketpreis inklusive)</span>
+            </h3>
+          </div>
+
+          <p className="mt-3 text-[0.8125rem] text-[var(--color-ink-soft)] leading-relaxed">
+            Nach dem Livegang deiner Website unterstütze ich dich für den im
+            jeweiligen Paket angegebenen Zeitraum (je nach Paket 2 bis 8 Wochen)
+            kostenfrei beim Start. Enthalten sind:
+          </p>
+
+          <ul className="mt-2.5 space-y-1.5">
+            {[
+              "Beantwortung deiner Fragen zur Bedienung und Pflege der Website",
+              "Behebung von Fehlern oder Funktionsstörungen am gelieferten Stand",
+              "Kleinere inhaltliche Korrekturen (z.B. Tippfehler, Öffnungszeiten, Kontaktdaten) – bis zu 10 Anpassungen innerhalb des Support-Zeitraums",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-2 text-xs md:text-[0.8125rem] text-[var(--color-ink-soft)] leading-snug"
+              >
+                <Check className="size-4 shrink-0 mt-0.5 text-[var(--color-accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p className="mt-3 text-[0.8125rem] text-[var(--color-ink-dim)] leading-relaxed">
+            <span className="font-medium text-[var(--color-ink-soft)]">
+              Nicht enthalten
+            </span>{" "}
+            sind neue Inhalte oder Bilder zur laufenden Pflege, zusätzliche Seiten
+            oder Funktionen, sowie Design- und Layoutänderungen. Solche Wünsche
+            sowie die laufende Betreuung nach Ablauf des Support-Zeitraums
+            übernehme ich gerne über eines meiner Wartungs- und Content-Pakete.
+          </p>
+        </motion.div>
 
         {/* payment options — compact strip */}
         <motion.div variants={fadeUp} className="mt-4">
