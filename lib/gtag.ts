@@ -7,7 +7,7 @@
 // would count a conversion for each visit instead of each lead.
 
 // Conversion action "send_to": <Conversion-ID>/<Conversion-Label>.
-const CONVERSION_SEND_TO = "AW-18190212856/yMriCOzHksAcEPi94uFD";
+const CONVERSION_SEND_TO = "AW-18190212856/srf4CM7t3MEcEPi94uFD";
 
 // gtag is injected globally by the gtag.js script in the root layout.
 declare global {
