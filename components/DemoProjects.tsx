@@ -73,7 +73,7 @@ const demoProjects: DemoProject[] = [
   {
     name: "Friseur Vorlage 4",
     branche: "Friseur",
-    status: "In Auftrag",
+    status: "In Arbeit",
     url: "https://friseur-beispiel-4.vercel.app/",
     accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/friseur-4.webp",
@@ -91,7 +91,7 @@ const demoProjects: DemoProject[] = [
   {
     name: "50/50ink",
     branche: "Tattoo-Studio",
-    status: "In Auftrag",
+    status: "In Arbeit",
     url: "https://5050ink-web.vercel.app/",
     accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/5050ink.webp",
@@ -136,7 +136,7 @@ const demoProjects: DemoProject[] = [
   {
     name: "Anwaltskanzlei",
     branche: "Rechtsanwälte",
-    status: "Noch frei",
+    status: "In Arbeit",
     url: "https://anwaltskanzlei-vorlage-1.vercel.app/de",
     accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/anwaltskanzlei-vorlage-1.webp",
@@ -154,7 +154,7 @@ const demoProjects: DemoProject[] = [
   {
     name: "Fotograf-1",
     branche: "Fotograf",
-    status: "In Arbeit",
+    status: "Noch frei",
     url: "https://fotograf-vorlage-1.vercel.app/",
     accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/fotograf-1.webp",
@@ -264,15 +264,21 @@ export default function DemoProjects() {
                     {p.status}
                   </span>
                 </div>
-                <a
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-cursor-hover
-                  className="mt-0.5 inline-flex items-center gap-1 text-[0.625rem] leading-tight text-[var(--color-ink-soft)] hover:text-white transition-colors w-fit"
-                >
-                  Demo öffnen <ArrowUpRight className="size-2.5" />
-                </a>
+                {p.status === "In Arbeit" ? (
+                  <span className="mt-0.5 inline-flex items-center gap-1 text-[0.625rem] leading-tight text-[var(--color-ink-dim)] w-fit">
+                    Bald verfügbar
+                  </span>
+                ) : (
+                  <a
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cursor-hover
+                    className="mt-0.5 inline-flex items-center gap-1 text-[0.625rem] leading-tight text-[var(--color-ink-soft)] hover:text-white transition-colors w-fit"
+                  >
+                    Demo öffnen <ArrowUpRight className="size-2.5" />
+                  </a>
+                )}
               </div>
             </motion.div>
           ))}
@@ -285,15 +291,25 @@ export default function DemoProjects() {
 function ProjectFrame({ project, view }: { project: DemoProject; view: View }) {
   const { Icon } = project;
   const isPhone = view === "phone";
+  const inProgress = project.status === "In Arbeit";
+
+  const Wrapper = inProgress ? "div" : "a";
+  const wrapperProps = inProgress
+    ? {}
+    : {
+        href: project.url,
+        target: "_blank",
+        rel: "noopener noreferrer",
+        "data-cursor-hover": true,
+        "aria-label": `${project.name} Demo öffnen`,
+      };
 
   return (
-    <a
-      href={project.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      data-cursor-hover
-      aria-label={`${project.name} Demo öffnen`}
-      className="group relative block w-full h-full overflow-hidden bg-zinc-950 cursor-pointer"
+    <Wrapper
+      {...wrapperProps}
+      className={`group relative block w-full h-full overflow-hidden bg-zinc-950 ${
+        inProgress ? "cursor-default" : "cursor-pointer"
+      }`}
     >
       {/* Laptop view: real hero screenshot as the screen content */}
       {!isPhone ? (
@@ -339,21 +355,34 @@ function ProjectFrame({ project, view }: { project: DemoProject; view: View }) {
         </>
       )}
 
-      {/* Demo badge top-left */}
-      <div className={`absolute z-10 rounded-full bg-white/90 backdrop-blur-md font-semibold text-zinc-950 tracking-wide uppercase border border-white/50 ${
+      {/* In-Arbeit projects get a dimming overlay so they read as unavailable */}
+      {inProgress && (
+        <div className="absolute inset-0 bg-zinc-950/55 backdrop-blur-[1px] pointer-events-none" />
+      )}
+
+      {/* Status badge top-left */}
+      <div className={`absolute z-10 rounded-full backdrop-blur-md font-semibold tracking-wide uppercase border ${
+        inProgress
+          ? "bg-zinc-950/80 text-white/90 border-white/20"
+          : "bg-white/90 text-zinc-950 border-white/50"
+      } ${
         isPhone
           ? "top-1 left-1 px-1 py-[1px] text-[0.4375rem] sm:text-[0.5rem]"
           : "top-1.5 left-1.5 px-1.5 py-0.5 text-[0.5rem]"
       }`}>
-        Demo
+        {inProgress ? "In Arbeit" : "Demo"}
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-      <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-black/70 backdrop-blur-md text-[0.5625rem] text-white/90 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-white/10 pointer-events-none">
-        <ExternalLink className="size-2.5" />
-        <span>Demo öffnen</span>
-      </div>
-    </a>
+      {!inProgress && (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+          <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-black/70 backdrop-blur-md text-[0.5625rem] text-white/90 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-white/10 pointer-events-none">
+            <ExternalLink className="size-2.5" />
+            <span>Demo öffnen</span>
+          </div>
+        </>
+      )}
+    </Wrapper>
   );
 }
 
