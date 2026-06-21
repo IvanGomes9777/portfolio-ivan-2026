@@ -6,6 +6,9 @@
 // form submission). It must NOT run on every page load, otherwise Google Ads
 // would count a conversion for each visit instead of each lead.
 
+// Google Ads account / tag id. Shared with the consent-gated loader.
+export const GOOGLE_ADS_ID = "AW-18190212856";
+
 // Conversion action "send_to": <Conversion-ID>/<Conversion-Label>.
 const CONVERSION_SEND_TO = "AW-18190212856/srf4CM7t3MEcEPi94uFD";
 

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CookieSettingsButton from "@/components/CookieSettingsButton";
 
 export default function Footer() {
   return (
@@ -24,6 +25,7 @@ export default function Footer() {
             <Link href="/agb" className="hover:text-[var(--color-ink-soft)] transition">
               AGB
             </Link>
+            <CookieSettingsButton className="hover:text-[var(--color-ink-soft)] transition" />
           </nav>
         </div>
       </div>

@@ -1,0 +1,19 @@
+# Ivan Gomes — Webdesign & Entwicklung
+
+> Freelance Web Developer & Designer aus Münster (Deutschland). Moderne, performante und DSGVO-konforme Websites für lokale Unternehmen — mobil optimiert, SEO- & GEO-ready, in 2–4 Wochen live.
+
+## Seiten
+- [Startseite](https://portfolio-ivan-2026.vercel.app/): Leistungen, Vorgehen, FAQ und Kontakt im Überblick.
+- [Projekte](https://portfolio-ivan-2026.vercel.app/projekte): Referenzen und Vorschauen bisheriger Webdesign-Projekte.
+- [Preise](https://portfolio-ivan-2026.vercel.app/preise): Pakete von Visitenkarte (ab 500 €) über Starter (ab 1.500 €) und Standard (ab 2.500 €) bis Premium mit Booking-System (ab 3.500 €).
+
+## Über
+- Inhaber: Ivan Vilar Gomes, Münster (Nordrhein-Westfalen). Spezialisierung: Next.js, React, Tailwind CSS, SEO/GEO, responsives Design.
+
+## Rechtliches
+- [Impressum](https://portfolio-ivan-2026.vercel.app/impressum)
+- [Datenschutzerklärung](https://portfolio-ivan-2026.vercel.app/datenschutz)
+- [AGB](https://portfolio-ivan-2026.vercel.app/agb)
+
+## Sitemap
+- [Sitemap](https://portfolio-ivan-2026.vercel.app/sitemap.xml)

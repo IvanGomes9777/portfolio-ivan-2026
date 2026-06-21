@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import CookieSettingsButton from "@/components/CookieSettingsButton";
 
 export default function LegalLinks() {
   return (
@@ -28,6 +29,11 @@ export default function LegalLinks() {
       >
         AGB
       </Link>
+      <span className="opacity-40">·</span>
+      <CookieSettingsButton
+        data-cursor-hover
+        className="uppercase tracking-[0.18em] hover:text-[var(--color-ink-soft)] transition-colors"
+      />
     </div>
   );
 }
