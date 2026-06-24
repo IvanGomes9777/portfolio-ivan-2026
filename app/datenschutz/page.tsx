@@ -15,7 +15,7 @@ export default function DatenschutzPage() {
   return (
     <LegalLayout
       title="Datenschutzerklärung"
-      subtitle="Stand: 11. Juni 2026"
+      subtitle="Stand: 21. Juni 2026"
     >
       <Section title="1. Verantwortlicher im Sinne der DSGVO">
         <p>
@@ -42,16 +42,28 @@ export default function DatenschutzPage() {
         <p>
           Diese Website verarbeitet personenbezogene Daten nur, soweit dies zur
           Bereitstellung der Website und zur Beantwortung deiner Anfragen
-          erforderlich ist. Es findet{" "}
-          <strong className="text-[var(--color-ink)]">kein Tracking</strong>,{" "}
-          <strong className="text-[var(--color-ink)]">keine Analytics</strong>{" "}
-          und{" "}
+          erforderlich ist. Standardmäßig findet{" "}
+          <strong className="text-[var(--color-ink)]">kein Tracking</strong> und{" "}
           <strong className="text-[var(--color-ink)]">
             keine Profilbildung
           </strong>{" "}
-          statt. Es werden{" "}
-          <strong className="text-[var(--color-ink)]">keine Cookies</strong>{" "}
-          gesetzt und keine Daten in deinem Browser-Speicher abgelegt.
+          statt.
+        </p>
+        <p>
+          Eine Ausnahme bildet die Werbe-/Conversion-Messung über Google Ads
+          (siehe Abschnitt 8). Diese wird{" "}
+          <strong className="text-[var(--color-ink)]">
+            ausschließlich nach deiner ausdrücklichen Einwilligung
+          </strong>{" "}
+          geladen. Erteilst du keine Einwilligung, werden insoweit keine Cookies
+          gesetzt und keine Daten an Google übertragen.
+        </p>
+        <p className="text-sm text-[var(--color-ink-dim)]">
+          Hinweis: Lediglich deine Cookie-Entscheidung selbst wird in deinem
+          Browser gespeichert (lokaler Speicher), damit das Einwilligungsbanner
+          nicht bei jedem Besuch erneut erscheint. Diese Speicherung ist für den
+          von dir gewünschten Dienst unbedingt erforderlich (§ 25 Abs. 2 Nr. 2
+          TDDDG) und bedarf daher keiner Einwilligung.
         </p>
       </Section>
 
@@ -200,18 +212,64 @@ export default function DatenschutzPage() {
         </p>
       </Section>
 
-      <Section title="8. Eingesetzte Technologien">
+      <Section title="8. Google Ads (Conversion-Messung), Cookies & Einwilligung">
         <p>
-          Diese Website nutzt ausschließlich serverseitig oder als{" "}
+          Diese Website nutzt für ihre Grundfunktionen ausschließlich
+          serverseitig oder als{" "}
           <code className="text-xs bg-white/5 px-1.5 py-0.5 rounded">
             npm
           </code>
           -Paket installierte Open-Source-Bibliotheken (u. a. Next.js, React,
-          Framer Motion, Three.js, Lenis). Es werden{" "}
+          Framer Motion, Three.js, Lenis). Zur Laufzeit werden hierfür{" "}
           <strong className="text-[var(--color-ink)]">
             keine externen CDNs
           </strong>{" "}
-          oder Drittanbieter-Skripte zur Laufzeit nachgeladen.
+          oder Drittanbieter-Skripte nachgeladen.
+        </p>
+        <p>
+          Zusätzlich messe ich den Erfolg meiner Werbeanzeigen mit{" "}
+          <strong className="text-[var(--color-ink)]">Google Ads</strong> (Google
+          Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland). Hierzu
+          wird das Google-Tag{" "}
+          <code className="text-xs bg-white/5 px-1.5 py-0.5 rounded">
+            gtag.js
+          </code>{" "}
+          von Google-Servern geladen. Dabei können Cookies bzw. ähnliche
+          Technologien auf deinem Endgerät gespeichert und ausgelesen sowie Daten
+          (u. a. IP-Adresse, Informationen zur ausgelösten Aktion) an Google
+          übermittelt werden, auch in die{" "}
+          <strong className="text-[var(--color-ink)]">USA</strong>.
+        </p>
+        <p>
+          Dies geschieht{" "}
+          <strong className="text-[var(--color-ink)]">
+            ausschließlich, wenn du zuvor über das Cookie-Banner eingewilligt
+          </strong>{" "}
+          hast. Bis dahin wird das Google-Tag nicht geladen. Du kannst deine
+          Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen – über
+          den Link{" "}
+          <strong className="text-[var(--color-ink)]">
+            „Cookie-Einstellungen"
+          </strong>{" "}
+          im Footer jeder Seite.
+        </p>
+        <p className="text-sm text-[var(--color-ink-dim)]">
+          Rechtsgrundlage für das Speichern/Auslesen von Informationen auf dem
+          Endgerät: § 25 Abs. 1 TDDDG (Einwilligung). Rechtsgrundlage für die
+          anschließende Verarbeitung der personenbezogenen Daten: Art. 6 Abs. 1
+          lit. a DSGVO (Einwilligung). Die Übermittlung in die USA wird auf die
+          Standardvertragsklauseln der EU-Kommission (Art. 46 Abs. 2 lit. c
+          DSGVO) sowie das EU-US Data Privacy Framework gestützt.
+          Datenschutzhinweise von Google:{" "}
+          <a
+            href="https://policies.google.com/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[var(--color-accent-soft)] hover:underline"
+          >
+            policies.google.com/privacy
+          </a>
+          .
         </p>
       </Section>
 
