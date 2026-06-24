@@ -3,7 +3,11 @@
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, Phone } from "lucide-react";
+
+// Phone from the Impressum (+49 176 60847103) as an RFC 3966 tel: target.
+const PHONE_TEL = "tel:+4917660847103";
+const PHONE_DISPLAY = "+49 176 60847103";
 
 // Route links use Next <Link>; the in-page "#kontakt" anchor is handled by
 // HorizontalScroll's hash logic on whichever page is active (every page ends
@@ -126,6 +130,17 @@ export default function Navbar() {
             ))}
           </div>
 
+          {/* Desktop call button */}
+          <a
+            href={PHONE_TEL}
+            data-cursor-hover
+            aria-label={`Anrufen: ${PHONE_DISPLAY}`}
+            className="hidden md:inline-flex items-center gap-1.5 text-sm px-3.5 py-1.5 rounded-full border border-[var(--color-line)] text-[var(--color-ink-soft)] hover:text-[var(--color-ink)] hover:border-[var(--color-line-strong)] hover:bg-white/5 transition-colors"
+          >
+            <Phone className="size-3.5" />
+            <span>Anrufen</span>
+          </a>
+
           {/* Desktop CTA */}
           <a
             href="#kontakt"
@@ -220,6 +235,23 @@ export default function Navbar() {
               >
                 <span>Kostenloses Erstgespräch</span>
                 <ArrowRight className="size-4" />
+              </motion.a>
+
+              <motion.a
+                href={PHONE_TEL}
+                onClick={closeMenu}
+                aria-label={`Anrufen: ${PHONE_DISPLAY}`}
+                initial={{ y: 16, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{
+                  duration: 0.4,
+                  delay: 0.08 + (links.length + 1) * 0.05,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="mt-3 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full border border-[var(--color-line-strong)] text-[var(--color-ink)] text-base font-medium pointer-events-auto"
+              >
+                <Phone className="size-4" />
+                <span>Direkt anrufen</span>
               </motion.a>
             </motion.div>
           </motion.div>
