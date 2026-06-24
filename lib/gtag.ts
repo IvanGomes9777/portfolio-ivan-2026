@@ -7,7 +7,12 @@
 // would count a conversion for each visit instead of each lead.
 
 // Conversion action "send_to": <Conversion-ID>/<Conversion-Label>.
-const CONVERSION_SEND_TO = "AW-18190212856/srf4CM7t3MEcEPi94uFD";
+// The base gtag.js is loaded for account AW-18190212856 (see app/layout.tsx);
+// the matching lead conversion in that account is "Lead-Formular senden
+// (webdesignbyivan.de/)" with label 8q7uCLfrhsUcEPi94uFD. The label must belong
+// to the same account ID — pairing AW-18190212856 with a label from another
+// account makes Google Ads report "Conversion-Aktion nicht erkannt".
+const CONVERSION_SEND_TO = "AW-18190212856/8q7uCLfrhsUcEPi94uFD";
 
 // gtag is injected globally by the gtag.js script in the root layout.
 declare global {
