@@ -9,6 +9,12 @@ import { trackContactConversion } from "@/lib/gtag";
 
 const EMAIL = "ivanvilargomes@gmail.com";
 
+// Phone (from the Impressum: +49 176 60847103). PHONE_TEL is the RFC 3966
+// tel: target (international, no spaces); PHONE_DISPLAY is the human-readable
+// form shown to visitors.
+const PHONE_DISPLAY = "+49 176 60847103";
+const PHONE_TEL = "tel:+4917660847103";
+
 // WhatsApp: number in international format without "+"/spaces (from the
 // Impressum: +49 176 60847103 → 0176 60847103). The prefilled text gives a
 // light template so people can message directly — without the contact form.
@@ -159,15 +165,36 @@ export default function CTA() {
                     Anliegen. Meist antworte ich innerhalb weniger Stunden.
                   </p>
 
-                  {/* Secondary: e-mail */}
+                  {/* Direct call — no form needed */}
                   <a
-                    href={`mailto:${EMAIL}`}
+                    href={PHONE_TEL}
                     data-cursor-hover
-                    className="mt-1 inline-flex items-center gap-2 w-fit text-sm text-[var(--color-ink-soft)] hover:text-[var(--color-ink)] transition-colors"
+                    aria-label="Mich direkt anrufen"
+                    className="group inline-flex items-center gap-2.5 w-fit px-5 py-3.5 rounded-full border border-[var(--color-line-strong)] bg-[var(--color-surface)]/60 hover:bg-[var(--color-surface)] hover:border-[var(--color-accent)]/50 text-sm font-semibold text-[var(--color-ink)] transition-all"
                   >
-                    <Mail className="size-4" />
-                    <span>{EMAIL}</span>
+                    <Phone className="size-5 shrink-0" />
+                    <span>Direkt anrufen</span>
                   </a>
+
+                  {/* Secondary: e-mail + phone */}
+                  <div className="mt-1 flex flex-col gap-2">
+                    <a
+                      href={`mailto:${EMAIL}`}
+                      data-cursor-hover
+                      className="inline-flex items-center gap-2 w-fit text-sm text-[var(--color-ink-soft)] hover:text-[var(--color-ink)] transition-colors"
+                    >
+                      <Mail className="size-4" />
+                      <span>{EMAIL}</span>
+                    </a>
+                    <a
+                      href={PHONE_TEL}
+                      data-cursor-hover
+                      className="inline-flex items-center gap-2 w-fit text-sm text-[var(--color-ink-soft)] hover:text-[var(--color-ink)] transition-colors"
+                    >
+                      <Phone className="size-4" />
+                      <span>{PHONE_DISPLAY}</span>
+                    </a>
+                  </div>
                 </div>
               </div>
 
