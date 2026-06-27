@@ -14,7 +14,6 @@ const PHONE_DISPLAY = "+49 176 60847103";
 // with a Kontakt panel).
 const links: { href: string; label: string; dot?: string }[] = [
   { href: "/projekte", label: "Projekte" },
-  { href: "/preise", label: "Preise" },
   { href: "#kontakt", label: "Kontakt" },
 ];
 

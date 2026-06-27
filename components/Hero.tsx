@@ -83,19 +83,6 @@ export default function Hero() {
           .
         </motion.p>
 
-        {/* Price anchor */}
-        <motion.p
-          variants={fadeUp}
-          initial="hidden"
-          animate="show"
-          transition={{ delay: 0.94, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-4 text-base font-medium text-[var(--color-ink-soft)]"
-        >
-          Ab{" "}
-          <span className="font-semibold text-[var(--color-accent)]">€500</span>{" "}
-          für deine Online-Präsenz.
-        </motion.p>
-
         {/* Launch offer — limited discount for the first customers */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}

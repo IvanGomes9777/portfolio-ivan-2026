@@ -2,7 +2,7 @@
 
 import { motion, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Clock, Zap, ShieldCheck, Lock, Search, FileCheck, BadgeEuro, Check, CreditCard, ArrowRight, Globe } from "lucide-react";
+import { Clock, Zap, ShieldCheck, Lock, Search, FileCheck, BadgeEuro, Check, Globe } from "lucide-react";
 import { fadeUp, stagger } from "@/lib/motion";
 import { usePanelProgress } from "./PanelProgress";
 import Orbs from "./backgrounds/Orbs";
@@ -110,16 +110,11 @@ export default function Promise() {
                 ))}
               </div>
 
-              {/* Ratenzahlung hint — full options live in the pricing section */}
-              <a
-                href="/preise"
-                data-cursor-hover
-                className="group inline-flex items-center gap-2 text-sm text-[var(--color-accent-soft)] hover:text-[var(--color-accent)] transition-colors"
-              >
-                <CreditCard className="size-4 shrink-0" />
-                <span>Lieber in Raten zahlen? Geht auch — Optionen bei den Preisen</span>
-                <ArrowRight className="size-3.5 shrink-0 transition-transform group-hover:translate-x-0.5" />
-              </a>
+              {/* Flexible Zahlung hint — keeps the reassurance without naming prices */}
+              <p className="text-sm text-[var(--color-ink-soft)] leading-relaxed">
+                Lieber in Raten zahlen? Auch das ist möglich — die passende
+                Zahlungsoption besprechen wir im kostenlosen Erstgespräch.
+              </p>
             </div>
           </div>
         </motion.div>
