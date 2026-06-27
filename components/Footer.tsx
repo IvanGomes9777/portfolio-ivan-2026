@@ -12,6 +12,7 @@ export default function Footer() {
 
           <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
             <Link href="/projekte" className="hover:text-[var(--color-ink-soft)] transition">Projekte</Link>
+            <Link href="/faq" className="hover:text-[var(--color-ink-soft)] transition">FAQ</Link>
             <a href="#kontakt" className="hover:text-[var(--color-ink-soft)] transition">Kontakt</a>
             <span className="opacity-40">·</span>
             <Link href="/impressum" className="hover:text-[var(--color-ink-soft)] transition">
