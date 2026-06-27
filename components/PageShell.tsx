@@ -6,7 +6,7 @@ import HorizontalScroll from "./HorizontalScroll";
 
 export type Panel = { id: string; label: string; content: ReactNode };
 
-// Shared page chrome used by every route (home, /projekte, /preise). Each page
+// Shared page chrome used by every route (home, /projekte). Each page
 // keeps the signature horizontal page-turn (HorizontalScroll) for its own set
 // of sections, plus the navbar, the mobile footer and the desktop legal-links
 // corner widget.

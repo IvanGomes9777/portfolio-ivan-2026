@@ -176,8 +176,9 @@ const websiteSchema = {
   author: { "@id": `${BASE_URL}/#person` },
 };
 
-// Maps the three visible pricing packages so search & answer engines (GEO)
-// can read the concrete offerings. Prices reflect the visible "ab"-Preise.
+// Maps the offered packages so search & answer engines (GEO) can read the
+// concrete offerings. Prices are intentionally omitted — they are shared as a
+// separate document on request, not published on the site.
 const serviceSchema = {
   "@type": "Service",
   "@id": `${BASE_URL}/#service`,
@@ -199,12 +200,6 @@ const serviceSchema = {
         name: "Visitenkarte",
         description:
           "Digitale Visitenkarte – einfach online präsent (One-Pager, bis zu 5 Sektionen): Responsive Design, Kontaktdaten mit Anruf- & Routen-Button, Verlinkung zu Google Maps, Impressum & Datenschutz inklusive, 2 Wochen Support.",
-        priceCurrency: "EUR",
-        priceSpecification: {
-          "@type": "PriceSpecification",
-          minPrice: "500",
-          priceCurrency: "EUR",
-        },
         category: "Webdesign",
       },
       {
@@ -212,12 +207,6 @@ const serviceSchema = {
         name: "Starter",
         description:
           "Simple Website – alle Infos auf einer Seite (One-Pager): Responsive Design, Kontaktformular, Google Business Profil + Maps, Basis-SEO (Meta-Tags, Sitemap, schnelle Ladezeiten), 4 Wochen Support.",
-        priceCurrency: "EUR",
-        priceSpecification: {
-          "@type": "PriceSpecification",
-          minPrice: "1500",
-          priceCurrency: "EUR",
-        },
         category: "Webdesign",
       },
       {
@@ -225,12 +214,6 @@ const serviceSchema = {
         name: "Standard",
         description:
           "Premium Website – mehr Design & Features: Premium Design & Polishing, SEO & GEO optimiert, Google Maps Integration, Kontaktformular, 4 Wochen Support.",
-        priceCurrency: "EUR",
-        priceSpecification: {
-          "@type": "PriceSpecification",
-          minPrice: "2500",
-          priceCurrency: "EUR",
-        },
         category: "Webdesign",
       },
       {
@@ -238,12 +221,6 @@ const serviceSchema = {
         name: "Premium",
         description:
           "Mehrseitige Website + Booking System: echte Unterseiten (Multi-Page), Admin Dashboard, E-Mail Automation, SEO & GEO optimiert, 8 Wochen Support.",
-        priceCurrency: "EUR",
-        priceSpecification: {
-          "@type": "PriceSpecification",
-          minPrice: "3500",
-          priceCurrency: "EUR",
-        },
         category: "Webentwicklung",
       },
     ],

@@ -16,7 +16,7 @@ export const faq: FaqItem[] = [
   {
     question: "Was kostet eine professionelle Website?",
     answer:
-      "Der Einstieg gelingt mit der digitalen Visitenkarte ab 500 €. Die Website-Pakete starten bei 1.500 € (Starter), 2.500 € (Standard) und 4.500 € (Premium). Der finale Preis hängt von Umfang, Aufwand und individuellen Wünschen ab — im kostenlosen Erstgespräch gibt es ein exaktes Angebot.",
+      "Ich arbeite mit transparenten Festpreisen — vom kompakten Einstieg als digitale Visitenkarte bis zur mehrseitigen Website mit Buchungssystem. Der finale Preis hängt von Umfang, Aufwand und individuellen Wünschen ab. Im kostenlosen Erstgespräch erhältst du eine klare Paketübersicht und ein exaktes, unverbindliches Angebot.",
   },
   {
     question: "Welche Zahlungsmöglichkeiten gibt es?",

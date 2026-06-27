@@ -650,11 +650,11 @@ function PaketSelect({
   onChange: (v: Paket) => void;
   disabled?: boolean;
 }) {
-  const options: { id: Exclude<Paket, "">; title: string; price: string }[] = [
-    { id: "visitenkarte", title: "Visitenkarte", price: "€500" },
-    { id: "starter", title: "Starter", price: "€1.500" },
-    { id: "standard", title: "Standard", price: "€2.500" },
-    { id: "premium", title: "Premium", price: "€4.500" },
+  const options: { id: Exclude<Paket, "">; title: string }[] = [
+    { id: "visitenkarte", title: "Visitenkarte" },
+    { id: "starter", title: "Starter" },
+    { id: "standard", title: "Standard" },
+    { id: "premium", title: "Premium" },
   ];
 
   return (
@@ -697,9 +697,6 @@ function PaketSelect({
                 >
                   {o.title}
                 </div>
-                <div className="mt-0.5 text-[0.6875rem] text-[var(--color-ink-dim)] leading-snug">
-                  ab {o.price}
-                </div>
               </div>
             </button>
           );
@@ -718,9 +715,9 @@ function WartungSelect({
   onChange: (v: WartungPaket) => void;
   disabled?: boolean;
 }) {
-  const options: { id: Exclude<WartungPaket, "">; title: string; price: string }[] = [
-    { id: "standard", title: "Standard", price: "150 €/Monat" },
-    { id: "premium", title: "Premium", price: "250 €/Monat" },
+  const options: { id: Exclude<WartungPaket, "">; title: string }[] = [
+    { id: "standard", title: "Standard" },
+    { id: "premium", title: "Premium" },
   ];
 
   return (
@@ -763,9 +760,6 @@ function WartungSelect({
                 >
                   {o.title}
                 </div>
-                <div className="mt-0.5 text-[0.6875rem] text-[var(--color-ink-dim)] leading-snug">
-                  {o.price}
-                </div>
               </div>
             </button>
           );
@@ -784,10 +778,10 @@ function ContentPaketSelect({
   onChange: (v: ContentPaket) => void;
   disabled?: boolean;
 }) {
-  const options: { id: Exclude<ContentPaket, "">; title: string; price: string }[] = [
-    { id: "monatlich", title: "Monatlich kündbar", price: "75 €/Monat" },
-    { id: "jahr1", title: "1 Jahr", price: "55 €/Monat" },
-    { id: "jahr2", title: "2 Jahre", price: "45 €/Monat" },
+  const options: { id: Exclude<ContentPaket, "">; title: string }[] = [
+    { id: "monatlich", title: "Monatlich kündbar" },
+    { id: "jahr1", title: "1 Jahr" },
+    { id: "jahr2", title: "2 Jahre" },
   ];
 
   return (
@@ -829,9 +823,6 @@ function ContentPaketSelect({
                   }`}
                 >
                   {o.title}
-                </div>
-                <div className="mt-0.5 text-[0.6875rem] text-[var(--color-ink-dim)] leading-snug">
-                  {o.price}
                 </div>
               </div>
             </button>

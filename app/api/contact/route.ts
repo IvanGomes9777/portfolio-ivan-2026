@@ -21,21 +21,21 @@ const SUBJECT_TAG: Record<string, string> = {
 };
 
 const PAKET_LABEL: Record<string, string> = {
-  visitenkarte: "Visitenkarte (ab €500)",
-  starter: "Starter (ab €1.500)",
-  standard: "Standard (ab €2.500)",
-  premium: "Premium (ab €4.500)",
+  visitenkarte: "Visitenkarte",
+  starter: "Starter",
+  standard: "Standard",
+  premium: "Premium",
 };
 
 const WARTUNG_LABEL: Record<string, string> = {
-  standard: "Standard (150 €/Monat)",
-  premium: "Premium (250 €/Monat)",
+  standard: "Standard",
+  premium: "Premium",
 };
 
 const CONTENT_PAKET_LABEL: Record<string, string> = {
-  monatlich: "Monatlich kündbar (75 €/Monat)",
-  jahr1: "1 Jahr (55 €/Monat)",
-  jahr2: "2 Jahre (45 €/Monat)",
+  monatlich: "Monatlich kündbar",
+  jahr1: "1 Jahr",
+  jahr2: "2 Jahre",
 };
 
 const AUFTRAGGEBER_LABEL: Record<string, string> = {
