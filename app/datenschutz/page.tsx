@@ -109,8 +109,8 @@ export default function DatenschutzPage() {
       <Section title="5. Kontaktformular">
         <p>
           Wenn du das Kontaktformular nutzt, werden die von dir eingegebenen
-          Daten (Name, E-Mail-Adresse, optional Telefonnummer, Angaben zu
-          Projekttyp/Paket und deine Nachricht) an meinen Server übermittelt
+          Daten (Name, E-Mail-Adresse, optional Telefonnummer, Angaben zum
+          Projekttyp und deine Nachricht) an meinen Server übermittelt
           und dort verarbeitet, um dir eine Anfrage-E-Mail zukommen zu lassen.
           Eine dauerhafte Speicherung der Formulardaten in einer Datenbank auf
           dieser Website findet nicht statt; die Daten werden ausschließlich zur

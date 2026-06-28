@@ -20,24 +20,6 @@ const SUBJECT_TAG: Record<string, string> = {
   relaunch: "Relaunch",
 };
 
-const PAKET_LABEL: Record<string, string> = {
-  visitenkarte: "Visitenkarte",
-  starter: "Starter",
-  standard: "Standard",
-  premium: "Premium",
-};
-
-const WARTUNG_LABEL: Record<string, string> = {
-  standard: "Standard",
-  premium: "Premium",
-};
-
-const CONTENT_PAKET_LABEL: Record<string, string> = {
-  monatlich: "Monatlich kündbar",
-  jahr1: "1 Jahr",
-  jahr2: "2 Jahre",
-};
-
 const AUFTRAGGEBER_LABEL: Record<string, string> = {
   unternehmen: "Unternehmen / Gewerbe (Unternehmer, § 14 BGB)",
   privat: "Privatperson (Verbraucher, § 13 BGB)",
@@ -84,7 +66,7 @@ export async function POST(req: Request) {
   if (!result.ok) {
     return fail(result.message, 400);
   }
-  const { name, email, phone, msg, wunsch, paket, wartung, contentPaket, auftraggeber } = result.data;
+  const { name, email, phone, msg, wunsch, auftraggeber } = result.data;
 
   // 6. Secrets only from env — never hardcoded.
   const apiKey = process.env.RESEND_API_KEY;
@@ -97,9 +79,6 @@ export async function POST(req: Request) {
   const fromAddress =
     process.env.RESEND_FROM ?? "Portfolio-Kontakt <onboarding@resend.dev>";
   const projekttyp = WUNSCH_LABEL[wunsch] ?? "Nicht angegeben";
-  const paketLabel = PAKET_LABEL[paket] ?? "";
-  const wartungLabel = WARTUNG_LABEL[wartung] ?? "";
-  const contentPaketLabel = CONTENT_PAKET_LABEL[contentPaket] ?? "";
   const auftraggeberLabel = AUFTRAGGEBER_LABEL[auftraggeber] ?? "";
   const tag = SUBJECT_TAG[wunsch] ? ` — ${SUBJECT_TAG[wunsch]}` : "";
 
@@ -109,14 +88,11 @@ export async function POST(req: Request) {
     phone,
     msg,
     projekttyp,
-    paketLabel,
-    wartungLabel,
-    contentPaketLabel,
     auftraggeberLabel,
     baseUrl: process.env.NEXT_PUBLIC_BASE_URL,
   });
 
-  const text = `Neue Anfrage über das Portfolio\n\nName: ${name}\nE-Mail: ${email}${phone ? `\nTelefon: ${phone} (möchte angerufen werden)` : ""}${auftraggeberLabel ? `\nAuftraggeber: ${auftraggeberLabel}` : ""}\nProjekttyp: ${projekttyp}${paketLabel ? `\nPaket: ${paketLabel}` : ""}${wartungLabel ? `\nWartung & Pflege: ${wartungLabel}` : ""}${contentPaketLabel ? `\nContent-Pflege: ${contentPaketLabel}` : ""}\n\n---\n\n${msg}\n`;
+  const text = `Neue Anfrage über das Portfolio\n\nName: ${name}\nE-Mail: ${email}${phone ? `\nTelefon: ${phone} (möchte angerufen werden)` : ""}${auftraggeberLabel ? `\nAuftraggeber: ${auftraggeberLabel}` : ""}\nProjekttyp: ${projekttyp}\n\n---\n\n${msg}\n`;
 
   try {
     const resend = new Resend(apiKey);

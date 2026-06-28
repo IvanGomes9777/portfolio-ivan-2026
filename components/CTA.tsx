@@ -26,9 +26,6 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent
 )}`;
 
 type Wunsch = "" | "neu" | "relaunch";
-type Paket = "" | "visitenkarte" | "starter" | "standard" | "premium";
-type WartungPaket = "" | "standard" | "premium";
-type ContentPaket = "" | "monatlich" | "jahr1" | "jahr2";
 type Auftraggeber = "" | "unternehmen" | "privat";
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -39,9 +36,6 @@ export default function CTA() {
     phone: string;
     msg: string;
     wunsch: Wunsch;
-    paket: Paket;
-    wartung: WartungPaket;
-    contentPaket: ContentPaket;
     auftraggeber: Auftraggeber;
     // Honeypot — must stay empty for real users.
     company: string;
@@ -51,9 +45,6 @@ export default function CTA() {
     phone: "",
     msg: "",
     wunsch: "",
-    paket: "",
-    wartung: "",
-    contentPaket: "",
     auftraggeber: "",
     company: "",
   });
@@ -89,9 +80,6 @@ export default function CTA() {
           phone: phoneOpen ? form.phone : "",
           msg: form.msg,
           wunsch: form.wunsch,
-          paket: form.paket,
-          wartung: form.wartung,
-          contentPaket: form.contentPaket,
           auftraggeber: form.auftraggeber,
           company: form.company,
         }),
@@ -102,7 +90,7 @@ export default function CTA() {
         // Real lead submitted — report the Google Ads conversion.
         trackContactConversion();
         setStatus("success");
-        setForm({ name: "", email: "", phone: "", msg: "", wunsch: "", paket: "", wartung: "", contentPaket: "", auftraggeber: "", company: "" });
+        setForm({ name: "", email: "", phone: "", msg: "", wunsch: "", auftraggeber: "", company: "" });
         setPhoneOpen(false);
       } else {
         setStatus("error");
@@ -335,21 +323,6 @@ export default function CTA() {
                       <WunschSelect
                         value={form.wunsch}
                         onChange={(v) => setForm({ ...form, wunsch: v })}
-                        disabled={status === "sending"}
-                      />
-                      <PaketSelect
-                        value={form.paket}
-                        onChange={(v) => setForm({ ...form, paket: v })}
-                        disabled={status === "sending"}
-                      />
-                      <WartungSelect
-                        value={form.wartung}
-                        onChange={(v) => setForm({ ...form, wartung: v })}
-                        disabled={status === "sending"}
-                      />
-                      <ContentPaketSelect
-                        value={form.contentPaket}
-                        onChange={(v) => setForm({ ...form, contentPaket: v })}
                         disabled={status === "sending"}
                       />
                       <AuftraggeberSelect
@@ -641,194 +614,3 @@ function AuftraggeberSelect({
   );
 }
 
-function PaketSelect({
-  value,
-  onChange,
-  disabled,
-}: {
-  value: Paket;
-  onChange: (v: Paket) => void;
-  disabled?: boolean;
-}) {
-  const options: { id: Exclude<Paket, "">; title: string }[] = [
-    { id: "visitenkarte", title: "Visitenkarte" },
-    { id: "starter", title: "Starter" },
-    { id: "standard", title: "Standard" },
-    { id: "premium", title: "Premium" },
-  ];
-
-  return (
-    <div>
-      <span className="block text-xs uppercase tracking-[0.2em] text-[var(--color-ink-dim)] mb-2">
-        Paket{" "}
-        <span className="text-[var(--color-ink-dim)] normal-case tracking-normal">
-          (optional)
-        </span>
-      </span>
-      <div className="grid grid-cols-3 gap-3">
-        {options.map((o) => {
-          const active = value === o.id;
-          return (
-            <button
-              key={o.id}
-              type="button"
-              onClick={() => onChange(active ? "" : o.id)}
-              data-cursor-hover
-              disabled={disabled}
-              className={`relative text-left rounded-2xl px-3 py-3 border transition-all overflow-hidden disabled:opacity-60 ${
-                active
-                  ? "border-[var(--color-accent)]/60 bg-[var(--color-accent)]/10 shadow-[0_0_0_4px_rgba(255, 255, 255,0.08)]"
-                  : "border-[var(--color-line)] bg-[var(--color-surface)]/70 hover:border-[var(--color-line-strong)] hover:bg-[var(--color-surface)]"
-              }`}
-              aria-pressed={active}
-            >
-              {active && (
-                <motion.span
-                  layoutId="paket-glow"
-                  className="absolute -inset-x-2 -top-2 h-12 bg-[radial-gradient(ellipse,rgba(255, 255, 255,0.4),transparent_70%)] pointer-events-none"
-                  transition={{ type: "spring", damping: 22, stiffness: 280 }}
-                />
-              )}
-              <div className="relative">
-                <div
-                  className={`font-display text-sm tracking-tight ${
-                    active ? "text-[var(--color-ink)]" : "text-[var(--color-ink-soft)]"
-                  }`}
-                >
-                  {o.title}
-                </div>
-              </div>
-            </button>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-function WartungSelect({
-  value,
-  onChange,
-  disabled,
-}: {
-  value: WartungPaket;
-  onChange: (v: WartungPaket) => void;
-  disabled?: boolean;
-}) {
-  const options: { id: Exclude<WartungPaket, "">; title: string }[] = [
-    { id: "standard", title: "Standard" },
-    { id: "premium", title: "Premium" },
-  ];
-
-  return (
-    <div>
-      <span className="block text-xs uppercase tracking-[0.2em] text-[var(--color-ink-dim)] mb-2">
-        Wartung & Pflege{" "}
-        <span className="text-[var(--color-ink-dim)] normal-case tracking-normal">
-          (optional)
-        </span>
-      </span>
-      <div className="grid grid-cols-2 gap-3">
-        {options.map((o) => {
-          const active = value === o.id;
-          return (
-            <button
-              key={o.id}
-              type="button"
-              onClick={() => onChange(active ? "" : o.id)}
-              data-cursor-hover
-              disabled={disabled}
-              className={`relative text-left rounded-2xl px-4 py-3 border transition-all overflow-hidden disabled:opacity-60 ${
-                active
-                  ? "border-[var(--color-accent)]/60 bg-[var(--color-accent)]/10 shadow-[0_0_0_4px_rgba(255, 255, 255,0.08)]"
-                  : "border-[var(--color-line)] bg-[var(--color-surface)]/70 hover:border-[var(--color-line-strong)] hover:bg-[var(--color-surface)]"
-              }`}
-              aria-pressed={active}
-            >
-              {active && (
-                <motion.span
-                  layoutId="wartung-glow"
-                  className="absolute -inset-x-2 -top-2 h-12 bg-[radial-gradient(ellipse,rgba(255, 255, 255,0.4),transparent_70%)] pointer-events-none"
-                  transition={{ type: "spring", damping: 22, stiffness: 280 }}
-                />
-              )}
-              <div className="relative">
-                <div
-                  className={`font-display text-sm tracking-tight ${
-                    active ? "text-[var(--color-ink)]" : "text-[var(--color-ink-soft)]"
-                  }`}
-                >
-                  {o.title}
-                </div>
-              </div>
-            </button>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-function ContentPaketSelect({
-  value,
-  onChange,
-  disabled,
-}: {
-  value: ContentPaket;
-  onChange: (v: ContentPaket) => void;
-  disabled?: boolean;
-}) {
-  const options: { id: Exclude<ContentPaket, "">; title: string }[] = [
-    { id: "monatlich", title: "Monatlich kündbar" },
-    { id: "jahr1", title: "1 Jahr" },
-    { id: "jahr2", title: "2 Jahre" },
-  ];
-
-  return (
-    <div>
-      <span className="block text-xs uppercase tracking-[0.2em] text-[var(--color-ink-dim)] mb-2">
-        Content-Pflege{" "}
-        <span className="text-[var(--color-ink-dim)] normal-case tracking-normal">
-          (optional)
-        </span>
-      </span>
-      <div className="grid grid-cols-3 gap-3">
-        {options.map((o) => {
-          const active = value === o.id;
-          return (
-            <button
-              key={o.id}
-              type="button"
-              onClick={() => onChange(active ? "" : o.id)}
-              data-cursor-hover
-              disabled={disabled}
-              className={`relative text-left rounded-2xl px-3 py-3 border transition-all overflow-hidden disabled:opacity-60 ${
-                active
-                  ? "border-[var(--color-accent)]/60 bg-[var(--color-accent)]/10 shadow-[0_0_0_4px_rgba(255, 255, 255,0.08)]"
-                  : "border-[var(--color-line)] bg-[var(--color-surface)]/70 hover:border-[var(--color-line-strong)] hover:bg-[var(--color-surface)]"
-              }`}
-              aria-pressed={active}
-            >
-              {active && (
-                <motion.span
-                  layoutId="content-paket-glow"
-                  className="absolute -inset-x-2 -top-2 h-12 bg-[radial-gradient(ellipse,rgba(255, 255, 255,0.4),transparent_70%)] pointer-events-none"
-                  transition={{ type: "spring", damping: 22, stiffness: 280 }}
-                />
-              )}
-              <div className="relative">
-                <div
-                  className={`font-display text-sm tracking-tight ${
-                    active ? "text-[var(--color-ink)]" : "text-[var(--color-ink-soft)]"
-                  }`}
-                >
-                  {o.title}
-                </div>
-              </div>
-            </button>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
