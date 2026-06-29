@@ -29,12 +29,12 @@ const csp = [
   //    Google-owned. Note: Google may also fire remarketing "ga-audiences"
   //    pixels to country-specific domains (google.de etc.) which are NOT in
   //    this list — those are non-essential and do not affect conversion counts.
-  "script-src 'self' 'unsafe-inline' https://vercel.live https://www.googletagmanager.com https://www.googleadservices.com",
+  "script-src 'self' 'unsafe-inline' https://vercel.live https://www.googletagmanager.com https://www.googleadservices.com https://challenges.cloudflare.com",
   "style-src 'self' 'unsafe-inline' https://vercel.live",
   "img-src 'self' data: blob: https://vercel.live https://vercel.com https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com https://*.doubleclick.net https://www.googleadservices.com",
   "font-src 'self' data: https://vercel.live",
-  "connect-src 'self' https://vercel.live wss://ws-us3.pusher.com https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com https://www.google.com https://*.doubleclick.net",
-  "frame-src 'self' https://vercel.live https://td.doubleclick.net",
+  "connect-src 'self' https://vercel.live wss://ws-us3.pusher.com https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com https://www.google.com https://*.doubleclick.net https://challenges.cloudflare.com",
+  "frame-src 'self' https://vercel.live https://td.doubleclick.net https://challenges.cloudflare.com",
   "upgrade-insecure-requests",
 ].join("; ");
 
@@ -52,9 +52,16 @@ const securityHeaders = [
   },
   {
     key: "Permissions-Policy",
-    value: "camera=(), microphone=(), geolocation=(), browsing-topics=()",
+    value:
+      "camera=(), microphone=(), geolocation=(), browsing-topics=(), interest-cohort=(), payment=(self), fullscreen=(self)",
   },
   { key: "X-DNS-Prefetch-Control", value: "off" },
+  // Cross-origin isolation. COOP allows popups (e.g. OAuth/PayPal windows);
+  // CORP stays 'cross-origin' because the app intentionally loads third-party
+  // resources (Google Ads/Analytics, Vercel) and /api/proxy serves embeddable
+  // content.
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
+  { key: "Cross-Origin-Resource-Policy", value: "cross-origin" },
 ];
 
 /** @type {import('next').NextConfig} */

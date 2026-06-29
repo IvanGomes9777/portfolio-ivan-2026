@@ -4,6 +4,10 @@ import { rateLimit, getClientIp } from "@/lib/rate-limit";
 import { isSameOrigin } from "@/lib/csrf";
 import { validateContact } from "@/lib/validation";
 import { renderContactEmail } from "@/lib/contact-email";
+import {
+  isTurnstileConfigured,
+  verifyTurnstileToken,
+} from "@/lib/verify-turnstile";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -59,6 +63,24 @@ export async function POST(req: Request) {
   // 4. Honeypot: hidden field no human fills — silently accept (don't tip off bots).
   if (typeof body.company === "string" && body.company.trim().length > 0) {
     return NextResponse.json({ success: true });
+  }
+
+  // 4b. Cloudflare Turnstile: confirm human interaction server-side. Only
+  // enforced once a secret key is configured, so the form keeps working in
+  // environments where Turnstile isn't set up yet. A bot POSTing directly to
+  // this route won't carry a valid token and is rejected here.
+  if (isTurnstileConfigured()) {
+    const token = body["cf-turnstile-response"];
+    const verify = await verifyTurnstileToken(
+      typeof token === "string" ? token : "",
+      ip,
+    );
+    if (!verify.success) {
+      return fail(
+        "Sicherheitsprüfung fehlgeschlagen. Bitte lade die Seite neu.",
+        400,
+      );
+    }
   }
 
   // 5. Validate + sanitize.
