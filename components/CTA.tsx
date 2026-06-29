@@ -5,9 +5,15 @@ import { useState } from "react";
 import { Mail, Send, Check, AlertCircle, Phone, Plus } from "lucide-react";
 import MagneticButton from "./MagneticButton";
 import Aurora from "./backgrounds/Aurora";
+import Turnstile from "./Turnstile";
 import { trackContactConversion } from "@/lib/gtag";
 
 const EMAIL = "ivanvilargomes@gmail.com";
+
+// Public Cloudflare Turnstile site key. When unset, the widget and its submit
+// gate are skipped so the form still works (the server enforces Turnstile only
+// when the secret key is configured too).
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
 // Phone (from the Impressum: +49 176 60847103). PHONE_TEL is the RFC 3966
 // tel: target (international, no spaces); PHONE_DISPLAY is the human-readable
@@ -51,6 +57,7 @@ export default function CTA() {
   const [phoneOpen, setPhoneOpen] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,6 +68,12 @@ export default function CTA() {
       setErrorMsg(
         "Bitte gib an, ob du als Unternehmen/Gewerbe oder als Privatperson anfragst.",
       );
+      return;
+    }
+
+    if (TURNSTILE_SITE_KEY && !turnstileToken) {
+      setStatus("error");
+      setErrorMsg("Bitte bestätige kurz, dass du kein Roboter bist.");
       return;
     }
 
@@ -82,6 +95,7 @@ export default function CTA() {
           wunsch: form.wunsch,
           auftraggeber: form.auftraggeber,
           company: form.company,
+          "cf-turnstile-response": turnstileToken,
         }),
       });
       const data = (await res.json()) as { success: boolean; message?: string };
@@ -92,6 +106,7 @@ export default function CTA() {
         setStatus("success");
         setForm({ name: "", email: "", phone: "", msg: "", wunsch: "", auftraggeber: "", company: "" });
         setPhoneOpen(false);
+        setTurnstileToken("");
       } else {
         setStatus("error");
         setErrorMsg(data.message || "Anfrage konnte nicht gesendet werden.");
@@ -341,12 +356,24 @@ export default function CTA() {
                         disabled={status === "sending"}
                       />
 
+                      {TURNSTILE_SITE_KEY && (
+                        <Turnstile
+                          siteKey={TURNSTILE_SITE_KEY}
+                          onVerify={setTurnstileToken}
+                          onExpire={() => setTurnstileToken("")}
+                          className="flex justify-center sm:justify-start"
+                        />
+                      )}
+
                       <div className="pt-2">
                         <MagneticButton strength={0.3}>
                           <button
                             type="submit"
                             data-cursor-hover
-                            disabled={status === "sending"}
+                            disabled={
+                              status === "sending" ||
+                              (Boolean(TURNSTILE_SITE_KEY) && !turnstileToken)
+                            }
                             className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[var(--color-accent-strong)] hover:bg-[var(--color-accent)] disabled:opacity-60 disabled:cursor-not-allowed text-black text-sm font-medium pulse-glow transition-colors"
                           >
                             {status === "sending" ? (
