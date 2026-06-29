@@ -52,9 +52,16 @@ const securityHeaders = [
   },
   {
     key: "Permissions-Policy",
-    value: "camera=(), microphone=(), geolocation=(), browsing-topics=()",
+    value:
+      "camera=(), microphone=(), geolocation=(), browsing-topics=(), interest-cohort=(), payment=(self), fullscreen=(self)",
   },
   { key: "X-DNS-Prefetch-Control", value: "off" },
+  // Cross-origin isolation. COOP allows popups (e.g. OAuth/PayPal windows);
+  // CORP stays 'cross-origin' because the app intentionally loads third-party
+  // resources (Google Ads/Analytics, Vercel) and /api/proxy serves embeddable
+  // content.
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
+  { key: "Cross-Origin-Resource-Policy", value: "cross-origin" },
 ];
 
 /** @type {import('next').NextConfig} */
