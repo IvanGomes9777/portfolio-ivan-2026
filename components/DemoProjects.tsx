@@ -202,11 +202,11 @@ export default function DemoProjects() {
               </span>
             </h2>
             <p className="mt-3 max-w-xl text-sm text-[var(--color-ink-soft)] leading-relaxed">
-              Diese Websites sind komplett entwickelt — modernes Design,
-              Animationen, mobil optimiert. Noch nicht reserviert — wer zuerst
-              zusagt, bekommt sie. Ich tausche Logo, Texte und Bilder gegen
-              deine eigenen, und in wenigen Tagen ist deine Seite live.
-              Schneller und günstiger als ein Projekt von Grund auf.
+              Komplett entwickelt — modernes Design, Animationen, mobil
+              optimiert. Wer zuerst zusagt, bekommt sie: Logo, Texte und Bilder
+              gegen deine getauscht, in wenigen Tagen live — schneller und
+              günstiger als von Grund auf. Lieber etwas komplett Eigenes? Auch
+              das geht, individuell nach deinen Vorstellungen.
             </p>
           </div>
 
