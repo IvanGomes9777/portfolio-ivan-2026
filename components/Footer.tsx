@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ConsentSettingsLink from "./ConsentSettingsLink";
 
 export default function Footer() {
   return (
@@ -24,6 +25,7 @@ export default function Footer() {
             <Link href="/agb" className="hover:text-[var(--color-ink-soft)] transition">
               AGB
             </Link>
+            <ConsentSettingsLink className="hover:text-[var(--color-ink-soft)] transition" />
           </nav>
         </div>
       </div>

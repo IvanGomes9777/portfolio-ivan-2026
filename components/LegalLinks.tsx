@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import ConsentSettingsLink from "./ConsentSettingsLink";
 
 export default function LegalLinks() {
   return (
@@ -28,6 +29,8 @@ export default function LegalLinks() {
       >
         AGB
       </Link>
+      <span className="opacity-40">·</span>
+      <ConsentSettingsLink className="uppercase tracking-[0.18em] hover:text-[var(--color-ink-soft)] transition-colors" />
     </div>
   );
 }
