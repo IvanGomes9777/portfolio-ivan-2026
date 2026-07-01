@@ -21,8 +21,7 @@ export default function Hero() {
           intro overlay finishes, so the logo appears to settle into the hero. */}
       <motion.img
         src="/logo-web.webp"
-        alt=""
-        aria-hidden
+        alt="Ivan Gomes – Freelance Webdesign & Entwicklung aus Münster"
         decoding="async"
         initial={{ opacity: 0, scale: 1.08 }}
         animate={{ opacity: 0.4, scale: 1 }}
@@ -74,9 +73,9 @@ export default function Hero() {
           transition={{ delay: 0.9, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mt-5 max-w-2xl mx-auto text-base sm:text-lg text-[var(--color-ink-soft)] leading-relaxed"
         >
-          Ich bin Webdesigner & Entwickler und baue für lokale Unternehmen
-          maßgeschneiderte, performante Websites, die digital sichtbar machen
-          und{" "}
+          Als Freelance Webdesigner & Entwickler aus Münster baue ich für
+          lokale Unternehmen maßgeschneiderte, performante Websites, die
+          wirken: digital sichtbar machen und{" "}
           <span className="font-semibold text-[var(--color-accent-soft)]">
             gezielt neue Kunden gewinnen
           </span>

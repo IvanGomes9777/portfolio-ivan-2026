@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import LegalLayout, { Section, Sub } from "@/components/LegalLayout";
+import LegalLayout, { Section } from "@/components/LegalLayout";
 
 export const metadata: Metadata = {
   title: "Datenschutzerklärung",
@@ -15,7 +15,7 @@ export default function DatenschutzPage() {
   return (
     <LegalLayout
       title="Datenschutzerklärung"
-      subtitle="Stand: 11. Juni 2026"
+      subtitle="Stand: 1. Juli 2026"
     >
       <Section title="1. Verantwortlicher im Sinne der DSGVO">
         <p>
@@ -40,22 +40,58 @@ export default function DatenschutzPage() {
 
       <Section title="2. Allgemeines zur Datenverarbeitung">
         <p>
-          Diese Website verarbeitet personenbezogene Daten nur, soweit dies zur
-          Bereitstellung der Website und zur Beantwortung deiner Anfragen
-          erforderlich ist. Es findet{" "}
-          <strong className="text-[var(--color-ink)]">kein Tracking</strong>,{" "}
-          <strong className="text-[var(--color-ink)]">keine Analytics</strong>{" "}
-          und{" "}
+          Der Schutz deiner personenbezogenen Daten ist mir wichtig. Diese
+          Website ist so gestaltet, dass beim reinen Besuch{" "}
           <strong className="text-[var(--color-ink)]">
-            keine Profilbildung
+            keine nicht notwendigen Cookies
           </strong>{" "}
-          statt. Es werden{" "}
-          <strong className="text-[var(--color-ink)]">keine Cookies</strong>{" "}
-          gesetzt und keine Daten in deinem Browser-Speicher abgelegt.
+          gesetzt und keine Analyse- oder Tracking-Dienste geladen werden.
+        </p>
+        <p>
+          Eine Ausnahme besteht ausschließlich dann, wenn du im Cookie-Banner
+          aktiv einwilligst: In diesem Fall wird das Konversions-Tracking von
+          Google Ads geladen (siehe Ziffer 8). Ohne deine Einwilligung findet{" "}
+          <strong className="text-[var(--color-ink)]">
+            kein Tracking und keine Profilbildung
+          </strong>{" "}
+          statt.
         </p>
       </Section>
 
-      <Section title="3. Hosting">
+      <Section title="3. Einwilligung, Cookies & Widerruf">
+        <p>
+          Sogenannte „notwendige" Speichervorgänge, die für den technischen
+          Betrieb der Website erforderlich sind, erfolgen auf Grundlage von § 25
+          Abs. 2 TDDDG ohne Einwilligung. Dazu zählt insbesondere die lokale
+          Speicherung deiner Cookie-Entscheidung selbst, damit der Banner dir
+          nicht bei jedem Besuch erneut angezeigt wird.
+        </p>
+        <p>
+          Das Setzen bzw. Auslesen{" "}
+          <strong className="text-[var(--color-ink)]">
+            nicht notwendiger Cookies
+          </strong>{" "}
+          (Google Ads) erfolgt ausschließlich nach deiner ausdrücklichen
+          Einwilligung im Cookie-Banner (§ 25 Abs. 1 TDDDG in Verbindung mit
+          Art. 6 Abs. 1 lit. a DSGVO).
+        </p>
+        <p>
+          Du kannst deine Einwilligung{" "}
+          <strong className="text-[var(--color-ink)]">
+            jederzeit mit Wirkung für die Zukunft widerrufen
+          </strong>{" "}
+          oder ändern — über den Link{" "}
+          <em>„Cookie-Einstellungen"</em> im Seitenfuß. Die Rechtmäßigkeit der
+          bis zum Widerruf erfolgten Verarbeitung bleibt unberührt.
+        </p>
+        <p className="text-sm text-[var(--color-ink-dim)]">
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG
+          (einwilligungsbedürftige Cookies); Art. 6 Abs. 1 lit. f DSGVO, § 25
+          Abs. 2 TDDDG (notwendige Speicherung).
+        </p>
+      </Section>
+
+      <Section title="4. Hosting">
         <p>
           Diese Website wird gehostet bei der Vercel Inc., 340 S Lemon Ave
           #4133, Walnut, CA 91789, USA. Sofern in der Hosting-Konfiguration
@@ -81,7 +117,7 @@ export default function DatenschutzPage() {
         </p>
       </Section>
 
-      <Section title="4. Server-Logfiles">
+      <Section title="5. Server-Logfiles">
         <p>
           Beim Aufruf dieser Website werden durch den Hosting-Provider
           automatisch technische Informationen in sogenannten Logfiles
@@ -106,7 +142,7 @@ export default function DatenschutzPage() {
         </p>
       </Section>
 
-      <Section title="5. Kontaktformular">
+      <Section title="6. Kontaktformular">
         <p>
           Wenn du das Kontaktformular nutzt, werden die von dir eingegebenen
           Daten (Name, E-Mail-Adresse, optional Telefonnummer, Angaben zum
@@ -151,7 +187,82 @@ export default function DatenschutzPage() {
         </p>
       </Section>
 
-      <Section title="6. Schriftarten (Self-hosted)">
+      <Section title="7. Kontaktaufnahme per WhatsApp, Telefon & E-Mail">
+        <p>
+          Auf der Website biete ich neben dem Formular auch die direkte
+          Kontaktaufnahme per <strong className="text-[var(--color-ink)]">WhatsApp</strong>,
+          Telefon und E-Mail an. Diese Schaltflächen sind reine Verlinkungen —
+          es werden dabei keine Skripte von Dritten in die Website eingebunden.
+        </p>
+        <p>
+          Wenn du den WhatsApp-Button nutzt, wirst du zum Dienst WhatsApp
+          weitergeleitet und die Kommunikation läuft über die WhatsApp Ireland
+          Ltd. bzw. die Meta Platforms, Inc. (USA). Es gelten dann deren
+          Datenschutzbestimmungen:{" "}
+          <a
+            href="https://www.whatsapp.com/legal/privacy-policy-eea"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[var(--color-accent-soft)] hover:underline"
+          >
+            whatsapp.com/legal/privacy-policy-eea
+          </a>
+          . Kontaktierst du mich per Telefon oder E-Mail, verarbeite ich die von
+          dir übermittelten Angaben ausschließlich zur Bearbeitung deiner
+          Anfrage.
+        </p>
+        <p className="text-sm text-[var(--color-ink-dim)]">
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. b und lit. f DSGVO. Die
+          Entscheidung, diesen Kanal zu nutzen, triffst du selbst.
+        </p>
+      </Section>
+
+      <Section title="8. Google Ads (Konversionsmessung)">
+        <p>
+          <strong className="text-[var(--color-ink)]">Nur nach deiner
+          Einwilligung</strong> binde ich das Konversions-Tracking von Google
+          Ads ein. Anbieter ist die Google Ireland Limited, Gordon House, Barrow
+          Street, Dublin 4, Irland („Google").
+        </p>
+        <p>
+          Der Dienst hilft mir zu erkennen, ob Besucher, die über eine
+          Google-Werbeanzeige auf die Website gelangt sind, anschließend eine
+          Anfrage senden (Konversion). Dazu wird nach deiner Einwilligung das
+          Skript <code className="text-xs bg-white/5 px-1.5 py-0.5 rounded">gtag.js</code>{" "}
+          von Google nachgeladen, es werden Cookies auf deinem Endgerät
+          gespeichert und Daten (u. a. deine IP-Adresse, Informationen zum
+          Browser sowie ein Konversionsereignis) an Google übermittelt und dort
+          verarbeitet. Ich erhalte von Google ausschließlich anonymisierte,
+          statistische Auswertungen und kann dich darüber nicht persönlich
+          identifizieren.
+        </p>
+        <p>
+          Eine Datenübermittlung an die Google LLC in die USA ist dabei nicht
+          ausgeschlossen. Google ist unter dem EU-US Data Privacy Framework
+          zertifiziert; ergänzend gelten die Standardvertragsklauseln der
+          EU-Kommission (Art. 46 Abs. 2 lit. c DSGVO).
+        </p>
+        <p>
+          Du kannst deine Einwilligung jederzeit über die{" "}
+          <em>„Cookie-Einstellungen"</em> im Seitenfuß mit Wirkung für die
+          Zukunft widerrufen. Weitere Informationen zum Datenschutz bei Google:{" "}
+          <a
+            href="https://policies.google.com/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[var(--color-accent-soft)] hover:underline"
+          >
+            policies.google.com/privacy
+          </a>
+          .
+        </p>
+        <p className="text-sm text-[var(--color-ink-dim)]">
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG
+          (Einwilligung). Ohne Einwilligung wird dieser Dienst nicht geladen.
+        </p>
+      </Section>
+
+      <Section title="9. Schriftarten (Self-hosted)">
         <p>
           Diese Website verwendet die Schriftarten „Inter" und „Space Grotesk".
           Diese werden{" "}
@@ -171,7 +282,7 @@ export default function DatenschutzPage() {
         </p>
       </Section>
 
-      <Section title="7. Eingebettete Projekt-Vorschauen">
+      <Section title="10. Eingebettete Projekt-Vorschauen">
         <p>
           Im Bereich „Projekte" werden Vorschauen meiner bisherigen
           Webdesign-Projekte angezeigt. Diese Vorschauen werden über einen
@@ -200,22 +311,23 @@ export default function DatenschutzPage() {
         </p>
       </Section>
 
-      <Section title="8. Eingesetzte Technologien">
+      <Section title="11. Eingesetzte Technologien">
         <p>
-          Diese Website nutzt ausschließlich serverseitig oder als{" "}
+          Diese Website nutzt serverseitig oder als{" "}
           <code className="text-xs bg-white/5 px-1.5 py-0.5 rounded">
             npm
           </code>
           -Paket installierte Open-Source-Bibliotheken (u. a. Next.js, React,
-          Framer Motion, Three.js, Lenis). Es werden{" "}
+          Framer Motion, Three.js, Lenis). Zur Laufzeit wird{" "}
           <strong className="text-[var(--color-ink)]">
-            keine externen CDNs
-          </strong>{" "}
-          oder Drittanbieter-Skripte zur Laufzeit nachgeladen.
+            kein Drittanbieter-Skript nachgeladen
+          </strong>
+          {" "}— mit der einzigen Ausnahme des Google-Ads-Skripts, das
+          ausschließlich nach deiner Einwilligung geladen wird (siehe Ziffer 8).
         </p>
       </Section>
 
-      <Section title="9. Deine Rechte als betroffene Person">
+      <Section title="12. Deine Rechte als betroffene Person">
         <p>
           Sofern personenbezogene Daten von dir verarbeitet werden, stehen dir
           nach DSGVO insbesondere folgende Rechte zu:
@@ -252,7 +364,7 @@ export default function DatenschutzPage() {
         </p>
       </Section>
 
-      <Section title="10. Beschwerderecht bei der Aufsichtsbehörde">
+      <Section title="13. Beschwerderecht bei der Aufsichtsbehörde">
         <p>
           Unbeschadet anderweitiger Rechtsbehelfe steht dir das Recht zu, dich
           jederzeit bei einer Datenschutz-Aufsichtsbehörde zu beschweren. Für
@@ -291,10 +403,10 @@ export default function DatenschutzPage() {
         </p>
       </Section>
 
-      <Section title="11. Aktualität und Änderung dieser Datenschutzerklärung">
+      <Section title="14. Aktualität und Änderung dieser Datenschutzerklärung">
         <p>
           Diese Datenschutzerklärung ist aktuell gültig und hat den Stand{" "}
-          <strong className="text-[var(--color-ink)]">11. Juni 2026</strong>.
+          <strong className="text-[var(--color-ink)]">1. Juli 2026</strong>.
           Durch Weiterentwicklung der Website oder geänderte gesetzliche bzw.
           behördliche Vorgaben kann es notwendig werden, diese Erklärung
           anzupassen. Die jeweils aktuelle Fassung ist stets unter dieser URL

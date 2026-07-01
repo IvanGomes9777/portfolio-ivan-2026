@@ -14,19 +14,19 @@
 // account makes Google Ads report "Conversion-Aktion nicht erkannt".
 const CONVERSION_SEND_TO = "AW-18190212856/8q7uCLfrhsUcEPi94uFD";
 
-// gtag is injected globally by the gtag.js script in the root layout.
+// gtag / dataLayer are injected by CookieConsent — but only AFTER the visitor
+// has consented (§ 25 TDDDG). Until then window.gtag is undefined, so the
+// conversion call below simply no-ops and nothing is sent to Google.
 declare global {
   interface Window {
-    gtag?: (
-      command: "event",
-      eventName: string,
-      params?: Record<string, unknown>,
-    ) => void;
+    dataLayer?: unknown[];
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
 // Reports a successful contact-form submission as a Google Ads conversion.
-// Safe to call before gtag.js has loaded — it simply no-ops in that case.
+// Safe to call before consent / before gtag.js has loaded — it no-ops in that
+// case, so a lead from a visitor who declined tracking is never reported.
 export function trackContactConversion(): void {
   if (typeof window === "undefined" || typeof window.gtag !== "function") {
     return;
