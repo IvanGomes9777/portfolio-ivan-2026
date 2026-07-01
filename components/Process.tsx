@@ -66,17 +66,25 @@ export default function Process() {
         </h2>
       </motion.div>
 
-      {/* Horizontal timeline (desktop) */}
-      <div className="hidden md:block relative">
-        {/* base line */}
-        <div className="absolute left-0 right-0 top-[28px] h-px bg-[var(--color-line)]" />
-        {/* progress line */}
+      {/* Timeline — a single render of each step so its heading and description
+          exist only once in the DOM (no desktop/mobile text duplication). The
+          layout adapts responsively: a horizontal 4-step grid on desktop, a
+          vertical stack on mobile. */}
+      <div className="relative pl-12 md:pl-0">
+        {/* base line — vertical (mobile) / horizontal (desktop) */}
+        <div className="md:hidden absolute left-3 top-0 bottom-0 w-px bg-[var(--color-line)]" />
+        <div className="hidden md:block absolute left-0 right-0 top-[28px] h-px bg-[var(--color-line)]" />
+        {/* progress line — grows with scroll progress */}
+        <motion.div
+          style={{ height: lineWidth }}
+          className="md:hidden absolute left-3 top-0 w-px bg-gradient-to-b from-[var(--color-accent-strong)] via-[var(--color-accent)] to-transparent shadow-[0_0_20px_rgba(255, 255, 255,0.6)]"
+        />
         <motion.div
           style={{ width: lineWidth }}
-          className="absolute left-0 top-[28px] h-px bg-gradient-to-r from-[var(--color-accent-strong)] via-[var(--color-accent)] to-[var(--color-accent-soft)] shadow-[0_0_20px_rgba(255, 255, 255,0.7)]"
+          className="hidden md:block absolute left-0 top-[28px] h-px bg-gradient-to-r from-[var(--color-accent-strong)] via-[var(--color-accent)] to-[var(--color-accent-soft)] shadow-[0_0_20px_rgba(255, 255, 255,0.7)]"
         />
 
-        <div className="relative grid grid-cols-4 gap-6">
+        <div className="relative flex flex-col gap-10 md:grid md:grid-cols-4 md:gap-6">
           {steps.map((step, i) => {
             const Icon = step.icon;
             const threshold = thresholds[i];
@@ -89,38 +97,6 @@ export default function Process() {
                 threshold={threshold}
                 index={i}
               />
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Vertical timeline (mobile fallback) */}
-      <div className="md:hidden relative pl-12">
-        <div className="absolute left-3 top-0 bottom-0 w-px bg-[var(--color-line)]" />
-        <motion.div
-          style={{ height: lineWidth }}
-          className="absolute left-3 top-0 w-px bg-gradient-to-b from-[var(--color-accent-strong)] via-[var(--color-accent)] to-transparent shadow-[0_0_20px_rgba(255, 255, 255,0.6)]"
-        />
-        <div className="space-y-10">
-          {steps.map((step, i) => {
-            const Icon = step.icon;
-            return (
-              <motion.div
-                key={step.n}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.05 }}
-                className="relative"
-              >
-                <div className="absolute -left-[34px] top-1.5 size-3 rounded-full bg-[var(--color-accent)] shadow-[0_0_16px_rgba(255, 255, 255,0.9)]" />
-                <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[var(--color-accent)]">
-                  <span>{step.n}</span>
-                  <Icon className="size-3.5" />
-                </div>
-                <h3 className="mt-1.5 font-display text-xl tracking-[-0.02em] font-medium">{step.title}</h3>
-                <p className="mt-1.5 text-[var(--color-ink-soft)] leading-relaxed text-sm">{step.desc}</p>
-              </motion.div>
             );
           })}
         </div>
@@ -152,12 +128,15 @@ function StepNode({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: index * 0.08 }}
-      className="relative flex flex-col items-center text-center"
+      className="relative flex flex-col items-start text-left md:items-center md:text-center"
     >
-      {/* node */}
+      {/* Mobile marker — a dot sitting on the vertical timeline */}
+      <span className="md:hidden absolute -left-[34px] top-1.5 size-3 rounded-full bg-[var(--color-accent)] shadow-[0_0_16px_rgba(255, 255, 255,0.9)]" />
+
+      {/* Desktop marker — a circle node on the horizontal timeline */}
       <motion.div
         style={{ scale: nodeScale }}
-        className="relative size-14 rounded-full border border-[var(--color-line-strong)] bg-[var(--color-bg-soft)] backdrop-blur-md flex items-center justify-center z-10"
+        className="hidden md:flex relative size-14 rounded-full border border-[var(--color-line-strong)] bg-[var(--color-bg-soft)] backdrop-blur-md items-center justify-center z-10"
       >
         <motion.div
           style={{ opacity }}
@@ -166,17 +145,20 @@ function StepNode({
         <Icon className="relative size-5 text-[var(--color-accent)]" />
       </motion.div>
 
-      <motion.div style={{ opacity }} className="mt-5 max-w-[240px] mx-auto">
-        <div className="font-display text-xs tracking-[0.3em] text-[var(--color-accent)]">
-          {step.n}
+      {/* Text — rendered once, shared by both layouts */}
+      <div className="mt-1.5 md:mt-5 md:max-w-[240px] md:mx-auto">
+        <div className="flex items-center gap-2 font-display text-xs tracking-[0.3em] text-[var(--color-accent)] md:justify-center">
+          <span>{step.n}</span>
+          {/* Icon inline on mobile (desktop shows it inside the circle above) */}
+          <Icon className="size-3.5 md:hidden" />
         </div>
-        <h3 className="mt-2 font-display text-lg md:text-xl tracking-[-0.02em] font-medium">
+        <h3 className="mt-2 font-display text-xl md:text-lg lg:text-xl tracking-[-0.02em] font-medium">
           {step.title}
         </h3>
-        <p className="mt-2 text-[var(--color-ink-soft)] leading-relaxed text-xs md:text-sm">
+        <p className="mt-2 text-[var(--color-ink-soft)] leading-relaxed text-sm md:text-xs lg:text-sm">
           {step.desc}
         </p>
-      </motion.div>
+      </div>
     </motion.div>
   );
 }

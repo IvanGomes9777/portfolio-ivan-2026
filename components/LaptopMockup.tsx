@@ -16,8 +16,7 @@ export default function LaptopMockup({
     >
       <img
         src="/laptop_realistic.png"
-        alt=""
-        aria-hidden="true"
+        alt="Laptop mit Vorschau einer responsiven Website"
         className="absolute inset-0 w-full h-full object-contain select-none pointer-events-none"
         draggable={false}
       />

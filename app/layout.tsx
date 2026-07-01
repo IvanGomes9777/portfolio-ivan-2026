@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     template: "%s | Ivan Gomes · Webdesign & Entwicklung",
   },
   description:
-    "Freelance Web Developer & Designer aus Münster. Moderne, performante Websites für lokale Unternehmen in Deutschland – mobil optimiert, SEO-ready, in 2–4 Wochen live.",
+    "Freelance Webdesigner & Entwickler aus Münster: performante, mobil optimierte Websites für lokale Unternehmen – SEO-ready, in 2–4 Wochen live.",
   keywords: [
     "web developer münster",
     "webdesign münster",
