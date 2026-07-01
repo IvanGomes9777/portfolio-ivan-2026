@@ -73,7 +73,7 @@ const demoProjects: DemoProject[] = [
   {
     name: "Friseur Vorlage 4",
     branche: "Friseur",
-    status: "In Arbeit",
+    status: "Noch frei",
     url: "https://friseur-beispiel-4.vercel.app/",
     accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/friseur-4.webp",
@@ -91,7 +91,7 @@ const demoProjects: DemoProject[] = [
   {
     name: "50/50ink",
     branche: "Tattoo-Studio",
-    status: "In Arbeit",
+    status: "Noch frei",
     url: "https://5050ink-web.vercel.app/",
     accent: "from-white/15 via-white/8 to-white/5",
     image: "/screenshots/5050ink.webp",
