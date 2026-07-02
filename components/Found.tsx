@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Search, Sparkles, MapPin, ArrowRight } from "lucide-react";
+import { Search, Sparkles, MapPin, MousePointerClick, ArrowRight } from "lucide-react";
 import { fadeUp, stagger } from "@/lib/motion";
 import MagneticButton from "./MagneticButton";
 import Orbs from "./backgrounds/Orbs";
@@ -24,7 +24,7 @@ export default function Found() {
               <span>Sichtbarkeit</span>
             </div>
             <h2 className="font-display text-fluid-h2lg tracking-[-0.03em] font-medium leading-[1.05]">
-              3 Wege, wie deine Website{" "}
+              4 Wege, wie deine Website{" "}
               <span className="bg-gradient-to-r from-[var(--color-accent-soft)] via-[var(--color-accent)] to-[var(--color-accent-strong)] bg-clip-text text-transparent italic">
                 gefunden wird.
               </span>
@@ -32,16 +32,18 @@ export default function Found() {
             <p className="mt-3 text-sm md:text-base text-[var(--color-ink-soft)] leading-relaxed">
               Eine schöne Website bringt nichts, wenn sie niemand findet. Deshalb
               sorge ich dafür, dass dich Kunden genau dort finden, wo sie suchen:
-              lokal in der Google-Karte, in den klassischen Suchergebnissen — und
-              zunehmend auch in KI-Antworten. Basis-SEO ist bei jeder Website
-              inklusive, die volle SEO- & GEO-Optimierung ab dem Standard-Paket.
-              Gut zu wissen: Sichtbarkeit wächst über Zeit — erste Effekte zeigen
-              sich meist nach 2–3 Monaten.
+              lokal in der Google-Karte, in den klassischen Suchergebnissen,
+              zunehmend auch in KI-Antworten — und auf Wunsch sofort ganz oben
+              mit Google Ads. Basis-SEO ist bei jeder Website inklusive, die
+              volle SEO- & GEO-Optimierung ab dem Standard-Paket. Gut zu wissen:
+              Organische Sichtbarkeit wächst über Zeit — erste Effekte zeigen
+              sich meist nach 2–3 Monaten. Wer schneller sichtbar sein will,
+              startet mit Google Ads ab Tag eins.
             </p>
           </motion.div>
 
-          {/* three pillars */}
-          <div className="mt-[clamp(1.25rem,3.2vh,2.5rem)] grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* four pillars */}
+          <div className="mt-[clamp(1.25rem,3.2vh,2.5rem)] grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* SEO */}
             <motion.div
               variants={fadeUp}
@@ -126,6 +128,36 @@ export default function Found() {
                   strukturiert und formuliert sind, dass diese Systeme dein Unternehmen
                   verstehen, zitieren und aktiv weiterempfehlen — damit du auch in der
                   neuen Generation der Suche sichtbar bleibst und nicht übersehen wirst.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Google Ads */}
+            <motion.div
+              variants={fadeUp}
+              className="relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-gradient-to-br from-[var(--color-surface)] to-[var(--color-bg-soft)] p-5 group hover:border-[var(--color-line-strong)] transition-colors"
+            >
+              <div className="absolute -top-20 -right-20 size-56 rounded-full bg-[radial-gradient(circle,rgba(45,212,191,0.18),transparent_60%)] group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
+              <div className="relative">
+                <div className="inline-flex items-center justify-center size-11 rounded-2xl border border-[var(--color-line-strong)] bg-[var(--color-bg-soft)] mb-3">
+                  <MousePointerClick className="size-5 text-[var(--color-accent)]" />
+                </div>
+                <div className="flex items-baseline gap-2">
+                  <h3 className="font-display text-fluid-h3 tracking-tight font-medium">
+                    Google Ads
+                  </h3>
+                  <span className="text-xs uppercase tracking-[0.18em] text-[var(--color-ink-dim)]">
+                    Bezahlte Suchanzeigen
+                  </span>
+                </div>
+                <p className="mt-4 text-sm md:text-base text-[var(--color-ink-soft)] leading-relaxed">
+                  Google Ads sind bezahlte Anzeigen, die ganz oben in den
+                  Google-Suchergebnissen erscheinen — noch über den normalen
+                  Treffern. Das Faire daran: Du zahlst nur, wenn jemand
+                  tatsächlich auf deine Anzeige klickt, nicht einfach für die
+                  Sichtbarkeit. Während SEO über Monate wächst, bist du mit Ads
+                  ab dem ersten Tag sichtbar — ideal für den Start, saisonale
+                  Aktionen oder umkämpfte Suchbegriffe.
                 </p>
               </div>
             </motion.div>
