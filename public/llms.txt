@@ -1,0 +1,45 @@
+# Ivan Gomes — Webdesign & Entwicklung
+
+> Freelance Web Developer & Designer aus Münster (Nordrhein-Westfalen, Deutschland).
+> Maßgeschneiderte, performante und DSGVO-konforme Websites für lokale Unternehmen
+> in ganz Deutschland — SEO- und GEO-optimiert, in der Regel in 2–4 Wochen live.
+
+Website: https://webdesignbyivan.de
+Kontakt: ivanvilargomes@gmail.com
+Standort: Münster, Nordrhein-Westfalen, Deutschland
+Sprache: Deutsch
+
+## Leistungen
+
+- Webdesign und Webentwicklung (Next.js, React, Tailwind CSS)
+- Landingpages und mehrseitige Websites für lokale Unternehmen
+- SEO-Optimierung (Meta-Tags, Sitemap, Ladezeiten, strukturierte Daten)
+- GEO-Optimierung (Sichtbarkeit in KI-Suchmaschinen wie ChatGPT und Perplexity)
+- Website-Wartung und laufende Betreuung
+
+## Website-Pakete
+
+- Visitenkarte: kompakter One-Pager (bis zu 5 Sektionen), responsive, inkl. Impressum & Datenschutz
+- Starter: Einstieg für lokale Unternehmen
+- Standard: mehrseitige Website inkl. voller SEO- & GEO-Optimierung
+- Premium: umfangreiche Website, z. B. mit Buchungssystem
+
+Preise werden als transparente Festpreise im kostenlosen Erstgespräch genannt.
+Zahlungsoptionen: 30 % Anzahlung + 6 Monatsraten, Sofortzahlung ohne Gebühren
+oder 2 Monatsraten.
+
+## Kernfakten
+
+- Umsetzung in der Regel in 2–4 Wochen
+- Alle Websites DSGVO-konform nach deutschem Recht (Cookie-Banner, Impressum, Datenschutz)
+- Basis-SEO bei jedem Paket inklusive; volle SEO- & GEO-Optimierung ab Standard-Paket
+- Arbeitet remote deutschlandweit sowie persönlich in Münster und NRW
+
+## Wichtige Seiten
+
+- [Startseite](https://webdesignbyivan.de/): Leistungen, Pakete, Arbeitsweise
+- [Projekte](https://webdesignbyivan.de/projekte): Referenzen und Demo-Projekte
+- [FAQ](https://webdesignbyivan.de/faq): Antworten zu Dauer, Kosten, Zahlung, SEO/GEO, DSGVO
+- [Impressum](https://webdesignbyivan.de/impressum)
+- [Datenschutz](https://webdesignbyivan.de/datenschutz)
+- [AGB](https://webdesignbyivan.de/agb)

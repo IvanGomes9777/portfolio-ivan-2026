@@ -38,9 +38,7 @@ const csp = [
   "upgrade-insecure-requests",
 ].join("; ");
 
-// Applied to all app pages and the contact API. Deliberately NOT applied to
-// /api/proxy, which serves embeddable third-party HTML and manages its own
-// headers — a strict CSP / frame-ancestors there would break the previews.
+// Applied to all app pages and the contact API.
 const securityHeaders = [
   { key: "Content-Security-Policy", value: csp },
   { key: "X-Frame-Options", value: "DENY" },
@@ -67,9 +65,20 @@ const nextConfig = {
   async headers() {
     return [
       {
-        // Every route EXCEPT /api/proxy (negative lookahead).
-        source: "/((?!api/proxy).*)",
+        source: "/(.*)",
         headers: securityHeaders,
+      },
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        // The vercel.app alias serves the same deployment as the custom
+        // domain. Without this redirect both hosts are indexable duplicates.
+        source: "/:path*",
+        has: [{ type: "host", value: "portfolio-ivan-2026.vercel.app" }],
+        destination: "https://webdesignbyivan.de/:path*",
+        permanent: true,
       },
     ];
   },

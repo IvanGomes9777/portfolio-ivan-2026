@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
@@ -20,7 +21,7 @@ const display = Space_Grotesk({
   preload: true,
 });
 
-const BASE_URL = "https://portfolio-ivan-2026.vercel.app";
+const BASE_URL = SITE_URL;
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

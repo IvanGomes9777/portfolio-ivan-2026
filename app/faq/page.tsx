@@ -1,9 +1,10 @@
+import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import PageShell from "@/components/PageShell";
 
-const BASE_URL = "https://portfolio-ivan-2026.vercel.app";
+const BASE_URL = SITE_URL;
 
 export const metadata: Metadata = {
   title: "FAQ – Häufige Fragen",

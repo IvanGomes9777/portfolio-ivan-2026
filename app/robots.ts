@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/"],
       },
     ],
-    sitemap: "https://portfolio-ivan-2026.vercel.app/sitemap.xml",
-    host: "https://portfolio-ivan-2026.vercel.app",
+    sitemap: "https://webdesignbyivan.de/sitemap.xml",
+    host: "https://webdesignbyivan.de",
   };
 }
