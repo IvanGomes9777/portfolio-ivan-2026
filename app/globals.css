@@ -232,3 +232,92 @@ main, header, footer, section { position: relative; z-index: 2; }
   0%, 100% { opacity: 0.25; }
   50%      { opacity: 1; }
 }
+
+/* Static styles of the decorative background components (Orbs, Aurora,
+   PerspectiveGrid, FloatingPlanes). Kept here as classes instead of inline
+   style attributes so the server-rendered HTML stays small and SEO audits
+   don't flag excessive inline CSS. Values are data, not theme — they mirror
+   the hardcoded layouts in components/backgrounds/. */
+
+.bg3d-orbs { perspective: 1000px; transform-style: preserve-3d; }
+.bg3d-orb { filter: blur(38px); }
+.bg3d-orb-1 { width: 420px; height: 420px; left: 12%; top: 18%; margin-left: -210px; margin-top: -210px; background: radial-gradient(circle, rgba(255, 255, 255, 0.42), transparent 70%); transform: translateZ(80px); animation: float-orb-a 24s ease-in-out 0s infinite; }
+.bg3d-orb-2 { width: 300px; height: 300px; left: 82%; top: 14%; margin-left: -150px; margin-top: -150px; background: radial-gradient(circle, rgba(255, 255, 255, 0.34), transparent 70%); transform: translateZ(140px); animation: float-orb-b 28s ease-in-out 2s infinite; }
+.bg3d-orb-3 { width: 480px; height: 480px; left: 85%; top: 72%; margin-left: -240px; margin-top: -240px; background: radial-gradient(circle, rgba(255, 255, 255, 0.36), transparent 70%); transform: translateZ(-60px); animation: float-orb-a 32s ease-in-out 4s infinite; }
+.bg3d-orb-4 { width: 340px; height: 340px; left: 16%; top: 82%; margin-left: -170px; margin-top: -170px; background: radial-gradient(circle, rgba(255, 255, 255, 0.30), transparent 70%); transform: translateZ(40px); animation: float-orb-c 26s ease-in-out 6s infinite; }
+.bg3d-orb-5 { width: 220px; height: 220px; left: 52%; top: 48%; margin-left: -110px; margin-top: -110px; background: radial-gradient(circle, rgba(196, 181, 253, 0.22), transparent 70%); transform: translateZ(180px); animation: float-orb-b 30s ease-in-out 3s infinite; }
+
+.bg3d-grid { perspective: 700px; perspective-origin: 50% 35%; }
+.bg3d-grid-floor {
+  transform-origin: 50% 0%;
+  transform: rotateX(62deg);
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.28) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.22) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);
+  animation: grid-flow 6s linear infinite;
+}
+.bg3d-grid-ceiling {
+  transform-origin: 50% 100%;
+  transform: rotateX(-62deg);
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.18) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: linear-gradient(to top, transparent 0%, black 30%, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, black 30%, black 80%, transparent 100%);
+}
+
+.bg3d-aurora { perspective: 900px; }
+.bg3d-aurora-wave-1 {
+  background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.45) 35%, rgba(255, 255, 255, 0.55) 55%, transparent 85%);
+  filter: blur(70px);
+  transform: rotateX(35deg) rotateZ(-2deg);
+  animation: aurora-drift-a 22s ease-in-out infinite;
+}
+.bg3d-aurora-wave-2 {
+  background: linear-gradient(80deg, rgba(255, 255, 255, 0.40) 5%, transparent 40%, rgba(255, 255, 255, 0.45) 75%, transparent 100%);
+  filter: blur(80px);
+  transform: rotateX(-20deg) rotateZ(4deg);
+  animation: aurora-drift-b 28s ease-in-out infinite;
+}
+.bg3d-aurora-wave-3 {
+  background: linear-gradient(100deg, transparent 10%, rgba(196, 181, 253, 0.32) 50%, transparent 90%);
+  filter: blur(60px);
+  transform: rotateX(15deg);
+  animation: aurora-drift-a 19s ease-in-out 1.5s infinite;
+}
+
+.bg3d-star {
+  width: 2px;
+  height: 2px;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+  animation: star-twinkle ease-in-out infinite;
+}
+.bg3d-star-1  { left: 6%;  top: 12%; animation-duration: 3.4s; animation-delay: 0.2s; }
+.bg3d-star-2  { left: 14%; top: 38%; animation-duration: 4.1s; animation-delay: 1.1s; }
+.bg3d-star-3  { left: 22%; top: 72%; animation-duration: 3.0s; animation-delay: 2.4s; }
+.bg3d-star-4  { left: 31%; top: 22%; animation-duration: 4.6s; animation-delay: 0.6s; }
+.bg3d-star-5  { left: 39%; top: 58%; animation-duration: 3.7s; animation-delay: 3.2s; }
+.bg3d-star-6  { left: 46%; top: 88%; animation-duration: 4.2s; animation-delay: 1.8s; }
+.bg3d-star-7  { left: 55%; top: 16%; animation-duration: 3.3s; animation-delay: 2.0s; }
+.bg3d-star-8  { left: 63%; top: 44%; animation-duration: 4.4s; animation-delay: 0.4s; }
+.bg3d-star-9  { left: 71%; top: 78%; animation-duration: 3.6s; animation-delay: 2.7s; }
+.bg3d-star-10 { left: 79%; top: 28%; animation-duration: 4.0s; animation-delay: 1.4s; }
+.bg3d-star-11 { left: 87%; top: 64%; animation-duration: 3.5s; animation-delay: 3.6s; }
+.bg3d-star-12 { left: 94%; top: 20%; animation-duration: 4.5s; animation-delay: 0.9s; }
+.bg3d-star-13 { left: 18%; top: 8%;  animation-duration: 3.8s; animation-delay: 2.2s; }
+.bg3d-star-14 { left: 42%; top: 92%; animation-duration: 4.3s; animation-delay: 1.6s; }
+.bg3d-star-15 { left: 68%; top: 6%;  animation-duration: 3.2s; animation-delay: 3.0s; }
+.bg3d-star-16 { left: 88%; top: 92%; animation-duration: 4.1s; animation-delay: 0.5s; }
+
+.bg3d-planes { perspective: 1100px; perspective-origin: 50% 50%; }
+.bg3d-plane { transform-style: preserve-3d; }
+.bg3d-plane-1 { width: 220px; height: 138px; left: 8%;  top: 12%; background: linear-gradient(135deg, rgba(255, 255, 255, 0.10), transparent 70%); transform: translateZ(-180px) rotateZ(-14deg); animation: plane-float 22s ease-in-out 0s infinite; }
+.bg3d-plane-2 { width: 280px; height: 175px; left: 78%; top: 18%; background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 70%); transform: translateZ(-260px) rotateZ(18deg); animation: plane-float 26s ease-in-out 1.5s infinite; }
+.bg3d-plane-3 { width: 200px; height: 125px; left: 85%; top: 68%; background: linear-gradient(135deg, rgba(255, 255, 255, 0.09), transparent 70%); transform: translateZ(-140px) rotateZ(-20deg); animation: plane-float 20s ease-in-out 3s infinite; }
+.bg3d-plane-4 { width: 260px; height: 163px; left: 6%;  top: 74%; background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 70%); transform: translateZ(-220px) rotateZ(16deg); animation: plane-float 28s ease-in-out 4.5s infinite; }
+.bg3d-plane-5 { width: 160px; height: 100px; left: 45%; top: 8%;  background: linear-gradient(135deg, rgba(196, 181, 253, 0.06), transparent 70%); transform: translateZ(-340px) rotateZ(8deg); animation: plane-float 24s ease-in-out 2s infinite; }
+.bg3d-plane-6 { width: 180px; height: 112px; left: 55%; top: 88%; background: linear-gradient(135deg, rgba(255, 255, 255, 0.07), transparent 70%); transform: translateZ(-300px) rotateZ(-10deg); animation: plane-float 30s ease-in-out 6s infinite; }

@@ -86,6 +86,17 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  // Klassische Meta-Angaben, die deutsche SEO-Audit-Tools (Seitenreport & Co.)
+  // prüfen. Für Google/Bing ohne Ranking-Wirkung, aber unschädlich — sie
+  // beheben die Audit-Punkte copyright / audience / page-topic /
+  // revisit-after / expires.
+  other: {
+    copyright: "Ivan Vilar Gomes",
+    audience: "Alle",
+    "page-topic": "Webdesign, Webentwicklung, Dienstleistung",
+    "revisit-after": "7 days",
+    expires: "7 days",
+  },
 };
 
 const personSchema = {
@@ -261,6 +272,14 @@ export default function RootLayout({
   return (
     <html lang="de" className={`${body.variable} ${display.variable}`}>
       <body className="antialiased">
+        {/* BaseURL für SEO-Audit-Tools. Nur im Produktions-Deployment, damit
+            Vercel-Preview-Deployments (eigene Origin) nicht Assets/API-Calls
+            gegen die Produktivdomain auflösen. Alle internen Links nutzen
+            absolute Pfade bzw. Hash-Anker, daher ändert die Base nichts am
+            Verhalten der Produktivseite. */}
+        {process.env.VERCEL_ENV === "production" && (
+          <base href={`${BASE_URL}/`} />
+        )}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
