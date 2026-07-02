@@ -2,7 +2,7 @@
 
 import { motion, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Clock, Zap, ShieldCheck, Lock, Search, FileCheck, BadgeEuro, Check, Globe } from "lucide-react";
+import { Clock, Zap, ShieldCheck, Lock, Search, FileCheck, BadgeEuro, Check, Globe, MousePointerClick } from "lucide-react";
 import { fadeUp, stagger } from "@/lib/motion";
 import { usePanelProgress } from "./PanelProgress";
 import Orbs from "./backgrounds/Orbs";
@@ -166,10 +166,10 @@ export default function Promise() {
           </motion.div>
         </div>
 
-        {/* SEO & GEO + Domain — two compact cards side by side */}
+        {/* SEO & GEO + Google Ads + Domain — three compact cards side by side */}
         <motion.div
           variants={fadeUp}
-          className="md:col-span-6 relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-5 group hover:border-[var(--color-line-strong)] transition-colors"
+          className="md:col-span-4 relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-5 group hover:border-[var(--color-line-strong)] transition-colors"
         >
           <div className="absolute -top-16 -right-16 size-48 rounded-full bg-[radial-gradient(circle,rgba(255, 255, 255,0.16),transparent_60%)] group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
           <div className="relative flex items-center gap-3 mb-2.5">
@@ -192,7 +192,30 @@ export default function Promise() {
 
         <motion.div
           variants={fadeUp}
-          className="md:col-span-6 relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-5 group hover:border-[var(--color-line-strong)] transition-colors"
+          className="md:col-span-4 relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-5 group hover:border-[var(--color-line-strong)] transition-colors"
+        >
+          <div className="absolute -top-16 -right-16 size-48 rounded-full bg-[radial-gradient(circle,rgba(45,212,191,0.16),transparent_60%)] group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
+          <div className="relative flex items-center gap-3 mb-2.5">
+            <span className="inline-flex items-center justify-center size-10 shrink-0 rounded-2xl border border-[var(--color-line-strong)] bg-[var(--color-bg-soft)]">
+              <MousePointerClick className="size-5 text-[var(--color-accent)]" />
+            </span>
+            <div>
+              <div className="font-display text-lg tracking-tight">Google Ads</div>
+              <div className="text-xs uppercase tracking-[0.18em] text-[var(--color-ink-dim)]">
+                Auf Wunsch dazu
+              </div>
+            </div>
+          </div>
+          <p className="relative text-[0.8125rem] text-[var(--color-ink-soft)] leading-snug">
+            Bezahlte Anzeigen ganz oben in den Google-Suchergebnissen — du zahlst
+            nur, wenn jemand tatsächlich klickt. So bist du ab Tag eins sichtbar,
+            während deine SEO-Sichtbarkeit in Ruhe wächst.
+          </p>
+        </motion.div>
+
+        <motion.div
+          variants={fadeUp}
+          className="md:col-span-4 relative overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] p-5 group hover:border-[var(--color-line-strong)] transition-colors"
         >
           <div className="absolute -top-16 -left-16 size-48 rounded-full bg-[radial-gradient(circle,rgba(255, 255, 255,0.16),transparent_60%)] group-hover:scale-110 transition-transform duration-700 pointer-events-none" />
           <div className="relative flex items-center gap-3 mb-2.5">
