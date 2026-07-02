@@ -142,7 +142,7 @@ export default function Image() {
             letterSpacing: "0.5px",
           }}
         >
-          portfolio-ivan-2026.vercel.app
+          webdesignbyivan.de
         </div>
       </div>
     ),

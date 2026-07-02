@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Anbieterkennzeichnung gemäß § 5 DDG — Ivan Vilar Gomes, Freelance Web Developer & Designer aus Münster.",
   alternates: {
-    canonical: "https://portfolio-ivan-2026.vercel.app/impressum",
+    canonical: "https://webdesignbyivan.de/impressum",
   },
   robots: { index: true, follow: false },
 };

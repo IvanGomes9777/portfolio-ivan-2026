@@ -1,6 +1,7 @@
+import { SITE_URL } from "@/lib/site";
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://portfolio-ivan-2026.vercel.app";
+const BASE_URL = SITE_URL;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

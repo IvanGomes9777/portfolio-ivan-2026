@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 // Builds the HTML for the notification email sent when a customer submits the
 // contact form. Styled to match the website: dark surface, violet accents,
 // soft purple glow, Inter type, rounded corners.
@@ -30,7 +31,7 @@ export function renderContactEmail(data: ContactEmailData): string {
     msg,
     projekttyp,
     auftraggeberLabel,
-    baseUrl = "https://portfolio-ivan-2026.vercel.app",
+    baseUrl = SITE_URL,
   } = data;
 
   const firstName = name.trim().split(" ")[0] || name;

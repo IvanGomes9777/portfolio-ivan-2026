@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Allgemeine Geschäftsbedingungen — Ivan Vilar Gomes, Freelance Web Developer & Designer aus Münster.",
   alternates: {
-    canonical: "https://portfolio-ivan-2026.vercel.app/agb",
+    canonical: "https://webdesignbyivan.de/agb",
   },
   robots: { index: true, follow: false },
 };
@@ -39,8 +39,9 @@ export default function AgbPage() {
         <p>
           Der konkrete Leistungsumfang ergibt sich aus dem individuellen
           Angebot, das im Anschluss an das kostenlose Erstgespräch erstellt
-          wird. Angaben auf der Website (z. B. Paketpreise) sind unverbindlich
-          und stellen kein bindendes Angebot dar. Ein Vertrag kommt erst mit der
+          wird. Angaben auf der Website (z. B. zu Leistungspaketen und
+          Zahlungsoptionen) sind unverbindlich und stellen kein bindendes
+          Angebot dar. Ein Vertrag kommt erst mit der
           beidseitigen Bestätigung des individuellen Angebots in Textform
           zustande.
         </p>

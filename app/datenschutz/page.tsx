@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Informationen zur Verarbeitung personenbezogener Daten gemäß Art. 13 DSGVO — DSGVO-konforme Datenschutzerklärung.",
   alternates: {
-    canonical: "https://portfolio-ivan-2026.vercel.app/datenschutz",
+    canonical: "https://webdesignbyivan.de/datenschutz",
   },
   robots: { index: true, follow: false },
 };
@@ -15,7 +15,7 @@ export default function DatenschutzPage() {
   return (
     <LegalLayout
       title="Datenschutzerklärung"
-      subtitle="Stand: 1. Juli 2026"
+      subtitle="Stand: 2. Juli 2026"
     >
       <Section title="1. Verantwortlicher im Sinne der DSGVO">
         <p>
@@ -282,20 +282,17 @@ export default function DatenschutzPage() {
         </p>
       </Section>
 
-      <Section title="10. Eingebettete Projekt-Vorschauen">
+      <Section title="10. Projekt-Vorschauen">
         <p>
           Im Bereich „Projekte" werden Vorschauen meiner bisherigen
-          Webdesign-Projekte angezeigt. Diese Vorschauen werden über einen
-          eigenen serverseitigen Proxy (
-          <code className="text-xs bg-white/5 px-1.5 py-0.5 rounded">
-            /api/proxy
-          </code>
-          ) geladen und direkt von meiner Domain ausgeliefert.
+          Webdesign-Projekte angezeigt. Diese Vorschauen sind statische
+          Bildschirmfotos (Screenshots), die direkt von meiner Domain
+          ausgeliefert werden.
         </p>
         <p>
           Das bedeutet: Beim reinen Anschauen einer Vorschau findet{" "}
           <strong className="text-[var(--color-ink)]">
-            keine direkte Verbindung
+            keine Verbindung
           </strong>{" "}
           von deinem Browser zu den Servern der Projekt-Domains statt.
         </p>
@@ -406,7 +403,7 @@ export default function DatenschutzPage() {
       <Section title="14. Aktualität und Änderung dieser Datenschutzerklärung">
         <p>
           Diese Datenschutzerklärung ist aktuell gültig und hat den Stand{" "}
-          <strong className="text-[var(--color-ink)]">1. Juli 2026</strong>.
+          <strong className="text-[var(--color-ink)]">2. Juli 2026</strong>.
           Durch Weiterentwicklung der Website oder geänderte gesetzliche bzw.
           behördliche Vorgaben kann es notwendig werden, diese Erklärung
           anzupassen. Die jeweils aktuelle Fassung ist stets unter dieser URL
