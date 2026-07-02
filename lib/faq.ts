@@ -41,6 +41,11 @@ export const faq: FaqItem[] = [
   {
     question: "Bin ich danach auf Platz 1 bei Google?",
     answer:
-      "Ehrliche Antwort: Eine seriöse Garantie auf Platz 1 gibt es nicht — und wer sie verspricht, flunkert. Was ich liefere, ist das technische Fundament: eine schnelle, sauber strukturierte und für Google wie für KI-Suchmaschinen optimierte Website, damit du überhaupt gefunden werden kannst. Wo genau du landest, hängt zusätzlich von Wettbewerb, deinen Google-Bewertungen und laufender Pflege ab. Genau dabei unterstütze ich dich auf Wunsch fortlaufend — damit deine Sichtbarkeit über die Zeit wächst.",
+      "Ehrliche Antwort: Eine seriöse Garantie auf Platz 1 gibt es nicht — und wer sie verspricht, flunkert. Was ich liefere, ist das technische Fundament: eine schnelle, sauber strukturierte und für Google wie für KI-Suchmaschinen optimierte Website, damit du überhaupt gefunden werden kannst. Wo genau du landest, hängt zusätzlich von Wettbewerb, deinen Google-Bewertungen und laufender Pflege ab. Genau dabei unterstütze ich dich auf Wunsch fortlaufend — damit deine Sichtbarkeit über die Zeit wächst. Und wer sofort ganz oben stehen möchte, kann das mit Google Ads ergänzen.",
+  },
+  {
+    question: "Was sind Google Ads — und lohnen sie sich für mich?",
+    answer:
+      "Google Ads sind bezahlte Anzeigen, die ganz oben in den Google-Suchergebnissen erscheinen — noch über den normalen Treffern. Du zahlst dabei nur, wenn jemand tatsächlich auf deine Anzeige klickt, nicht einfach für die Sichtbarkeit. Der große Vorteil: Während SEO Zeit braucht, bist du mit Google Ads ab dem ersten Tag sichtbar — ideal für den Start oder saisonale Aktionen. Im Erstgespräch schauen wir gemeinsam, ob sich Anzeigen für dein Unternehmen lohnen.",
   },
 ];
