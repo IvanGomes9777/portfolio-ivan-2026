@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://webdesignbyivan.de/impressum",
   },
-  robots: { index: true, follow: false },
+  robots: { index: true, follow: true },
 };
 
 export default function ImpressumPage() {
