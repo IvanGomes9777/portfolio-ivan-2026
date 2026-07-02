@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
+import Image from "next/image";
 
 export default function LaptopMockup({
   children,
@@ -14,10 +15,12 @@ export default function LaptopMockup({
       className={`relative w-full ${className}`}
       style={{ aspectRatio: "6934 / 4014" }}
     >
-      <img
-        src="/laptop_realistic.png"
+      <Image
+        src="/laptop_realistic.webp"
         alt="Laptop mit Vorschau einer responsiven Website"
-        className="absolute inset-0 w-full h-full object-contain select-none pointer-events-none"
+        fill
+        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+        className="object-contain select-none pointer-events-none"
         draggable={false}
       />
       <div

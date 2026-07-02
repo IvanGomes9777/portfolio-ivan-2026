@@ -11,24 +11,25 @@ Stand: 2. Juli 2026 · Produktivdomain: https://webdesignbyivan.de
 - [x] AGB Ziffer 2: Verweis auf entfernte „Paketpreise" korrigiert
 - [x] `public/llms.txt` angelegt (GEO)
 - [x] `.gitignore` auf `.env*` erweitert
+- [x] **PR #113 gemerged** (2. Juli 2026) — Domain-Fix & Co. sind in Produktion (ehem. Punkt 2)
+- [x] Punkt 5: `laptop_realistic.png` (296 KB) → `laptop_realistic.webp` (13 KB, 2000 px), `LaptopMockup` auf `next/image` umgestellt
+- [x] Punkt 7: Rechtsseiten auf `robots: { index: true, follow: true }` umgestellt
+- [x] Punkt 8 (teilweise): CI-Workflow `.github/workflows/ci.yml` mit `npm audit --audit-level=high` (bei Push/PR + wöchentlich), Typecheck und Build
 
 ## Manuell zu erledigen (außerhalb des Codes)
 
 | # | Prio | Aufgabe | Wo |
 |---|------|---------|-----|
 | 1 | Hoch | **Cloudflare AI-Crawler-Blockade aufheben:** Unter *AI Crawl Control / Bots* das Blockieren von GPTBot, ClaudeBot, Google-Extended, CCBot etc. sowie die „managed robots.txt" (Content Signals, `ai-train=no`) deaktivieren — oder bewusst nur Training verbieten und Zitieren erlauben. Ohne diesen Schritt ist die Site für ChatGPT/Perplexity unsichtbar und die `llms.txt` wirkungslos. | Cloudflare-Dashboard (webdesignbyivan.de) |
-| 2 | Hoch | **PR mergen**, damit Domain-Fix & Co. in Produktion gehen | GitHub |
 | 3 | Hoch | **Google Search Console:** Property für `webdesignbyivan.de` anlegen (falls fehlt) und `https://webdesignbyivan.de/sitemap.xml` neu einreichen | Search Console |
 | 4 | Info | Resend-DPA-Abschluss einmal verifizieren; `ACAO: *` auf HTML-Antworten im Vercel-Projekt prüfen | Resend/Vercel-Dashboard |
 
-## Optionale Code-Verbesserungen (niedrige Priorität)
+## Offene optionale Code-Verbesserungen (niedrige Priorität)
 
 | # | Aufgabe | Fundort | Aufwand |
 |---|---------|---------|---------|
-| 5 | `laptop_realistic.png` (296 KB) → WebP/AVIF; zentrale Bilder auf `next/image` umstellen | `public/`, Mockup-Komponenten | ~1 h |
-| 6 | Nonce-basierte CSP statt `'unsafe-inline'` (Middleware) | `next.config.mjs` | ~2–4 h |
-| 7 | `follow: false` auf den Rechtsseiten überdenken | `app/impressum`, `app/datenschutz`, `app/agb` | 10 min |
-| 8 | Laufend: `npm audit` regelmäßig bzw. in CI verankern; Rate-Limit bei echtem Missbrauch auf Redis/Upstash umstellen | Prozess | laufend |
+| 6 | Nonce-basierte CSP statt `'unsafe-inline'` (Middleware). **Bewusst zurückgestellt:** Nonces erzwingen in Next.js dynamisches Rendering pro Request — aktuell sind alle Inhaltsseiten statisch vorgerendert. Der Performance-/SEO-Nachteil überwiegt derzeit das geringe Rest-XSS-Risiko (kein User-Content, kein `dangerouslySetInnerHTML`). Neu bewerten, falls die Site ohnehin auf dynamisches Rendering wechselt. | `next.config.mjs` | ~2–4 h |
+| 8b | Rate-Limit bei echtem Missbrauch auf Redis/Upstash umstellen | `app/api/contact` | bei Bedarf |
 
 ---
 
