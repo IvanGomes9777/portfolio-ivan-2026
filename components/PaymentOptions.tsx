@@ -1,7 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Wallet, CreditCard, CalendarClock } from "lucide-react";
+import {
+  Wallet,
+  CreditCard,
+  CalendarClock,
+  Repeat,
+  Check,
+  Sparkles,
+} from "lucide-react";
 import { fadeUp, stagger } from "@/lib/motion";
 
 type PaymentOption = {
@@ -95,6 +102,70 @@ export default function PaymentOptions() {
             );
           })}
         </div>
+
+        {/* Website-Abo highlight */}
+        <motion.div
+          variants={fadeUp}
+          className="mt-3 rounded-[var(--radius-md)] border border-[var(--color-accent)]/40 bg-[var(--color-surface)]/70 p-5 relative overflow-hidden"
+        >
+          {/* subtle glow inside the card */}
+          <div className="absolute -top-16 -right-16 size-48 rounded-full bg-[radial-gradient(circle,var(--color-accent-glow),transparent_60%)] opacity-30 pointer-events-none" />
+
+          <div className="relative">
+            <div className="flex items-start gap-3">
+              <span className="inline-flex items-center justify-center size-10 shrink-0 rounded-xl border border-[var(--color-accent)]/40 bg-[var(--color-surface-2)] text-[var(--color-accent)]">
+                <Repeat className="size-5" />
+              </span>
+              <div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-[0.9375rem] font-medium text-[var(--color-ink)] leading-tight">
+                    Das Website-Abo
+                  </span>
+                  <span className="inline-flex items-center gap-1 rounded-full border border-[var(--color-accent)]/40 bg-[var(--color-accent)]/10 px-2 py-0.5 text-[0.6875rem] font-medium text-[var(--color-accent)]">
+                    <Sparkles className="size-2.5" />
+                    Beliebt
+                  </span>
+                </div>
+                <div className="mt-1 text-[0.8125rem] font-medium text-[var(--color-accent-soft)] leading-snug">
+                  Eine feste Monatsrate — ganz ohne große Anfangsinvestition
+                </div>
+              </div>
+            </div>
+
+            <p className="mt-3 text-[0.8125rem] text-[var(--color-ink-soft)] leading-relaxed">
+              Eine neue Website ist eine Investition — die muss aber nicht auf
+              einen Schlag bezahlt werden. Neben der klassischen Einmalzahlung
+              biete ich dir das Website-Abo: eine feste monatliche Rate. Darin
+              enthalten sind nicht nur die Erstellung deiner Website, sondern
+              auch laufende Wartung und Content-Pflege — alles aus einer Hand,
+              in einer Rate.
+            </p>
+            <p className="mt-2 text-[0.8125rem] text-[var(--color-ink-soft)] leading-relaxed">
+              Das Besondere: Das Abo ist nicht nur bequemer, sondern über die
+              Laufzeit gerechnet sogar günstiger, als Website, Wartung und
+              Content-Pflege einzeln zu bezahlen.
+            </p>
+
+            <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
+              {[
+                "Keine große Anfangsinvestition nötig",
+                "Website, Wartung & Content-Pflege in einer festen Monatsrate",
+                "Planbare, gleichbleibende Kosten statt einer großen Einmalrechnung",
+                "Rate sinkt automatisch, sobald die Website abbezahlt ist",
+              ].map((point) => (
+                <li
+                  key={point}
+                  className="flex items-start gap-2 text-[0.8125rem] text-[var(--color-ink-soft)] leading-snug"
+                >
+                  <span className="mt-0.5 inline-flex items-center justify-center size-4 shrink-0 rounded-full bg-[var(--color-accent)]/15 text-[var(--color-accent)]">
+                    <Check className="size-3" />
+                  </span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </motion.div>
 
         {/* PayPal note */}
         <motion.div variants={fadeUp} className="mt-4">
