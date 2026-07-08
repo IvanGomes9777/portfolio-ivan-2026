@@ -29,7 +29,7 @@ const csp = [
   //    Google-owned. Note: Google may also fire remarketing "ga-audiences"
   //    pixels to country-specific domains (google.de etc.) which are NOT in
   //    this list — those are non-essential and do not affect conversion counts.
-  "script-src 'self' 'unsafe-inline' https://vercel.live https://www.googletagmanager.com https://www.googleadservices.com",
+  "script-src 'self' 'unsafe-inline' https://vercel.live https://www.googletagmanager.com https://www.googleadservices.com https://*.doubleclick.net",
   "style-src 'self' 'unsafe-inline' https://vercel.live",
   "img-src 'self' data: blob: https://vercel.live https://vercel.com https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com https://*.doubleclick.net https://www.googleadservices.com",
   "font-src 'self' data: https://vercel.live",
